@@ -33,20 +33,21 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: var(--bg);
     color: var(--white);
+
     line-height: 1.6;
+
     overflow-x: hidden;
 }
 
 a {
     color: inherit;
-}
-
-img {
-    max-width: 100%;
-    display: block;
 }
 
 .container {
@@ -66,23 +67,30 @@ img {
 
 .site-header {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 78px;
+
     z-index: 1000;
 
     background: rgba(11, 17, 32, 0.94);
 
     backdrop-filter: blur(12px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
 }
 
 .navbar {
     width: 90%;
     max-width: var(--max-width);
+
     height: 100%;
+
     margin: 0 auto;
 
     display: flex;
@@ -97,15 +105,19 @@ img {
 
 .logo {
     display: inline-flex;
+
     align-items: center;
 
     color: var(--white);
+
     text-decoration: none;
 
     font-size: 1.6rem;
+
     font-weight: 800;
 
     letter-spacing: -1px;
+
     white-space: nowrap;
 }
 
@@ -120,6 +132,7 @@ img {
 
 .nav-links {
     display: flex;
+
     align-items: center;
     justify-content: flex-end;
 
@@ -144,6 +157,7 @@ img {
     text-decoration: none;
 
     font-size: 0.88rem;
+
     font-weight: 500;
 
     white-space: nowrap;
@@ -155,6 +169,7 @@ img {
 
 .nav-links a:hover {
     color: var(--blue);
+
     transform: translateY(-1px);
 }
 
@@ -173,7 +188,9 @@ img {
 
     overflow: hidden;
 
-    padding: 130px 0 80px;
+    padding:
+        130px 0
+        80px;
 }
 
 .hero::before {
@@ -187,7 +204,8 @@ img {
     right: -200px;
     top: 100px;
 
-    background: rgba(56, 189, 248, 0.08);
+    background:
+        rgba(56, 189, 248, 0.08);
 
     border-radius: 50%;
 
@@ -205,11 +223,12 @@ img {
 
     align-items: center;
 
-    gap: 70px;
+    gap: 65px;
 }
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 }
 
@@ -226,7 +245,12 @@ img {
 }
 
 .hero h1 {
-    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-size:
+        clamp(
+            3.5rem,
+            8vw,
+            6.5rem
+        );
 
     line-height: 1;
 
@@ -242,7 +266,12 @@ img {
 .hero h2 {
     color: var(--light);
 
-    font-size: clamp(1.25rem, 3vw, 1.8rem);
+    font-size:
+        clamp(
+            1.25rem,
+            3vw,
+            1.8rem
+        );
 
     font-weight: 600;
 
@@ -280,7 +309,8 @@ img {
 
     min-height: 46px;
 
-    padding: 0 21px;
+    padding:
+        0 21px;
 
     border-radius: 8px;
 
@@ -290,7 +320,8 @@ img {
 
     font-weight: 700;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .primary-btn {
@@ -310,7 +341,9 @@ img {
 
     color: var(--white);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 }
 
 .secondary-btn:hover {
@@ -331,77 +364,26 @@ img {
 
     z-index: 2;
 
-    width: 100%;
-    max-width: 380px;
+    padding: 30px;
 
-    margin-left: auto;
+    background:
+        linear-gradient(
+            145deg,
+            #14243a,
+            #0a1424
+        );
 
-    padding: 0;
-
-    background: linear-gradient(
-        145deg,
-        #14243a,
-        #0a1424
-    );
-
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 20px;
 
-    overflow: hidden;
-
     box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.25);
-}
+        0 25px 60px
+        rgba(0, 0, 0, 0.25);
 
-
-/* =========================================
-   PROFILE IMAGE
-========================================= */
-
-/*
-   This works if your HTML uses:
-
-   <img src="assets/ProfilePic_Portfolio.jpg">
-
-   inside .hero-card
-*/
-
-.hero-card img {
-    width: 100%;
-
-    height: auto;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    display: block;
-}
-
-
-/*
-   Also supports a class such as:
-
-   <img class="hero-photo" ...>
-*/
-
-.hero-photo {
-    width: 100%;
-
-    max-width: 100%;
-
-    height: auto;
-
-    aspect-ratio: 1 / 1;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    display: block;
+    overflow: hidden;
 }
 
 
@@ -420,7 +402,7 @@ img {
 
     font-size: 0.82rem;
 
-    padding: 25px 25px 20px;
+    margin-bottom: 25px;
 }
 
 .status-dot {
@@ -434,29 +416,49 @@ img {
     background: #4ade80;
 
     box-shadow:
-        0 0 12px rgba(74, 222, 128, 0.5);
+        0 0 12px
+        rgba(74, 222, 128, 0.5);
 }
 
 
-/*
-   If you are still using the old JE
-   initials instead of the picture.
-*/
+/* =========================================
+   HERO PROFILE PHOTO
+========================================= */
 
-.hero-initials {
-    margin: 70px 0 30px;
+.hero-photo {
+    width: 100%;
 
-    padding-left: 25px;
+    height: 360px;
 
-    color: var(--blue);
+    border-radius: 14px;
 
-    font-size: 6rem;
+    overflow: hidden;
 
-    line-height: 1;
+    background: #111827;
 
-    font-weight: 900;
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
 
-    letter-spacing: -7px;
+    margin-bottom: 25px;
+}
+
+.hero-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 25%;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.hero-card:hover .hero-photo img {
+    transform: scale(1.03);
 }
 
 .hero-card p {
@@ -464,7 +466,7 @@ img {
 
     font-size: 0.95rem;
 
-    padding: 0 25px 25px;
+    line-height: 1.8;
 }
 
 
@@ -473,11 +475,13 @@ img {
 ========================================= */
 
 .section {
-    padding: 110px 0;
+    padding:
+        110px 0;
 }
 
 .section-dark {
-    background: var(--bg-dark);
+    background:
+        var(--bg-dark);
 }
 
 .section-label {
@@ -495,7 +499,12 @@ img {
 .section-title {
     max-width: 850px;
 
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-size:
+        clamp(
+            2.2rem,
+            5vw,
+            3.5rem
+        );
 
     line-height: 1.1;
 
@@ -524,13 +533,19 @@ img {
 .experience-card {
     padding: 35px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-left: 3px solid var(--blue);
+    border-left:
+        3px solid
+        var(--blue);
 
-    border-radius: 0 15px 15px 0;
+    border-radius:
+        0 15px 15px 0;
 }
 
 .experience-header {
@@ -590,19 +605,25 @@ img {
 .skill-card {
     padding: 25px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
-    border-color: rgba(56, 189, 248, 0.5);
+    border-color:
+        rgba(56, 189, 248, 0.5);
 }
 
 .skill-card h3 {
@@ -620,11 +641,15 @@ img {
 }
 
 .tags span {
-    padding: 6px 10px;
+    padding:
+        6px 10px;
 
-    background: rgba(255, 255, 255, 0.025);
+    background:
+        rgba(255, 255, 255, 0.025);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 6px;
 
@@ -656,25 +681,33 @@ img {
 
     padding: 30px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 16px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
-    background: var(--card-hover);
+    background:
+        var(--card-hover);
 
-    border-color: rgba(56, 189, 248, 0.45);
+    border-color:
+        rgba(56, 189, 248, 0.45);
 }
 
 .project-card.featured {
-    grid-column: 1 / -1;
+    grid-column:
+        1 / -1;
 }
 
 .project-top {
@@ -720,7 +753,8 @@ img {
 }
 
 .project-role {
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 
     font-size: 0.9rem;
 
@@ -747,15 +781,20 @@ img {
 .technology-list span {
     display: inline-block;
 
-    padding: 5px 9px;
+    padding:
+        5px 9px;
 
-    background: rgba(56, 189, 248, 0.06);
+    background:
+        rgba(56, 189, 248, 0.06);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 6px;
 
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 
     font-size: 0.75rem;
 
@@ -794,10 +833,18 @@ img {
     font-size: 0.9rem;
 
     font-weight: 750;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .project-link:hover {
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
+
+    transform:
+        translateX(3px);
 }
 
 
@@ -823,23 +870,30 @@ img {
 
     padding: 25px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .certification-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
-    border-color: rgba(56, 189, 248, 0.45);
+    border-color:
+        rgba(56, 189, 248, 0.45);
 }
 
 .cert-date {
-    color: var(--blue);
+    color:
+        var(--blue);
 
     font-size: 0.7rem;
 
@@ -849,17 +903,20 @@ img {
 }
 
 .certification-card h3 {
-    color: var(--white);
+    color:
+        var(--white);
 
     font-size: 1.05rem;
 
     line-height: 1.45;
 
-    margin: 12px 0 8px;
+    margin:
+        12px 0 8px;
 }
 
 .certification-card p {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 0.88rem;
 
@@ -869,7 +926,8 @@ img {
 .certification-card a {
     margin-top: auto;
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
     text-decoration: none;
 
@@ -879,13 +937,15 @@ img {
 }
 
 .certification-card a:hover {
-    color: var(--blue-light);
+    color:
+        var(--blue-light);
 }
 
 .certification-no-link {
     margin-top: auto;
 
-    color: #64748b;
+    color:
+        #64748b;
 
     font-size: 0.8rem;
 }
@@ -906,9 +966,12 @@ img {
 
     padding: 30px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 }
@@ -920,13 +983,15 @@ img {
 }
 
 .education-card p {
-    color: var(--light);
+    color:
+        var(--light);
 }
 
 .education-card > div > span {
     display: block;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 0.9rem;
 
@@ -934,7 +999,8 @@ img {
 }
 
 .education-date {
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 0.85rem;
 
@@ -953,7 +1019,8 @@ img {
 .contact-description {
     max-width: 650px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     font-size: 1.05rem;
 }
@@ -969,21 +1036,27 @@ img {
 }
 
 .contact-links a {
-    color: var(--white);
+    color:
+        var(--white);
 
     text-decoration: none;
 
     padding-bottom: 4px;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid
+        var(--border);
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .contact-links a:hover {
-    color: var(--blue);
+    color:
+        var(--blue);
 
-    border-color: var(--blue);
+    border-color:
+        var(--blue);
 }
 
 
@@ -994,13 +1067,17 @@ img {
 footer {
     padding: 30px;
 
-    background: var(--bg-dark);
+    background:
+        var(--bg-dark);
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid
+        var(--border);
 
     text-align: center;
 
-    color: #64748b;
+    color:
+        #64748b;
 
     font-size: 0.82rem;
 }
@@ -1011,10 +1088,6 @@ footer {
 ========================================= */
 
 @media (max-width: 1000px) {
-
-    .navbar {
-        width: 92%;
-    }
 
     .nav-links {
         gap: 15px;
@@ -1031,9 +1104,15 @@ footer {
     }
 
     .hero-card {
-        max-width: 400px;
+        width: 100%;
 
-        margin-left: 0;
+        max-width: 500px;
+
+        margin: 0 auto;
+    }
+
+    .hero-photo {
+        height: 420px;
     }
 }
 
@@ -1059,7 +1138,9 @@ footer {
     .hero {
         min-height: auto;
 
-        padding: 110px 0 75px;
+        padding:
+            110px 0
+            75px;
     }
 
     .hero h1 {
@@ -1067,17 +1148,15 @@ footer {
     }
 
     .hero-container {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
+        gap: 40px;
     }
 
     .hero-card {
-        width: 100%;
+        max-width: 100%;
+    }
 
-        max-width: 380px;
-
-        margin: 0 auto;
+    .hero-photo {
+        height: 400px;
     }
 
     .skills-grid {
@@ -1130,11 +1209,14 @@ footer {
     }
 
     .section {
-        padding: 80px 0;
+        padding:
+            80px 0;
     }
 
     .hero {
-        padding: 100px 0 65px;
+        padding:
+            100px 0
+            65px;
     }
 
     .hero h1 {
@@ -1162,18 +1244,17 @@ footer {
     }
 
     .hero-card {
-        max-width: 100%;
-
-        border-radius: 16px;
+        padding: 20px;
     }
 
-    .hero-card img,
     .hero-photo {
-        width: 100%;
+        height: 360px;
 
-        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+    }
 
-        object-fit: cover;
+    .hero-photo img {
+        object-position: center 25%;
     }
 
     .section-title {
