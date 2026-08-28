@@ -366,9 +366,12 @@ a {
    HERO PROFILE CARD
 ========================================= */
 
+/* =========================================
+   HERO PROFILE CARD
+========================================= */
+
 .hero-card {
     position: relative;
-
     z-index: 2;
 
     padding: 35px;
@@ -380,36 +383,34 @@ a {
             #0a1424
         );
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 20px;
 
     box-shadow:
-        0 25px 60px
-        rgba(0, 0, 0, 0.25);
+        0 25px 60px rgba(0, 0, 0, 0.25);
 
+    /* THIS controls the animation */
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
 }
 
-
-/* Whole profile card hover effect */
+/* =========================================
+   PROFILE CARD HOVER
+========================================= */
 
 .hero-card:hover {
-    transform:
-        translateY(-6px)
-        scale(1.02);
+    /* The WHOLE container gets bigger */
+    transform: scale(1.05);
 
-    border-color:
-        rgba(56, 189, 248, 0.45);
-
+    /* Stronger shadow */
     box-shadow:
-        0 30px 70px
-        rgba(0, 0, 0, 0.35);
+        0 35px 80px rgba(0, 0, 0, 0.45);
+
+    /* Blue highlight around the container */
+    border-color: var(--blue);
 }
 
 
@@ -482,10 +483,6 @@ a {
 
 
 /* No zoom on the image itself */
-
-.hero-photo img:hover {
-    transform: none;
-}
 
 .hero-card p {
     color: var(--muted);
