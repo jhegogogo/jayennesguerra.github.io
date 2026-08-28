@@ -1,997 +1,1049 @@
-/* =========================
-   GENERAL
-========================= */
+<!DOCTYPE html>
+<html lang="en">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<head>
 
-html {
-    scroll-behavior: smooth;
-}
+    <meta charset="UTF-8">
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b1120;
-    color: #f8fafc;
-    line-height: 1.6;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-a {
-    color: inherit;
-}
+    <meta
+        name="description"
+        content="Jayenn Harold L. Esguerra - Information Technology Graduate, Associate Software Engineer, and Junior Web Developer."
+    >
 
-section {
-    padding: 100px 8%;
-}
+    <title>Jayenn Esguerra | IT Portfolio</title>
 
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    <link rel="stylesheet" href="style.css">
 
-.section-label {
-    color: #38bdf8;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
-}
+</head>
 
-.section-title {
-    font-size: clamp(32px, 5vw, 46px);
-    line-height: 1.2;
-    margin-bottom: 45px;
-}
 
-.section-title span {
-    color: #38bdf8;
-}
+<body>
 
 
-/* =========================
-   NAVIGATION
-========================= */
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    <header class="site-header">
 
-    padding: 18px 8%;
+        <nav class="navbar">
 
-    background: rgba(11, 17, 32, 0.92);
+            <a href="#home" class="logo">
+                JE<span>.</span>
+            </a>
 
-    backdrop-filter: blur(12px);
+            <ul class="nav-links">
 
-    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+                <li>
+                    <a href="#home">Home</a>
+                </li>
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+                <li>
+                    <a href="#about">About</a>
+                </li>
 
-    z-index: 1000;
-}
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
 
-.logo {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
 
-.logo span {
-    color: #38bdf8;
-}
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
 
-nav ul {
-    list-style: none;
+                <li>
+                    <a href="#certifications">Certifications</a>
+                </li>
 
-    display: flex;
-    align-items: center;
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
 
-    gap: 28px;
-}
+            </ul>
 
-nav ul li a {
-    color: #cbd5e1;
+        </nav>
 
-    text-decoration: none;
+    </header>
 
-    font-size: 15px;
 
-    transition: 0.3s;
-}
 
-nav ul li a:hover {
-    color: #38bdf8;
-}
+    <!-- =========================================
+         HERO
+    ========================================== -->
 
+    <main>
 
-/* =========================
-   HERO
-========================= */
+        <section class="hero" id="home">
 
-.hero {
-    min-height: 100vh;
+            <div class="container hero-container">
 
-    display: grid;
 
-    grid-template-columns: 1.5fr 0.7fr;
+                <div class="hero-content">
 
-    align-items: center;
+                    <p class="eyebrow">
+                        ASSOCIATE SOFTWARE ENGINEER • JUNIOR WEB DEVELOPER
+                    </p>
 
-    gap: 80px;
+                    <h1>
+                        Hi, I'm
+                        <span>Jayenn.</span>
+                    </h1>
 
-    padding-top: 130px;
-}
+                    <h2>
+                        Information Technology Graduate
+                    </h2>
 
-.hero-content {
-    max-width: 850px;
-}
+                    <p class="hero-description">
+                        I specialize in Web and Mobile Application
+                        Development and enjoy building useful,
+                        creative, and technology-driven solutions.
+                    </p>
 
-.hero-label {
-    color: #38bdf8;
 
-    font-size: 14px;
+                    <div class="hero-buttons">
 
-    font-weight: 700;
+                        <a
+                            href="#projects"
+                            class="btn primary-btn"
+                        >
+                            View My Projects
+                        </a>
 
-    letter-spacing: 3px;
+                        <a
+                            href="assets/Jayenn-Esguerra-Resume.pdf"
+                            class="btn secondary-btn"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View Resume
+                        </a>
 
-    margin-bottom: 25px;
-}
+                    </div>
 
-.hero h1 {
-    font-size: clamp(55px, 8vw, 92px);
+                </div>
 
-    line-height: 1;
 
-    letter-spacing: -4px;
 
-    margin-bottom: 25px;
-}
+                <div class="hero-card">
 
-.hero h1 span {
-    color: #38bdf8;
-}
+                    <div class="hero-status">
 
-.hero h2 {
-    font-size: clamp(28px, 4vw, 42px);
+                        <span class="status-dot"></span>
 
-    color: #cbd5e1;
+                        <span>
+                            Open to opportunities
+                        </span>
 
-    margin-bottom: 25px;
-}
+                    </div>
 
-.hero-description {
-    max-width: 720px;
 
-    color: #94a3b8;
+                    <div class="hero-initials">
+                        JE
+                    </div>
 
-    font-size: 18px;
 
-    line-height: 1.8;
+                    <p>
+                        Building practical digital solutions through
+                        development, design, and problem solving.
+                    </p>
 
-    margin-bottom: 35px;
-}
+                </div>
 
+            </div>
 
-/* =========================
-   HERO BUTTONS
-========================= */
+        </section>
 
-.hero-buttons {
-    display: flex;
 
-    gap: 15px;
 
-    flex-wrap: wrap;
-}
+        <!-- =========================================
+             ABOUT
+        ========================================== -->
 
-.btn {
-    display: inline-block;
+        <section
+            class="section section-dark"
+            id="about"
+        >
 
-    padding: 13px 24px;
+            <div class="container narrow">
 
-    border-radius: 7px;
+                <p class="section-label">
+                    ABOUT ME
+                </p>
 
-    text-decoration: none;
+                <h2 class="section-title">
+                    Turning ideas into
+                    <span>digital solutions.</span>
+                </h2>
 
-    font-weight: 700;
+                <p class="section-text">
 
-    transition: 0.3s;
-}
+                    I'm Jayenn Harold L. Esguerra, an Information
+                    Technology graduate specializing in Web and
+                    Mobile Application Development.
 
-.primary-btn {
-    background: #38bdf8;
+                </p>
 
-    color: #0b1120;
-}
+                <p class="section-text">
 
-.primary-btn:hover {
-    background: #7dd3fc;
+                    I have hands-on experience in front-end
+                    development, backend development, databases,
+                    UI design, networking, and system development.
+                    During my internship, I worked on an Attendance
+                    Monitoring System while also supporting IT
+                    administration and team coordination.
 
-    transform: translateY(-3px);
-}
+                </p>
 
-.secondary-btn {
-    border: 1px solid #475569;
+                <p class="section-text">
 
-    color: #e2e8f0;
-}
+                    I enjoy learning new technologies, solving
+                    technical problems, and creating applications
+                    that are practical, responsive, and easy to use.
 
-.secondary-btn:hover {
-    border-color: #38bdf8;
+                </p>
 
-    color: #38bdf8;
+            </div>
 
-    transform: translateY(-3px);
-}
+        </section>
 
 
-/* =========================
-   PROFILE CARD
-========================= */
 
-.profile-card {
-    min-height: 500px;
+        <!-- =========================================
+             EXPERIENCE
+        ========================================== -->
 
-    padding: 30px;
+        <section
+            class="section"
+            id="experience"
+        >
 
-    border: 1px solid #26364d;
+            <div class="container">
 
-    border-radius: 18px;
+                <p class="section-label">
+                    EXPERIENCE
+                </p>
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(30, 41, 59, 0.75),
-            rgba(15, 23, 42, 0.8)
-        );
+                <h2 class="section-title">
+                    Work <span>Experience</span>
+                </h2>
 
-    display: flex;
 
-    flex-direction: column;
+                <div class="experience-card">
 
-    justify-content: flex-end;
+                    <div class="experience-header">
 
-    position: relative;
+                        <div>
 
-    overflow: hidden;
+                            <h3>
+                                Ollopa Corporation
+                            </h3>
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
+                            <p>
+                                Software Developer Intern /
+                                IT Administrator
+                            </p>
 
-.profile-image-wrapper {
-    position: absolute;
+                        </div>
 
-    top: 0;
-    left: 0;
+                        <span class="experience-date">
+                            January 2026 — July 2026
+                        </span>
 
-    width: 100%;
-    height: 72%;
+                    </div>
 
-    overflow: hidden;
 
-    background: #1e293b;
-}
+                    <ul class="experience-list">
 
-.profile-image {
-    width: 100%;
-    height: 100%;
+                        <li>
+                            Developed front-end components for an
+                            Attendance Monitoring System using
+                            React, HTML, CSS, and JavaScript.
+                        </li>
 
-    object-fit: cover;
+                        <li>
+                            Assisted in backend development and
+                            maintenance using Laravel and PHP.
+                        </li>
 
-    object-position: center top;
+                        <li>
+                            Implemented role-based interfaces for
+                            clock in/out and account management.
+                        </li>
 
-    transition: 0.5s;
-}
+                        <li>
+                            Translated Figma wireframes into
+                            responsive UI designs.
+                        </li>
 
-.profile-card:hover .profile-image {
-    transform: scale(1.04);
-}
+                        <li>
+                            Collaborated using Git and GitHub for
+                            version control and team coordination.
+                        </li>
 
-.profile-status {
-    position: relative;
+                        <li>
+                            Served as Team Lead by coordinating
+                            team members, monitoring progress,
+                            and tracking task completion.
+                        </li>
 
-    z-index: 2;
+                        <li>
+                            Assisted with internship administration
+                            across multiple departments, including
+                            onboarding, attendance tracking,
+                            performance monitoring, and
+                            documentation management.
+                        </li>
 
-    color: #e2e8f0;
+                    </ul>
 
-    font-size: 15px;
+                </div>
 
-    margin-bottom: 45px;
-}
+            </div>
 
-.profile-card h3 {
-    position: relative;
+        </section>
 
-    z-index: 2;
 
-    font-size: 22px;
 
-    margin-bottom: 5px;
-}
+        <!-- =========================================
+             SKILLS
+        ========================================== -->
 
-.profile-role {
-    position: relative;
+        <section
+            class="section section-dark"
+            id="skills"
+        >
 
-    z-index: 2;
+            <div class="container">
 
-    color: #38bdf8;
+                <p class="section-label">
+                    TECHNICAL SKILLS
+                </p>
 
-    font-size: 14px;
+                <h2 class="section-title">
+                    Tools I <span>work with.</span>
+                </h2>
 
-    margin-bottom: 10px;
-}
 
-.profile-description {
-    position: relative;
+                <div class="skills-grid">
 
-    z-index: 2;
 
-    color: #94a3b8;
+                    <div class="skill-card">
 
-    font-size: 14px;
-}
+                        <h3>
+                            Languages
+                        </h3>
 
+                        <div class="tags">
 
-/* =========================
-   ABOUT
-========================= */
+                            <span>JavaScript</span>
+                            <span>PHP</span>
 
-.about {
-    background: #111827;
-}
+                        </div>
 
-.about-text {
-    max-width: 850px;
+                    </div>
 
-    color: #cbd5e1;
 
-    font-size: 17px;
 
-    line-height: 1.8;
+                    <div class="skill-card">
 
-    margin-bottom: 20px;
-}
+                        <h3>
+                            Frontend
+                        </h3>
 
+                        <div class="tags">
 
-/* =========================
-   EXPERIENCE
-========================= */
+                            <span>React.js</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
 
-.experience {
-    background: #0b1120;
-}
+                        </div>
 
-.experience-card {
-    background: #111c2e;
+                    </div>
 
-    border: 1px solid #26364d;
 
-    border-radius: 14px;
 
-    padding: 35px;
+                    <div class="skill-card">
 
-    transition: 0.3s;
-}
+                        <h3>
+                            Backend
+                        </h3>
 
-.experience-card:hover {
-    border-color: #38bdf8;
+                        <div class="tags">
 
-    transform: translateY(-4px);
-}
+                            <span>Laravel</span>
+                            <span>MVC</span>
+                            <span>API Development</span>
 
-.experience-header {
-    display: flex;
+                        </div>
 
-    justify-content: space-between;
+                    </div>
 
-    gap: 30px;
 
-    margin-bottom: 25px;
-}
 
-.experience-header h3 {
-    font-size: 23px;
+                    <div class="skill-card">
 
-    margin-bottom: 5px;
-}
+                        <h3>
+                            Mobile / Cross-Platform
+                        </h3>
 
-.experience-role {
-    color: #38bdf8;
+                        <div class="tags">
 
-    font-size: 16px;
-}
+                            <span>FlutterFlow</span>
 
-.experience-date {
-    color: #94a3b8;
+                        </div>
 
-    font-size: 15px;
+                    </div>
 
-    white-space: nowrap;
-}
 
-.experience-list {
-    padding-left: 22px;
-}
 
-.experience-list li {
-    color: #cbd5e1;
+                    <div class="skill-card">
 
-    margin-bottom: 12px;
+                        <h3>
+                            Database / Cloud
+                        </h3>
 
-    padding-left: 5px;
-}
+                        <div class="tags">
 
+                            <span>Firebase</span>
+                            <span>Supabase</span>
+                            <span>MySQL</span>
 
-/* =========================
-   SKILLS
-========================= */
+                        </div>
 
-.skills {
-    background: #111827;
-}
+                    </div>
 
-.skills-grid {
-    display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
 
-    gap: 20px;
-}
+                    <div class="skill-card">
 
-.skill-category {
-    background: #0f172a;
+                        <h3>
+                            APIs & Services
+                        </h3>
 
-    border: 1px solid #26364d;
+                        <div class="tags">
 
-    border-radius: 12px;
+                            <span>Google Maps API</span>
+                            <span>RESTful Services</span>
 
-    padding: 25px;
+                        </div>
 
-    transition: 0.3s;
-}
+                    </div>
 
-.skill-category:hover {
-    border-color: #38bdf8;
 
-    transform: translateY(-3px);
-}
 
-.skill-category h3 {
-    color: #f8fafc;
+                    <div class="skill-card">
 
-    font-size: 18px;
+                        <h3>
+                            Tools
+                        </h3>
 
-    margin-bottom: 15px;
-}
+                        <div class="tags">
 
-.skill-list {
-    display: flex;
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>VS Code</span>
+                            <span>XAMPP</span>
 
-    flex-wrap: wrap;
+                        </div>
 
-    gap: 8px;
-}
+                    </div>
 
-.skill-list span {
-    background: #1e293b;
 
-    color: #cbd5e1;
 
-    border: 1px solid #334155;
+                    <div class="skill-card">
 
-    padding: 7px 12px;
+                        <h3>
+                            Core Competencies
+                        </h3>
 
-    border-radius: 6px;
+                        <div class="tags">
 
-    font-size: 13px;
-}
+                            <span>Role-Based Access Control</span>
+                            <span>Geolocation</span>
+                            <span>Responsive Design</span>
+                            <span>Debugging</span>
 
+                        </div>
 
-/* =========================
-   PROJECTS
-========================= */
+                    </div>
 
-.projects {
-    background: #0b1120;
-}
+                </div>
 
-.project-grid {
-    display: grid;
+            </div>
 
-    grid-template-columns: repeat(3, 1fr);
+        </section>
 
-    gap: 22px;
-}
 
-.project-card {
-    background: #111c2e;
 
-    border: 1px solid #26364d;
+        <!-- =========================================
+             PROJECTS
+        ========================================== -->
 
-    border-radius: 14px;
+        <section
+            class="section"
+            id="projects"
+        >
 
-    padding: 30px;
+            <div class="container">
 
-    display: flex;
+                <p class="section-label">
+                    SELECTED WORK
+                </p>
 
-    flex-direction: column;
+                <h2 class="section-title">
+                    Projects I've <span>worked on.</span>
+                </h2>
 
-    transition: 0.3s;
-}
 
-.project-card:hover {
-    transform: translateY(-7px);
+                <div class="projects-grid">
 
-    border-color: #38bdf8;
-}
 
-.project-number {
-    color: #38bdf8;
+                    <!-- RYLIM -->
 
-    font-size: 13px;
+                    <article class="project-card featured">
 
-    font-weight: 700;
+                        <div class="project-top">
 
-    letter-spacing: 2px;
+                            <span class="project-number">
+                                01
+                            </span>
 
-    margin-bottom: 18px;
-}
+                            <span class="project-type">
+                                CAPSTONE PROJECT
+                            </span>
 
-.project-card h3 {
-    font-size: 23px;
+                        </div>
 
-    margin-bottom: 5px;
-}
 
-.project-role {
-    color: #38bdf8;
+                        <h3>
+                            Rylim Memory Atlas
+                        </h3>
 
-    font-size: 14px;
+                        <p class="project-role">
+                            Project Manager
+                        </p>
 
-    margin-bottom: 18px;
-}
 
-.project-card p:not(.project-role) {
-    color: #94a3b8;
+                        <div class="technology-list">
 
-    font-size: 15px;
+                            <span>FlutterFlow</span>
+                            <span>Firebase</span>
+                            <span>Google Maps API</span>
 
-    line-height: 1.7;
+                        </div>
 
-    margin-bottom: 22px;
-}
 
-.project-tech {
-    display: flex;
+                        <p class="project-description">
 
-    flex-wrap: wrap;
+                            A cross-platform application that allows
+                            users to pin and store personal memories
+                            using geolocation.
 
-    gap: 8px;
+                        </p>
 
-    margin-bottom: 25px;
-}
 
-.project-tech span {
-    padding: 6px 10px;
+                        <ul class="project-features">
 
-    background: #1e293b;
+                            <li>
+                                Integrated Google Maps API for
+                                location-based features and
+                                place recommendations.
+                            </li>
 
-    color: #cbd5e1;
+                            <li>
+                                Utilized Firebase for real-time
+                                data storage, synchronization,
+                                and user authentication.
+                            </li>
 
-    border: 1px solid #334155;
+                            <li>
+                                Designed an interactive interface
+                                for adding multimedia content
+                                including photos, notes, and audio.
+                            </li>
 
-    border-radius: 5px;
+                            <li>
+                                Implemented a scalable cloud-based
+                                architecture to support growing
+                                user data.
+                            </li>
 
-    font-size: 12px;
-}
+                        </ul>
 
-.project-link {
-    margin-top: auto;
 
-    color: #38bdf8;
+                        <a
+                            href="https://rylim-memory-atlas.flutterflow.app/login"
+                            class="project-link"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            View Project →
+                        </a>
 
-    text-decoration: none;
+                    </article>
 
-    font-weight: 700;
 
-    font-size: 14px;
-}
 
-.project-link:hover {
-    color: #7dd3fc;
-}
+                    <!-- ATTENDANCE -->
 
-.project-private {
-    margin-top: auto;
+                    <article class="project-card">
 
-    color: #64748b;
+                        <div class="project-top">
 
-    font-size: 13px;
-}
+                            <span class="project-number">
+                                02
+                            </span>
 
+                            <span class="project-type">
+                                INTERNSHIP PROJECT
+                            </span>
 
-/* =========================
-   CERTIFICATIONS
-========================= */
+                        </div>
 
-.certifications {
-    background: #111827;
-}
 
-.certifications-list {
-    display: flex;
+                        <h3>
+                            Attendance Monitoring System
+                        </h3>
 
-    flex-direction: column;
+                        <p class="project-role">
+                            Team Lead
+                        </p>
 
-    gap: 14px;
-}
 
-.cert-card {
-    display: flex;
+                        <div class="technology-list">
 
-    justify-content: space-between;
+                            <span>React</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Laravel</span>
+                            <span>PHP</span>
 
-    align-items: center;
+                        </div>
 
-    gap: 25px;
 
-    padding: 22px 25px;
+                        <p class="project-description">
 
-    background: #0f172a;
+                            An attendance monitoring system developed
+                            during my internship to support employee
+                            clock-in/out and account management.
 
-    border: 1px solid #26364d;
+                        </p>
 
-    border-radius: 10px;
 
-    text-decoration: none;
+                        <ul class="project-features">
 
-    transition: 0.3s;
-}
+                            <li>
+                                Developed responsive front-end
+                                components using React.
+                            </li>
 
-.cert-card:hover {
-    border-color: #38bdf8;
+                            <li>
+                                Assisted with Laravel and PHP
+                                backend development.
+                            </li>
 
-    transform: translateX(5px);
-}
+                            <li>
+                                Implemented role-based interfaces
+                                for different users.
+                            </li>
 
-.cert-card h3 {
-    font-size: 17px;
+                            <li>
+                                Coordinated team tasks and monitored
+                                project progress as Team Lead.
+                            </li>
 
-    color: #f8fafc;
+                        </ul>
 
-    margin-bottom: 5px;
-}
+                    </article>
 
-.cert-card p {
-    color: #94a3b8;
 
-    font-size: 14px;
-}
 
-.cert-card > span {
-    color: #38bdf8;
+                    <!-- ZAMINA -->
 
-    font-size: 13px;
+                    <article class="project-card">
 
-    font-weight: 700;
+                        <div class="project-top">
 
-    white-space: nowrap;
-}
+                            <span class="project-number">
+                                03
+                            </span>
 
-.cert-card.no-link {
-    cursor: default;
-}
+                            <span class="project-type">
+                                SHS PROJECT
+                            </span>
 
-.cert-card.no-link:hover {
-    transform: none;
-}
+                        </div>
 
 
-/* =========================
-   EDUCATION
-========================= */
+                        <h3>
+                            Zamina
+                        </h3>
 
-.education {
-    background: #0b1120;
-}
+                        <p class="project-role">
+                            Lead Designer • Lead Programmer
+                        </p>
 
-.education-card {
-    display: flex;
 
-    justify-content: space-between;
+                        <div class="technology-list">
 
-    align-items: flex-start;
+                            <span>WordPress</span>
+                            <span>Web Design</span>
+                            <span>Content Management</span>
 
-    gap: 30px;
+                        </div>
 
-    padding: 30px;
 
-    background: #111c2e;
+                        <p class="project-description">
 
-    border: 1px solid #26364d;
+                            A blog website created in 2022 focused
+                            on Empowerment Technology and
+                            ICT-related topics.
 
-    border-radius: 14px;
-}
+                        </p>
 
-.education-card h3 {
-    font-size: 22px;
 
-    margin-bottom: 5px;
-}
+                        <ul class="project-features">
 
-.education-specialization {
-    color: #38bdf8;
+                            <li>
+                                Designed the visual presentation
+                                and structure of the website.
+                            </li>
 
-    margin-bottom: 15px;
-}
+                            <li>
+                                Led the programming and
+                                implementation of the project.
+                            </li>
 
-.education-school {
-    color: #cbd5e1;
-}
+                            <li>
+                                Published content related to
+                                technology, ICT, and digital
+                                empowerment.
+                            </li>
 
-.education-date {
-    color: #94a3b8;
+                        </ul>
 
-    white-space: nowrap;
-}
 
+                        <a
+                            href="https://empowermenttechnologygroup5ofict1201.tech.blog/"
+                            class="project-link"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Visit Website →
+                        </a>
 
-/* =========================
-   CONTACT
-========================= */
+                    </article>
 
-.contact {
-    background: #111827;
+                </div>
 
-    text-align: center;
-}
+            </div>
 
-.contact .section-label {
-    text-align: center;
-}
+        </section>
 
-.contact-text {
-    max-width: 650px;
 
-    margin: 0 auto 30px;
 
-    color: #94a3b8;
+        <!-- =========================================
+             CERTIFICATIONS
+        ========================================== -->
 
-    font-size: 17px;
-}
+        <section
+            class="section section-dark"
+            id="certifications"
+        >
 
-.contact-links {
-    display: flex;
+            <div class="container">
 
-    justify-content: center;
+                <p class="section-label">
+                    CERTIFICATIONS
+                </p>
 
-    flex-wrap: wrap;
+                <h2 class="section-title">
+                    Professional <span>Credentials</span>
+                </h2>
 
-    gap: 15px;
-}
 
-.contact-links a {
-    display: inline-block;
+                <div class="certifications-grid">
 
-    padding: 11px 20px;
 
-    border: 1px solid #334155;
+                    <!-- CERTIFICATION 1 -->
 
-    border-radius: 7px;
+                    <article class="certification-card">
 
-    color: #cbd5e1;
+                        <span class="cert-date">
+                            NOVEMBER 2025
+                        </span>
 
-    text-decoration: none;
+                        <h3>
+                            IT Technical Support Specialist
+                        </h3>
 
-    transition: 0.3s;
-}
+                        <p>
+                            Certiport (Pearson VUE)
+                        </p>
 
-.contact-links a:hover {
-    border-color: #38bdf8;
+                        <a
+                            href="https://www.credly.com/badges/04470ff6-7629-4a6f-8d62-ca15838790b1/public_url"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Verify Credential →
+                        </a>
 
-    color: #38bdf8;
-}
+                    </article>
 
 
-/* =========================
-   FOOTER
-========================= */
 
-footer {
-    text-align: center;
+                    <!-- CERTIFICATION 2 -->
 
-    padding: 30px;
+                    <article class="certification-card">
 
-    background: #020617;
+                        <span class="cert-date">
+                            NOVEMBER 2025
+                        </span>
 
-    color: #64748b;
+                        <h3>
+                            Information Technology Specialist –
+                            Device Configuration and Management
+                            (Windows 10)
+                        </h3>
 
-    font-size: 14px;
-}
+                        <p>
+                            Certiport (Pearson VUE)
+                        </p>
 
+                        <a
+                            href="https://www.credly.com/badges/e48d4222-fbe4-4bbb-98ae-a97f71e49c0d/public_url"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Verify Credential →
+                        </a>
 
-/* =========================
-   TABLET
-========================= */
+                    </article>
 
-@media (max-width: 1000px) {
 
-    nav {
-        padding: 18px 5%;
-    }
 
-    nav ul {
-        gap: 15px;
-    }
+                    <!-- CERTIFICATION 3 -->
 
-    .hero {
-        grid-template-columns: 1fr;
+                    <article class="certification-card">
 
-        gap: 50px;
+                        <span class="cert-date">
+                            MARCH 2025
+                        </span>
 
-        padding-top: 120px;
-    }
+                        <h3>
+                            Information Technology Specialist –
+                            Network Security
+                        </h3>
 
-    .profile-card {
-        max-width: 500px;
+                        <p>
+                            Certiport (Pearson VUE)
+                        </p>
 
-        width: 100%;
+                        <a
+                            href="https://www.credly.com/badges/0c6e6dac-b0f0-4dec-a927-4989a8b93e63/public_url"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Verify Credential →
+                        </a>
 
-        margin: 0 auto;
+                    </article>
 
-        min-height: 550px;
-    }
 
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
-}
+                    <!-- CERTIFICATION 4 -->
 
+                    <article class="certification-card">
 
-/* =========================
-   MOBILE
-========================= */
+                        <span class="cert-date">
+                            JULY 2024
+                        </span>
 
-@media (max-width: 768px) {
+                        <h3>
+                            Information Technology Specialist –
+                            Networking
+                        </h3>
 
-    section {
-        padding: 80px 5%;
-    }
+                        <p>
+                            Certiport (Pearson VUE)
+                        </p>
 
+                        <a
+                            href="https://www.credly.com/badges/e799ef54-95f8-4343-86dd-eeb53d01cf99/public_url"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Verify Credential →
+                        </a>
 
-    /* NAV */
+                    </article>
 
-    nav {
-        position: relative;
 
-        padding: 18px 5%;
 
-        flex-direction: column;
+                    <!-- CERTIFICATION 5 -->
 
-        gap: 15px;
-    }
+                    <article class="certification-card">
 
-    nav ul {
-        gap: 15px;
+                        <span class="cert-date">
+                            JULY 2024
+                        </span>
 
-        flex-wrap: wrap;
+                        <h3>
+                            CCNAv7: Switching, Routing,
+                            and Wireless Essentials
+                        </h3>
 
-        justify-content: center;
-    }
+                        <p>
+                            Cisco Networking Academy
+                        </p>
 
-    nav ul li a {
-        font-size: 13px;
-    }
+                        <div class="certification-no-link">
+                            Professional training certification
+                        </div>
 
+                    </article>
 
-    /* HERO */
+                </div>
 
-    .hero {
-        min-height: auto;
+            </div>
 
-        padding: 80px 5%;
+        </section>
 
-        text-align: left;
-    }
 
-    .hero-label {
-        font-size: 11px;
 
-        letter-spacing: 2px;
-    }
+        <!-- =========================================
+             EDUCATION
+        ========================================== -->
 
-    .hero h1 {
-        font-size: clamp(48px, 15vw, 70px);
+        <section
+            class="section"
+            id="education"
+        >
 
-        letter-spacing: -3px;
-    }
+            <div class="container">
 
-    .hero h2 {
-        font-size: 27px;
-    }
+                <p class="section-label">
+                    EDUCATION
+                </p>
 
-    .hero-description {
-        font-size: 16px;
-    }
+                <h2 class="section-title">
+                    Academic <span>Background</span>
+                </h2>
 
-    .profile-card {
-        min-height: 500px;
-    }
 
+                <div class="education-card">
 
-    /* EXPERIENCE */
+                    <div>
 
-    .experience-header {
-        flex-direction: column;
+                        <h3>
+                            Bachelor of Science in Information Technology
+                        </h3>
 
-        gap: 8px;
-    }
+                        <p>
+                            Web and Mobile Application Development
+                        </p>
 
-    .experience-date {
-        white-space: normal;
-    }
+                        <span>
+                            Far Eastern University – Alabang
+                        </span>
 
+                    </div>
 
-    /* SKILLS */
+                    <span class="education-date">
+                        September 2022 — September 2026
+                    </span>
 
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
+                </div>
 
+            </div>
 
-    /* PROJECTS */
+        </section>
 
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
 
 
-    /* CERTIFICATIONS */
+        <!-- =========================================
+             CONTACT
+        ========================================== -->
 
-    .cert-card {
-        flex-direction: column;
+        <section
+            class="section section-dark"
+            id="contact"
+        >
 
-        align-items: flex-start;
+            <div class="container contact-container">
 
-        gap: 12px;
-    }
+                <p class="section-label">
+                    CONTACT
+                </p>
 
-    .cert-card > span {
-        white-space: normal;
-    }
+                <h2 class="section-title">
+                    Let's build something
+                    <span>together.</span>
+                </h2>
 
+                <p class="contact-description">
 
-    /* EDUCATION */
+                    Interested in working together or learning more
+                    about my experience? Feel free to reach out.
 
-    .education-card {
-        flex-direction: column;
+                </p>
 
-        gap: 15px;
-    }
 
-    .education-date {
-        white-space: normal;
-    }
+                <div class="contact-links">
 
+                    <a
+                        href="mailto:esguerrajayenn67@gmail.com"
+                    >
+                        esguerrajayenn67@gmail.com
+                    </a>
 
-    /* CONTACT */
+                    <a
+                        href="tel:+639178920948"
+                    >
+                        0917 892 0948
+                    </a>
 
-    .contact-links {
-        flex-direction: column;
+                    <a
+                        href="https://www.linkedin.com/in/jayennharoldesguerra"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        LinkedIn
+                    </a>
 
-        align-items: center;
-    }
+                </div>
 
-    .contact-links a {
-        width: 180px;
-    }
+            </div>
 
-}
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Jayenn Esguerra. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
