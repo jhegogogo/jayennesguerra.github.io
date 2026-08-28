@@ -620,6 +620,34 @@ img {
     font-weight: 600;
 }
 
+/* =========================================
+   PROJECT VIDEO
+========================================= */
+
+.project-video {
+    width: 100%;
+    margin: 30px 0;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #060b16;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.project-video video {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 12px;
+}
+
 .technology-list {
     display: flex;
     flex-wrap: wrap;
