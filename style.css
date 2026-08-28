@@ -640,7 +640,8 @@ img {
 }
 
 .project-video video {
-    width: 100%;
+    width: 65%;
+    margin: 30px auto;
     height: auto;
 
     display: block;
