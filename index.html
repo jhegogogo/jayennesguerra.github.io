@@ -1,848 +1,997 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================
+   GENERAL
+========================= */
 
-<head>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <meta charset="UTF-8">
+html {
+    scroll-behavior: smooth;
+}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1120;
+    color: #f8fafc;
+    line-height: 1.6;
+}
 
-    <meta
-        name="description"
-        content="Jayenn Harold L. Esguerra - Information Technology student, aspiring software engineer, and junior web developer."
-    >
+a {
+    color: inherit;
+}
 
-    <title>Jayenn Esguerra | IT Portfolio</title>
+section {
+    padding: 100px 8%;
+}
 
-    <link rel="stylesheet" href="style.css">
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-</head>
+.section-label {
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
 
+.section-title {
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.2;
+    margin-bottom: 45px;
+}
 
-<body>
+.section-title span {
+    color: #38bdf8;
+}
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+/* =========================
+   NAVIGATION
+========================= */
 
-    <nav>
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 
-        <div class="logo">
-            JE<span>.</span>
-        </div>
+    padding: 18px 8%;
 
-        <ul>
+    background: rgba(11, 17, 32, 0.92);
 
-            <li>
-                <a href="#home">Home</a>
-            </li>
+    backdrop-filter: blur(12px);
 
-            <li>
-                <a href="#about">About</a>
-            </li>
+    border-bottom: 1px solid rgba(148, 163, 184, 0.08);
 
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
+    z-index: 1000;
+}
 
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
 
-            <li>
-                <a href="#certifications">Certifications</a>
-            </li>
+.logo span {
+    color: #38bdf8;
+}
 
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+nav ul {
+    list-style: none;
 
-        </ul>
+    display: flex;
+    align-items: center;
 
-    </nav>
+    gap: 28px;
+}
 
+nav ul li a {
+    color: #cbd5e1;
 
+    text-decoration: none;
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    font-size: 15px;
 
-    <section class="hero" id="home">
+    transition: 0.3s;
+}
 
-        <div class="hero-content">
+nav ul li a:hover {
+    color: #38bdf8;
+}
 
-            <p class="hero-label">
-                ASSOCIATE SOFTWARE ENGINEER • JUNIOR WEB DEVELOPER
-            </p>
 
-            <h1>
-                Hi, I'm <span>Jayenn.</span>
-            </h1>
+/* =========================
+   HERO
+========================= */
 
-            <h2>
-                Information Technology Student
-            </h2>
+.hero {
+    min-height: 100vh;
 
-            <p class="hero-description">
-                I specialize in Web and Mobile Application Development
-                and enjoy building practical, creative, and technology-driven
-                solutions through development, design, and problem solving.
-            </p>
+    display: grid;
 
-            <div class="hero-buttons">
+    grid-template-columns: 1.5fr 0.7fr;
 
-                <a href="#projects" class="btn primary-btn">
-                    View My Projects
-                </a>
+    align-items: center;
 
-                <a
-                    href="assets/Graduate%20Resume.pdf"
-                    class="btn secondary-btn"
-                    target="_blank"
-                >
-                    View Resume
-                </a>
+    gap: 80px;
 
-            </div>
+    padding-top: 130px;
+}
 
-        </div>
+.hero-content {
+    max-width: 850px;
+}
 
+.hero-label {
+    color: #38bdf8;
 
-        <!-- PROFILE CARD -->
+    font-size: 14px;
 
-        <div class="profile-card">
+    font-weight: 700;
 
-            <div class="profile-image-wrapper">
+    letter-spacing: 3px;
 
-                <img
-                    src="assets/ProfilePic_Portfolio.jpg"
-                    alt="Jayenn Esguerra"
-                    class="profile-image"
-                >
+    margin-bottom: 25px;
+}
 
-            </div>
+.hero h1 {
+    font-size: clamp(55px, 8vw, 92px);
 
-            <p class="profile-status">
-                Open to opportunities
-            </p>
+    line-height: 1;
 
-            <h3>
-                Jayenn Esguerra
-            </h3>
+    letter-spacing: -4px;
 
-            <p class="profile-role">
-                BSIT • Web & Mobile Application Development
-            </p>
+    margin-bottom: 25px;
+}
 
-            <p class="profile-description">
-                Building practical digital solutions through
-                development, design, and problem solving.
-            </p>
+.hero h1 span {
+    color: #38bdf8;
+}
 
-        </div>
+.hero h2 {
+    font-size: clamp(28px, 4vw, 42px);
 
-    </section>
+    color: #cbd5e1;
 
+    margin-bottom: 25px;
+}
 
+.hero-description {
+    max-width: 720px;
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    color: #94a3b8;
 
-    <section class="about" id="about">
+    font-size: 18px;
 
-        <div class="section-container">
+    line-height: 1.8;
 
-            <p class="section-label">
-                ABOUT ME
-            </p>
+    margin-bottom: 35px;
+}
 
-            <h2 class="section-title">
-                A developer who enjoys <span>building things.</span>
-            </h2>
 
-            <p class="about-text">
-                I'm Jayenn Harold L. Esguerra, an Information Technology
-                student specializing in Web and Mobile Application Development
-                at Far Eastern University – Alabang.
-            </p>
+/* =========================
+   HERO BUTTONS
+========================= */
 
-            <p class="about-text">
-                I have hands-on experience in front-end development,
-                backend development, databases, UI design, networking,
-                and system development. During my internship, I worked
-                on an Attendance Monitoring System while also supporting
-                IT administration and team coordination.
-            </p>
+.hero-buttons {
+    display: flex;
 
-            <p class="about-text">
-                I'm currently seeking opportunities where I can apply my
-                technical, analytical, and problem-solving skills while
-                continuing to grow as a software developer.
-            </p>
+    gap: 15px;
 
-        </div>
+    flex-wrap: wrap;
+}
 
-    </section>
+.btn {
+    display: inline-block;
 
+    padding: 13px 24px;
 
+    border-radius: 7px;
 
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
+    text-decoration: none;
 
-    <section class="experience" id="experience">
+    font-weight: 700;
 
-        <div class="section-container">
+    transition: 0.3s;
+}
 
-            <p class="section-label">
-                EXPERIENCE
-            </p>
+.primary-btn {
+    background: #38bdf8;
 
-            <h2 class="section-title">
-                Work <span>Experience</span>
-            </h2>
+    color: #0b1120;
+}
 
+.primary-btn:hover {
+    background: #7dd3fc;
 
-            <div class="experience-card">
+    transform: translateY(-3px);
+}
 
-                <div class="experience-header">
+.secondary-btn {
+    border: 1px solid #475569;
 
-                    <div>
+    color: #e2e8f0;
+}
 
-                        <h3>
-                            Ollopa Corporation
-                        </h3>
+.secondary-btn:hover {
+    border-color: #38bdf8;
 
-                        <p class="experience-role">
-                            Software Developer Intern / IT Administrator
-                        </p>
+    color: #38bdf8;
 
-                    </div>
+    transform: translateY(-3px);
+}
 
-                    <span class="experience-date">
-                        January 2026 – July 2026
-                    </span>
 
-                </div>
+/* =========================
+   PROFILE CARD
+========================= */
 
+.profile-card {
+    min-height: 500px;
 
-                <ul class="experience-list">
+    padding: 30px;
 
-                    <li>
-                        Developed front-end components for an Attendance
-                        Monitoring System using React, HTML, CSS, and JavaScript.
-                    </li>
+    border: 1px solid #26364d;
 
-                    <li>
-                        Assisted in backend development and maintenance
-                        using Laravel and PHP.
-                    </li>
+    border-radius: 18px;
 
-                    <li>
-                        Implemented role-based interfaces for clock
-                        in/out and account management.
-                    </li>
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 41, 59, 0.75),
+            rgba(15, 23, 42, 0.8)
+        );
 
-                    <li>
-                        Translated Figma wireframes into responsive UI designs.
-                    </li>
+    display: flex;
 
-                    <li>
-                        Collaborated using Git and GitHub for version
-                        control and team coordination.
-                    </li>
+    flex-direction: column;
 
-                    <li>
-                        Served as Team Leader to monitor team progress
-                        and task completion.
-                    </li>
+    justify-content: flex-end;
 
-                    <li>
-                        Coordinated internship administration for multiple
-                        departments, including onboarding, performance
-                        monitoring, attendance tracking, documentation
-                        management, and coordination with team leaders.
-                    </li>
+    position: relative;
 
-                </ul>
+    overflow: hidden;
 
-            </div>
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
 
-        </div>
+.profile-image-wrapper {
+    position: absolute;
 
-    </section>
+    top: 0;
+    left: 0;
 
+    width: 100%;
+    height: 72%;
 
+    overflow: hidden;
 
-    <!-- =========================
-         SKILLS
-    ========================== -->
+    background: #1e293b;
+}
 
-    <section class="skills" id="skills">
+.profile-image {
+    width: 100%;
+    height: 100%;
 
-        <div class="section-container">
+    object-fit: cover;
 
-            <p class="section-label">
-                TECHNICAL SKILLS
-            </p>
+    object-position: center top;
 
-            <h2 class="section-title">
-                Technologies I <span>Work With</span>
-            </h2>
+    transition: 0.5s;
+}
 
+.profile-card:hover .profile-image {
+    transform: scale(1.04);
+}
 
-            <div class="skills-grid">
+.profile-status {
+    position: relative;
 
-                <div class="skill-category">
+    z-index: 2;
 
-                    <h3>
-                        Languages
-                    </h3>
+    color: #e2e8f0;
 
-                    <div class="skill-list">
+    font-size: 15px;
 
-                        <span>JavaScript</span>
-                        <span>PHP</span>
+    margin-bottom: 45px;
+}
 
-                    </div>
+.profile-card h3 {
+    position: relative;
 
-                </div>
+    z-index: 2;
 
+    font-size: 22px;
 
-                <div class="skill-category">
+    margin-bottom: 5px;
+}
 
-                    <h3>
-                        Frontend
-                    </h3>
+.profile-role {
+    position: relative;
 
-                    <div class="skill-list">
+    z-index: 2;
 
-                        <span>React.js</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
+    color: #38bdf8;
 
-                    </div>
+    font-size: 14px;
 
-                </div>
+    margin-bottom: 10px;
+}
 
+.profile-description {
+    position: relative;
 
-                <div class="skill-category">
+    z-index: 2;
 
-                    <h3>
-                        Backend
-                    </h3>
+    color: #94a3b8;
 
-                    <div class="skill-list">
+    font-size: 14px;
+}
 
-                        <span>Laravel</span>
-                        <span>MVC</span>
-                        <span>API Development</span>
 
-                    </div>
+/* =========================
+   ABOUT
+========================= */
 
-                </div>
+.about {
+    background: #111827;
+}
 
+.about-text {
+    max-width: 850px;
 
-                <div class="skill-category">
+    color: #cbd5e1;
 
-                    <h3>
-                        Database & Cloud
-                    </h3>
+    font-size: 17px;
 
-                    <div class="skill-list">
+    line-height: 1.8;
 
-                        <span>Supabase</span>
-                        <span>Firebase</span>
-                        <span>MySQL</span>
+    margin-bottom: 20px;
+}
 
-                    </div>
 
-                </div>
+/* =========================
+   EXPERIENCE
+========================= */
 
+.experience {
+    background: #0b1120;
+}
 
-                <div class="skill-category">
+.experience-card {
+    background: #111c2e;
 
-                    <h3>
-                        APIs & Platforms
-                    </h3>
+    border: 1px solid #26364d;
 
-                    <div class="skill-list">
+    border-radius: 14px;
 
-                        <span>Google Maps API</span>
-                        <span>RESTful Services</span>
-                        <span>FlutterFlow</span>
+    padding: 35px;
 
-                    </div>
+    transition: 0.3s;
+}
 
-                </div>
+.experience-card:hover {
+    border-color: #38bdf8;
 
+    transform: translateY(-4px);
+}
 
-                <div class="skill-category">
+.experience-header {
+    display: flex;
 
-                    <h3>
-                        Tools
-                    </h3>
+    justify-content: space-between;
 
-                    <div class="skill-list">
+    gap: 30px;
 
-                        <span>Git</span>
-                        <span>GitHub</span>
-                        <span>VS Code</span>
-                        <span>XAMPP</span>
+    margin-bottom: 25px;
+}
 
-                    </div>
+.experience-header h3 {
+    font-size: 23px;
 
-                </div>
+    margin-bottom: 5px;
+}
 
+.experience-role {
+    color: #38bdf8;
 
-                <div class="skill-category">
+    font-size: 16px;
+}
 
-                    <h3>
-                        Core Competencies
-                    </h3>
+.experience-date {
+    color: #94a3b8;
 
-                    <div class="skill-list">
+    font-size: 15px;
 
-                        <span>Role-Based Access Control</span>
-                        <span>Geolocation Integration</span>
-                        <span>Responsive Design</span>
-                        <span>Debugging</span>
+    white-space: nowrap;
+}
 
-                    </div>
+.experience-list {
+    padding-left: 22px;
+}
 
-                </div>
+.experience-list li {
+    color: #cbd5e1;
 
-            </div>
+    margin-bottom: 12px;
 
-        </div>
+    padding-left: 5px;
+}
 
-    </section>
 
+/* =========================
+   SKILLS
+========================= */
 
+.skills {
+    background: #111827;
+}
 
-    <!-- =========================
-         PROJECTS
-    ========================== -->
+.skills-grid {
+    display: grid;
 
-    <section class="projects" id="projects">
+    grid-template-columns: repeat(2, 1fr);
 
-        <div class="section-container">
+    gap: 20px;
+}
 
-            <p class="section-label">
-                PROJECTS
-            </p>
+.skill-category {
+    background: #0f172a;
 
-            <h2 class="section-title">
-                Selected <span>Projects</span>
-            </h2>
+    border: 1px solid #26364d;
 
+    border-radius: 12px;
 
-            <div class="project-grid">
+    padding: 25px;
 
+    transition: 0.3s;
+}
 
-                <!-- RYLIM -->
+.skill-category:hover {
+    border-color: #38bdf8;
 
-                <div class="project-card">
+    transform: translateY(-3px);
+}
 
-                    <div class="project-number">
-                        01
-                    </div>
+.skill-category h3 {
+    color: #f8fafc;
 
-                    <h3>
-                        Rylim Memory Atlas
-                    </h3>
+    font-size: 18px;
 
-                    <p class="project-role">
-                        Capstone Project • Project Manager
-                    </p>
+    margin-bottom: 15px;
+}
 
-                    <p>
-                        A cross-platform application that allows users
-                        to pin and store memories using geolocation,
-                        while supporting multimedia content such as
-                        photos, notes, and audio.
-                    </p>
+.skill-list {
+    display: flex;
 
-                    <div class="project-tech">
+    flex-wrap: wrap;
 
-                        <span>FlutterFlow</span>
-                        <span>Firebase</span>
-                        <span>Google Maps API</span>
+    gap: 8px;
+}
 
-                    </div>
+.skill-list span {
+    background: #1e293b;
 
-                    <a
-                        href="https://rylim-memory-atlas.flutterflow.app/login"
-                        target="_blank"
-                        class="project-link"
-                    >
-                        View Project →
-                    </a>
+    color: #cbd5e1;
 
-                </div>
+    border: 1px solid #334155;
 
+    padding: 7px 12px;
 
+    border-radius: 6px;
 
-                <!-- ZAMINA -->
+    font-size: 13px;
+}
 
-                <div class="project-card">
 
-                    <div class="project-number">
-                        02
-                    </div>
+/* =========================
+   PROJECTS
+========================= */
 
-                    <h3>
-                        Zamina
-                    </h3>
+.projects {
+    background: #0b1120;
+}
 
-                    <p class="project-role">
-                        SHS Project • Lead Designer & Lead Programmer
-                    </p>
+.project-grid {
+    display: grid;
 
-                    <p>
-                        A blog website created in 2022 focused on
-                        Empowerment Technology and ICT-related topics.
-                        The project involved website design,
-                        development, and content presentation.
-                    </p>
+    grid-template-columns: repeat(3, 1fr);
 
-                    <div class="project-tech">
+    gap: 22px;
+}
 
-                        <span>WordPress</span>
-                        <span>Web Design</span>
-                        <span>ICT</span>
+.project-card {
+    background: #111c2e;
 
-                    </div>
+    border: 1px solid #26364d;
 
-                    <a
-                        href="https://empowermenttechnologygroup5ofict1201.tech.blog/"
-                        target="_blank"
-                        class="project-link"
-                    >
-                        Visit Website →
-                    </a>
+    border-radius: 14px;
 
-                </div>
+    padding: 30px;
 
+    display: flex;
 
+    flex-direction: column;
 
-                <!-- ATTENDANCE -->
+    transition: 0.3s;
+}
 
-                <div class="project-card">
+.project-card:hover {
+    transform: translateY(-7px);
 
-                    <div class="project-number">
-                        03
-                    </div>
+    border-color: #38bdf8;
+}
 
-                    <h3>
-                        Attendance Monitoring System
-                    </h3>
+.project-number {
+    color: #38bdf8;
 
-                    <p class="project-role">
-                        Internship Project • Team Leader
-                    </p>
+    font-size: 13px;
 
-                    <p>
-                        A web-based attendance monitoring system developed
-                        during my internship. Contributed to front-end
-                        development, backend support, role-based interfaces,
-                        and responsive UI implementation.
-                    </p>
+    font-weight: 700;
 
-                    <div class="project-tech">
+    letter-spacing: 2px;
 
-                        <span>React</span>
-                        <span>Laravel</span>
-                        <span>PHP</span>
-                        <span>JavaScript</span>
+    margin-bottom: 18px;
+}
 
-                    </div>
+.project-card h3 {
+    font-size: 23px;
 
-                    <span class="project-private">
-                        Internship Project
-                    </span>
+    margin-bottom: 5px;
+}
 
-                </div>
+.project-role {
+    color: #38bdf8;
 
-            </div>
+    font-size: 14px;
 
-        </div>
+    margin-bottom: 18px;
+}
 
-    </section>
+.project-card p:not(.project-role) {
+    color: #94a3b8;
 
+    font-size: 15px;
 
+    line-height: 1.7;
 
-    <!-- =========================
-         CERTIFICATIONS
-    ========================== -->
+    margin-bottom: 22px;
+}
 
-    <section class="certifications" id="certifications">
+.project-tech {
+    display: flex;
 
-        <div class="section-container">
+    flex-wrap: wrap;
 
-            <p class="section-label">
-                CERTIFICATIONS
-            </p>
+    gap: 8px;
 
-            <h2 class="section-title">
-                Professional <span>Certifications</span>
-            </h2>
+    margin-bottom: 25px;
+}
 
+.project-tech span {
+    padding: 6px 10px;
 
-            <div class="certifications-list">
+    background: #1e293b;
 
+    color: #cbd5e1;
 
-                <a
-                    href="https://www.credly.com/badges/04470ff6-7629-4a6f-8d62-ca15838790b1/public_url"
-                    target="_blank"
-                    class="cert-card"
-                >
+    border: 1px solid #334155;
 
-                    <div>
+    border-radius: 5px;
 
-                        <h3>
-                            IT Technical Support Specialist
-                        </h3>
+    font-size: 12px;
+}
 
-                        <p>
-                            Certiport (Pearson VUE) • November 2025
-                        </p>
+.project-link {
+    margin-top: auto;
 
-                    </div>
+    color: #38bdf8;
 
-                    <span>
-                        View Credential →
-                    </span>
+    text-decoration: none;
 
-                </a>
+    font-weight: 700;
 
+    font-size: 14px;
+}
 
+.project-link:hover {
+    color: #7dd3fc;
+}
 
-                <a
-                    href="https://www.credly.com/badges/e48d4222-fbe4-4bbb-98ae-a97f71e49c0d/public_url"
-                    target="_blank"
-                    class="cert-card"
-                >
+.project-private {
+    margin-top: auto;
 
-                    <div>
+    color: #64748b;
 
-                        <h3>
-                            Information Technology Specialist –
-                            Device Configuration and Management (Windows 10)
-                        </h3>
+    font-size: 13px;
+}
 
-                        <p>
-                            Certiport (Pearson VUE) • November 2025
-                        </p>
 
-                    </div>
+/* =========================
+   CERTIFICATIONS
+========================= */
 
-                    <span>
-                        View Credential →
-                    </span>
+.certifications {
+    background: #111827;
+}
 
-                </a>
+.certifications-list {
+    display: flex;
 
+    flex-direction: column;
 
+    gap: 14px;
+}
 
-                <a
-                    href="https://www.credly.com/badges/0c6e6dac-b0f0-4dec-a927-4989a8b93e63/public_url"
-                    target="_blank"
-                    class="cert-card"
-                >
+.cert-card {
+    display: flex;
 
-                    <div>
+    justify-content: space-between;
 
-                        <h3>
-                            Information Technology Specialist –
-                            Network Security
-                        </h3>
+    align-items: center;
 
-                        <p>
-                            Certiport (Pearson VUE) • March 2025
-                        </p>
+    gap: 25px;
 
-                    </div>
+    padding: 22px 25px;
 
-                    <span>
-                        View Credential →
-                    </span>
+    background: #0f172a;
 
-                </a>
+    border: 1px solid #26364d;
 
+    border-radius: 10px;
 
+    text-decoration: none;
 
-                <a
-                    href="https://www.credly.com/badges/e799ef54-95f8-4343-86dd-eeb53d01cf99/public_url"
-                    target="_blank"
-                    class="cert-card"
-                >
+    transition: 0.3s;
+}
 
-                    <div>
+.cert-card:hover {
+    border-color: #38bdf8;
 
-                        <h3>
-                            Information Technology Specialist –
-                            Networking
-                        </h3>
+    transform: translateX(5px);
+}
 
-                        <p>
-                            Certiport (Pearson VUE) • July 2024
-                        </p>
+.cert-card h3 {
+    font-size: 17px;
 
-                    </div>
+    color: #f8fafc;
 
-                    <span>
-                        View Credential →
-                    </span>
+    margin-bottom: 5px;
+}
 
-                </a>
+.cert-card p {
+    color: #94a3b8;
 
+    font-size: 14px;
+}
 
+.cert-card > span {
+    color: #38bdf8;
 
-                <div class="cert-card no-link">
+    font-size: 13px;
 
-                    <div>
+    font-weight: 700;
 
-                        <h3>
-                            CCNAv7: Switching, Routing, and Wireless Essentials
-                        </h3>
+    white-space: nowrap;
+}
 
-                        <p>
-                            Cisco Networking Academy • July 2024
-                        </p>
+.cert-card.no-link {
+    cursor: default;
+}
 
-                    </div>
+.cert-card.no-link:hover {
+    transform: none;
+}
 
-                    <span>
-                        Certification
-                    </span>
 
-                </div>
+/* =========================
+   EDUCATION
+========================= */
 
-            </div>
+.education {
+    background: #0b1120;
+}
 
-        </div>
+.education-card {
+    display: flex;
 
-    </section>
+    justify-content: space-between;
 
+    align-items: flex-start;
 
+    gap: 30px;
 
-    <!-- =========================
-         EDUCATION
-    ========================== -->
+    padding: 30px;
 
-    <section class="education" id="education">
+    background: #111c2e;
 
-        <div class="section-container">
+    border: 1px solid #26364d;
 
-            <p class="section-label">
-                EDUCATION
-            </p>
+    border-radius: 14px;
+}
 
-            <h2 class="section-title">
-                Academic <span>Background</span>
-            </h2>
+.education-card h3 {
+    font-size: 22px;
 
+    margin-bottom: 5px;
+}
 
-            <div class="education-card">
+.education-specialization {
+    color: #38bdf8;
 
-                <div>
+    margin-bottom: 15px;
+}
 
-                    <h3>
-                        Bachelor of Science in Information Technology
-                    </h3>
+.education-school {
+    color: #cbd5e1;
+}
 
-                    <p class="education-specialization">
-                        Specialization in Web and Mobile Application Development
-                    </p>
+.education-date {
+    color: #94a3b8;
 
-                    <p class="education-school">
-                        Far Eastern University – Alabang
-                    </p>
+    white-space: nowrap;
+}
 
-                </div>
 
-                <span class="education-date">
-                    Sept 2022 – Sept 2026
-                </span>
+/* =========================
+   CONTACT
+========================= */
 
-            </div>
+.contact {
+    background: #111827;
 
-        </div>
+    text-align: center;
+}
 
-    </section>
+.contact .section-label {
+    text-align: center;
+}
 
+.contact-text {
+    max-width: 650px;
 
+    margin: 0 auto 30px;
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+    color: #94a3b8;
 
-    <section class="contact" id="contact">
+    font-size: 17px;
+}
 
-        <div class="section-container">
+.contact-links {
+    display: flex;
 
-            <p class="section-label">
-                CONTACT
-            </p>
+    justify-content: center;
 
-            <h2 class="section-title">
-                Let's <span>Connect</span>
-            </h2>
+    flex-wrap: wrap;
 
-            <p class="contact-text">
-                Interested in working together or learning more about
-                my experience and projects? Feel free to reach out.
-            </p>
+    gap: 15px;
+}
 
+.contact-links a {
+    display: inline-block;
 
-            <div class="contact-links">
+    padding: 11px 20px;
 
-                <a href="mailto:esguerrajayenn67@gmail.com">
-                    Email
-                </a>
+    border: 1px solid #334155;
 
-                <a
-                    href="https://www.linkedin.com/in/jayennharoldesguerra"
-                    target="_blank"
-                >
-                    LinkedIn
-                </a>
+    border-radius: 7px;
 
-                <a
-                    href="assets/Graduate%20Resume.pdf"
-                    target="_blank"
-                >
-                    Resume
-                </a>
+    color: #cbd5e1;
 
-            </div>
+    text-decoration: none;
 
-        </div>
+    transition: 0.3s;
+}
 
-    </section>
+.contact-links a:hover {
+    border-color: #38bdf8;
 
+    color: #38bdf8;
+}
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+/* =========================
+   FOOTER
+========================= */
 
-    <footer>
+footer {
+    text-align: center;
 
-        <p>
-            © 2026 Jayenn Esguerra. All Rights Reserved.
-        </p>
+    padding: 30px;
 
-    </footer>
+    background: #020617;
 
+    color: #64748b;
 
-</body>
+    font-size: 14px;
+}
 
-</html>
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+    nav {
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        padding-top: 120px;
+    }
+
+    .profile-card {
+        max-width: 500px;
+
+        width: 100%;
+
+        margin: 0 auto;
+
+        min-height: 550px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    section {
+        padding: 80px 5%;
+    }
+
+
+    /* NAV */
+
+    nav {
+        position: relative;
+
+        padding: 18px 5%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: auto;
+
+        padding: 80px 5%;
+
+        text-align: left;
+    }
+
+    .hero-label {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 15vw, 70px);
+
+        letter-spacing: -3px;
+    }
+
+    .hero h2 {
+        font-size: 27px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .profile-card {
+        min-height: 500px;
+    }
+
+
+    /* EXPERIENCE */
+
+    .experience-header {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .experience-date {
+        white-space: normal;
+    }
+
+
+    /* SKILLS */
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* PROJECTS */
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CERTIFICATIONS */
+
+    .cert-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    .cert-card > span {
+        white-space: normal;
+    }
+
+
+    /* EDUCATION */
+
+    .education-card {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .education-date {
+        white-space: normal;
+    }
+
+
+    /* CONTACT */
+
+    .contact-links {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .contact-links a {
+        width: 180px;
+    }
+
+}
