@@ -628,7 +628,7 @@ img {
 ========================================= */
 
 .project-card.featured .project-video {
-    width: 70%;
+    width: 50%;
     height: 400px;
 
     margin: 30px auto;
