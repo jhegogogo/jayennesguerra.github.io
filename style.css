@@ -14,8 +14,9 @@ html {
 }
 
 :root {
-    --bg: #0f172a;
-    --bg-dark: #020617;
+    --bg: #0b1120;
+    --bg-dark: #070d19;
+
     --card: #111c2d;
     --card-hover: #16243a;
 
@@ -32,9 +33,13 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     background: var(--bg);
+
     color: var(--white);
 
     line-height: 1.6;
@@ -48,6 +53,7 @@ a {
 
 .container {
     width: 90%;
+
     max-width: var(--max-width);
 
     margin: 0 auto;
@@ -59,7 +65,7 @@ a {
 
 
 /* =========================================
-   HEADER / NAVIGATION
+   HEADER
 ========================================= */
 
 .site-header {
@@ -70,20 +76,26 @@ a {
 
     width: 100%;
 
+    height: 78px;
+
     z-index: 1000;
 
-    background: rgba(15, 23, 42, 0.94);
+    background:
+        rgba(11, 17, 32, 0.94);
 
     backdrop-filter: blur(12px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
 }
 
 .navbar {
     width: 90%;
+
     max-width: var(--max-width);
 
-    min-height: 75px;
+    height: 100%;
 
     margin: 0 auto;
 
@@ -94,7 +106,16 @@ a {
     justify-content: space-between;
 }
 
+
+/* =========================================
+   LOGO
+========================================= */
+
 .logo {
+    display: inline-flex;
+
+    align-items: center;
+
     color: var(--white);
 
     text-decoration: none;
@@ -104,36 +125,62 @@ a {
     font-weight: 800;
 
     letter-spacing: -1px;
+
+    white-space: nowrap;
 }
 
 .logo span {
     color: var(--blue);
 }
 
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
 .nav-links {
     display: flex;
 
     align-items: center;
 
-    gap: 25px;
+    justify-content: flex-end;
+
+    gap: 28px;
+
+    margin: 0;
+    padding: 0;
 
     list-style: none;
 }
 
+.nav-links li {
+    margin: 0;
+    padding: 0;
+}
+
 .nav-links a {
-    color: var(--muted);
+    display: inline-block;
+
+    color: var(--light);
 
     text-decoration: none;
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 
     font-weight: 500;
 
-    transition: 0.25s ease;
+    white-space: nowrap;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .nav-links a:hover {
     color: var(--blue);
+
+    transform:
+        translateY(-1px);
 }
 
 
@@ -148,13 +195,13 @@ a {
 
     align-items: center;
 
-    padding:
-        130px 0
-        80px;
-
     position: relative;
 
     overflow: hidden;
+
+    padding:
+        130px 0
+        80px;
 }
 
 .hero::before {
@@ -168,7 +215,8 @@ a {
     right: -200px;
     top: 100px;
 
-    background: rgba(56, 189, 248, 0.08);
+    background:
+        rgba(56, 189, 248, 0.08);
 
     border-radius: 50%;
 
@@ -198,7 +246,7 @@ a {
 .eyebrow {
     color: var(--blue);
 
-    font-size: 0.75rem;
+    font-size: 0.74rem;
 
     font-weight: 800;
 
@@ -236,7 +284,7 @@ a {
             1.8rem
         );
 
-    font-weight: 500;
+    font-weight: 600;
 
     margin-bottom: 20px;
 }
@@ -284,7 +332,8 @@ a {
 
     font-weight: 700;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .primary-btn {
@@ -306,7 +355,8 @@ a {
     color: var(--white);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 }
 
 .secondary-btn:hover {
@@ -338,7 +388,8 @@ a {
         );
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 20px;
 
@@ -354,7 +405,7 @@ a {
 
     gap: 9px;
 
-    color: var(--muted);
+    color: var(--light);
 
     font-size: 0.82rem;
 }
@@ -414,7 +465,7 @@ a {
 .section-label {
     color: var(--blue);
 
-    font-size: 0.75rem;
+    font-size: 0.74rem;
 
     font-weight: 800;
 
@@ -464,10 +515,12 @@ a {
         var(--card);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-left:
-        3px solid var(--blue);
+        3px solid
+        var(--blue);
 
     border-radius:
         0 15px 15px 0;
@@ -534,7 +587,8 @@ a {
         var(--card);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 
@@ -572,7 +626,8 @@ a {
         rgba(255, 255, 255, 0.025);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 6px;
 
@@ -608,7 +663,8 @@ a {
         var(--card);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 16px;
 
@@ -687,7 +743,7 @@ a {
 
 
 /* =========================================
-   PROJECT TECHNOLOGIES
+   TECHNOLOGIES
 ========================================= */
 
 .technology-list {
@@ -710,7 +766,8 @@ a {
         rgba(56, 189, 248, 0.06);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 6px;
 
@@ -788,7 +845,8 @@ a {
         var(--card);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 
@@ -854,6 +912,15 @@ a {
         var(--blue-light);
 }
 
+.certification-no-link {
+    margin-top: auto;
+
+    color:
+        #64748b;
+
+    font-size: 0.8rem;
+}
+
 
 /* =========================================
    EDUCATION
@@ -874,7 +941,8 @@ a {
         var(--card);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     border-radius: 14px;
 }
@@ -887,7 +955,7 @@ a {
 
 .education-card p {
     color:
-        var(--muted);
+        var(--light);
 }
 
 .education-card > div > span {
@@ -947,7 +1015,8 @@ a {
     padding-bottom: 4px;
 
     border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     transition:
         0.25s ease;
@@ -973,7 +1042,8 @@ footer {
         var(--bg-dark);
 
     border-top:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     text-align: center;
 
@@ -991,11 +1061,11 @@ footer {
 @media (max-width: 1000px) {
 
     .nav-links {
-        gap: 16px;
+        gap: 15px;
     }
 
     .nav-links a {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
     }
 
     .hero-container {
@@ -1017,8 +1087,12 @@ footer {
 
 @media (max-width: 800px) {
 
+    .site-header {
+        height: 65px;
+    }
+
     .navbar {
-        min-height: 65px;
+        width: 92%;
     }
 
     .nav-links {
@@ -1029,8 +1103,8 @@ footer {
         min-height: auto;
 
         padding:
-            120px 0
-            80px;
+            110px 0
+            75px;
     }
 
     .hero h1 {
@@ -1094,8 +1168,8 @@ footer {
 
     .hero {
         padding:
-            105px 0
-            70px;
+            100px 0
+            65px;
     }
 
     .hero h1 {
