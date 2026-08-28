@@ -627,38 +627,35 @@ img {
    PROJECT VIDEO
 ========================================= */
 
-.project-card.featured .project-video {
-    width: 50%;
-    height: 400px;
+.project-video {
+    width: 85%;
+    max-width: 1000px;
 
     margin: 30px auto;
 
-    overflow: hidden;
-
     border: 1px solid var(--border);
     border-radius: 12px;
+
+    overflow: hidden;
 
     background: #060b16;
 
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.2);
+
+    aspect-ratio: 16 / 9;
 }
 
-.project-card.featured .project-video video {
+.project-video video {
     width: 100%;
     height: 100%;
 
     display: block;
 
-    /*
-        Fills the entire video container.
-        This removes the black side areas.
-    */
     object-fit: cover;
 
     border-radius: 12px;
 }
-
 
 /* =========================================
    PROJECT TECHNOLOGIES
@@ -1085,11 +1082,11 @@ footer p {
         Uses the full available card width.
     */
 
-    .project-card.featured .project-video {
+     .project-video {
         width: 100%;
-        height: 300px;
+        aspect-ratio: 16 / 9;
 
-        margin: 30px auto;
+        margin: 25px auto;
     }
 }
 
@@ -1163,9 +1160,9 @@ footer p {
         PROJECT VIDEO — SMALL MOBILE
     */
 
-    .project-card.featured .project-video {
+    .project-video {
         width: 100%;
-        height: 240px;
+        aspect-ratio: 16 / 9;
 
         margin: 25px auto;
     }
