@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -620,13 +618,14 @@ img {
     font-weight: 600;
 }
 
+
 /* =========================================
    PROJECT VIDEO
 ========================================= */
 
 .project-video {
     width: 70%;
-    height: 360px;
+    height: 180px;
 
     margin: 30px auto;
 
@@ -652,6 +651,11 @@ img {
     border-radius: 12px;
 }
 
+
+/* =========================================
+   PROJECT TECHNOLOGIES
+========================================= */
+
 .technology-list {
     display: flex;
     flex-wrap: wrap;
@@ -671,6 +675,11 @@ img {
     font-size: 12px;
     font-weight: 600;
 }
+
+
+/* =========================================
+   PROJECT DESCRIPTION
+========================================= */
 
 .project-description {
     margin-bottom: 22px;
@@ -1051,6 +1060,18 @@ footer p {
     .education-date {
         white-space: normal;
     }
+
+    /*
+        PROJECT VIDEO — MOBILE
+        Full available width while
+        remaining responsive.
+    */
+
+    .project-card.featured .project-video {
+        width: 100%;
+        height: 180px;
+        margin: 30px auto;
+    }
 }
 
 
@@ -1117,5 +1138,62 @@ footer p {
 
     .contact-links a {
         width: 100%;
+    }
+
+    /*
+        SMALL MOBILE VIDEO
+    */
+
+    .project-card.featured .project-video {
+        width: 100%;
+        height: 180px;
+        margin: 25px auto;
+    }
+}
+
+
+/* =========================================
+   RYLIM PROJECT VIDEO - FINAL OVERRIDE
+========================================= */
+
+.project-card.featured .project-video {
+    width: 70%;
+    height: 180px;
+
+    margin: 30px auto;
+
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.project-card.featured .project-video video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+
+/* =========================================
+   FINAL MOBILE VIDEO OVERRIDE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .project-card.featured .project-video {
+        width: 100%;
+        height: 180px;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .project-card.featured .project-video {
+        width: 100%;
+        height: 180px;
+        margin: 25px auto;
     }
 }
