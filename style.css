@@ -73,6 +73,7 @@ img {
 
 .section-label {
     margin-bottom: 14px;
+
     color: var(--accent);
     font-size: 14px;
     font-weight: 800;
@@ -81,6 +82,7 @@ img {
 
 .section-title {
     margin-bottom: 35px;
+
     font-size: clamp(38px, 5vw, 58px);
     line-height: 1.1;
     font-weight: 800;
@@ -94,6 +96,7 @@ img {
 .section-text {
     max-width: 850px;
     margin-bottom: 22px;
+
     color: var(--text-secondary);
     font-size: 17px;
     line-height: 1.9;
@@ -273,11 +276,14 @@ img {
 .primary-btn:hover {
     background: #48c5f7;
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(50, 185, 242, 0.2);
+
+    box-shadow:
+        0 10px 30px rgba(50, 185, 242, 0.2);
 }
 
 .secondary-btn {
     border: 1px solid var(--border);
+
     background: transparent;
     color: #f4f7fb;
 }
@@ -285,6 +291,7 @@ img {
 .secondary-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
+
     transform: translateY(-3px);
 }
 
@@ -379,7 +386,6 @@ img {
     overflow: hidden;
 
     border: 5px solid #1d668a;
-
     border-radius: 18px;
 
     background: #17263b;
@@ -445,7 +451,6 @@ img {
     justify-content: space-between;
 
     gap: 30px;
-
     margin-bottom: 30px;
 }
 
@@ -585,7 +590,6 @@ img {
     justify-content: space-between;
 
     gap: 15px;
-
     margin-bottom: 25px;
 }
 
@@ -623,16 +627,16 @@ img {
    PROJECT VIDEO
 ========================================= */
 
-.project-video {
-    width: 70%;
-    height: 180px;
+.project-card.featured .project-video {
+    width: 90%;
+    height: 400px;
 
     margin: 30px auto;
 
+    overflow: hidden;
+
     border: 1px solid var(--border);
     border-radius: 12px;
-
-    overflow: hidden;
 
     background: #060b16;
 
@@ -640,13 +644,17 @@ img {
         0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.project-video video {
+.project-card.featured .project-video video {
     width: 100%;
     height: 100%;
 
     display: block;
 
-    object-fit: contain;
+    /*
+        Fills the entire video container.
+        This removes the black side areas.
+    */
+    object-fit: cover;
 
     border-radius: 12px;
 }
@@ -859,6 +867,7 @@ img {
 
 .contact-container .section-title {
     max-width: 800px;
+
     margin-left: auto;
     margin-right: auto;
 }
@@ -877,6 +886,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
     gap: 14px;
 }
 
@@ -950,6 +960,15 @@ footer p {
     .hero-photo {
         width: 230px;
         height: 230px;
+    }
+
+    /*
+        PROJECT VIDEO — TABLET
+    */
+
+    .project-card.featured .project-video {
+        width: 90%;
+        height: 360px;
     }
 }
 
@@ -1063,13 +1082,13 @@ footer p {
 
     /*
         PROJECT VIDEO — MOBILE
-        Full available width while
-        remaining responsive.
+        Uses the full available card width.
     */
 
     .project-card.featured .project-video {
         width: 100%;
-        height: 180px;
+        height: 300px;
+
         margin: 30px auto;
     }
 }
@@ -1141,59 +1160,13 @@ footer p {
     }
 
     /*
-        SMALL MOBILE VIDEO
+        PROJECT VIDEO — SMALL MOBILE
     */
 
     .project-card.featured .project-video {
         width: 100%;
-        height: 180px;
-        margin: 25px auto;
-    }
-}
+        height: 240px;
 
-
-/* =========================================
-   RYLIM PROJECT VIDEO - FINAL OVERRIDE
-========================================= */
-
-.project-card.featured .project-video {
-    width: 70%;
-    height: 180px;
-
-    margin: 30px auto;
-
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.project-card.featured .project-video video {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
-
-/* =========================================
-   FINAL MOBILE VIDEO OVERRIDE
-========================================= */
-
-@media (max-width: 768px) {
-
-    .project-card.featured .project-video {
-        width: 100%;
-        height: 180px;
-        margin: 30px auto;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .project-card.featured .project-video {
-        width: 100%;
-        height: 180px;
         margin: 25px auto;
     }
 }
