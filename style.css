@@ -26,7 +26,6 @@ img {
     display: block;
 }
 
-
 /* =========================================
    VARIABLES
 ========================================= */
@@ -48,7 +47,6 @@ img {
 
     --container-width: 1120px;
 }
-
 
 /* =========================================
    GENERAL
@@ -74,7 +72,6 @@ img {
 
 .section-label {
     margin-bottom: 14px;
-
     color: var(--accent);
     font-size: 14px;
     font-weight: 800;
@@ -83,7 +80,6 @@ img {
 
 .section-title {
     margin-bottom: 35px;
-
     font-size: clamp(38px, 5vw, 58px);
     line-height: 1.1;
     font-weight: 800;
@@ -97,12 +93,10 @@ img {
 .section-text {
     max-width: 850px;
     margin-bottom: 22px;
-
     color: var(--text-secondary);
     font-size: 17px;
     line-height: 1.9;
 }
-
 
 /* =========================================
    NAVIGATION
@@ -144,7 +138,6 @@ img {
     display: flex;
     align-items: center;
     gap: 32px;
-
     list-style: none;
 }
 
@@ -162,7 +155,6 @@ img {
     color: var(--accent);
     transform: translateY(-1px);
 }
-
 
 /* =========================================
    HERO
@@ -238,7 +230,6 @@ img {
     line-height: 1.8;
 }
 
-
 /* =========================================
    HERO BUTTONS
 ========================================= */
@@ -296,7 +287,6 @@ img {
     transform: translateY(-3px);
 }
 
-
 /* =========================================
    HERO PROFILE CARD
 ========================================= */
@@ -334,7 +324,6 @@ img {
         0 0 30px rgba(50, 185, 242, 0.06);
 }
 
-
 /* =========================================
    HERO STATUS
 ========================================= */
@@ -364,7 +353,6 @@ img {
         0 0 18px rgba(67, 223, 131, 0.45);
 }
 
-
 /* =========================================
    HERO PHOTO
 ========================================= */
@@ -390,8 +378,14 @@ img {
     object-fit: cover;
 
     border-radius: 12px;
-}
 
+    /*
+       Prevent simple drag/save interactions.
+       This does NOT make an image impossible to copy.
+    */
+    user-select: none;
+    -webkit-user-drag: none;
+}
 
 /* =========================================
    HERO CARD DESCRIPTION
@@ -402,7 +396,6 @@ img {
     font-size: 17px;
     line-height: 1.75;
 }
-
 
 /* =========================================
    EXPERIENCE
@@ -470,7 +463,6 @@ img {
     padding-left: 7px;
 }
 
-
 /* =========================================
    SKILLS
 ========================================= */
@@ -529,7 +521,6 @@ img {
     color: #b9cbe0;
     font-size: 13px;
 }
-
 
 /* =========================================
    PROJECTS
@@ -613,7 +604,6 @@ img {
     font-weight: 600;
 }
 
-
 /* =========================================
    PROJECT VIDEO
 ========================================= */
@@ -635,6 +625,12 @@ img {
 
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.2);
+
+    /*
+       Helps prevent basic right-click/context-menu
+       interactions on the video area.
+    */
+    user-select: none;
 }
 
 .project-video video {
@@ -646,8 +642,13 @@ img {
     object-fit: contain;
 
     border-radius: 12px;
-}
 
+    /*
+       Makes casual dragging of the video less convenient.
+       It does NOT provide true download protection.
+    */
+    user-select: none;
+}
 
 /* =========================================
    PROJECT IMAGE
@@ -686,6 +687,9 @@ img {
     object-fit: cover;
 
     border-radius: 12px;
+
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .project-image:hover {
@@ -694,7 +698,6 @@ img {
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.28);
 }
-
 
 /* =========================================
    PROJECT TECHNOLOGIES
@@ -719,7 +722,6 @@ img {
     font-size: 12px;
     font-weight: 600;
 }
-
 
 /* =========================================
    PROJECT DESCRIPTION
@@ -761,7 +763,6 @@ img {
     color: #72d5fa;
     transform: translateX(4px);
 }
-
 
 /* =========================================
    CERTIFICATIONS
@@ -840,7 +841,6 @@ img {
     font-style: italic;
 }
 
-
 /* =========================================
    EDUCATION
 ========================================= */
@@ -891,7 +891,6 @@ img {
 .education-date {
     white-space: nowrap;
 }
-
 
 /* =========================================
    CONTACT
@@ -949,7 +948,6 @@ img {
     transform: translateY(-3px);
 }
 
-
 /* =========================================
    FOOTER
 ========================================= */
@@ -968,7 +966,6 @@ footer p {
     color: #667993;
     font-size: 13px;
 }
-
 
 /* =========================================
    RESPONSIVE — TABLET
@@ -998,14 +995,12 @@ footer p {
         height: 230px;
     }
 
-
     /* PROJECT VIDEO — TABLET */
 
     .project-video {
         width: 88%;
         max-width: 850px;
     }
-
 
     /* PROJECT IMAGE — TABLET */
 
@@ -1014,7 +1009,6 @@ footer p {
         max-width: 850px;
     }
 }
-
 
 /* =========================================
    RESPONSIVE — MOBILE
@@ -1122,7 +1116,6 @@ footer p {
         grid-column: span 1;
     }
 
-
     /* =====================================
        PROJECT VIDEO — MOBILE
     ===================================== */
@@ -1146,7 +1139,6 @@ footer p {
 
         border-radius: 10px;
     }
-
 
     /* =====================================
        PROJECT IMAGE — MOBILE
@@ -1172,7 +1164,6 @@ footer p {
         border-radius: 10px;
     }
 
-
     .certifications-grid {
         grid-template-columns: 1fr;
     }
@@ -1186,7 +1177,6 @@ footer p {
         white-space: normal;
     }
 }
-
 
 /* =========================================
    RESPONSIVE — SMALL MOBILE
@@ -1245,7 +1235,6 @@ footer p {
         flex-direction: column;
     }
 
-
     /* =====================================
        PROJECT VIDEO — SMALL MOBILE
     ===================================== */
@@ -1269,7 +1258,6 @@ footer p {
 
         border-radius: 9px;
     }
-
 
     /* =====================================
        PROJECT IMAGE — SMALL MOBILE
@@ -1295,7 +1283,6 @@ footer p {
         border-radius: 9px;
     }
 
-
     .contact-links {
         flex-direction: column;
     }
@@ -1303,4 +1290,22 @@ footer p {
     .contact-links a {
         width: 100%;
     }
+}
+
+/* =========================================
+   BASIC MEDIA PROTECTION
+========================================= */
+
+/*
+   These rules discourage casual saving/dragging.
+   They cannot prevent screenshots, developer tools,
+   browser caching, or determined users from obtaining
+   media that has been delivered to their browser.
+*/
+
+.hero-photo img,
+.project-image img,
+.project-video video {
+    -webkit-user-drag: none;
+    user-select: none;
 }
