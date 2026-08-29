@@ -145,10 +145,14 @@
                     </div>
 
                     <div class="hero-photo">
+
                         <img
                             src="assets/ProfilePic_Portfolio.jpg"
                             alt="Jayenn Esguerra"
+                            draggable="false"
+                            oncontextmenu="return false;"
                         >
+
                     </div>
 
                     <p>
@@ -550,6 +554,8 @@
 
                             <video
                                 controls
+                                controlsList="nodownload"
+                                disablePictureInPicture
                                 preload="metadata"
                                 playsinline
                             >
@@ -670,6 +676,8 @@
 
                             <video
                                 controls
+                                controlsList="nodownload"
+                                disablePictureInPicture
                                 preload="metadata"
                                 playsinline
                             >
@@ -768,6 +776,8 @@
                                 src="assets/Zamina_Thumbnail.jpg"
                                 alt="Zamina website project thumbnail"
                                 loading="lazy"
+                                draggable="false"
+                                oncontextmenu="return false;"
                             >
 
                         </div>
@@ -1097,6 +1107,37 @@
         </p>
 
     </footer>
+
+
+
+    <!-- =========================================
+         MEDIA PROTECTION
+    ========================================== -->
+
+    <script>
+
+        /*
+         * Prevent casual right-clicking on the page.
+         * This is only a deterrent and does not provide
+         * complete protection against copying.
+         */
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+
+        /*
+         * Prevent dragging images.
+         */
+        document.addEventListener("dragstart", function (event) {
+
+            if (event.target.tagName === "IMG") {
+                event.preventDefault();
+            }
+
+        });
+
+    </script>
 
 
 </body>
