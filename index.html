@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -120,14 +121,16 @@
                             View My Projects
                         </a>
 
-                        <a
-                            href="assets/Graduate Resume.pdf"
+
+                        <!-- RESUME BUTTON -->
+
+                        <button
+                            type="button"
                             class="btn secondary-btn"
-                            target="_blank"
-                            rel="noopener"
+                            id="resumeBtn"
                         >
                             View Resume
-                        </a>
+                        </button>
 
                     </div>
 
@@ -140,9 +143,15 @@
                 <div class="hero-card">
 
                     <div class="hero-status">
+
                         <span class="status-dot"></span>
-                        <span>Open to opportunities</span>
+
+                        <span>
+                            Open to opportunities
+                        </span>
+
                     </div>
+
 
                     <div class="hero-photo">
 
@@ -154,6 +163,7 @@
                         >
 
                     </div>
+
 
                     <p>
                         Building practical digital solutions through
@@ -188,6 +198,7 @@
                     <span>digital solutions.</span>
                 </h2>
 
+
                 <p class="section-text">
 
                     I'm Jayenn Harold L. Esguerra, an Information
@@ -195,6 +206,7 @@
                     Mobile Application Development.
 
                 </p>
+
 
                 <p class="section-text">
 
@@ -206,6 +218,7 @@
                     administration and team coordination.
 
                 </p>
+
 
                 <p class="section-text">
 
@@ -257,6 +270,7 @@
                             </p>
 
                         </div>
+
 
                         <span class="experience-date">
                             January 2026 — July 2026
@@ -1030,6 +1044,7 @@
 
                     </div>
 
+
                     <span class="education-date">
                         September 2022 — September 2026
                     </span>
@@ -1062,6 +1077,7 @@
                     <span>together.</span>
                 </h2>
 
+
                 <p class="contact-description">
 
                     Interested in working together or learning more
@@ -1077,6 +1093,7 @@
                     >
                         esguerrajayenn67@gmail.com
                     </a>
+
 
                     <a
                         href="https://www.linkedin.com/in/jayennharoldesguerra"
@@ -1111,6 +1128,74 @@
 
 
     <!-- =========================================
+         RESUME UPDATE MODAL
+    ========================================== -->
+
+    <div
+        class="resume-modal"
+        id="resumeModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="resume-modal-overlay"
+            id="resumeModalOverlay"
+        ></div>
+
+
+        <div
+            class="resume-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resumeModalTitle"
+        >
+
+            <button
+                type="button"
+                class="resume-modal-close"
+                id="resumeModalClose"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <div class="resume-modal-icon">
+                ↻
+            </div>
+
+
+            <p class="section-label">
+                RESUME
+            </p>
+
+
+            <h2 id="resumeModalTitle">
+                Currently <span>Updating</span>
+            </h2>
+
+
+            <p>
+                My resume is currently being updated.
+                Please check back soon for the latest version.
+            </p>
+
+
+            <button
+                type="button"
+                class="btn primary-btn"
+                id="resumeModalOk"
+            >
+                Got it
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
          MEDIA PROTECTION
     ========================================== -->
 
@@ -1121,21 +1206,157 @@
          * This is only a deterrent and does not provide
          * complete protection against copying.
          */
-        document.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-        });
+
+        document.addEventListener(
+            "contextmenu",
+            function (event) {
+
+                event.preventDefault();
+
+            }
+        );
 
 
         /*
          * Prevent dragging images.
          */
-        document.addEventListener("dragstart", function (event) {
 
-            if (event.target.tagName === "IMG") {
-                event.preventDefault();
+        document.addEventListener(
+            "dragstart",
+            function (event) {
+
+                if (event.target.tagName === "IMG") {
+
+                    event.preventDefault();
+
+                }
+
             }
+        );
 
-        });
+    </script>
+
+
+
+    <!-- =========================================
+         RESUME MODAL SCRIPT
+    ========================================== -->
+
+    <script>
+
+        const resumeBtn =
+            document.getElementById("resumeBtn");
+
+        const resumeModal =
+            document.getElementById("resumeModal");
+
+        const resumeModalClose =
+            document.getElementById("resumeModalClose");
+
+        const resumeModalOk =
+            document.getElementById("resumeModalOk");
+
+        const resumeModalOverlay =
+            document.getElementById("resumeModalOverlay");
+
+
+        /*
+         * Open Resume Modal
+         */
+
+        function openResumeModal() {
+
+            resumeModal.classList.add("active");
+
+            resumeModal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.style.overflow = "hidden";
+
+            resumeModalClose.focus();
+
+        }
+
+
+        /*
+         * Close Resume Modal
+         */
+
+        function closeResumeModal() {
+
+            resumeModal.classList.remove("active");
+
+            resumeModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        /*
+         * Resume Button
+         */
+
+        resumeBtn.addEventListener(
+            "click",
+            openResumeModal
+        );
+
+
+        /*
+         * Close Button
+         */
+
+        resumeModalClose.addEventListener(
+            "click",
+            closeResumeModal
+        );
+
+
+        /*
+         * Got It Button
+         */
+
+        resumeModalOk.addEventListener(
+            "click",
+            closeResumeModal
+        );
+
+
+        /*
+         * Close when clicking outside modal
+         */
+
+        resumeModalOverlay.addEventListener(
+            "click",
+            closeResumeModal
+        );
+
+
+        /*
+         * Close using Escape key
+         */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    resumeModal.classList.contains("active")
+                ) {
+
+                    closeResumeModal();
+
+                }
+
+            }
+        );
 
     </script>
 
