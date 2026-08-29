@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +27,7 @@ img {
     display: block;
 }
 
+
 /* =========================================
    VARIABLES
 ========================================= */
@@ -47,6 +49,7 @@ img {
 
     --container-width: 1120px;
 }
+
 
 /* =========================================
    GENERAL
@@ -72,7 +75,9 @@ img {
 
 .section-label {
     margin-bottom: 14px;
+
     color: var(--accent);
+
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 3px;
@@ -80,6 +85,7 @@ img {
 
 .section-title {
     margin-bottom: 35px;
+
     font-size: clamp(38px, 5vw, 58px);
     line-height: 1.1;
     font-weight: 800;
@@ -93,10 +99,13 @@ img {
 .section-text {
     max-width: 850px;
     margin-bottom: 22px;
+
     color: var(--text-secondary);
+
     font-size: 17px;
     line-height: 1.9;
 }
+
 
 /* =========================================
    NAVIGATION
@@ -108,6 +117,7 @@ img {
     z-index: 1000;
 
     background: rgba(8, 14, 29, 0.94);
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 
     backdrop-filter: blur(12px);
@@ -117,6 +127,7 @@ img {
 .navbar {
     width: min(1120px, 90%);
     min-height: 90px;
+
     margin: 0 auto;
 
     display: flex;
@@ -137,12 +148,15 @@ img {
 .nav-links {
     display: flex;
     align-items: center;
+
     gap: 32px;
+
     list-style: none;
 }
 
 .nav-links a {
     color: #c7d1df;
+
     font-size: 16px;
     font-weight: 500;
 
@@ -153,8 +167,10 @@ img {
 
 .nav-links a:hover {
     color: var(--accent);
+
     transform: translateY(-1px);
 }
+
 
 /* =========================================
    HERO
@@ -177,8 +193,13 @@ img {
 
 .hero-container {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 420px;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        420px;
+
     gap: 70px;
+
     align-items: center;
 
     padding-top: 60px;
@@ -193,6 +214,7 @@ img {
     margin-bottom: 28px;
 
     color: var(--accent);
+
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 3px;
@@ -203,8 +225,11 @@ img {
     margin-bottom: 22px;
 
     font-size: clamp(70px, 7vw, 110px);
+
     line-height: 0.95;
+
     font-weight: 900;
+
     letter-spacing: -5px;
 }
 
@@ -216,19 +241,26 @@ img {
     margin-bottom: 25px;
 
     color: #dce6f2;
+
     font-size: clamp(27px, 3vw, 34px);
+
     line-height: 1.2;
+
     font-weight: 700;
 }
 
 .hero-description {
     max-width: 820px;
+
     margin-bottom: 35px;
 
     color: var(--text-secondary);
+
     font-size: 18px;
+
     line-height: 1.8;
 }
+
 
 /* =========================================
    HERO BUTTONS
@@ -237,21 +269,26 @@ img {
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
+
     gap: 14px;
 }
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
     min-height: 56px;
+
     padding: 0 24px;
 
     border-radius: 9px;
 
     font-size: 16px;
     font-weight: 700;
+
+    cursor: pointer;
 
     transition:
         transform 0.25s ease,
@@ -262,11 +299,13 @@ img {
 
 .primary-btn {
     background: var(--accent);
+
     color: #06101c;
 }
 
 .primary-btn:hover {
     background: #48c5f7;
+
     transform: translateY(-3px);
 
     box-shadow:
@@ -277,15 +316,190 @@ img {
     border: 1px solid var(--border);
 
     background: transparent;
+
     color: #f4f7fb;
 }
 
 .secondary-btn:hover {
     border-color: var(--accent);
+
     color: var(--accent);
 
     transform: translateY(-3px);
 }
+
+
+/* =========================================
+   RESUME CURRENTLY UPDATING
+========================================= */
+
+.resume-updating {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 56px;
+
+    padding: 0 24px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #f4f7fb;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+.resume-updating:hover {
+    border-color: var(--accent);
+
+    color: var(--accent);
+
+    background: rgba(50, 185, 242, 0.05);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   RESUME MODAL
+========================================= */
+
+.resume-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(3, 7, 16, 0.78);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.resume-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.resume-modal-content {
+    position: relative;
+
+    width: min(500px, 100%);
+
+    padding: 45px 35px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101c30,
+            #0b1628
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45);
+
+    text-align: center;
+
+    transform: translateY(15px) scale(0.98);
+
+    transition:
+        transform 0.25s ease;
+}
+
+.resume-modal.active .resume-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.resume-modal-content h3 {
+    margin-bottom: 14px;
+
+    color: var(--text-main);
+
+    font-size: 28px;
+}
+
+.resume-modal-content p {
+    margin-bottom: 25px;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+.resume-close {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--text-main);
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.25s ease,
+        color 0.25s ease,
+        background 0.25s ease;
+}
+
+.resume-close:hover {
+    border-color: var(--accent);
+
+    color: var(--accent);
+
+    background: rgba(50, 185, 242, 0.05);
+}
+
 
 /* =========================================
    HERO PROFILE CARD
@@ -293,9 +507,11 @@ img {
 
 .hero-card {
     width: 100%;
+
     padding: 38px 40px;
 
     border: 1px solid var(--border);
+
     border-radius: 24px;
 
     background:
@@ -317,12 +533,14 @@ img {
 .hero-card:hover {
     transform: translateY(-7px) scale(1.015);
 
-    border-color: rgba(50, 185, 242, 0.45);
+    border-color:
+        rgba(50, 185, 242, 0.45);
 
     box-shadow:
         0 25px 60px rgba(0, 0, 0, 0.28),
         0 0 30px rgba(50, 185, 242, 0.06);
 }
+
 
 /* =========================================
    HERO STATUS
@@ -330,12 +548,15 @@ img {
 
 .hero-status {
     display: flex;
+
     align-items: center;
+
     gap: 11px;
 
     margin-bottom: 30px;
 
     color: #d8e3ef;
+
     font-size: 15px;
 }
 
@@ -346,12 +567,14 @@ img {
     flex-shrink: 0;
 
     border-radius: 50%;
+
     background: var(--success);
 
     box-shadow:
         0 0 0 5px rgba(67, 223, 131, 0.08),
         0 0 18px rgba(67, 223, 131, 0.45);
 }
+
 
 /* =========================================
    HERO PHOTO
@@ -366,6 +589,7 @@ img {
     overflow: hidden;
 
     border: 5px solid #1d668a;
+
     border-radius: 18px;
 
     background: #17263b;
@@ -379,13 +603,13 @@ img {
 
     border-radius: 12px;
 
-    /*
-       Prevent simple drag/save interactions.
-       This does NOT make an image impossible to copy.
-    */
     user-select: none;
+
     -webkit-user-drag: none;
+
+    pointer-events: none;
 }
+
 
 /* =========================================
    HERO CARD DESCRIPTION
@@ -393,9 +617,12 @@ img {
 
 .hero-card > p {
     color: var(--text-secondary);
+
     font-size: 17px;
+
     line-height: 1.75;
 }
+
 
 /* =========================================
    EXPERIENCE
@@ -405,6 +632,7 @@ img {
     padding: 38px;
 
     border: 1px solid var(--border);
+
     border-radius: 18px;
 
     background: var(--card-bg);
@@ -418,7 +646,8 @@ img {
 .experience-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(50, 185, 242, 0.35);
+    border-color:
+        rgba(50, 185, 242, 0.35);
 
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.2);
@@ -426,10 +655,13 @@ img {
 
 .experience-header {
     display: flex;
+
     align-items: flex-start;
+
     justify-content: space-between;
 
     gap: 30px;
+
     margin-bottom: 30px;
 }
 
@@ -437,18 +669,23 @@ img {
     margin-bottom: 7px;
 
     color: var(--text-main);
+
     font-size: 26px;
 }
 
 .experience-header p {
     color: var(--accent);
+
     font-size: 16px;
+
     font-weight: 600;
 }
 
 .experience-date {
     color: var(--text-muted);
+
     font-size: 14px;
+
     white-space: nowrap;
 }
 
@@ -460,8 +697,10 @@ img {
 
 .experience-list li {
     margin-bottom: 13px;
+
     padding-left: 7px;
 }
+
 
 /* =========================================
    SKILLS
@@ -469,7 +708,10 @@ img {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 20px;
 }
 
@@ -477,6 +719,7 @@ img {
     padding: 28px;
 
     border: 1px solid var(--border);
+
     border-radius: 16px;
 
     background: #0e192b;
@@ -490,7 +733,8 @@ img {
 .skill-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(50, 185, 242, 0.4);
+    border-color:
+        rgba(50, 185, 242, 0.4);
 
     background: #111f34;
 }
@@ -499,12 +743,15 @@ img {
     margin-bottom: 18px;
 
     font-size: 20px;
+
     color: var(--text-main);
 }
 
 .tags {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 9px;
 }
 
@@ -514,13 +761,16 @@ img {
     padding: 7px 12px;
 
     border: 1px solid #29405e;
+
     border-radius: 7px;
 
     background: #111e31;
 
     color: #b9cbe0;
+
     font-size: 13px;
 }
+
 
 /* =========================================
    PROJECTS
@@ -528,7 +778,10 @@ img {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 24px;
 
     min-width: 0;
@@ -536,11 +789,13 @@ img {
 
 .project-card {
     position: relative;
+
     min-width: 0;
 
     padding: 34px;
 
     border: 1px solid var(--border);
+
     border-radius: 18px;
 
     background: var(--card-bg);
@@ -556,7 +811,8 @@ img {
 .project-card:hover {
     transform: translateY(-7px);
 
-    border-color: rgba(50, 185, 242, 0.4);
+    border-color:
+        rgba(50, 185, 242, 0.4);
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.22);
@@ -568,24 +824,33 @@ img {
 
 .project-top {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 15px;
+
     margin-bottom: 25px;
 }
 
 .project-number {
     color: var(--accent);
+
     font-size: 14px;
+
     font-weight: 800;
+
     letter-spacing: 2px;
 }
 
 .project-type {
     color: var(--text-muted);
+
     font-size: 12px;
+
     font-weight: 700;
+
     letter-spacing: 1.5px;
 }
 
@@ -593,6 +858,7 @@ img {
     margin-bottom: 5px;
 
     font-size: 28px;
+
     line-height: 1.2;
 }
 
@@ -600,9 +866,12 @@ img {
     margin-bottom: 20px;
 
     color: var(--accent);
+
     font-size: 15px;
+
     font-weight: 600;
 }
+
 
 /* =========================================
    PROJECT VIDEO
@@ -617,6 +886,7 @@ img {
     aspect-ratio: 16 / 9;
 
     border: 1px solid var(--border);
+
     border-radius: 12px;
 
     overflow: hidden;
@@ -626,10 +896,6 @@ img {
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.2);
 
-    /*
-       Helps prevent basic right-click/context-menu
-       interactions on the video area.
-    */
     user-select: none;
 }
 
@@ -643,12 +909,11 @@ img {
 
     border-radius: 12px;
 
-    /*
-       Makes casual dragging of the video less convenient.
-       It does NOT provide true download protection.
-    */
     user-select: none;
+
+    -webkit-user-drag: none;
 }
+
 
 /* =========================================
    PROJECT IMAGE
@@ -663,6 +928,7 @@ img {
     aspect-ratio: 16 / 9;
 
     border: 1px solid var(--border);
+
     border-radius: 12px;
 
     overflow: hidden;
@@ -689,15 +955,20 @@ img {
     border-radius: 12px;
 
     user-select: none;
+
     -webkit-user-drag: none;
+
+    pointer-events: none;
 }
 
 .project-image:hover {
-    border-color: rgba(50, 185, 242, 0.4);
+    border-color:
+        rgba(50, 185, 242, 0.4);
 
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.28);
 }
+
 
 /* =========================================
    PROJECT TECHNOLOGIES
@@ -705,7 +976,9 @@ img {
 
 .technology-list {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 8px;
 
     margin-bottom: 22px;
@@ -716,12 +989,16 @@ img {
 
     border-radius: 6px;
 
-    background: rgba(50, 185, 242, 0.09);
+    background:
+        rgba(50, 185, 242, 0.09);
 
     color: #8fdafa;
+
     font-size: 12px;
+
     font-weight: 600;
 }
+
 
 /* =========================================
    PROJECT DESCRIPTION
@@ -731,12 +1008,15 @@ img {
     margin-bottom: 22px;
 
     color: var(--text-secondary);
+
     font-size: 16px;
+
     line-height: 1.75;
 }
 
 .project-features {
     margin-bottom: 25px;
+
     padding-left: 20px;
 
     color: var(--text-secondary);
@@ -744,6 +1024,7 @@ img {
 
 .project-features li {
     margin-bottom: 10px;
+
     padding-left: 5px;
 }
 
@@ -751,7 +1032,9 @@ img {
     display: inline-block;
 
     color: var(--accent);
+
     font-size: 15px;
+
     font-weight: 700;
 
     transition:
@@ -761,8 +1044,10 @@ img {
 
 .project-link:hover {
     color: #72d5fa;
+
     transform: translateX(4px);
 }
+
 
 /* =========================================
    CERTIFICATIONS
@@ -770,7 +1055,10 @@ img {
 
 .certifications-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 20px;
 }
 
@@ -778,6 +1066,7 @@ img {
     padding: 30px;
 
     border: 1px solid var(--border);
+
     border-radius: 16px;
 
     background: #0e192b;
@@ -791,7 +1080,8 @@ img {
 .certification-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(50, 185, 242, 0.4);
+    border-color:
+        rgba(50, 185, 242, 0.4);
 
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.2);
@@ -803,8 +1093,11 @@ img {
     margin-bottom: 15px;
 
     color: var(--accent);
+
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 2px;
 }
 
@@ -812,7 +1105,9 @@ img {
     margin-bottom: 12px;
 
     color: var(--text-main);
+
     font-size: 20px;
+
     line-height: 1.4;
 }
 
@@ -820,12 +1115,15 @@ img {
     margin-bottom: 18px;
 
     color: var(--text-muted);
+
     font-size: 14px;
 }
 
 .certification-card a {
     color: var(--accent);
+
     font-size: 14px;
+
     font-weight: 700;
 
     transition: color 0.25s ease;
@@ -837,9 +1135,12 @@ img {
 
 .certification-no-link {
     color: var(--text-muted);
+
     font-size: 13px;
+
     font-style: italic;
 }
+
 
 /* =========================================
    EDUCATION
@@ -847,7 +1148,9 @@ img {
 
 .education-card {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 30px;
@@ -855,6 +1158,7 @@ img {
     padding: 35px;
 
     border: 1px solid var(--border);
+
     border-radius: 18px;
 
     background: var(--card-bg);
@@ -867,7 +1171,8 @@ img {
 .education-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(50, 185, 242, 0.4);
+    border-color:
+        rgba(50, 185, 242, 0.4);
 }
 
 .education-card h3 {
@@ -880,17 +1185,20 @@ img {
     margin-bottom: 6px;
 
     color: var(--accent);
+
     font-weight: 600;
 }
 
 .education-card span {
     color: var(--text-muted);
+
     font-size: 14px;
 }
 
 .education-date {
     white-space: nowrap;
 }
+
 
 /* =========================================
    CONTACT
@@ -913,13 +1221,17 @@ img {
     margin: 0 auto 35px;
 
     color: var(--text-secondary);
+
     font-size: 17px;
+
     line-height: 1.8;
 }
 
 .contact-links {
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
 
     gap: 14px;
@@ -929,9 +1241,11 @@ img {
     padding: 12px 18px;
 
     border: 1px solid var(--border);
+
     border-radius: 8px;
 
     color: #c9d7e7;
+
     background: #0e192b;
 
     transition:
@@ -948,6 +1262,7 @@ img {
     transform: translateY(-3px);
 }
 
+
 /* =========================================
    FOOTER
 ========================================= */
@@ -955,7 +1270,8 @@ img {
 footer {
     padding: 30px 20px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top:
+        1px solid rgba(255, 255, 255, 0.06);
 
     background: #060b16;
 
@@ -964,8 +1280,39 @@ footer {
 
 footer p {
     color: #667993;
+
     font-size: 13px;
 }
+
+
+/* =========================================
+   BASIC MEDIA PROTECTION
+========================================= */
+
+/*
+   These rules discourage casual saving,
+   dragging, and selecting of portfolio media.
+
+   IMPORTANT:
+   CSS cannot prevent screenshots or
+   determined users from obtaining content
+   delivered to their browser.
+*/
+
+.hero-photo img,
+.project-image img,
+.project-video video {
+    -webkit-user-drag: none;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -moz-user-select: none;
+
+    -ms-user-select: none;
+}
+
 
 /* =========================================
    RESPONSIVE — TABLET
@@ -978,7 +1325,10 @@ footer p {
     }
 
     .hero-container {
-        grid-template-columns: 1fr 350px;
+        grid-template-columns:
+            minmax(0, 1fr)
+            350px;
+
         gap: 45px;
     }
 
@@ -995,20 +1345,17 @@ footer p {
         height: 230px;
     }
 
-    /* PROJECT VIDEO — TABLET */
-
     .project-video {
         width: 88%;
         max-width: 850px;
     }
-
-    /* PROJECT IMAGE — TABLET */
 
     .project-image {
         width: 88%;
         max-width: 850px;
     }
 }
+
 
 /* =========================================
    RESPONSIVE — MOBILE
@@ -1051,11 +1398,13 @@ footer p {
 
     .eyebrow {
         font-size: 12px;
+
         letter-spacing: 2px;
     }
 
     .hero h1 {
         font-size: clamp(54px, 14vw, 78px);
+
         letter-spacing: -3px;
     }
 
@@ -1076,6 +1425,7 @@ footer p {
 
     .hero-card {
         max-width: 430px;
+
         margin: 0 auto;
     }
 
@@ -1085,6 +1435,7 @@ footer p {
 
     .experience-header {
         flex-direction: column;
+
         gap: 10px;
     }
 
@@ -1100,11 +1451,13 @@ footer p {
         grid-template-columns: 1fr;
 
         width: 100%;
+
         min-width: 0;
     }
 
     .project-card {
         width: 100%;
+
         min-width: 0;
 
         padding: 25px;
@@ -1116,12 +1469,14 @@ footer p {
         grid-column: span 1;
     }
 
+
     /* =====================================
        PROJECT VIDEO — MOBILE
     ===================================== */
 
     .project-video {
         width: 75%;
+
         max-width: 75%;
 
         aspect-ratio: 16 / 9;
@@ -1140,12 +1495,14 @@ footer p {
         border-radius: 10px;
     }
 
+
     /* =====================================
        PROJECT IMAGE — MOBILE
     ===================================== */
 
     .project-image {
         width: 75%;
+
         max-width: 75%;
 
         aspect-ratio: 16 / 9;
@@ -1170,6 +1527,7 @@ footer p {
 
     .education-card {
         flex-direction: column;
+
         align-items: flex-start;
     }
 
@@ -1177,6 +1535,7 @@ footer p {
         white-space: normal;
     }
 }
+
 
 /* =========================================
    RESPONSIVE — SMALL MOBILE
@@ -1190,11 +1549,13 @@ footer p {
 
     .hero-container {
         padding-top: 50px;
+
         padding-bottom: 50px;
     }
 
     .hero h1 {
         font-size: 50px;
+
         letter-spacing: -2px;
     }
 
@@ -1206,7 +1567,8 @@ footer p {
         flex-direction: column;
     }
 
-    .btn {
+    .btn,
+    .resume-updating {
         width: 100%;
     }
 
@@ -1232,8 +1594,10 @@ footer p {
 
     .project-top {
         align-items: flex-start;
+
         flex-direction: column;
     }
+
 
     /* =====================================
        PROJECT VIDEO — SMALL MOBILE
@@ -1241,6 +1605,7 @@ footer p {
 
     .project-video {
         width: 78%;
+
         max-width: 78%;
 
         aspect-ratio: 16 / 9;
@@ -1259,12 +1624,14 @@ footer p {
         border-radius: 9px;
     }
 
+
     /* =====================================
        PROJECT IMAGE — SMALL MOBILE
     ===================================== */
 
     .project-image {
         width: 78%;
+
         max-width: 78%;
 
         aspect-ratio: 16 / 9;
@@ -1290,22 +1657,37 @@ footer p {
     .contact-links a {
         width: 100%;
     }
+
+
+    /* =====================================
+       RESUME MODAL — SMALL MOBILE
+    ===================================== */
+
+    .resume-modal-content {
+        padding: 35px 25px;
+    }
+
+    .resume-modal-content h3 {
+        font-size: 24px;
+    }
 }
 
+
 /* =========================================
-   BASIC MEDIA PROTECTION
+   ACCESSIBILITY
 ========================================= */
 
-/*
-   These rules discourage casual saving/dragging.
-   They cannot prevent screenshots, developer tools,
-   browser caching, or determined users from obtaining
-   media that has been delivered to their browser.
-*/
+@media (prefers-reduced-motion: reduce) {
 
-.hero-photo img,
-.project-image img,
-.project-video video {
-    -webkit-user-drag: none;
-    user-select: none;
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
