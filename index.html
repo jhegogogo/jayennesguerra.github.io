@@ -17,9 +17,9 @@
 
 <body>
 
-    <!-- =========================================
-         OPENING INTRO
-    ========================================== -->
+    <!-- ================================
+         INTRO / OPENING ANIMATION
+    ================================= -->
 
     <div class="intro-screen" id="introScreen">
 
@@ -48,9 +48,9 @@
     </div>
 
 
-    <!-- =========================================
+    <!-- ================================
          NAVIGATION
-    ========================================== -->
+    ================================= -->
 
     <header class="site-header">
 
@@ -105,25 +105,317 @@
     </header>
 
 
-    <!-- =========================================
-         ONE WEBSITE
+    <!-- ================================
+         MAIN WEBSITE
+    ================================= -->
 
-         The separate HTML files are loaded here.
-         They DO NOT become separate websites.
-    ========================================== -->
+    <main>
 
-    <main id="site-content">
 
-        <div class="loading-message">
-            Loading portfolio...
-        </div>
+        <!-- ============================
+             HOME
+             KEPT INSIDE INDEX.HTML
+        ============================= -->
+
+        <section
+            class="section hero-section"
+            id="home"
+        >
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <p class="hero-eyebrow">
+                        ASPIRING SOFTWARE ENGINEER
+                        • ROBOT OPERATOR
+                        • AI TRAINING CONTRIBUTOR
+                    </p>
+
+                    <h1>
+                        Hi, I'm
+                        <span>Jayenn.</span>
+                    </h1>
+
+                    <h2>
+                        Information Technology Graduate
+                    </h2>
+
+                    <p class="hero-description">
+                        I specialize in Web and Mobile Application
+                        Development and enjoy building useful,
+                        creative, and technology-driven solutions.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#projects"
+                            class="btn primary-btn"
+                        >
+                            View My Projects
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn secondary-btn resume-btn"
+                        >
+                            View Resume
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="hero-status">
+
+                        <span class="status-dot"></span>
+
+                        <span>
+                            Open to opportunities
+                        </span>
+
+                    </div>
+
+                    <div class="hero-initials">
+                        JE
+                    </div>
+
+                    <p>
+                        Building practical digital solutions
+                        through development, design,
+                        and problem solving.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================
+             ABOUT
+             KEPT INSIDE INDEX.HTML
+        ============================= -->
+
+        <section
+            class="section section-dark"
+            id="about"
+        >
+
+            <div class="container narrow">
+
+                <p class="section-label">
+                    ABOUT ME
+                </p>
+
+                <h2 class="section-title">
+                    Turning ideas into
+                    <span>digital solutions.</span>
+                </h2>
+
+                <p class="section-text">
+                    I'm Jayenn Harold L. Esguerra, an Information
+                    Technology graduate specializing in Web and
+                    Mobile Application Development.
+                </p>
+
+                <p class="section-text">
+                    I have hands-on experience in front-end,
+                    backend development, databases, UI design,
+                    networking, and system development.
+                </p>
+
+                <p class="section-text">
+                    During my internship, I worked on an
+                    Attendance Monitoring System while also
+                    supporting IT administration and team
+                    coordination.
+                </p>
+
+                <p class="section-text">
+                    I enjoy learning new technologies, solving
+                    technical problems, and creating applications
+                    that are practical, responsive, and easy to use.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================
+             EXPERIENCE
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="experience-container"></div>
+
+
+        <!-- ============================
+             SKILLS
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="skills-container"></div>
+
+
+        <!-- ============================
+             PROJECTS
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="projects-container"></div>
+
+
+        <!-- ============================
+             CERTIFICATIONS
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="certifications-container"></div>
+
+
+        <!-- ============================
+             EDUCATION
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="education-container"></div>
+
+
+        <!-- ============================
+             LEADERSHIP
+             LOADED FROM SEPARATE FILE
+        ============================= -->
+
+        <div id="leadership-container"></div>
+
+
+        <!-- ============================
+             CONTACT
+             KEPT INSIDE INDEX.HTML
+        ============================= -->
+
+        <section
+            class="section section-dark"
+            id="contact"
+        >
+
+            <div class="container narrow contact-section">
+
+                <p class="section-label">
+                    CONTACT
+                </p>
+
+                <h2 class="section-title">
+                    Let's build something
+                    <span>together.</span>
+                </h2>
+
+                <p class="section-text">
+                    I'm open to opportunities in software
+                    development, web development, and
+                    technology-related roles.
+                </p>
+
+
+                <div class="contact-links">
+
+                    <a
+                        href="mailto:esguerrajayenn67@gmail.com"
+                        class="contact-link"
+                    >
+                        <span>Email</span>
+                        esguerrajayenn67@gmail.com
+                    </a>
+
+
+                    <a
+                        href="https://www.linkedin.com/in/jayennharoldesguerra"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-link"
+                    >
+                        <span>LinkedIn</span>
+                        linkedin.com/in/jayennharoldesguerra
+                    </a>
+
+
+                    <a
+                        href="tel:09178920948"
+                        class="contact-link"
+                    >
+                        <span>Phone</span>
+                        0917 892 0948
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
 
-    <!-- =========================================
+    <!-- ================================
+         RESUME MODAL
+    ================================= -->
+
+    <div
+        class="resume-modal-overlay"
+        id="resumeModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="resume-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resumeModalTitle"
+        >
+
+            <button
+                type="button"
+                class="resume-modal-close"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+            <div class="resume-modal-icon">
+                ↻
+            </div>
+
+            <h2 id="resumeModalTitle">
+                Currently Updating
+            </h2>
+
+            <p>
+                My resume is currently being updated.
+                Please check back soon for the latest version.
+            </p>
+
+            <button
+                type="button"
+                class="btn primary-btn resume-modal-confirm"
+            >
+                Got it
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
          FOOTER
-    ========================================== -->
+    ================================= -->
 
     <footer>
 
