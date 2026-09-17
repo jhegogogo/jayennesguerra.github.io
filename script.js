@@ -1,7 +1,3 @@
-/* =========================================
-   JAYENN ESGUERRA — PORTFOLIO
-   JAVASCRIPT
-========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
