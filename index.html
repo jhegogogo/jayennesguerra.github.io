@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -18,1201 +16,1103 @@
     <title>Jayenn Esguerra | IT Portfolio</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
     <!-- =========================================
-         NAVIGATION
+         OPENING TRANSITION
     ========================================== -->
 
-    <header class="site-header">
+    <div class="intro-screen" id="introScreen">
 
-        <nav class="navbar">
+        <div class="intro-content">
 
-            <a href="#home" class="logo">
-                JE<span>.</span>
-            </a>
+            <!-- Profile Picture -->
+            <img
+                src="assets/ProfilePic_Portfolio.jpg"
+                alt="Jayenn Esguerra"
+                class="intro-photo"
+            >
 
-            <ul class="nav-links">
+            <!-- Name -->
+            <div class="intro-name">
+                Jayenn Esguerra
+            </div>
 
-                <li>
-                    <a href="#home">Home</a>
-                </li>
+            <!-- Greeting -->
+            <h1 class="intro-greeting">
+                Hi, I'm Jayenn.
+            </h1>
 
-                <li>
-                    <a href="#about">About</a>
-                </li>
+            <!-- Welcome Message -->
+            <p class="intro-welcome">
+                Welcome to my portfolio.
+            </p>
 
-                <li>
-                    <a href="#experience">Experience</a>
-                </li>
+        </div>
 
-                <li>
-                    <a href="#skills">Skills</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-
-                <li>
-                    <a href="#certifications">Certifications</a>
-                </li>
-
-                <li>
-                    <a href="#education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </header>
+    </div>
 
 
     <!-- =========================================
-         HERO
+         MAIN PORTFOLIO
     ========================================== -->
 
-    <main>
-
-        <section class="hero" id="home">
-
-            <div class="container hero-container">
-
-                <div class="hero-content">
-
-                    <p class="eyebrow">
-                        ASPIRING SOFTWARE ENGINEERING • ROBOT OPERATOR • AI TRAINING CONTRIBUTOR
-                    </p>
-
-                    <h1>
-                        Hi, I'm
-                        <span>Jayenn.</span>
-                    </h1>
-
-                    <h2>
-                        Information Technology Graduate
-                    </h2>
-
-                    <p class="hero-description">
-                        I specialize in Web and Mobile Application
-                        Development and enjoy building useful,
-                        creative, and technology-driven solutions.
-                    </p>
+    <div class="portfolio-page" id="portfolioPage">
 
 
-                    <div class="hero-buttons">
+        <!-- =====================================
+             HEADER / NAVIGATION
+        ====================================== -->
 
-                        <a
-                            href="#projects"
-                            class="btn primary-btn"
-                        >
-                            View My Projects
-                        </a>
+        <header class="site-header">
+
+            <div class="container nav-container">
+
+                <a href="#home" class="logo">
+                    JE.
+                </a>
+
+                <nav class="nav-links">
+
+                    <a href="#home">
+                        Home
+                    </a>
+
+                    <a href="#about">
+                        About
+                    </a>
+
+                    <a href="#experience">
+                        Experience
+                    </a>
+
+                    <a href="#skills">
+                        Skills
+                    </a>
+
+                    <a href="#projects">
+                        Projects
+                    </a>
+
+                    <a href="#certifications">
+                        Certifications
+                    </a>
+
+                    <a href="#education">
+                        Education
+                    </a>
+
+                    <a href="#contact">
+                        Contact
+                    </a>
+
+                </nav>
+
+            </div>
+
+        </header>
 
 
-                        <!-- RESUME BUTTON -->
+        <!-- =====================================
+             HERO
+        ====================================== -->
 
-                        <button
-                            type="button"
-                            class="btn secondary-btn"
-                            id="resumeBtn"
-                        >
-                            View Resume
-                        </button>
+        <main>
+
+            <section class="hero" id="home">
+
+                <div class="container hero-grid">
+
+                    <!-- Hero Text -->
+
+                    <div class="hero-content">
+
+                        <p class="eyebrow">
+                            ASPIRING SOFTWARE ENGINEERING
+                            • ROBOT OPERATOR
+                            • AI TRAINING CONTRIBUTOR
+                        </p>
+
+                        <h1>
+                            Hi, I'm Jayenn.
+                        </h1>
+
+                        <h2>
+                            Information Technology Graduate
+                        </h2>
+
+                        <p class="hero-description">
+                            I specialize in Web and Mobile Application
+                            Development and enjoy building useful, creative,
+                            and technology-driven solutions.
+                        </p>
+
+
+                        <!-- Hero Buttons -->
+
+                        <div class="hero-buttons">
+
+                            <a
+                                href="#projects"
+                                class="primary-btn"
+                            >
+                                View My Projects
+                            </a>
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                id="openResume"
+                            >
+                                View Resume
+                            </button>
+
+                        </div>
 
                     </div>
 
-                </div>
 
+                    <!-- Hero Profile Card -->
 
-                <!-- HERO PROFILE CARD -->
+                    <div class="hero-card">
 
-                <div class="hero-card">
-
-                    <div class="hero-status">
-
-                        <span class="status-dot"></span>
-
-                        <span>
+                        <div class="status">
+                            <span></span>
                             Open to opportunities
-                        </span>
-
-                    </div>
-
-
-                    <div class="hero-photo">
+                        </div>
 
                         <img
                             src="assets/ProfilePic_Portfolio.jpg"
-                            alt="Jayenn Esguerra"
-                            draggable="false"
-                            oncontextmenu="return false;"
+                            alt="Jayenn Harold L. Esguerra"
+                            class="hero-profile"
                         >
+
+                        <p>
+                            Building practical digital solutions through
+                            software development, technology, and creative
+                            problem-solving.
+                        </p>
 
                     </div>
 
+                </div>
 
-                    <p>
-                        Building practical digital solutions through
-                        development, design, and problem solving.
+            </section>
+
+
+            <!-- =====================================
+                 ABOUT
+            ====================================== -->
+
+            <section class="section section-dark" id="about">
+
+                <div class="container narrow">
+
+                    <p class="section-label">
+                        ABOUT ME
+                    </p>
+
+                    <h2 class="section-title">
+                        Turning ideas into
+                        <span>digital solutions.</span>
+                    </h2>
+
+                    <p class="section-description">
+
+                        I am Jayenn Harold L. Esguerra, an Information
+                        Technology graduate specializing in Web and Mobile
+                        Application Development.
+
+                    </p>
+
+                    <p class="section-description">
+
+                        My experience covers front-end and back-end
+                        development, databases, UI design, networking,
+                        and system development.
+
+                    </p>
+
+                    <p class="section-description">
+
+                        During my internship, I contributed to the development
+                        of an Attendance Monitoring System while also taking
+                        part in IT administration, team coordination, and
+                        documentation.
+
                     </p>
 
                 </div>
 
-            </div>
-
-        </section>
+            </section>
 
 
-    <!-- =========================================
-         ABOUT
-    ========================================== -->
+            <!-- =====================================
+                 EXPERIENCE
+            ====================================== -->
 
-        <section
-            class="section section-dark"
-            id="about"
-        >
+            <section class="section" id="experience">
 
-            <div class="container narrow">
+                <div class="container">
 
-                <p class="section-label">
-                    ABOUT ME
-                </p>
+                    <p class="section-label">
+                        EXPERIENCE
+                    </p>
 
-                <h2 class="section-title">
-                    Turning ideas into
-                    <span>digital solutions.</span>
-                </h2>
+                    <h2 class="section-title">
+                        Where I've
+                        <span>worked.</span>
+                    </h2>
 
 
-                <p class="section-text">
+                    <div class="experience-card">
 
-                    I'm Jayenn Harold L. Esguerra, an Information
-                    Technology graduate specializing in Web and
-                    Mobile Application Development.
+                        <div class="experience-header">
 
-                </p>
+                            <div>
 
+                                <h3>
+                                    Ollopa Corporation
+                                </h3>
 
-                <p class="section-text">
+                                <p class="experience-role">
+                                    Software Developer Intern /
+                                    IT Administrator
+                                </p>
 
-                    I have hands-on experience in front-end
-                    development, backend development, databases,
-                    UI design, networking, and system development.
-                    During my internship, I worked on an Attendance
-                    Monitoring System while also supporting IT
-                    administration and team coordination.
+                            </div>
 
-                </p>
+                            <span class="experience-date">
+                                January 2026 — July 2026
+                            </span>
 
-
-                <p class="section-text">
-
-                    I enjoy learning new technologies, solving
-                    technical problems, and creating applications
-                    that are practical, responsive, and easy to use.
-
-                </p>
-
-            </div>
-
-        </section>
+                        </div>
 
 
-    <!-- =========================================
-         EXPERIENCE
-    ========================================== -->
+                        <ul class="experience-list">
 
-        <section
-            class="section"
-            id="experience"
-        >
+                            <li>
+                                Developed front-end interfaces for an
+                                Attendance Monitoring System using React,
+                                HTML, CSS, and JavaScript.
+                            </li>
 
-            <div class="container">
+                            <li>
+                                Supported Laravel and PHP backend
+                                development.
+                            </li>
 
-                <p class="section-label">
-                    EXPERIENCE
-                </p>
+                            <li>
+                                Implemented role-based interfaces for
+                                employee clock-in/out and account management.
+                            </li>
 
-                <h2 class="section-title">
-                    Work <span>Experience</span>
-                </h2>
+                            <li>
+                                Converted Figma designs into responsive
+                                user interfaces.
+                            </li>
+
+                            <li>
+                                Used Git and GitHub for version control
+                                and collaborative development.
+                            </li>
+
+                            <li>
+                                Coordinated development activities as
+                                Team Lead.
+                            </li>
+
+                            <li>
+                                Assisted with internship administration
+                                across departments, including onboarding,
+                                attendance, performance monitoring,
+                                and documentation.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </section>
 
 
-                <div class="experience-card">
+            <!-- =====================================
+                 SKILLS
+            ====================================== -->
 
-                    <div class="experience-header">
+            <section class="section section-dark" id="skills">
 
-                        <div>
+                <div class="container">
+
+                    <p class="section-label">
+                        SKILLS
+                    </p>
+
+                    <h2 class="section-title">
+                        Tools I use to
+                        <span>build.</span>
+                    </h2>
+
+
+                    <div class="skills-grid">
+
+
+                        <!-- Languages -->
+
+                        <div class="skill-card">
 
                             <h3>
-                                Ollopa Corporation
+                                Languages
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>JavaScript</span>
+                                <span>PHP</span>
+                                <span>C#</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Frontend -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Frontend
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>React.js</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Backend -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Backend
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>Laravel</span>
+                                <span>MVC</span>
+                                <span>API Development</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Mobile -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Mobile / Cross-Platform
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>FlutterFlow</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Database -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Database / Cloud
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>Firebase</span>
+                                <span>Supabase</span>
+                                <span>MySQL</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- APIs -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                APIs & Services
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>Google Maps API</span>
+                                <span>RESTful Services</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Tools -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Tools
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>Git</span>
+                                <span>GitHub</span>
+                                <span>VS Code</span>
+                                <span>XAMPP</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Core -->
+
+                        <div class="skill-card">
+
+                            <h3>
+                                Core Competencies
+                            </h3>
+
+                            <div class="skill-tags">
+
+                                <span>Role-Based Access Control</span>
+                                <span>Geolocation</span>
+                                <span>Responsive Design</span>
+                                <span>Debugging</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 PROJECTS
+            ====================================== -->
+
+            <section class="section" id="projects">
+
+                <div class="container">
+
+                    <p class="section-label">
+                        PROJECTS
+                    </p>
+
+                    <h2 class="section-title">
+                        Things I've
+                        <span>built.</span>
+                    </h2>
+
+
+                    <div class="projects-grid">
+
+
+                        <!-- =================================
+                             PROJECT 1 — RYLIM
+                        ================================== -->
+
+                        <article class="project-card featured">
+
+                            <div class="project-meta">
+
+                                <span>
+                                    CAPSTONE PROJECT
+                                </span>
+
+                                <span>
+                                    Project Manager
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                RYLIM Memory Atlas
+                            </h3>
+
+                            <p class="project-tech">
+                                FlutterFlow • Firebase • Google Maps API
+                            </p>
+
+
+                            <div class="project-media">
+
+                                <video
+                                    controls
+                                    preload="metadata"
+                                    playsinline
+                                >
+                                    <source
+                                        src="assets/Rylim_Memory_Atlas_AVP.mp4"
+                                        type="video/mp4"
+                                    >
+
+                                    Your browser does not support
+                                    the video element.
+
+                                </video>
+
+                            </div>
+
+
+                            <p class="project-description">
+
+                                A location-based memory atlas designed to
+                                help users pin, store, and rediscover
+                                meaningful memories through geolocation.
+
+                            </p>
+
+                            <p class="project-description">
+
+                                The project integrates Google Maps,
+                                Firebase Authentication, realtime cloud
+                                storage, and multimedia content such as
+                                photos, notes, and audio.
+
+                            </p>
+
+                            <p class="project-description">
+
+                                Built with a scalable cloud architecture
+                                and developed as an educational capstone
+                                project.
+
+                            </p>
+
+
+                            <a
+                                href="https://rylim-memory-atlas.flutterflow.app/login"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                Visit Project →
+                            </a>
+
+                        </article>
+
+
+                        <!-- =================================
+                             PROJECT 2 — AMS
+                        ================================== -->
+
+                        <article class="project-card">
+
+                            <div class="project-meta">
+
+                                <span>
+                                    INTERNSHIP PROJECT
+                                </span>
+
+                                <span>
+                                    Team Lead
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                Attendance Monitoring System
+                            </h3>
+
+                            <p class="project-tech">
+                                React • HTML • CSS • JavaScript •
+                                Laravel • PHP
+                            </p>
+
+
+                            <div class="project-media">
+
+                                <video
+                                    controls
+                                    preload="metadata"
+                                    playsinline
+                                >
+
+                                    <source
+                                        src="assets/AMS_SPT.mp4"
+                                        type="video/mp4"
+                                    >
+
+                                    Your browser does not support
+                                    the video element.
+
+                                </video>
+
+                            </div>
+
+
+                            <p class="project-description">
+
+                                An employee attendance system designed
+                                for clock-in/out, account management,
+                                and role-based access.
+
+                            </p>
+
+                            <p class="project-description">
+
+                                Developed a responsive React frontend
+                                and supported the Laravel/PHP backend
+                                while coordinating development activities
+                                as Team Lead.
+
+                            </p>
+
+                        </article>
+
+
+                        <!-- =================================
+                             PROJECT 3 — ZAMINA
+                        ================================== -->
+
+                        <article class="project-card">
+
+                            <div class="project-meta">
+
+                                <span>
+                                    SHS PROJECT
+                                </span>
+
+                                <span>
+                                    Lead Designer • Lead Programmer
+                                </span>
+
+                            </div>
+
+                            <h3>
+                                Zamina
+                            </h3>
+
+                            <p class="project-tech">
+                                WordPress • Web Design •
+                                Content Management
+                            </p>
+
+
+                            <div class="project-media">
+
+                                <img
+                                    src="assets/Zamina_Thumbnail.jpg"
+                                    alt="Zamina project website"
+                                >
+
+                            </div>
+
+
+                            <p class="project-description">
+
+                                A blog website created in 2022 focusing
+                                on Empowerment Technology and ICT topics.
+
+                            </p>
+
+
+                            <a
+                                href="https://empowermenttechnologygroup5ofict1201.tech.blog/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                Visit Project →
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 CERTIFICATIONS
+            ====================================== -->
+
+            <section
+                class="section section-dark"
+                id="certifications"
+            >
+
+                <div class="container">
+
+                    <p class="section-label">
+                        CERTIFICATIONS
+                    </p>
+
+                    <h2 class="section-title">
+                        Always
+                        <span>learning.</span>
+                    </h2>
+
+
+                    <div class="certifications-grid">
+
+
+                        <!-- Microsoft Copilot -->
+
+                        <a
+                            href="https://learn.microsoft.com/api/credentials/share/en-us/JayennEsguerra-0582/20739D3209294591?sharingId"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="certification-card"
+                        >
+
+                            <span class="cert-year">
+                                August 2026
+                            </span>
+
+                            <h3>
+                                Microsoft Applied Skills:
+                                Accelerate AI-assisted development
+                                by using GitHub Copilot
                             </h3>
 
                             <p>
-                                Software Developer Intern /
-                                IT Administrator
+                                Microsoft
                             </p>
 
-                        </div>
-
-
-                        <span class="experience-date">
-                            January 2026 — July 2026
-                        </span>
-
-                    </div>
-
-
-                    <ul class="experience-list">
-
-                        <li>
-                            Developed front-end components for an
-                            Attendance Monitoring System using
-                            React, HTML, CSS, and JavaScript.
-                        </li>
-
-                        <li>
-                            Assisted in backend development and
-                            maintenance using Laravel and PHP.
-                        </li>
-
-                        <li>
-                            Implemented role-based interfaces for
-                            clock in/out and account management.
-                        </li>
-
-                        <li>
-                            Translated Figma wireframes into
-                            responsive UI designs.
-                        </li>
-
-                        <li>
-                            Collaborated using Git and GitHub for
-                            version control and team coordination.
-                        </li>
-
-                        <li>
-                            Served as Team Lead by coordinating
-                            team members, monitoring progress,
-                            and tracking task completion.
-                        </li>
-
-                        <li>
-                            Assisted with internship administration
-                            across multiple departments, including
-                            onboarding, attendance tracking,
-                            performance monitoring, and
-                            documentation management.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    <!-- =========================================
-         SKILLS
-    ========================================== -->
-
-        <section
-            class="section section-dark"
-            id="skills"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    TECHNICAL SKILLS
-                </p>
-
-                <h2 class="section-title">
-                    Tools I <span>work with.</span>
-                </h2>
-
-
-                <div class="skills-grid">
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Languages
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>JavaScript</span>
-                            <span>PHP</span>
-                            <span>C#</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Frontend
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>React.js</span>
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Backend
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>Laravel</span>
-                            <span>MVC</span>
-                            <span>API Development</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Mobile / Cross-Platform
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>FlutterFlow</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Database / Cloud
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>Firebase</span>
-                            <span>Supabase</span>
-                            <span>MySQL</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            APIs & Services
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>Google Maps API</span>
-                            <span>RESTful Services</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Tools
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>Git</span>
-                            <span>GitHub</span>
-                            <span>VS Code</span>
-                            <span>XAMPP</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="skill-card">
-
-                        <h3>
-                            Core Competencies
-                        </h3>
-
-                        <div class="tags">
-
-                            <span>Role-Based Access Control</span>
-                            <span>Geolocation</span>
-                            <span>Responsive Design</span>
-                            <span>Debugging</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    <!-- =========================================
-         PROJECTS
-    ========================================== -->
-
-        <section
-            class="section"
-            id="projects"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    SELECTED WORK
-                </p>
-
-                <h2 class="section-title">
-                    Projects I've <span>worked on.</span>
-                </h2>
-
-
-                <div class="projects-grid">
-
-
-                    <!-- =================================
-                         RYLIM
-                    ================================== -->
-
-                    <article class="project-card featured">
-
-                        <div class="project-top">
-
-                            <span class="project-number">
-                                01
-                            </span>
-
-                            <span class="project-type">
-                                CAPSTONE PROJECT
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Rylim Memory Atlas
-                        </h3>
-
-                        <p class="project-role">
-                            Project Manager
-                        </p>
-
-
-                        <div class="technology-list">
-
-                            <span>FlutterFlow</span>
-                            <span>Firebase</span>
-                            <span>Google Maps API</span>
-
-                        </div>
-
-
-                        <!-- PROJECT VIDEO -->
-
-                        <div class="project-video">
-
-                            <video
-                                controls
-                                controlsList="nodownload"
-                                disablePictureInPicture
-                                preload="metadata"
-                                playsinline
-                            >
-
-                                <source
-                                    src="assets/Rylim_Memory_Atlas_AVP.mp4"
-                                    type="video/mp4"
-                                >
-
-                                Your browser does not support the video tag.
-
-                            </video>
-
-                        </div>
-
-
-                        <p class="project-description">
-
-                            A cross-platform application that allows
-                            users to pin and store personal memories
-                            using geolocation.
-
-                        </p>
-
-
-                        <ul class="project-features">
-
-                            <li>
-                                Integrated Google Maps API for
-                                location-based features and
-                                place recommendations.
-                            </li>
-
-                            <li>
-                                Utilized Firebase for real-time
-                                data storage, synchronization,
-                                and user authentication.
-                            </li>
-
-                            <li>
-                                Designed an interactive interface
-                                for adding multimedia content
-                                including photos, notes, and audio.
-                            </li>
-
-                            <li>
-                                Implemented a scalable cloud-based
-                                architecture to support growing
-                                user data.
-                            </li>
-
-                        </ul>
-
-
-                        <p class="project-description">
-
-                            Note: The APK for this app is for educational purposes only.
-
-                        </p>
-
-
-                        <a
-                            href="https://rylim-memory-atlas.flutterflow.app/login"
-                            class="project-link"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Visit Website →
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         ATTENDANCE MONITORING SYSTEM
-                    ================================== -->
-
-                    <article class="project-card">
-
-                        <div class="project-top">
-
-                            <span class="project-number">
-                                02
-                            </span>
-
-                            <span class="project-type">
-                                INTERNSHIP PROJECT
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Attendance Monitoring System
-                        </h3>
-
-                        <p class="project-role">
-                            Team Lead
-                        </p>
-
-
-                        <div class="technology-list">
-
-                            <span>React</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Laravel</span>
-                            <span>PHP</span>
-
-                        </div>
-
-
-                        <!-- ATTENDANCE SYSTEM VIDEO -->
-
-                        <div class="project-video">
-
-                            <video
-                                controls
-                                controlsList="nodownload"
-                                disablePictureInPicture
-                                preload="metadata"
-                                playsinline
-                            >
-
-                                <source
-                                    src="assets/AMS_SPT.mp4"
-                                    type="video/mp4"
-                                >
-
-                                Your browser does not support the video tag.
-
-                            </video>
-
-                        </div>
-
-
-                        <p class="project-description">
-
-                            An attendance monitoring system developed
-                            during my internship to support employee
-                            clock-in/out and account management.
-
-                        </p>
-
-
-                        <ul class="project-features">
-
-                            <li>
-                                Developed responsive front-end
-                                components using React.
-                            </li>
-
-                            <li>
-                                Assisted with Laravel and PHP
-                                backend development.
-                            </li>
-
-                            <li>
-                                Implemented role-based interfaces
-                                for different users.
-                            </li>
-
-                            <li>
-                                Coordinated team tasks and monitored
-                                project progress as Team Lead.
-                            </li>
-
-                        </ul>
-
-                    </article>
-
-
-                    <!-- =================================
-                         ZAMINA
-                    ================================== -->
-
-                    <article class="project-card">
-
-                        <div class="project-top">
-
-                            <span class="project-number">
-                                03
-                            </span>
-
-                            <span class="project-type">
-                                SHS PROJECT
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Zamina
-                        </h3>
-
-                        <p class="project-role">
-                            Lead Designer • Lead Programmer
-                        </p>
-
-
-                        <div class="technology-list">
-
-                            <span>WordPress</span>
-                            <span>Web Design</span>
-                            <span>Content Management</span>
-
-                        </div>
-
-
-                        <!-- ZAMINA THUMBNAIL -->
-
-                        <div class="project-image">
-
-                            <img
-                                src="assets/Zamina_Thumbnail.jpg"
-                                alt="Zamina website project thumbnail"
-                                loading="lazy"
-                                draggable="false"
-                                oncontextmenu="return false;"
-                            >
-
-                        </div>
-
-
-                        <p class="project-description">
-
-                            A blog website created in 2022 focused
-                            on Empowerment Technology and
-                            ICT-related topics.
-
-                        </p>
-
-
-                        <ul class="project-features">
-
-                            <li>
-                                Designed the visual presentation
-                                and structure of the website.
-                            </li>
-
-                            <li>
-                                Led the programming and
-                                implementation of the project.
-                            </li>
-
-                            <li>
-                                Published content related to
-                                technology, ICT, and digital
-                                empowerment.
-                            </li>
-
-                        </ul>
-
-
-                        <a
-                            href="https://empowermenttechnologygroup5ofict1201.tech.blog/"
-                            class="project-link"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Visit Website →
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    <!-- =========================================
-         CERTIFICATIONS
-    ========================================== -->
-
-        <section
-            class="section section-dark"
-            id="certifications"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    CERTIFICATIONS
-                </p>
-
-                <h2 class="section-title">
-                    Professional <span>Credentials</span>
-                </h2>
-
-
-                <div class="certifications-grid">
-
-                  <!-- =================================
-                         NEW CERTIFICATION — MICROSOFT GITHUB
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            AUGUST 2026
-                        </span>
-
-                        <h3>
-                            Microsoft Applied Skills: 
-                            Accelerate AI-assisted development 
-                            by using GitHub Copilot
-                        </h3>
-
-                        <p>
-                            Microsoft
-                        </p>
-
-                        <a
-                            href= "https://learn.microsoft.com/api/credentials/share/en-us/JayennEsguerra-0582/20739D3209294591?sharingId"
-                            target="_blank"
-                            rel="noopener"
-                        >
-                            Verify Credential →
-                        </a>
-
-                    </article>
-                    <!-- =================================
-                         — MICROSOFT ENTRA
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            AUGUST 2026
-                        </span>
-
-                        <h3>
-                            Microsoft Applied Skills:
-                            Get started with identities and
-                            access using Microsoft Entra
-                        </h3>
-
-                        <p>
-                            Microsoft
-                        </p>
+                        <!-- Microsoft Entra -->
 
                         <a
                             href="https://learn.microsoft.com/api/credentials/share/en-us/JayennEsguerra-0582/9E10499FE727935C?sharingId"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                August 2026
+                            </span>
+
+                            <h3>
+                                Microsoft Applied Skills:
+                                Get started with identities and
+                                access using Microsoft Entra
+                            </h3>
+
+                            <p>
+                                Microsoft
+                            </p>
+
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         NEW CERTIFICATION — C#
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            AUGUST 2026
-                        </span>
-
-                        <h3>
-                            Foundational C# with Microsoft
-                        </h3>
-
-                        <p>
-                            freeCodeCamp
-                        </p>
+                        <!-- C# -->
 
                         <a
                             href="https://freecodecamp.org/certification/jayenn_esguerra67/foundational-c-sharp-with-microsoft"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                August 2026
+                            </span>
+
+                            <h3>
+                                Foundational C# with Microsoft
+                            </h3>
+
+                            <p>
+                                freeCodeCamp
+                            </p>
+
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         IT TECHNICAL SUPPORT
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            NOVEMBER 2025
-                        </span>
-
-                        <h3>
-                            IT Technical Support Specialist
-                        </h3>
-
-                        <p>
-                            Certiport (Pearson VUE)
-                        </p>
+                        <!-- IT Technical Support -->
 
                         <a
                             href="https://www.credly.com/badges/04470ff6-7629-4a6f-8d62-ca15838790b1/public_url"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                November 2025
+                            </span>
+
+                            <h3>
+                                IT Technical Support Specialist
+                            </h3>
+
+                            <p>
+                                Certiport (Pearson VUE)
+                            </p>
+
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         DEVICE CONFIGURATION
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            NOVEMBER 2025
-                        </span>
-
-                        <h3>
-                            Information Technology Specialist –
-                            Device Configuration and Management
-                            (Windows 10)
-                        </h3>
-
-                        <p>
-                            Certiport (Pearson VUE)
-                        </p>
+                        <!-- Device Configuration -->
 
                         <a
                             href="https://www.credly.com/badges/e48d4222-fbe4-4bbb-98ae-a97f71e49c0d/public_url"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                November 2025
+                            </span>
+
+                            <h3>
+                                Information Technology Specialist –
+                                Device Configuration and Management
+                                (Windows 10)
+                            </h3>
+
+                            <p>
+                                Certiport (Pearson VUE)
+                            </p>
+
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         NETWORK SECURITY
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            MARCH 2025
-                        </span>
-
-                        <h3>
-                            Information Technology Specialist –
-                            Network Security
-                        </h3>
-
-                        <p>
-                            Certiport (Pearson VUE)
-                        </p>
+                        <!-- Network Security -->
 
                         <a
                             href="https://www.credly.com/badges/0c6e6dac-b0f0-4dec-a927-4989a8b93e63/public_url"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                March 2025
+                            </span>
+
+                            <h3>
+                                Information Technology Specialist –
+                                Network Security
+                            </h3>
+
+                            <p>
+                                Certiport (Pearson VUE)
+                            </p>
+
                         </a>
 
-                    </article>
 
-
-                    <!-- =================================
-                         NETWORKING
-                    ================================== -->
-
-                    <article class="certification-card">
-
-                        <span class="cert-date">
-                            JULY 2024
-                        </span>
-
-                        <h3>
-                            Information Technology Specialist –
-                            Networking
-                        </h3>
-
-                        <p>
-                            Certiport (Pearson VUE)
-                        </p>
+                        <!-- Networking -->
 
                         <a
                             href="https://www.credly.com/badges/e799ef54-95f8-4343-86dd-eeb53d01cf99/public_url"
                             target="_blank"
-                            rel="noopener"
+                            rel="noopener noreferrer"
+                            class="certification-card"
                         >
-                            Verify Credential →
+
+                            <span class="cert-year">
+                                July 2024
+                            </span>
+
+                            <h3>
+                                Information Technology Specialist –
+                                Networking
+                            </h3>
+
+                            <p>
+                                Certiport (Pearson VUE)
+                            </p>
+
                         </a>
 
-                    </article>
 
+                        <!-- Cisco -->
 
-                    <!-- =================================
-                         CISCO
-                    ================================== -->
+                        <div class="certification-card">
 
-                    <article class="certification-card">
+                            <span class="cert-year">
+                                July 2024
+                            </span>
 
-                        <span class="cert-date">
-                            JULY 2024
-                        </span>
+                            <h3>
+                                CCNAv7: Switching, Routing,
+                                and Wireless Essentials
+                            </h3>
 
-                        <h3>
-                            CCNAv7: Switching, Routing,
-                            and Wireless Essentials
-                        </h3>
+                            <p>
+                                Cisco Networking Academy
+                            </p>
 
-                        <p>
-                            Cisco Networking Academy
-                        </p>
-
-                        <div class="certification-no-link">
-                           Academic training certification
                         </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    <!-- =========================================
-         EDUCATION
-    ========================================== -->
-
-        <section
-            class="section"
-            id="education"
-        >
-
-            <div class="container">
-
-                <p class="section-label">
-                    EDUCATION
-                </p>
-
-                <h2 class="section-title">
-                    Academic <span>Background</span>
-                </h2>
-
-
-                <div class="education-card">
-
-                    <div>
-
-                        <h3>
-                            Bachelor of Science in Information Technology
-                        </h3>
-
-                        <p>
-                            Web and Mobile Application Development
-                        </p>
-
-                        <span>
-                            Far Eastern University – Alabang
-                        </span>
 
                     </div>
 
+                </div>
 
-                    <span class="education-date">
-                        September 2022 — September 2026
-                    </span>
+            </section>
+
+
+            <!-- =====================================
+                 EDUCATION
+            ====================================== -->
+
+            <section class="section" id="education">
+
+                <div class="container">
+
+                    <p class="section-label">
+                        EDUCATION
+                    </p>
+
+                    <h2 class="section-title">
+                        Where I
+                        <span>started.</span>
+                    </h2>
+
+
+                    <div class="education-card">
+
+                        <div class="education-icon">
+                            🎓
+                        </div>
+
+                        <div class="education-content">
+
+                            <p class="education-year">
+                                September 2022 — September 2026
+                            </p>
+
+                            <h3>
+                                Bachelor of Science in
+                                Information Technology
+                            </h3>
+
+                            <p>
+                                Web and Mobile Application Development
+                            </p>
+
+                            <p class="education-school">
+                                Far Eastern University – Alabang
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-        </section>
+            </section>
 
 
-    <!-- =========================================
-         CONTACT
-    ========================================== -->
+            <!-- =====================================
+                 CONTACT
+            ====================================== -->
 
-        <section
-            class="section section-dark"
-            id="contact"
-        >
+            <section
+                class="section section-dark contact-section"
+                id="contact"
+            >
 
-            <div class="container contact-container">
+                <div class="container narrow">
 
-                <p class="section-label">
-                    CONTACT
-                </p>
+                    <p class="section-label">
+                        CONTACT
+                    </p>
 
-                <h2 class="section-title">
-                    Let's build something
-                    <span>together.</span>
-                </h2>
+                    <h2 class="section-title">
+                        Let's build something
+                        <span>together.</span>
+                    </h2>
 
+                    <p class="section-description">
 
-                <p class="contact-description">
+                        I'm open to opportunities where I can contribute
+                        my skills, continue learning, and build meaningful
+                        technology solutions.
 
-                    Interested in working together or learning more
-                    about my experience? Feel free to reach out.
-
-                </p>
-
-
-                <div class="contact-links">
-
-                    <a
-                        href="mailto:esguerrajayenn67@gmail.com"
-                    >
-                        esguerrajayenn67@gmail.com
-                    </a>
+                    </p>
 
 
-                    <a
-                        href="https://www.linkedin.com/in/jayennharoldesguerra"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        LinkedIn
-                    </a>
+                    <div class="contact-links">
+
+                        <a
+                            href="mailto:esguerrajayenn67@gmail.com"
+                            class="contact-link"
+                        >
+                            esguerrajayenn67@gmail.com
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/jayennharoldesguerra"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="contact-link"
+                        >
+                            LinkedIn
+                        </a>
+
+                    </div>
 
                 </div>
 
+            </section>
+
+        </main>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="site-footer">
+
+            <div class="container">
+
+                <p>
+                    © 2026 Jayenn Esguerra.
+                    All Rights Reserved.
+                </p>
+
             </div>
 
-        </section>
+        </footer>
 
-    </main>
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================== -->
-
-    <footer>
-
-        <p>
-            © 2026 Jayenn Esguerra. All Rights Reserved.
-        </p>
-
-    </footer>
+    </div>
 
 
     <!-- =========================================
-         RESUME UPDATE MODAL
+         RESUME MODAL
     ========================================== -->
 
     <div
@@ -1223,7 +1123,7 @@
 
         <div
             class="resume-modal-overlay"
-            id="resumeModalOverlay"
+            id="resumeOverlay"
         ></div>
 
 
@@ -1237,8 +1137,8 @@
             <button
                 type="button"
                 class="resume-modal-close"
-                id="resumeModalClose"
-                aria-label="Close"
+                id="closeResume"
+                aria-label="Close resume dialog"
             >
                 ×
             </button>
@@ -1255,20 +1155,21 @@
 
 
             <h2 id="resumeModalTitle">
-                Currently <span>Updating</span>
+                Currently Updating
             </h2>
 
 
             <p>
-                My resume is currently being updated.
-                Please check back soon for the latest version.
+                My resume is currently being updated to reflect
+                my latest education, projects, certifications,
+                and professional experience.
             </p>
 
 
             <button
                 type="button"
-                class="btn primary-btn"
-                id="resumeModalOk"
+                class="secondary-btn"
+                id="resumeGotIt"
             >
                 Got it
             </button>
@@ -1279,161 +1180,162 @@
 
 
     <!-- =========================================
-         MEDIA PROTECTION
+         JAVASCRIPT
     ========================================== -->
 
     <script>
 
-        /*
-         * Prevent casual right-clicking on the page.
-         * This is only a deterrent and does not provide
-         * complete protection against copying.
-         */
+        /* =====================================
+           OPENING INTRO
+        ====================================== */
+
+        window.addEventListener("load", function () {
+
+            const introScreen =
+                document.getElementById("introScreen");
+
+            const portfolioPage =
+                document.getElementById("portfolioPage");
+
+
+            /*
+             * Prevent scrolling while intro
+             * animation is playing.
+             */
+
+            document.body.style.overflow = "hidden";
+
+
+            /*
+             * Reveal portfolio after intro.
+             */
+
+            setTimeout(function () {
+
+                introScreen.classList.add("intro-finished");
+
+                portfolioPage.classList.add("portfolio-visible");
+
+                document.body.style.overflow = "";
+
+            }, 3900);
+
+        });
+
+
+        /* =====================================
+           DISABLE CONTEXT MENU
+        ====================================== */
 
         document.addEventListener(
             "contextmenu",
             function (event) {
-
                 event.preventDefault();
-
             }
         );
 
 
-        /*
-         * Prevent dragging images.
-         */
+        /* =====================================
+           PREVENT IMAGE DRAGGING
+        ====================================== */
 
         document.addEventListener(
             "dragstart",
             function (event) {
 
                 if (event.target.tagName === "IMG") {
-
                     event.preventDefault();
-
                 }
 
             }
         );
 
-    </script>
 
-
-    <!-- =========================================
-         RESUME MODAL SCRIPT
-    ========================================== -->
-
-    <script>
-
-        const resumeBtn =
-            document.getElementById("resumeBtn");
+        /* =====================================
+           RESUME MODAL
+        ====================================== */
 
         const resumeModal =
             document.getElementById("resumeModal");
 
-        const resumeModalClose =
-            document.getElementById("resumeModalClose");
+        const openResume =
+            document.getElementById("openResume");
 
-        const resumeModalOk =
-            document.getElementById("resumeModalOk");
+        const closeResume =
+            document.getElementById("closeResume");
 
-        const resumeModalOverlay =
-            document.getElementById("resumeModalOverlay");
+        const resumeOverlay =
+            document.getElementById("resumeOverlay");
 
+        const resumeGotIt =
+            document.getElementById("resumeGotIt");
 
-        /*
-         * Open Resume Modal
-         */
 
         function openResumeModal() {
-
-            resumeModal.classList.add("active");
 
             resumeModal.setAttribute(
                 "aria-hidden",
                 "false"
             );
 
+            resumeModal.classList.add("active");
+
             document.body.style.overflow = "hidden";
 
-            resumeModalClose.focus();
+            closeResume.focus();
 
         }
 
 
-        /*
-         * Close Resume Modal
-         */
-
         function closeResumeModal() {
-
-            resumeModal.classList.remove("active");
 
             resumeModal.setAttribute(
                 "aria-hidden",
                 "true"
             );
 
+            resumeModal.classList.remove("active");
+
             document.body.style.overflow = "";
 
         }
 
 
-        /*
-         * Resume Button
-         */
-
-        resumeBtn.addEventListener(
+        openResume.addEventListener(
             "click",
             openResumeModal
         );
 
 
-        /*
-         * Close Button
-         */
-
-        resumeModalClose.addEventListener(
+        closeResume.addEventListener(
             "click",
             closeResumeModal
         );
 
 
-        /*
-         * Got It Button
-         */
-
-        resumeModalOk.addEventListener(
+        resumeGotIt.addEventListener(
             "click",
             closeResumeModal
         );
 
 
-        /*
-         * Close when clicking outside modal
-         */
-
-        resumeModalOverlay.addEventListener(
+        resumeOverlay.addEventListener(
             "click",
             closeResumeModal
         );
 
-
-        /*
-         * Close using Escape key
-         */
 
         document.addEventListener(
             "keydown",
             function (event) {
 
-                if (
-                    event.key === "Escape" &&
-                    resumeModal.classList.contains("active")
-                ) {
+                if (event.key === "Escape") {
 
-                    closeResumeModal();
+                    if (
+                        resumeModal.classList.contains("active")
+                    ) {
+                        closeResumeModal();
+                    }
 
                 }
 
@@ -1442,7 +1344,5 @@
 
     </script>
 
-
 </body>
-
 </html>
