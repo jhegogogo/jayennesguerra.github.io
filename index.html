@@ -140,12 +140,16 @@
 
 
 
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
     <main>
 
 
         <!-- =========================================
              HOME
-             THIS STAYS IN INDEX.HTML
+             STAYS IN INDEX.HTML
         ========================================== -->
 
         <section
@@ -158,7 +162,7 @@
                 <div class="hero-content">
 
                     <p class="eyebrow">
-                        ASPIRING SOFTWARE ENGINEERING
+                        ASPIRING SOFTWARE ENGINEER
                         • ROBOT OPERATOR
                         • AI TRAINING CONTRIBUTOR
                     </p>
@@ -239,7 +243,7 @@
 
         <!-- =========================================
              ABOUT
-             THIS STAYS IN INDEX.HTML
+             STAYS IN INDEX.HTML
         ========================================== -->
 
         <section
@@ -255,27 +259,22 @@
 
 
                 <h2 class="section-title">
-
                     Turning ideas into
                     <span>
                         digital solutions.
                     </span>
-
                 </h2>
 
 
                 <p class="section-text">
-
                     I'm Jayenn Harold L. Esguerra,
                     an Information Technology graduate
                     specializing in Web and Mobile
                     Application Development.
-
                 </p>
 
 
                 <p class="section-text">
-
                     I have hands-on experience in
                     front-end development, backend
                     development, databases, UI design,
@@ -285,17 +284,14 @@
                     an Attendance Monitoring System
                     while also supporting IT
                     administration and team coordination.
-
                 </p>
 
 
                 <p class="section-text">
-
                     I enjoy learning new technologies,
                     solving technical problems, and
                     creating applications that are
                     practical, responsive, and easy to use.
-
                 </p>
 
             </div>
@@ -305,18 +301,54 @@
 
 
         <!-- =========================================
-             SEPARATE HTML FILES
+             EXPERIENCE
+             LOADED FROM sections/experience.html
         ========================================== -->
 
         <div id="experience-container"></div>
 
+
+
+        <!-- =========================================
+             SKILLS
+             LOADED FROM sections/skills.html
+        ========================================== -->
+
         <div id="skills-container"></div>
+
+
+
+        <!-- =========================================
+             PROJECTS
+             LOADED FROM sections/projects.html
+        ========================================== -->
 
         <div id="projects-container"></div>
 
+
+
+        <!-- =========================================
+             CERTIFICATIONS
+             LOADED FROM sections/certifications.html
+        ========================================== -->
+
         <div id="certifications-container"></div>
 
+
+
+        <!-- =========================================
+             EDUCATION
+             LOADED FROM sections/education.html
+        ========================================== -->
+
         <div id="education-container"></div>
+
+
+
+        <!-- =========================================
+             LEADERSHIP
+             LOADED FROM sections/leadership.html
+        ========================================== -->
 
         <div id="leadership-container"></div>
 
@@ -324,7 +356,7 @@
 
         <!-- =========================================
              CONTACT
-             THIS STAYS IN INDEX.HTML
+             STAYS IN INDEX.HTML
         ========================================== -->
 
         <section
@@ -340,21 +372,17 @@
 
 
                 <h2 class="section-title">
-
                     Let's build something
                     <span>
                         together.
                     </span>
-
                 </h2>
 
 
                 <p class="contact-description">
-
                     Interested in working together or
                     learning more about my experience?
                     Feel free to reach out.
-
                 </p>
 
 
@@ -377,7 +405,7 @@
                     <a
                         href="https://www.linkedin.com/in/jayennharoldesguerra"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                     >
                         LinkedIn
                     </a>
@@ -406,13 +434,14 @@
             class="resume-modal"
             role="dialog"
             aria-modal="true"
+            aria-labelledby="resumeModalTitle"
         >
 
             <button
                 type="button"
                 class="resume-modal-close"
                 id="resumeClose"
-                aria-label="Close"
+                aria-label="Close resume message"
             >
                 ×
             </button>
@@ -423,17 +452,15 @@
             </div>
 
 
-            <h2>
+            <h2 id="resumeModalTitle">
                 Currently Updating
             </h2>
 
 
             <p>
-
                 My resume is currently being updated.
                 Please check back soon for the latest
                 version.
-
             </p>
 
 
@@ -457,13 +484,21 @@
 
     <footer>
 
-        <p>
-            © 2026 Jayenn Esguerra. All Rights Reserved.
-        </p>
+        <div class="container">
+
+            <p>
+                © 2026 Jayenn Esguerra. All Rights Reserved.
+            </p>
+
+        </div>
 
     </footer>
 
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script src="script.js"></script>
 
