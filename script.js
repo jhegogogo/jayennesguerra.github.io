@@ -1,271 +1,293 @@
-/* =========================================================
-   PORTFOLIO SCRIPT
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       PREVENT IMAGE DRAGGING
-    ====================================================== */
-
-    const images = document.querySelectorAll("img");
-
-    images.forEach((image) => {
-        image.addEventListener("dragstart", (event) => {
-            event.preventDefault();
-        });
-    });
-
-
-    /* =====================================================
-       OPTIONAL RIGHT-CLICK PROTECTION
-    ====================================================== */
-
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-    });
-
-
-    /* =====================================================
-       RESUME MODAL
-    ====================================================== */
-
-    const resumeModal = document.querySelector(
-        ".resume-modal-overlay"
-    );
-
-    const resumeButtons = document.querySelectorAll(
-        ".resume-btn"
-    );
-
-    const resumeCloseButton = document.querySelector(
-        ".resume-modal-close"
-    );
-
-
-    /* Open Resume Modal */
-
-    resumeButtons.forEach((button) => {
-
-        button.addEventListener("click", (event) => {
-
-            event.preventDefault();
-
-            if (!resumeModal) {
-                return;
-            }
-
-            resumeModal.classList.add("active");
-
-            document.body.classList.add("modal-open");
-
-        });
-
-    });
-
-
-    /* Close Resume Modal */
-
-    const closeResumeModal = () => {
-
-        if (!resumeModal) {
-            return;
+    const sections = [
+        {
+            file: "experience.html",
+            container: "experience-container"
+        },
+        {
+            file: "skills.html",
+            container: "skills-container"
+        },
+        {
+            file: "projects.html",
+            container: "projects-container"
+        },
+        {
+            file: "certifications.html",
+            container: "certifications-container"
+        },
+        {
+            file: "education.html",
+            container: "education-container"
+        },
+        {
+            file: "leadership.html",
+            container: "leadership-container"
         }
-
-        resumeModal.classList.remove("active");
-
-        document.body.classList.remove("modal-open");
-
-    };
+    ];
 
 
-    if (resumeCloseButton) {
+    /* ================================
+       LOAD SEPARATE HTML FILES
+    ================================= */
 
-        resumeCloseButton.addEventListener(
-            "click",
-            closeResumeModal
-        );
+    async function loadSections() {
 
-    }
+        for (const section of sections) {
 
+            try {
 
-    /* Close when clicking the overlay */
+                const response = await fetch(
+                    `sections/${section.file}`
+                );
 
-    if (resumeModal) {
+                if (!response.ok) {
+                    throw new Error(
+                        `Could not load ${section.file}`
+                    );
+                }
 
-        resumeModal.addEventListener("click", (event) => {
+                const html =
+                    await response.text();
 
-            if (
-                event.target === resumeModal
-            ) {
-                closeResumeModal();
+                document.getElementById(
+                    section.container
+                ).innerHTML = html;
+
+            } catch (error) {
+
+                console.error(error);
+
             }
-
-        });
-
-    }
-
-
-    /* =====================================================
-       ESCAPE KEY
-    ====================================================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key === "Escape") {
-
-            closeResumeModal();
 
         }
 
-    });
 
-
-    /* =====================================================
-       OPENING INTRO
-    ====================================================== */
-
-    const introScreen = document.querySelector(
-        ".intro-screen"
-    );
-
-
-    if (introScreen) {
-
-        /*
-         * Intro exists only on main.html.
-         *
-         * After the animation finishes,
-         * remove it from the page completely.
-         */
-
-        const removeIntro = () => {
-
-            introScreen.remove();
-
-            document.body.classList.remove(
-                "intro-active"
-            );
-
-        };
-
-
-        /*
-         * CSS animation runs for approximately
-         * 6 seconds including the fade-out.
-         */
-
-        setTimeout(
-            removeIntro,
-            6200
-        );
+        setupNavigation();
+        setupResumeModal();
+        setupImageProtection();
 
     }
 
 
-    /* =====================================================
-       SMOOTH INTERNAL NAVIGATION
-    ====================================================== */
+    /* ================================
+       SMOOTH NAVIGATION
+    ================================= */
 
-    const internalLinks = document.querySelectorAll(
-        'a[href^="#"]'
-    );
+    function setupNavigation() {
 
-    internalLinks.forEach((link) => {
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(link => {
 
-        link.addEventListener("click", (event) => {
+                link.addEventListener(
+                    "click",
+                    event => {
 
-            const targetId =
-                link.getAttribute("href");
+                        const targetId =
+                            link.getAttribute("href");
 
-            if (
-                !targetId ||
-                targetId === "#"
-            ) {
-                return;
-            }
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
 
-            const target =
-                document.querySelector(targetId);
+                        if (!target) {
+                            return;
+                        }
 
-            if (!target) {
-                return;
-            }
+                        event.preventDefault();
 
-            event.preventDefault();
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+                        history.replaceState(
+                            null,
+                            "",
+                            targetId
+                        );
+
+                    }
+                );
+
             });
 
-        });
-
-    });
+    }
 
 
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ====================================================== */
+    /* ================================
+       RESUME MODAL
+    ================================= */
 
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop() || "main.html";
+    function setupResumeModal() {
 
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+        const modal =
+            document.getElementById("resumeModal");
+
+        const openButton =
+            document.querySelector(".resume-btn");
+
+        const closeButton =
+            document.querySelector(
+                ".resume-modal-close"
+            );
+
+        const confirmButton =
+            document.querySelector(
+                ".resume-modal-confirm"
+            );
 
 
-    navLinks.forEach((link) => {
-
-        const linkPage =
-            link.getAttribute("href");
-
-        if (!linkPage) {
+        if (!modal || !openButton) {
             return;
         }
 
-        /*
-         * Only compare actual page names.
-         * This prevents main.html#about from
-         * interfering with page navigation.
-         */
 
-        const pageName =
-            linkPage.split("#")[0];
+        function openModal() {
 
-        if (
-            pageName &&
-            pageName === currentPage
-        ) {
+            modal.classList.add("active");
 
-            link.classList.add("active");
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "modal-open"
+            );
 
         }
 
-    });
+
+        function closeModal() {
+
+            modal.classList.remove("active");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "modal-open"
+            );
+
+        }
 
 
-    /* =====================================================
-       REDUCED MOTION
-    ====================================================== */
-
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+        openButton.addEventListener(
+            "click",
+            openModal
+        );
 
 
-    if (
-        prefersReducedMotion &&
-        introScreen
-    ) {
+        closeButton?.addEventListener(
+            "click",
+            closeModal
+        );
 
-        introScreen.remove();
+
+        confirmButton?.addEventListener(
+            "click",
+            closeModal
+        );
+
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (event.target === modal) {
+                    closeModal();
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    modal.classList.contains("active")
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
 
     }
+
+
+    /* ================================
+       IMAGE PROTECTION
+    ================================= */
+
+    function setupImageProtection() {
+
+        document
+            .querySelectorAll("img")
+            .forEach(image => {
+
+                image.setAttribute(
+                    "draggable",
+                    "false"
+                );
+
+                image.addEventListener(
+                    "dragstart",
+                    event => {
+                        event.preventDefault();
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* ================================
+       CONTEXT MENU
+    ================================= */
+
+    document.addEventListener(
+        "contextmenu",
+        event => {
+            event.preventDefault();
+        }
+    );
+
+
+    /* ================================
+       INTRO ANIMATION
+    ================================= */
+
+    const intro =
+        document.getElementById("introScreen");
+
+    if (intro) {
+
+        setTimeout(() => {
+
+            intro.remove();
+
+        }, 6500);
+
+    }
+
+
+    /* ================================
+       START
+    ================================= */
+
+    loadSections();
 
 });
