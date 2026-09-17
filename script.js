@@ -1,139 +1,90 @@
+/* =========================================
+   JAYENN ESGUERRA — PORTFOLIO
+   JAVASCRIPT
+========================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-
     /* =========================================
-       SEPARATE SECTION FILES
+       SECTION FILES
     ========================================== */
 
     const sections = [
-
         {
-            file: "experience.html",
+            file: "sections/experience.html",
             container: "experience-container"
         },
-
         {
-            file: "skills.html",
+            file: "sections/skills.html",
             container: "skills-container"
         },
-
         {
-            file: "projects.html",
+            file: "sections/projects.html",
             container: "projects-container"
         },
-
         {
-            file: "certifications.html",
+            file: "sections/certifications.html",
             container: "certifications-container"
         },
-
         {
-            file: "education.html",
+            file: "sections/education.html",
             container: "education-container"
         },
-
         {
-            file: "leadership.html",
+            file: "sections/leadership.html",
             container: "leadership-container"
         }
-
     ];
 
 
-
     /* =========================================
-       LOAD SECTION FILE
+       LOAD SEPARATE HTML FILES
     ========================================== */
 
-    async function loadSection(section) {
+    async function loadSections() {
 
-        const container =
-            document.getElementById(
-                section.container
-            );
+        for (const section of sections) {
 
+            const container =
+                document.getElementById(section.container);
 
-        if (!container) {
-            return;
-        }
-
-
-        try {
-
-            const fileURL = new URL(
-                `sections/${section.file}`,
-                document.baseURI
-            );
-
-
-            const response = await fetch(
-                fileURL.href,
-                {
-                    cache: "no-cache"
-                }
-            );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    `${section.file} returned ${response.status}`
+            if (!container) {
+                console.warn(
+                    `Container #${section.container} was not found.`
                 );
 
+                continue;
             }
 
+            try {
 
-            const html =
-                await response.text();
+                const response =
+                    await fetch(section.file);
 
+                if (!response.ok) {
+                    throw new Error(
+                        `HTTP ${response.status}`
+                    );
+                }
 
-            container.innerHTML = html;
+                const html =
+                    await response.text();
 
+                container.innerHTML = html;
 
-        } catch (error) {
+            } catch (error) {
 
-            console.error(
-                `Could not load ${section.file}:`,
-                error
-            );
+                console.error(
+                    `Could not load ${section.file}:`,
+                    error
+                );
 
-
-            /*
-             * Do NOT remove the whole website
-             * if one section fails.
-             */
-
-            container.innerHTML = "";
-
+                container.innerHTML = "";
+            }
         }
 
-    }
-
-
-
-    /* =========================================
-       LOAD ALL SECTIONS
-    ========================================== */
-
-    async function loadAllSections() {
-
-        await Promise.all(
-            sections.map(
-                section => loadSection(section)
-            )
-        );
-
-
         setupNavigation();
-
-        setupResumeModal();
-
-        setupImageProtection();
-
-        handleInitialHash();
-
     }
-
 
 
     /* =========================================
@@ -142,324 +93,251 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setupNavigation() {
 
-        const links =
+        const navLinks =
             document.querySelectorAll(
-                'a[href^="#"]'
+                ".nav-links a"
             );
 
 
-        links.forEach(link => {
+        navLinks.forEach(link => {
 
-            link.addEventListener(
-                "click",
-                event => {
+            link.addEventListener("click", event => {
 
-                    const targetId =
-                        link.getAttribute("href");
+                const href =
+                    link.getAttribute("href");
 
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
+                if (
+                    !href ||
+                    !href.startsWith("#")
+                ) {
+                    return;
+                }
 
 
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
+                const target =
+                    document.querySelector(href);
+
+                if (!target) {
+                    return;
+                }
 
 
-                    if (!target) {
-
-                        console.warn(
-                            `Navigation target not found: ${targetId}`
-                        );
-
-                        return;
-
-                    }
+                event.preventDefault();
 
 
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-
-                    history.replaceState(
-                        null,
-                        "",
-                        targetId
+                const header =
+                    document.querySelector(
+                        ".site-header"
                     );
 
-                }
-            );
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.scrollY -
+                    headerHeight;
+
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth"
+                });
+
+            });
 
         });
 
     }
 
 
-
-    /* =========================================
-       INITIAL HASH
-    ========================================== */
-
-    function handleInitialHash() {
-
-        const hash =
-            window.location.hash;
-
-
-        if (!hash) {
-            return;
-        }
-
-
-        const target =
-            document.querySelector(hash);
-
-
-        if (!target) {
-            return;
-        }
-
-
-        setTimeout(() => {
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }, 200);
-
-    }
-
-
-
     /* =========================================
        RESUME MODAL
     ========================================== */
 
-    function setupResumeModal() {
+    const resumeButton =
+        document.getElementById(
+            "resumeButton"
+        );
 
-        const modal =
-            document.getElementById(
-                "resumeModal"
-            );
+    const resumeModal =
+        document.getElementById(
+            "resumeModal"
+        );
 
+    const resumeClose =
+        document.getElementById(
+            "resumeClose"
+        );
 
-        const openButton =
-            document.getElementById(
-                "resumeButton"
-            );
-
-
-        const closeButton =
-            document.getElementById(
-                "resumeClose"
-            );
-
-
-        const confirmButton =
-            document.getElementById(
-                "resumeConfirm"
-            );
+    const resumeConfirm =
+        document.getElementById(
+            "resumeConfirm"
+        );
 
 
-        if (
-            !modal ||
-            !openButton
-        ) {
+    function openResumeModal() {
+
+        if (!resumeModal) {
             return;
         }
 
+        resumeModal.classList.add("active");
+
+        resumeModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow = "hidden";
+
+    }
 
 
-        function openModal() {
+    function closeResumeModal() {
 
-            modal.classList.add(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.classList.add(
-                "modal-open"
-            );
-
+        if (!resumeModal) {
+            return;
         }
 
+        resumeModal.classList.remove("active");
 
-
-        function closeModal() {
-
-            modal.classList.remove(
-                "active"
-            );
-
-
-            modal.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.classList.remove(
-                "modal-open"
-            );
-
-        }
-
-
-
-        openButton.addEventListener(
-            "click",
-            openModal
+        resumeModal.setAttribute(
+            "aria-hidden",
+            "true"
         );
 
+        document.body.style.overflow = "";
 
-        closeButton?.addEventListener(
+    }
+
+
+    if (resumeButton) {
+
+        resumeButton.addEventListener(
             "click",
-            closeModal
-        );
-
-
-        confirmButton?.addEventListener(
-            "click",
-            closeModal
-        );
-
-
-        modal.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === modal
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape" &&
-                    modal.classList.contains("active")
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
+            openResumeModal
         );
 
     }
 
 
+    if (resumeClose) {
+
+        resumeClose.addEventListener(
+            "click",
+            closeResumeModal
+        );
+
+    }
+
+
+    if (resumeConfirm) {
+
+        resumeConfirm.addEventListener(
+            "click",
+            closeResumeModal
+        );
+
+    }
+
 
     /* =========================================
-       IMAGE PROTECTION
+       CLOSE MODAL WHEN CLICKING OUTSIDE
     ========================================== */
 
-    function setupImageProtection() {
+    if (resumeModal) {
 
-        document
-            .querySelectorAll("img")
-            .forEach(image => {
+        resumeModal.addEventListener(
+            "click",
+            event => {
 
-                image.setAttribute(
-                    "draggable",
-                    "false"
-                );
+                if (
+                    event.target === resumeModal
+                ) {
+                    closeResumeModal();
+                }
 
-
-                image.addEventListener(
-                    "dragstart",
-                    event => {
-
-                        event.preventDefault();
-
-                    }
-                );
-
-            });
+            }
+        );
 
     }
 
 
-
     /* =========================================
-       DISABLE CONTEXT MENU
+       ESCAPE KEY
     ========================================== */
 
     document.addEventListener(
-        "contextmenu",
+        "keydown",
         event => {
 
-            event.preventDefault();
+            if (event.key === "Escape") {
+                closeResumeModal();
+            }
 
         }
     );
 
 
-
     /* =========================================
-       INTRO ANIMATION
+       INTRO SCREEN
     ========================================== */
 
-    const intro =
+    const introScreen =
         document.getElementById(
             "introScreen"
         );
 
 
-    if (intro) {
+    if (introScreen) {
 
-        setTimeout(() => {
+        const INTRO_DURATION = 3600;
 
-            intro.classList.add(
-                "intro-hidden"
+
+        window.setTimeout(() => {
+
+            introScreen.classList.add(
+                "hidden"
             );
 
+            window.setTimeout(() => {
 
-            setTimeout(() => {
+                introScreen.style.display =
+                    "none";
 
-                intro.remove();
+            }, 850);
 
-            }, 900);
-
-        }, 5500);
+        }, INTRO_DURATION);
 
     }
 
 
-
     /* =========================================
-       START LOADING
+       PREVENT IMAGE DRAGGING
     ========================================== */
 
-    loadAllSections();
+    document.addEventListener(
+        "dragstart",
+        event => {
+
+            if (
+                event.target.tagName === "IMG"
+            ) {
+                event.preventDefault();
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       LOAD EVERYTHING
+    ========================================== */
+
+    loadSections();
 
 });
