@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setupNavigation() {
         const navLinks = document.querySelectorAll(
-            '.site-nav a[href^="#"]'
+            '.nav-links a[href^="#"]'
         );
 
         navLinks.forEach((link) => {
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
         /* Open modal */
         function openResumeModal() {
             resumeModal.classList.add("active");
-
+            resumeModal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
         }
 
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
         /* Close modal */
         function closeResumeModal() {
             resumeModal.classList.remove("active");
-
+            resumeModal.setAttribute("aria-hidden", "true");
             document.body.style.overflow = "";
         }
 
@@ -382,17 +382,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       INITIALIZE
-    ========================================= */
+   INITIALIZE
+========================================= */
 
-    setupThemeToggle();
+setupResumeModal();
 
-    setupResumeModal();
+setupIntroScreen();
 
-    setupIntroScreen();
+preventImageDragging();
 
-    preventImageDragging();
+setupThemeToggle();
 
-    setupThemeToggle();
-    loadSections();
+loadSections();
 });
