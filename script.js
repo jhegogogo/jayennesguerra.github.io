@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
@@ -80,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         setupNavigation();
+        setupLeadershipSlideshow();
     }
 
 
@@ -144,6 +144,73 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
             });
+
+        });
+
+    }
+
+
+    /* =========================================
+       LEADERSHIP PHOTO SLIDESHOW
+    ========================================== */
+
+    function setupLeadershipSlideshow() {
+
+        const slideshows =
+            document.querySelectorAll(
+                ".leadership-slideshow"
+            );
+
+
+        slideshows.forEach(slideshow => {
+
+            const slides =
+                slideshow.querySelectorAll(
+                    "img"
+                );
+
+
+            if (slides.length <= 1) {
+                return;
+            }
+
+
+            let currentSlide = 0;
+
+
+            slides.forEach((slide, index) => {
+
+                slide.classList.toggle(
+                    "active",
+                    index === 0
+                );
+
+            });
+
+
+            const interval =
+                slideshow.dataset.interval
+                    ? Number(slideshow.dataset.interval)
+                    : 3000;
+
+
+            window.setInterval(() => {
+
+                slides[currentSlide].classList.remove(
+                    "active"
+                );
+
+
+                currentSlide =
+                    (currentSlide + 1) %
+                    slides.length;
+
+
+                slides[currentSlide].classList.add(
+                    "active"
+                );
+
+            }, interval);
 
         });
 
