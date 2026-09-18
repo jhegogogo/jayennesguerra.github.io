@@ -175,35 +175,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Restore saved theme */
         if (savedTheme === "light") {
-            document.body.classList.add("light-mode");
-
-            themeToggleIcon.textContent = "☾";
-
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to dark mode"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to dark mode"
-            );
-        } else {
-            document.body.classList.remove("light-mode");
-
-            themeToggleIcon.textContent = "☀";
-
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to light mode"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to light mode"
-            );
-        }
-
+    document.body.classList.add("light-mode");
+    themeToggleIcon.textContent = "☀";
+    themeToggle.setAttribute("aria-label", "Light mode");
+    themeToggle.setAttribute("title", "Light mode");
+} else {
+    document.body.classList.remove("light-mode");
+    themeToggleIcon.textContent = "☾";
+    themeToggle.setAttribute("aria-label", "Dark mode");
+    themeToggle.setAttribute("title", "Dark mode");
+}
 
         /* Toggle theme */
         themeToggle.addEventListener("click", () => {
@@ -218,18 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (isLightMode) {
-                themeToggleIcon.textContent = "☾";
-
-                themeToggle.setAttribute(
-                    "aria-label",
-                    "Switch to dark mode"
-                );
-
-                themeToggle.setAttribute(
-                    "title",
-                    "Switch to dark mode"
-                );
-            } else {
                 themeToggleIcon.textContent = "☀";
 
                 themeToggle.setAttribute(
@@ -240,6 +209,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 themeToggle.setAttribute(
                     "title",
                     "Switch to light mode"
+                );
+            } else {
+                themeToggleIcon.textContent = "☾";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+                themeToggle.setAttribute(
+                    "title",
+                    "Switch to dark mode"
                 );
             }
         });
