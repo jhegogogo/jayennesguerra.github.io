@@ -396,5 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     preventImageDragging();
 
+    setupThemeToggle();
     loadSections();
 });
