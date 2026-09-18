@@ -533,25 +533,15 @@ ol {
 }
 
 .hero-photo-wrapper {
-    width: 88%;
-    max-width: 330px;
+    width: 280px !important;
+    height: 280px !important;
 
     margin-inline: auto;
-
-    overflow: hidden;
-
-    border-radius: 12px;
-
-    background: var(--bg);
 }
 
 .hero-photo {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    aspect-ratio: 1 / 1;
+    width: 280px !important;
+    height: 280px !important;
 
     object-fit: cover;
 }
