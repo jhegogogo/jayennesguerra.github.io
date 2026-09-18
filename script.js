@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     /* =========================================
        SECTION FILES
-    ========================================== */
+    ========================================= */
 
     const sections = [
         {
@@ -33,439 +32,369 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       LOAD SEPARATE HTML FILES
-    ========================================== */
+       LOAD SECTIONS
+    ========================================= */
 
     async function loadSections() {
+        try {
+            await Promise.all(
+                sections.map(async ({ file, container }) => {
+                    const target = document.getElementById(container);
 
-        for (const section of sections) {
+                    if (!target) {
+                        return;
+                    }
 
-            const container =
-                document.getElementById(section.container);
+                    const response = await fetch(file);
 
-            if (!container) {
-                console.warn(
-                    `Container #${section.container} was not found.`
-                );
+                    if (!response.ok) {
+                        throw new Error(
+                            `Failed to load ${file}: ${response.status}`
+                        );
+                    }
 
-                continue;
-            }
+                    const html = await response.text();
 
-            try {
+                    target.innerHTML = html;
+                })
+            );
 
-                const response =
-                    await fetch(section.file);
+            setupNavigation();
+            setupLeadershipSlideshow();
 
-                if (!response.ok) {
-                    throw new Error(
-                        `HTTP ${response.status}`
-                    );
-                }
-
-                const html =
-                    await response.text();
-
-                container.innerHTML = html;
-
-            } catch (error) {
-
-                console.error(
-                    `Could not load ${section.file}:`,
-                    error
-                );
-
-                container.innerHTML = "";
-            }
+        } catch (error) {
+            console.error("Error loading portfolio sections:", error);
         }
-
-        setupNavigation();
-        setupLeadershipSlideshow();
     }
 
 
     /* =========================================
        NAVIGATION
-    ========================================== */
+    ========================================= */
 
     function setupNavigation() {
+        const navLinks = document.querySelectorAll(
+            '.site-nav a[href^="#"]'
+        );
 
-        const navLinks =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
+        navLinks.forEach((link) => {
+            link.addEventListener("click", (event) => {
+                const targetId = link.getAttribute("href");
 
-
-        navLinks.forEach(link => {
-
-            link.addEventListener("click", event => {
-
-                const href =
-                    link.getAttribute("href");
-
-                if (
-                    !href ||
-                    !href.startsWith("#")
-                ) {
+                if (!targetId || targetId === "#") {
                     return;
                 }
 
-
-                const target =
-                    document.querySelector(href);
+                const target = document.querySelector(targetId);
 
                 if (!target) {
                     return;
                 }
 
-
                 event.preventDefault();
 
+                const header = document.querySelector(".site-header");
 
-                const header =
-                    document.querySelector(
-                        ".site-header"
-                    );
-
-                const headerHeight =
-                    header
-                        ? header.offsetHeight
-                        : 0;
-
+                const headerHeight = header
+                    ? header.offsetHeight
+                    : 0;
 
                 const targetPosition =
                     target.getBoundingClientRect().top +
                     window.scrollY -
                     headerHeight;
 
-
                 window.scrollTo({
                     top: targetPosition,
                     behavior: "smooth"
                 });
 
+                history.pushState(null, "", targetId);
             });
-
         });
-
     }
 
 
     /* =========================================
-       LEADERSHIP PHOTO SLIDESHOW
-    ========================================== */
+       LEADERSHIP SLIDESHOW
+    ========================================= */
 
     function setupLeadershipSlideshow() {
+        const slideshows = document.querySelectorAll(
+            ".leadership-slideshow"
+        );
 
-        const slideshows =
-            document.querySelectorAll(
-                ".leadership-slideshow"
-            );
+        slideshows.forEach((slideshow) => {
+            const images = slideshow.querySelectorAll("img");
 
-
-        slideshows.forEach(slideshow => {
-
-            const slides =
-                slideshow.querySelectorAll(
-                    "img"
-                );
-
-
-            if (slides.length <= 1) {
+            if (images.length <= 1) {
                 return;
             }
 
+            let currentIndex = 0;
 
-            let currentSlide = 0;
+            const interval =
+                parseInt(
+                    slideshow.dataset.interval,
+                    10
+                ) || 3000;
 
-
-            slides.forEach((slide, index) => {
-
-                slide.classList.toggle(
+            images.forEach((image, index) => {
+                image.classList.toggle(
                     "active",
                     index === 0
                 );
-
             });
 
+            setInterval(() => {
+                images[currentIndex].classList.remove("active");
 
-            const interval =
-                slideshow.dataset.interval
-                    ? Number(slideshow.dataset.interval)
-                    : 3000;
+                currentIndex =
+                    (currentIndex + 1) % images.length;
 
-
-            window.setInterval(() => {
-
-                slides[currentSlide].classList.remove(
-                    "active"
-                );
-
-
-                currentSlide =
-                    (currentSlide + 1) %
-                    slides.length;
-
-
-                slides[currentSlide].classList.add(
-                    "active"
-                );
-
+                images[currentIndex].classList.add("active");
             }, interval);
-
         });
+    }
 
+
+    /* =========================================
+       THEME TOGGLE
+    ========================================= */
+
+    function setupThemeToggle() {
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+        const themeToggleIcon =
+            document.getElementById("themeToggleIcon");
+
+        if (!themeToggle || !themeToggleIcon) {
+            return;
+        }
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        /* Restore saved theme */
+        if (savedTheme === "light") {
+            document.body.classList.add("light-mode");
+
+            themeToggleIcon.textContent = "☾";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to dark mode"
+            );
+
+            themeToggle.setAttribute(
+                "title",
+                "Switch to dark mode"
+            );
+        } else {
+            document.body.classList.remove("light-mode");
+
+            themeToggleIcon.textContent = "☀";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to light mode"
+            );
+
+            themeToggle.setAttribute(
+                "title",
+                "Switch to light mode"
+            );
+        }
+
+
+        /* Toggle theme */
+        themeToggle.addEventListener("click", () => {
+            const isLightMode =
+                document.body.classList.toggle(
+                    "light-mode"
+                );
+
+            localStorage.setItem(
+                "theme",
+                isLightMode ? "light" : "dark"
+            );
+
+            if (isLightMode) {
+                themeToggleIcon.textContent = "☾";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+                themeToggle.setAttribute(
+                    "title",
+                    "Switch to dark mode"
+                );
+            } else {
+                themeToggleIcon.textContent = "☀";
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+                themeToggle.setAttribute(
+                    "title",
+                    "Switch to light mode"
+                );
+            }
+        });
     }
 
 
     /* =========================================
        RESUME MODAL
-    ========================================== */
+    ========================================= */
 
-    const resumeButton =
-        document.getElementById(
-            "resumeButton"
-        );
+    function setupResumeModal() {
+        const resumeButton =
+            document.getElementById("resumeButton");
 
-    const resumeModal =
-        document.getElementById(
-            "resumeModal"
-        );
+        const resumeModal =
+            document.getElementById("resumeModal");
 
-    const resumeClose =
-        document.getElementById(
-            "resumeClose"
-        );
+        const resumeClose =
+            document.querySelector(".resume-modal-close");
 
-    const resumeConfirm =
-        document.getElementById(
-            "resumeConfirm"
-        );
+        const resumeConfirm =
+            document.getElementById("resumeConfirm");
 
-
-    function openResumeModal() {
-
-        if (!resumeModal) {
+        if (!resumeButton || !resumeModal) {
             return;
         }
 
-        resumeModal.classList.add("active");
 
-        resumeModal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
+        /* Open modal */
+        function openResumeModal() {
+            resumeModal.classList.add("active");
 
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-    function closeResumeModal() {
-
-        if (!resumeModal) {
-            return;
+            document.body.style.overflow = "hidden";
         }
 
-        resumeModal.classList.remove("active");
 
-        resumeModal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        /* Close modal */
+        function closeResumeModal() {
+            resumeModal.classList.remove("active");
 
-        document.body.style.overflow = "";
+            document.body.style.overflow = "";
+        }
 
-    }
-
-
-    if (resumeButton) {
 
         resumeButton.addEventListener(
             "click",
             openResumeModal
         );
 
-    }
+
+        /* Close using X button */
+        if (resumeClose) {
+            resumeClose.addEventListener(
+                "click",
+                closeResumeModal
+            );
+        }
 
 
-    if (resumeClose) {
-
-        resumeClose.addEventListener(
-            "click",
-            closeResumeModal
-        );
-
-    }
-
-
-    if (resumeConfirm) {
-
-        resumeConfirm.addEventListener(
-            "click",
-            closeResumeModal
-        );
-
-    }
+        /* Close using Got it button */
+        if (resumeConfirm) {
+            resumeConfirm.addEventListener(
+                "click",
+                closeResumeModal
+            );
+        }
 
 
-    /* =========================================
-       CLOSE MODAL WHEN CLICKING OUTSIDE
-    ========================================== */
-
-    if (resumeModal) {
-
+        /* Close when clicking outside modal */
         resumeModal.addEventListener(
             "click",
-            event => {
-
+            (event) => {
                 if (
-                    event.target === resumeModal
+                    event.target === resumeModal ||
+                    event.target.classList.contains(
+                        "resume-modal-overlay"
+                    )
                 ) {
                     closeResumeModal();
                 }
-
             }
         );
 
-    }
 
-
-    /* =========================================
-       ESCAPE KEY
-    ========================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-                closeResumeModal();
+        /* Close with Escape */
+        document.addEventListener(
+            "keydown",
+            (event) => {
+                if (
+                    event.key === "Escape" &&
+                    resumeModal.classList.contains("active")
+                ) {
+                    closeResumeModal();
+                }
             }
-
-        }
-    );
+        );
+    }
 
 
     /* =========================================
        INTRO SCREEN
-    ========================================== */
+    ========================================= */
 
-    const introScreen =
-        document.getElementById(
-            "introScreen"
-        );
+    function setupIntroScreen() {
+        const introScreen =
+            document.getElementById("introScreen");
 
+        if (!introScreen) {
+            return;
+        }
 
-    if (introScreen) {
+        setTimeout(() => {
+            introScreen.classList.add("hidden");
 
-        const INTRO_DURATION = 3600;
+            setTimeout(() => {
+                introScreen.style.display = "none";
+            }, 800);
 
-
-        window.setTimeout(() => {
-
-            introScreen.classList.add(
-                "hidden"
-            );
-
-            window.setTimeout(() => {
-
-                introScreen.style.display =
-                    "none";
-
-            }, 850);
-
-        }, INTRO_DURATION);
-
+        }, 3600);
     }
 
 
     /* =========================================
        PREVENT IMAGE DRAGGING
-    ========================================== */
+    ========================================= */
 
-    document.addEventListener(
-        "dragstart",
-        event => {
+    function preventImageDragging() {
+        const images =
+            document.querySelectorAll("img");
 
-            if (
-                event.target.tagName === "IMG"
-            ) {
-                event.preventDefault();
-            }
-
-        }
-    );
+        images.forEach((image) => {
+            image.addEventListener(
+                "dragstart",
+                (event) => {
+                    event.preventDefault();
+                }
+            );
+        });
+    }
 
 
     /* =========================================
-       LOAD EVERYTHING
-    ========================================== */
+       INITIALIZE
+    ========================================= */
+
+    setupThemeToggle();
+
+    setupResumeModal();
+
+    setupIntroScreen();
+
+    preventImageDragging();
 
     loadSections();
-
 });
-/* =========================================================
-   THEME TOGGLE
-========================================================= */
-
-function setupThemeToggle() {
-
-    const themeToggle =
-        document.getElementById("themeToggle");
-
-    const themeToggleIcon =
-        document.getElementById("themeToggleIcon");
-
-    if (!themeToggle || !themeToggleIcon) {
-        return;
-    }
-
-    const savedTheme =
-        localStorage.getItem("theme");
-
-    if (savedTheme === "light") {
-        document.body.classList.add("light-mode");
-
-        themeToggleIcon.textContent = "☾";
-
-        themeToggle.setAttribute(
-            "aria-label",
-            "Switch to dark mode"
-        );
-
-        themeToggle.setAttribute(
-            "title",
-            "Switch to dark mode"
-        );
-    }
-
-    themeToggle.addEventListener("click", () => {
-
-        const isLightMode =
-            document.body.classList.toggle("light-mode");
-
-        localStorage.setItem(
-            "theme",
-            isLightMode ? "light" : "dark"
-        );
-
-        themeToggleIcon.textContent =
-            isLightMode ? "☾" : "☀";
-
-        themeToggle.setAttribute(
-            "aria-label",
-            isLightMode
-                ? "Switch to dark mode"
-                : "Switch to light mode"
-        );
-
-        themeToggle.setAttribute(
-            "title",
-            isLightMode
-                ? "Switch to dark mode"
-                : "Switch to light mode"
-        );
-
-    });
-
-}
