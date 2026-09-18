@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             await Promise.all(
                 sections.map(async ({ file, container }) => {
-                    const target = document.getElementById(container);
+                    const target =
+                        document.getElementById(container);
 
                     if (!target) {
                         return;
@@ -56,12 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             );
 
+            /*
+             * These must run AFTER the external
+             * section HTML has been loaded.
+             */
             setupNavigation();
             setupProjectTabs();
             setupLeadershipSlideshow();
+            preventImageDragging();
 
         } catch (error) {
-            console.error("Error loading portfolio sections:", error);
+            console.error(
+                "Error loading portfolio sections:",
+                error
+            );
         }
     }
 
@@ -77,13 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navLinks.forEach((link) => {
             link.addEventListener("click", (event) => {
-                const targetId = link.getAttribute("href");
+                const targetId =
+                    link.getAttribute("href");
 
                 if (!targetId || targetId === "#") {
                     return;
                 }
 
-                const target = document.querySelector(targetId);
+                const target =
+                    document.querySelector(targetId);
 
                 if (!target) {
                     return;
@@ -91,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 event.preventDefault();
 
-                const header = document.querySelector(".site-header");
+                const header =
+                    document.querySelector(".site-header");
 
                 const headerHeight = header
                     ? header.offsetHeight
@@ -107,8 +119,72 @@ document.addEventListener("DOMContentLoaded", () => {
                     behavior: "smooth"
                 });
 
-                history.pushState(null, "", targetId);
+                history.pushState(
+                    null,
+                    "",
+                    targetId
+                );
             });
+        });
+    }
+
+
+    /* =========================================
+       RYLIM PROJECT TABS
+    ========================================= */
+
+    function setupProjectTabs() {
+        const projectCards =
+            document.querySelectorAll(".project-card");
+
+        projectCards.forEach((card) => {
+
+            const tabs =
+                card.querySelectorAll(".project-tab");
+
+            const panels =
+                card.querySelectorAll(
+                    ".project-tab-panel"
+                );
+
+            tabs.forEach((tab) => {
+
+                tab.addEventListener("click", () => {
+
+                    const targetTab =
+                        tab.getAttribute("data-tab");
+
+
+                    /* Remove active state from tabs */
+                    tabs.forEach((item) => {
+                        item.classList.remove("active");
+                    });
+
+
+                    /* Hide all panels */
+                    panels.forEach((panel) => {
+                        panel.classList.remove("active");
+                    });
+
+
+                    /* Activate clicked tab */
+                    tab.classList.add("active");
+
+
+                    /* Show matching panel */
+                    const targetPanel =
+                        card.querySelector(
+                            `.project-tab-panel[data-panel="${targetTab}"]`
+                        );
+
+                    if (targetPanel) {
+                        targetPanel.classList.add("active");
+                    }
+
+                });
+
+            });
+
         });
     }
 
@@ -118,12 +194,15 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupLeadershipSlideshow() {
-        const slideshows = document.querySelectorAll(
-            ".leadership-slideshow"
-        );
+        const slideshows =
+            document.querySelectorAll(
+                ".leadership-slideshow"
+            );
 
         slideshows.forEach((slideshow) => {
-            const images = slideshow.querySelectorAll("img");
+
+            const images =
+                slideshow.querySelectorAll("img");
 
             if (images.length <= 1) {
                 return;
@@ -137,6 +216,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     10
                 ) || 3000;
 
+
+            /* Set first image as active */
             images.forEach((image, index) => {
                 image.classList.toggle(
                     "active",
@@ -144,14 +225,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
+
+            /* Automatic slideshow */
             setInterval(() => {
-                images[currentIndex].classList.remove("active");
+
+                images[currentIndex]
+                    .classList.remove("active");
 
                 currentIndex =
-                    (currentIndex + 1) % images.length;
+                    (currentIndex + 1) %
+                    images.length;
 
-                images[currentIndex].classList.add("active");
+                images[currentIndex]
+                    .classList.add("active");
+
             }, interval);
+
         });
     }
 
@@ -161,70 +250,121 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupThemeToggle() {
+
         const themeToggle =
             document.getElementById("themeToggle");
 
         const themeToggleIcon =
-            document.getElementById("themeToggleIcon");
+            document.getElementById(
+                "themeToggleIcon"
+            );
 
         if (!themeToggle || !themeToggleIcon) {
             return;
         }
 
+
         const savedTheme =
             localStorage.getItem("theme");
 
-        /* Restore saved theme */
+
+        /* =====================================
+           RESTORE SAVED THEME
+        ===================================== */
+
         if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-    themeToggleIcon.textContent = "☀";
-    themeToggle.setAttribute("aria-label", "Light mode");
-    themeToggle.setAttribute("title", "Light mode");
-} else {
-    document.body.classList.remove("light-mode");
-    themeToggleIcon.textContent = "☾";
-    themeToggle.setAttribute("aria-label", "Dark mode");
-    themeToggle.setAttribute("title", "Dark mode");
-}
 
-        /* Toggle theme */
-        themeToggle.addEventListener("click", () => {
-            const isLightMode =
-                document.body.classList.toggle(
-                    "light-mode"
-                );
-
-            localStorage.setItem(
-                "theme",
-                isLightMode ? "light" : "dark"
+            document.body.classList.add(
+                "light-mode"
             );
 
-            if (isLightMode) {
-                themeToggleIcon.textContent = "☀";
+            themeToggleIcon.textContent = "☀";
 
-                themeToggle.setAttribute(
-                    "aria-label",
-                    "Switch to light mode"
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to dark mode"
+            );
+
+            themeToggle.setAttribute(
+                "title",
+                "Switch to dark mode"
+            );
+
+        } else {
+
+            document.body.classList.remove(
+                "light-mode"
+            );
+
+            themeToggleIcon.textContent = "☾";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to light mode"
+            );
+
+            themeToggle.setAttribute(
+                "title",
+                "Switch to light mode"
+            );
+        }
+
+
+        /* =====================================
+           TOGGLE THEME
+        ===================================== */
+
+        themeToggle.addEventListener(
+            "click",
+            () => {
+
+                const isLightMode =
+                    document.body.classList.toggle(
+                        "light-mode"
+                    );
+
+
+                /* Save selected theme */
+                localStorage.setItem(
+                    "theme",
+                    isLightMode
+                        ? "light"
+                        : "dark"
                 );
 
-                themeToggle.setAttribute(
-                    "title",
-                    "Switch to light mode"
-                );
-            } else {
-                themeToggleIcon.textContent = "☾";
 
-                themeToggle.setAttribute(
-                    "aria-label",
-                    "Switch to dark mode"
-                );
+                /* Update icon and accessibility text */
+                if (isLightMode) {
 
-                themeToggle.setAttribute(
-                    "title",
-                    "Switch to dark mode"
-                );
+                    themeToggleIcon.textContent = "☀";
+
+                    themeToggle.setAttribute(
+                        "aria-label",
+                        "Switch to dark mode"
+                    );
+
+                    themeToggle.setAttribute(
+                        "title",
+                        "Switch to dark mode"
+                    );
+
+                } else {
+
+                    themeToggleIcon.textContent = "☾";
+
+                    themeToggle.setAttribute(
+                        "aria-label",
+                        "Switch to light mode"
+                    );
+
+                    themeToggle.setAttribute(
+                        "title",
+                        "Switch to light mode"
+                    );
+                }
+
             }
-        });
+        );
     }
 
 
@@ -233,39 +373,73 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupResumeModal() {
+
         const resumeButton =
-            document.getElementById("resumeButton");
+            document.getElementById(
+                "resumeButton"
+            );
 
         const resumeModal =
-            document.getElementById("resumeModal");
+            document.getElementById(
+                "resumeModal"
+            );
 
         const resumeClose =
-            document.querySelector(".resume-modal-close");
+            document.querySelector(
+                ".resume-modal-close"
+            );
 
         const resumeConfirm =
-            document.getElementById("resumeConfirm");
+            document.getElementById(
+                "resumeConfirm"
+            );
 
         if (!resumeButton || !resumeModal) {
             return;
         }
 
 
-        /* Open modal */
+        /* =====================================
+           OPEN MODAL
+        ===================================== */
+
         function openResumeModal() {
-            resumeModal.classList.add("active");
-            resumeModal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+
+            resumeModal.classList.add(
+                "active"
+            );
+
+            resumeModal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.style.overflow =
+                "hidden";
         }
 
 
-        /* Close modal */
+        /* =====================================
+           CLOSE MODAL
+        ===================================== */
+
         function closeResumeModal() {
-            resumeModal.classList.remove("active");
-            resumeModal.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
+
+            resumeModal.classList.remove(
+                "active"
+            );
+
+            resumeModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.style.overflow =
+                "";
         }
 
 
+        /* Open using Resume button */
         resumeButton.addEventListener(
             "click",
             openResumeModal
@@ -274,26 +448,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Close using X button */
         if (resumeClose) {
+
             resumeClose.addEventListener(
                 "click",
                 closeResumeModal
             );
+
         }
 
 
         /* Close using Got it button */
         if (resumeConfirm) {
+
             resumeConfirm.addEventListener(
                 "click",
                 closeResumeModal
             );
+
         }
 
 
-        /* Close when clicking outside modal */
+        /* =====================================
+           CLOSE WHEN CLICKING OUTSIDE
+        ===================================== */
+
         resumeModal.addEventListener(
             "click",
             (event) => {
+
                 if (
                     event.target === resumeModal ||
                     event.target.classList.contains(
@@ -302,20 +484,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 ) {
                     closeResumeModal();
                 }
+
             }
         );
 
 
-        /* Close with Escape */
+        /* =====================================
+           CLOSE WITH ESCAPE
+        ===================================== */
+
         document.addEventListener(
             "keydown",
             (event) => {
+
                 if (
                     event.key === "Escape" &&
-                    resumeModal.classList.contains("active")
+                    resumeModal.classList.contains(
+                        "active"
+                    )
                 ) {
                     closeResumeModal();
                 }
+
             }
         );
     }
@@ -326,18 +516,29 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupIntroScreen() {
+
         const introScreen =
-            document.getElementById("introScreen");
+            document.getElementById(
+                "introScreen"
+            );
 
         if (!introScreen) {
             return;
         }
 
+
         setTimeout(() => {
-            introScreen.classList.add("hidden");
+
+            introScreen.classList.add(
+                "hidden"
+            );
+
 
             setTimeout(() => {
-                introScreen.style.display = "none";
+
+                introScreen.style.display =
+                    "none";
+
             }, 800);
 
         }, 3600);
@@ -349,31 +550,33 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function preventImageDragging() {
+
         const images =
             document.querySelectorAll("img");
 
         images.forEach((image) => {
+
             image.addEventListener(
                 "dragstart",
                 (event) => {
                     event.preventDefault();
                 }
             );
+
         });
     }
 
 
     /* =========================================
-   INITIALIZE
-========================================= */
+       INITIALIZE
+    ========================================= */
 
-setupResumeModal();
+    setupResumeModal();
 
-setupIntroScreen();
+    setupIntroScreen();
 
-preventImageDragging();
+    setupThemeToggle();
 
-setupThemeToggle();
+    loadSections();
 
-loadSections();
 });
