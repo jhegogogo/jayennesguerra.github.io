@@ -801,6 +801,34 @@ ol {
     font-weight: 600;
 }
 
+/* =========================================================
+   SKILLS ICONS
+========================================================= */
+
+.tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.skill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 20px;
+    height: 20px;
+    padding: 0 3px;
+
+    color: var(--accent-light);
+    background: rgba(50, 185, 242, .08);
+    border: 1px solid rgba(50, 185, 242, .16);
+    border-radius: 4px;
+
+    font-size: .58rem;
+    font-weight: 800;
+    line-height: 1;
+}
 
 /* =========================================================
    PROJECTS
