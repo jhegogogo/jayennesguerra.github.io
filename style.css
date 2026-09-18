@@ -1086,6 +1086,15 @@ ol {
 .certification-card {
     min-width: 0;
 
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 120px;
+
+    gap: 24px;
+
+    align-items: center;
+
     padding: 26px;
 
     background: var(--card);
@@ -1110,52 +1119,38 @@ ol {
 
 
 /* =========================================================
+   CERTIFICATION CONTENT
+========================================================= */
+
+.certification-content {
+    min-width: 0;
+}
+
+
+/* =========================================================
    CERTIFICATION LOGOS
 ========================================================= */
 
 .certification-logo {
-    width: 100%;
-    min-height: 58px;
+    width: 120px;
+    height: 100px;
 
     display: flex;
 
     align-items: center;
-
-    margin-bottom: 20px;
-
-    color: var(--white);
-
-    font-size: 1.15rem;
-    font-weight: 800;
-
-    letter-spacing: -.02em;
+    justify-content: center;
 }
 
-.certiport-logo {
-    color: var(--accent-light);
-}
+.certification-logo img {
+    display: block;
 
-.freecodecamp-logo {
-    color: var(--white);
-}
+    width: auto;
+    height: auto;
 
-.microsoft-logo {
-    color: var(--white);
-}
+    max-width: 100%;
+    max-height: 80px;
 
-.ibm-logo {
-    color: var(--white);
-
-    font-size: 1.4rem;
-    letter-spacing: .04em;
-}
-
-.anthropic-logo {
-    color: var(--white);
-}
-
-.cisco-logo {
-    color: var(--accent-light);
+    object-fit: contain;
 }
 
 
@@ -1248,13 +1243,18 @@ ol {
 @media (max-width: 600px) {
 
     .certification-card {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
         padding: 24px;
     }
 
     .certification-logo {
-        min-height: 50px;
+        width: 100%;
+        height: 80px;
 
-        margin-bottom: 17px;
+        justify-content: flex-start;
     }
 
 }
