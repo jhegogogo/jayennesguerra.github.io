@@ -256,9 +256,9 @@ ol {
 
     width: 100%;
 
-    background: rgba(8, 14, 29, .94);
+    background: var(--bg);
 
-    border-bottom: 1px solid rgba(36, 54, 80, .75);
+    border-bottom: 1px solid var(--border);
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -707,10 +707,10 @@ ol {
 
     padding: 32px;
 
-    background: #101c30 !important;
+    background: var(--card);
 
-    border: 1px solid #243650 !important;
-    border-left: 4px solid var(--accent) !important;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
 
     border-radius: 0 15px 15px 0;
 
@@ -727,10 +727,10 @@ ol {
 .experience-card:hover {
     transform: translateY(-4px);
 
-    background: #14233a !important;
+    background: var(--card-hover);
 
-    border-color: rgba(50, 185, 242, .45) !important;
-    border-left-color: var(--accent) !important;
+    border-color: rgba(50, 185, 242, .45);
+    border-left-color: var(--accent);
 
     box-shadow:
         0 15px 40px rgba(0, 0, 0, .25);
