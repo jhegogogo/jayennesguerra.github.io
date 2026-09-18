@@ -635,31 +635,35 @@ ul {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 22px;
+
     width: 100%;
 }
+
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
 
 .project-card {
     position: relative;
 
     width: 100%;
-    min-height: 100%;
+    min-width: 0;
 
     display: flex;
     flex-direction: column;
 
     padding: 30px;
 
-    /* Force the container to be visible */
     background-color: #101c30 !important;
-    background-image: none !important;
 
     border: 1px solid #243650 !important;
     border-radius: 14px;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, .25),
-        inset 0 0 0 1px rgba(255, 255, 255, .02);
+        0 10px 30px rgba(0, 0, 0, .18);
 
     overflow: hidden;
 
@@ -678,68 +682,393 @@ ul {
 
     background-color: #14233a !important;
 
-    border-color: rgba(50, 185, 242, .6) !important;
+    border-color: rgba(50, 185, 242, .5) !important;
 
     box-shadow:
-        0 15px 40px rgba(0, 0, 0, .3),
-        inset 0 0 0 1px rgba(50, 185, 242, .08);
+        0 15px 40px rgba(0, 0, 0, .25);
 }
 
+
+/* =========================================================
+   FEATURED PROJECT
+========================================================= */
+
+.project-card.featured-project {
+    grid-column: span 2;
+
+    border-left: 4px solid var(--accent) !important;
+}
+
+.project-card.featured-project:hover {
+    border-left-color: var(--accent) !important;
+}
+
+
+/* =========================================================
+   PROJECT TOP
+========================================================= */
+
+.project-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.project-number {
+    color: var(--accent);
+
+    font-size: .8rem;
+    font-weight: 800;
+
+    letter-spacing: .08em;
+}
+
+.project-type {
+    color: var(--muted-2);
+
+    font-size: .68rem;
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+========================================================= */
+
 .project-card h3 {
-    margin: 0 0 10px;
+    margin: 0 0 6px;
 
     color: var(--white) !important;
 
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+    font-weight: 750;
+
     line-height: 1.4;
 }
 
-.project-card p {
-    margin: 0 0 20px;
 
-    color: var(--muted) !important;
+/* =========================================================
+   PROJECT ROLE
+========================================================= */
 
-    font-size: .92rem;
-    line-height: 1.7;
+.project-role {
+    margin: 0 0 18px;
+
+    color: var(--accent-light) !important;
+
+    font-size: .85rem;
+    font-weight: 600;
+
+    line-height: 1.5;
 }
 
-.project-tech {
+
+/* =========================================================
+   TECHNOLOGY LIST
+========================================================= */
+
+.technology-list {
     display: flex;
     flex-wrap: wrap;
+
     gap: 7px;
 
-    margin-top: auto;
+    margin-bottom: 20px;
 }
 
-.project-tech span {
+.technology-list span {
     display: inline-block;
 
     padding: 5px 9px;
 
     color: var(--accent-light) !important;
 
-    background: rgba(50, 185, 242, .08) !important;
+    background: rgba(50, 185, 242, .08);
 
-    border: 1px solid rgba(50, 185, 242, .16) !important;
+    border: 1px solid rgba(50, 185, 242, .16);
 
     border-radius: 5px;
 
     font-size: .7rem;
     font-weight: 600;
+
+    line-height: 1.4;
 }
 
-.project-card a {
-    color: var(--accent-light);
+
+/* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+.project-description {
+    margin: 0 0 18px;
+
+    color: var(--muted) !important;
+
+    font-size: .92rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROJECT FEATURES
+========================================================= */
+
+.project-features {
+    margin: 0 0 22px;
+
+    padding-left: 20px;
+
+    color: var(--muted) !important;
+
+    font-size: .88rem;
+
+    line-height: 1.7;
+}
+
+.project-features li {
+    margin-bottom: 7px;
+
+    color: var(--muted) !important;
+}
+
+.project-features li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PROJECT MEDIA
+========================================================= */
+
+.project-media {
+    width: 100%;
+
+    margin-top: auto;
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    background: #080e1d;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+}
+
+.project-media video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 420px;
+
+    background: #080e1d;
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.project-image {
+    width: 100%;
+
+    margin-top: auto;
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    background: #080e1d;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+}
+
+.project-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    transition: transform .3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.02);
+}
+
+
+/* =========================================================
+   PROJECT LINKS
+========================================================= */
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: flex-start;
+
+    gap: 7px;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    color: var(--white) !important;
+
+    background: rgba(50, 185, 242, .08);
+
+    border: 1px solid rgba(50, 185, 242, .25);
+
+    border-radius: 7px;
+
+    font-size: .8rem;
+    font-weight: 700;
 
     transition:
+        background .2s ease,
+        border-color .2s ease,
         color .2s ease,
-        opacity .2s ease;
+        transform .2s ease;
 }
 
-.project-card a:hover {
-    color: var(--white);
+.project-link span {
+    color: var(--accent-light);
+
+    font-size: .9rem;
 }
 
+.project-link:hover {
+    color: #06101d !important;
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    transform: translateY(-2px);
+}
+
+.project-link:hover span {
+    color: #06101d;
+}
+
+
+/* =========================================================
+   PROJECT MOBILE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card.featured-project {
+        grid-column: span 1;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .project-card {
+        min-height: auto;
+
+        padding: 24px;
+    }
+
+    .project-card.featured-project {
+        border-left-width: 3px !important;
+    }
+
+    .project-top {
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin-bottom: 18px;
+    }
+
+    .project-type {
+        font-size: .62rem;
+
+        text-align: right;
+    }
+
+    .project-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .project-role {
+        font-size: .82rem;
+    }
+
+    .technology-list {
+        gap: 6px;
+    }
+
+    .technology-list span {
+        font-size: .68rem;
+    }
+
+    .project-description {
+        font-size: .9rem;
+    }
+
+    .project-features {
+        font-size: .85rem;
+    }
+
+    .project-media video {
+        max-height: none;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .project-card {
+        padding: 22px;
+    }
+
+    .project-top {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .project-type {
+        text-align: left;
+    }
+
+    .project-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-image,
+    .project-media {
+        margin-bottom: 18px;
+    }
+}
 
 /* =========================================================
    CERTIFICATIONS
