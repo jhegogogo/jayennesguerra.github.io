@@ -1055,6 +1055,25 @@ ol {
    CERTIFICATIONS
 ========================================================= */
 
+.certification-category {
+    margin-bottom: 52px;
+}
+
+.certification-category:last-child {
+    margin-bottom: 0;
+}
+
+.certification-category-title {
+    margin-bottom: 20px;
+
+    color: var(--white);
+
+    font-size: 1.15rem;
+    font-weight: 800;
+
+    letter-spacing: -.01em;
+}
+
 .certifications-grid {
     display: grid;
 
@@ -1065,6 +1084,8 @@ ol {
 }
 
 .certification-card {
+    min-width: 0;
+
     padding: 26px;
 
     background: var(--card);
@@ -1087,18 +1108,95 @@ ol {
         rgba(50, 185, 242, .45);
 }
 
+
+/* =========================================================
+   CERTIFICATION LOGOS
+========================================================= */
+
+.certification-logo {
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    color: var(--white);
+
+    font-size: 1.15rem;
+    font-weight: 800;
+
+    letter-spacing: -.02em;
+}
+
+.certiport-logo {
+    color: var(--accent-light);
+}
+
+.freecodecamp-logo {
+    color: var(--white);
+}
+
+.microsoft-logo {
+    color: var(--white);
+}
+
+.ibm-logo {
+    color: var(--white);
+
+    font-size: 1.4rem;
+    letter-spacing: .04em;
+}
+
+.anthropic-logo {
+    color: var(--white);
+}
+
+.cisco-logo {
+    color: var(--accent-light);
+}
+
+
+/* =========================================================
+   CERTIFICATION DATE
+========================================================= */
+
+.certification-date {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--muted-2);
+
+    font-size: .7rem;
+    font-weight: 800;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   CERTIFICATION CONTENT
+========================================================= */
+
 .certification-card h3 {
     margin-bottom: 7px;
 
     color: var(--white);
 
     font-size: 1rem;
+
+    line-height: 1.5;
 }
 
 .certification-card p {
     color: var(--muted);
 
     font-size: .82rem;
+
+    line-height: 1.6;
 }
 
 .certification-card a {
@@ -1110,12 +1208,56 @@ ol {
 
     font-size: .8rem;
     font-weight: 700;
+
+    transition:
+        color .2s ease;
 }
 
 .certification-card a:hover {
     color: var(--white);
 }
 
+.certification-note {
+    display: block;
+
+    margin-top: 15px;
+
+    color: var(--muted-2);
+
+    font-size: .75rem;
+    font-style: italic;
+}
+
+
+/* =========================================================
+   CERTIFICATION RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .certification-category {
+        margin-bottom: 42px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .certification-card {
+        padding: 24px;
+    }
+
+    .certification-logo {
+        min-height: 50px;
+
+        margin-bottom: 17px;
+    }
+
+}
 
 /* =========================================================
    EDUCATION
