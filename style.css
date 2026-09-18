@@ -533,7 +533,10 @@ ol {
 }
 
 .hero-photo-wrapper {
-    width: 100%;
+    width: 88%;
+    max-width: 330px;
+
+    margin-inline: auto;
 
     overflow: hidden;
 
@@ -543,6 +546,8 @@ ol {
 }
 
 .hero-photo {
+    display: block;
+
     width: 100%;
     height: auto;
 
