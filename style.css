@@ -830,6 +830,20 @@ ol {
     line-height: 1;
 }
 
+.tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.skill-icon {
+    color: var(--accent-light);
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+
 /* =========================================================
    PROJECTS
 ========================================================= */
