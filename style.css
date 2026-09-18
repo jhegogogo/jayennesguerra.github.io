@@ -21,6 +21,32 @@
     --nav-height: 82px;
 }
 
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+body.light-mode {
+    --bg: #f5f8fc;
+    --bg-dark: #edf3f9;
+
+    --card: #ffffff;
+    --card-hover: #f1f7fc;
+
+    --white: #172033;
+    --light: #34445a;
+    --muted: #607086;
+    --muted-2: #7b8a9e;
+
+    --accent: #159ed7;
+    --accent-light: #087eb5;
+    --accent-dark: #087eb5;
+
+    --success: #20a866;
+
+    --border: #d7e1ec;
+}
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -313,7 +339,56 @@ ol {
 .nav-links a:hover::after {
     width: 100%;
 }
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
 
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    color: var(--light);
+    background: transparent;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+
+    background: var(--card);
+
+    border-color: var(--accent);
+
+    transform: translateY(-1px);
+}
+
+.theme-toggle-icon {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+}
 
 /* =========================================================
    HERO
