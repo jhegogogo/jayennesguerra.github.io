@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    /* =========================================
-       SECTION FILES
-    ========================================= */
 
     const sections = [
         {
