@@ -404,3 +404,68 @@ document.addEventListener("DOMContentLoaded", () => {
     loadSections();
 
 });
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+function setupThemeToggle() {
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    const themeToggleIcon =
+        document.getElementById("themeToggleIcon");
+
+    if (!themeToggle || !themeToggleIcon) {
+        return;
+    }
+
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+
+        themeToggleIcon.textContent = "☾";
+
+        themeToggle.setAttribute(
+            "aria-label",
+            "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            "Switch to dark mode"
+        );
+    }
+
+    themeToggle.addEventListener("click", () => {
+
+        const isLightMode =
+            document.body.classList.toggle("light-mode");
+
+        localStorage.setItem(
+            "theme",
+            isLightMode ? "light" : "dark"
+        );
+
+        themeToggleIcon.textContent =
+            isLightMode ? "☾" : "☀";
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isLightMode
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            isLightMode
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+        );
+
+    });
+
+}
