@@ -89,9 +89,9 @@ ul {
 }
 
 
-/* =========================================================
+/* =========================
    INTRO SCREEN
-========================================================= */
+========================= */
 
 .intro-screen {
     position: fixed;
@@ -103,35 +103,86 @@ ul {
     justify-content: center;
 
     background: var(--bg);
+    opacity: 1;
+    visibility: visible;
 
     transition:
-        opacity .5s ease,
-        visibility .5s ease;
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
-.intro-screen.hidden,
-.intro-screen.is-hidden {
+.intro-screen.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
 .intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
+    animation: introEnter .8s ease both;
+}
+
+.intro-content img {
+    width: 110px;
+    height: 110px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+
+    box-shadow:
+        0 0 0 8px rgba(50, 185, 242, .08),
+        0 15px 40px rgba(0, 0, 0, .35);
+
+    margin-bottom: 22px;
 }
 
 .intro-content h1 {
-    margin-bottom: 10px;
+    margin: 0;
 
     color: var(--white);
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: 2rem;
     font-weight: 800;
+    line-height: 1.2;
 }
 
 .intro-content p {
+    margin: 8px 0 0;
+
     color: var(--muted);
+    font-size: .9rem;
 }
 
+@keyframes introEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .intro-content img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .intro-content h1 {
+        font-size: 1.6rem;
+    }
+}
 
 /* =========================================================
    NAVIGATION
