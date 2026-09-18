@@ -102,13 +102,17 @@ ul {
     align-items: center;
     justify-content: center;
 
+    width: 100%;
+    height: 100vh;
+
     background: var(--bg);
+
     opacity: 1;
     visibility: visible;
 
     transition:
-        opacity .8s ease,
-        visibility .8s ease;
+        opacity .85s ease,
+        visibility .85s ease;
 }
 
 .intro-screen.hidden {
@@ -118,6 +122,10 @@ ul {
 }
 
 .intro-content {
+    width: auto;
+    max-width: 90%;
+    height: auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,63 +133,108 @@ ul {
 
     text-align: center;
 
-    animation: introEnter .8s ease both;
+    animation: introContentIn .8s ease both;
 }
 
-.intro-content img {
-    width: 110px;
-    height: 110px;
+/* IMPORTANT:
+   This controls the DP specifically.
+   It prevents the image from filling the screen.
+*/
+
+.intro-photo {
+    display: block;
+
+    width: 120px !important;
+    height: 120px !important;
+
+    max-width: 120px !important;
+    max-height: 120px !important;
+
+    min-width: 120px;
+    min-height: 120px;
 
     object-fit: cover;
     object-position: center;
 
     border-radius: 50%;
+
     border: 3px solid var(--accent);
+
+    margin: 0 0 24px;
 
     box-shadow:
         0 0 0 8px rgba(50, 185, 242, .08),
         0 15px 40px rgba(0, 0, 0, .35);
-
-    margin-bottom: 22px;
 }
 
-.intro-content h1 {
+.intro-name {
+    margin: 0 0 8px;
+
+    color: var(--accent-light);
+
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.intro-greeting {
     margin: 0;
 
     color: var(--white);
-    font-size: 2rem;
+
+    font-size: 2.2rem;
     font-weight: 800;
     line-height: 1.2;
 }
 
-.intro-content p {
-    margin: 8px 0 0;
+.intro-welcome {
+    margin: 10px 0 0;
 
     color: var(--muted);
-    font-size: .9rem;
+
+    font-size: .95rem;
+    line-height: 1.5;
 }
 
-@keyframes introEnter {
+@keyframes introContentIn {
+
     from {
         opacity: 0;
-        transform: translateY(15px) scale(.96);
+        transform: translateY(18px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
+
 }
 
 @media (max-width: 600px) {
-    .intro-content img {
-        width: 90px;
-        height: 90px;
+
+    .intro-photo {
+        width: 95px !important;
+        height: 95px !important;
+
+        max-width: 95px !important;
+        max-height: 95px !important;
+
+        min-width: 95px;
+        min-height: 95px;
     }
 
-    .intro-content h1 {
-        font-size: 1.6rem;
+    .intro-greeting {
+        font-size: 1.7rem;
     }
+
+    .intro-name {
+        font-size: .7rem;
+    }
+
+    .intro-welcome {
+        font-size: .85rem;
+    }
+
 }
 
 /* =========================================================
