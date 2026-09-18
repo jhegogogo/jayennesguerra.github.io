@@ -947,11 +947,6 @@ ol {
         box-shadow .25s ease;
 }
 
-/*
-   RYLIM remains a normal grid card.
-   It does NOT span the entire row.
-*/
-
 .featured-project {
     grid-column: auto;
 }
@@ -1120,7 +1115,122 @@ ol {
     transform: translateX(3px);
 }
 
+/* =========================================================
+   RYLIM PROJECT TABS
+========================================================= */
 
+.project-tabs {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin: 0 0 18px;
+}
+
+.project-tab {
+    padding: 7px 11px;
+
+    color: var(--muted);
+
+    background: transparent;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    font-size: .7rem;
+    font-weight: 700;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.project-tab:hover {
+    color: var(--accent-light);
+
+    background: rgba(50, 185, 242, .06);
+
+    border-color: rgba(50, 185, 242, .35);
+
+    transform: translateY(-1px);
+}
+
+.project-tab.active {
+    color: #06101b;
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+}
+
+
+/* =========================================================
+   RYLIM TAB CONTENT
+========================================================= */
+
+.project-tab-content {
+    min-height: 120px;
+
+    margin-bottom: 20px;
+}
+
+.project-tab-panel {
+    display: none;
+
+    animation: projectTabFade .2s ease;
+}
+
+.project-tab-panel.active {
+    display: block;
+}
+
+.project-tab-panel .project-description {
+    margin-bottom: 14px;
+}
+
+.project-tab-panel .project-features {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   RYLIM TAB ANIMATION
+========================================================= */
+
+@keyframes projectTabFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   RYLIM PROJECT MEDIA
+========================================================= */
+
+.featured-project .project-media {
+    margin-bottom: 18px;
+}
+
+.featured-project .project-media video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
 /* =========================================================
    CERTIFICATIONS
 ========================================================= */
