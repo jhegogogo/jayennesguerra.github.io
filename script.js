@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             setupNavigation();
+            setupProjectTabs();
             setupLeadershipSlideshow();
 
         } catch (error) {
