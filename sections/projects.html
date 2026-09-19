@@ -61,14 +61,14 @@
                 </div>
 
 
-                <!-- RYLIM IMAGE CAROUSEL -->
+                <!-- RYLIM MEDIA CAROUSEL -->
 
                 <div class="project-media rylim-carousel">
 
                     <button
                         type="button"
                         class="rylim-carousel-arrow rylim-prev"
-                        aria-label="Previous Rylim image"
+                        aria-label="Previous Rylim slide"
                     >
                         ‹
                     </button>
@@ -76,26 +76,69 @@
 
                     <div class="rylim-carousel-track">
 
-                        <img
-                            src="assets/rylim/Rylim1.jpeg"
-                            alt="Rylim Memory Atlas screenshot 1"
-                            class="rylim-slide active"
-                            draggable="false"
-                        >
 
-                        <img
-                            src="assets/rylim/Rylim2.jpeg"
-                            alt="Rylim Memory Atlas screenshot 2"
-                            class="rylim-slide"
-                            draggable="false"
-                        >
+                        <!-- SLIDE 1 — RYLIM AVP -->
 
-                        <img
-                            src="assets/rylim/Rylim3.jpeg"
-                            alt="Rylim Memory Atlas screenshot 3"
-                            class="rylim-slide"
-                            draggable="false"
-                        >
+                        <div class="rylim-slide rylim-video-slide active">
+
+                            <video
+                                controls
+                                controlsList="nodownload"
+                                disablePictureInPicture
+                                preload="metadata"
+                                draggable="false"
+                            >
+
+                                <source
+                                    src="assets/rylim/Rylim_Memory_Atlas_AVP.mp4"
+                                    type="video/mp4"
+                                >
+
+                                Your browser does not support the video tag.
+
+                            </video>
+
+                        </div>
+
+
+                        <!-- SLIDE 2 — RYLIM IMAGE 1 -->
+
+                        <div class="rylim-slide rylim-image-slide">
+
+                            <img
+                                src="assets/rylim/Rylim1.jpeg"
+                                alt="Rylim Memory Atlas screenshot 1"
+                                draggable="false"
+                            >
+
+                        </div>
+
+
+                        <!-- SLIDE 3 — RYLIM IMAGE 2 -->
+
+                        <div class="rylim-slide rylim-image-slide">
+
+                            <img
+                                src="assets/rylim/Rylim2.jpeg"
+                                alt="Rylim Memory Atlas screenshot 2"
+                                draggable="false"
+                            >
+
+                        </div>
+
+
+                        <!-- SLIDE 4 — RYLIM IMAGE 3 -->
+
+                        <div class="rylim-slide rylim-image-slide">
+
+                            <img
+                                src="assets/rylim/Rylim3.jpeg"
+                                alt="Rylim Memory Atlas screenshot 3"
+                                draggable="false"
+                            >
+
+                        </div>
+
 
                     </div>
 
@@ -103,7 +146,7 @@
                     <button
                         type="button"
                         class="rylim-carousel-arrow rylim-next"
-                        aria-label="Next Rylim image"
+                        aria-label="Next Rylim slide"
                     >
                         ›
                     </button>
@@ -111,16 +154,22 @@
                 </div>
 
 
-                <!-- RYLIM IMAGE INDICATORS -->
+                <!-- RYLIM CAROUSEL INDICATORS -->
 
                 <div
                     class="rylim-carousel-indicators"
-                    aria-label="Rylim image navigation"
+                    aria-label="Rylim media navigation"
                 >
 
                     <button
                         type="button"
                         class="rylim-dot active"
+                        aria-label="Show Rylim AVP"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="rylim-dot"
                         aria-label="Show Rylim image 1"
                     ></button>
 
@@ -189,6 +238,7 @@
                 <!-- RYLIM TAB CONTENT -->
 
                 <div class="project-tab-content">
+
 
                     <!-- OVERVIEW -->
 
@@ -606,7 +656,7 @@
                     rel="noopener"
                     class="project-link"
                 >
-                    Visit Zamina
+                    Visit the Website
                     <span>↗</span>
                 </a>
 
