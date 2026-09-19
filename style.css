@@ -1782,9 +1782,11 @@ body.light-mode .education-card h3 {
 
 /* decorative circle */
 
-.leadership-card::after {
-    content: "";
+/* ---------------------------------------------------------
+   ORGANIZATION LOGO
+--------------------------------------------------------- */
 
+.leadership-logo {
     position: absolute;
 
     top: 20px;
@@ -1793,10 +1795,27 @@ body.light-mode .education-card h3 {
     width: 42px;
     height: 42px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(50, 185, 242, 0.03);
+
     border: 1px solid rgba(50, 185, 242, 0.14);
     border-radius: 50%;
 
-    opacity: 0.5;
+    overflow: hidden;
+
+    opacity: 0.9;
+}
+
+.leadership-logo img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    display: block;
 }
 
 
