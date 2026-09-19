@@ -270,7 +270,7 @@ ol {
         var(--max-width)
     );
 
-    min-height: var(--nav-height);
+    min-height: 90px;
 
     margin-inline: auto;
 
@@ -278,15 +278,20 @@ ol {
     align-items: center;
     justify-content: space-between;
 
-    gap: 30px;
+    gap: 32px;
 }
+
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
     flex-shrink: 0;
 
     color: var(--white);
 
-    font-size: 1.45rem;
+    font-size: 1.6rem;
     font-weight: 900;
 
     letter-spacing: -.04em;
@@ -296,11 +301,16 @@ ol {
     color: var(--accent);
 }
 
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
 .nav-links {
     display: flex;
     align-items: center;
 
-    gap: 24px;
+    gap: 27px;
 }
 
 .nav-links a {
@@ -308,7 +318,7 @@ ol {
 
     color: var(--muted);
 
-    font-size: .78rem;
+    font-size: .82rem;
     font-weight: 700;
 
     transition:
@@ -339,13 +349,15 @@ ol {
 .nav-links a:hover::after {
     width: 100%;
 }
+
+
 /* =========================================================
    THEME TOGGLE
 ========================================================= */
 
 .theme-toggle {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
 
     display: inline-flex;
     align-items: center;
@@ -359,9 +371,9 @@ ol {
     background: transparent;
 
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 9px;
 
-    font-size: 1rem;
+    font-size: 1.05rem;
 
     transition:
         color .2s ease,
@@ -386,8 +398,8 @@ ol {
     align-items: center;
     justify-content: center;
 
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
 }
 
 /* =========================================================
