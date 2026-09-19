@@ -255,152 +255,207 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-  /* =========================================
-   RYLIM IMAGE CAROUSEL
-========================================= */
+    /* =========================================
+       RYLIM MEDIA CAROUSEL
+    ========================================= */
 
-function setupRylimCarousel() {
+    function setupRylimCarousel() {
 
-    const carousels =
-        document.querySelectorAll(
-            ".rylim-carousel"
-        );
-
-    carousels.forEach((carousel) => {
-
-        const images =
-            carousel.querySelectorAll(
-                ".rylim-slide"
+        const carousels =
+            document.querySelectorAll(
+                ".rylim-carousel"
             );
 
-        const previousButton =
-            carousel.querySelector(
-                ".rylim-prev"
-            );
+        carousels.forEach((carousel) => {
 
-        const nextButton =
-            carousel.querySelector(
-                ".rylim-next"
-            );
+            const slides =
+                carousel.querySelectorAll(
+                    ".rylim-slide"
+                );
 
-        const indicators =
-            carousel.parentElement.querySelectorAll(
-                ".rylim-dot"
-            );
+            const previousButton =
+                carousel.querySelector(
+                    ".rylim-prev"
+                );
 
-        if (
-            images.length === 0 ||
-            !previousButton ||
-            !nextButton
-        ) {
-            return;
-        }
+            const nextButton =
+                carousel.querySelector(
+                    ".rylim-next"
+                );
 
+            /*
+             * The indicators are directly after
+             * the carousel, so search from the
+             * carousel's parent.
+             */
 
-        let currentIndex = 0;
+            const indicators =
+                carousel.parentElement.querySelectorAll(
+                    ".rylim-dot"
+                );
 
-
-        /* =====================================
-           SHOW IMAGE
-        ===================================== */
-
-        function showImage(index) {
-
-            currentIndex = index;
-
-            images.forEach(
-                (image, imageIndex) => {
-
-                    image.classList.toggle(
-                        "active",
-                        imageIndex === currentIndex
-                    );
-
-                }
-            );
-
-
-            /* Update indicators */
-
-            indicators.forEach(
-                (dot, dotIndex) => {
-
-                    dot.classList.toggle(
-                        "active",
-                        dotIndex === currentIndex
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =====================================
-           PREVIOUS
-        ===================================== */
-
-        previousButton.addEventListener(
-            "click",
-            () => {
-
-                currentIndex =
-                    (currentIndex - 1 + images.length) %
-                    images.length;
-
-                showImage(currentIndex);
-
+            if (
+                slides.length === 0 ||
+                !previousButton ||
+                !nextButton
+            ) {
+                return;
             }
-        );
 
 
-        /* =====================================
-           NEXT
-        ===================================== */
-
-        nextButton.addEventListener(
-            "click",
-            () => {
-
-                currentIndex =
-                    (currentIndex + 1) %
-                    images.length;
-
-                showImage(currentIndex);
-
-            }
-        );
+            let currentIndex = 0;
 
 
-        /* =====================================
-           INDICATORS / DOTS
-        ===================================== */
+            /* =====================================
+               SHOW CURRENT SLIDE
+            ===================================== */
 
-        indicators.forEach(
-            (dot, dotIndex) => {
+            function showSlide(index) {
 
-                dot.addEventListener(
-                    "click",
-                    () => {
+                currentIndex = index;
 
-                        showImage(dotIndex);
+
+                slides.forEach(
+                    (slide, slideIndex) => {
+
+                        const isActive =
+                            slideIndex === currentIndex;
+
+                        slide.classList.toggle(
+                            "active",
+                            isActive
+                        );
+
+
+                        /*
+                         * Pause any video when its
+                         * slide is no longer active.
+                         */
+
+                        const video =
+                            slide.querySelector(
+                                "video"
+                            );
+
+                        if (
+                            video &&
+                            !isActive
+                        ) {
+
+                            video.pause();
+
+                        }
+
+                    }
+                );
+
+
+                /* Update indicators */
+
+                indicators.forEach(
+                    (dot, dotIndex) => {
+
+                        dot.classList.toggle(
+                            "active",
+                            dotIndex === currentIndex
+                        );
 
                     }
                 );
 
             }
-        );
 
 
-        /* =====================================
-           INITIAL IMAGE
-        ===================================== */
+            /* =====================================
+               PREVIOUS SLIDE
+            ===================================== */
 
-        showImage(0);
+            previousButton.addEventListener(
+                "click",
+                () => {
 
-    });
+                    currentIndex =
+                        (
+                            currentIndex -
+                            1 +
+                            slides.length
+                        ) %
+                        slides.length;
 
-}
+                    showSlide(
+                        currentIndex
+                    );
+
+                }
+            );
+
+
+            /* =====================================
+               NEXT SLIDE
+            ===================================== */
+
+            nextButton.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex =
+                        (
+                            currentIndex +
+                            1
+                        ) %
+                        slides.length;
+
+                    showSlide(
+                        currentIndex
+                    );
+
+                }
+            );
+
+
+            /* =====================================
+               CAROUSEL INDICATORS
+            ===================================== */
+
+            indicators.forEach(
+                (dot, dotIndex) => {
+
+                    dot.addEventListener(
+                        "click",
+                        () => {
+
+                            /*
+                             * Prevent an invalid
+                             * indicator index.
+                             */
+
+                            if (
+                                dotIndex >=
+                                slides.length
+                            ) {
+                                return;
+                            }
+
+                            showSlide(
+                                dotIndex
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /* =====================================
+               INITIAL SLIDE
+            ===================================== */
+
+            showSlide(0);
+
+        });
+
+    }
 
 
     /* =========================================
@@ -734,7 +789,9 @@ function setupRylimCarousel() {
                         "resume-modal-overlay"
                     )
                 ) {
+
                     closeResumeModal();
+
                 }
 
             }
