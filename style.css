@@ -1506,75 +1506,185 @@ ol {
 
 
 /* =========================================================
-   LEADERSHIP
+   LEADERSHIP & ORGANIZATIONS
 ========================================================= */
+
+#leadership {
+    position: relative;
+}
+
+#leadership .section-label {
+    margin-bottom: 14px;
+}
+
+#leadership .section-title {
+    margin-bottom: 48px;
+}
+
+
+/* ---------------------------------------------------------
+   LEADERSHIP GRID
+--------------------------------------------------------- */
 
 .leadership-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
 }
+
+
+/* ---------------------------------------------------------
+   LEADERSHIP CARD
+--------------------------------------------------------- */
 
 .leadership-card {
-    padding: 26px;
+    position: relative;
 
-    background: var(--card);
+    display: flex;
+    flex-direction: column;
 
-    border: 1px solid var(--border);
-    border-radius: 13px;
+    padding: 30px;
+    min-height: 100%;
+
+    background: linear-gradient(
+        145deg,
+        rgba(17, 34, 58, 0.96),
+        rgba(12, 27, 47, 0.96)
+    );
+
+    border: 1px solid rgba(77, 154, 209, 0.22);
+    border-radius: 16px;
+
+    overflow: hidden;
 
     transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+
+/* subtle top accent */
+
+.leadership-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        rgba(50, 185, 242, 0)
+    );
+
+    opacity: 0.9;
+}
+
+
+/* decorative number */
+
+.leadership-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    right: 24px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(50, 185, 242, 0.14);
+    border-radius: 50%;
+
+    opacity: 0.5;
+}
+
 
 .leadership-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
 
-    background: var(--card-hover);
+    border-color: rgba(50, 185, 242, 0.42);
 
-    border-color:
-        rgba(50, 185, 242, .45);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.22),
+        0 0 25px rgba(50, 185, 242, 0.05);
 }
 
-.leadership-card h3 {
-    color: var(--white);
 
-    font-size: 1rem;
-}
+/* ---------------------------------------------------------
+   DATE
+--------------------------------------------------------- */
 
-.leadership-card h4 {
-    margin-top: 5px;
+.leadership-date {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    margin-bottom: 12px;
+
+    padding: 5px 10px;
 
     color: var(--accent-light);
 
-    font-size: .82rem;
+    background: rgba(50, 185, 242, 0.08);
+
+    border: 1px solid rgba(50, 185, 242, 0.15);
+    border-radius: 6px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
 }
 
-.leadership-card p {
-    margin-top: 12px;
+
+/* ---------------------------------------------------------
+   ORGANIZATION / POSITION TITLE
+--------------------------------------------------------- */
+
+.leadership-card h3 {
+    margin: 0 50px 8px 0;
+
+    color: var(--white);
+
+    font-size: 1.18rem;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   ORGANIZATION NAME
+--------------------------------------------------------- */
+
+.leadership-organization {
+    margin: 0 0 20px;
 
     color: var(--muted);
 
-    font-size: .86rem;
-
-    line-height: 1.7;
+    font-size: 0.86rem;
+    line-height: 1.55;
 }
 
-/* =========================================================
-   LEADERSHIP PHOTO SLIDESHOW
-========================================================= */
+
+/* ---------------------------------------------------------
+   SLIDESHOW
+--------------------------------------------------------- */
 
 .leadership-slideshow {
     position: relative;
 
     width: 100%;
-
-    aspect-ratio: 16 / 9;
+    height: 300px;
 
     margin-bottom: 22px;
 
@@ -1582,9 +1692,12 @@ ol {
 
     background: var(--bg);
 
-    border: 1px solid var(--border);
-    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
 }
+
+
+/* slideshow images */
 
 .leadership-slideshow img {
     position: absolute;
@@ -1599,26 +1712,172 @@ ol {
     opacity: 0;
 
     transition:
-        opacity .6s ease;
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
+
 
 .leadership-slideshow img.active {
     opacity: 1;
 }
 
 
-/* =========================================================
-   LEADERSHIP SLIDESHOW RESPONSIVE
-========================================================= */
+/* subtle image zoom */
 
-@media (max-width: 600px) {
+.leadership-card:hover
+.leadership-slideshow img.active {
+    transform: scale(1.015);
+}
+
+
+/* ---------------------------------------------------------
+   ROLE
+--------------------------------------------------------- */
+
+.leadership-role {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    margin: 0 0 10px;
+
+    padding-left: 12px;
+
+    color: var(--accent-light);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    border-left: 3px solid var(--accent);
+
+    line-height: 1.3;
+}
+
+
+/* ---------------------------------------------------------
+   DESCRIPTION
+--------------------------------------------------------- */
+
+.leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+
+/* ---------------------------------------------------------
+   CARDS WITHOUT IMAGES
+--------------------------------------------------------- */
+
+.leadership-card:not(:has(.leadership-slideshow)) {
+    justify-content: flex-start;
+}
+
+
+/* give text-only cards a more intentional layout */
+
+.leadership-card:not(:has(.leadership-slideshow))::before {
+    height: 4px;
+}
+
+
+.leadership-card:not(:has(.leadership-slideshow)) .leadership-role {
+    margin-top: 8px;
+}
+
+
+/* ---------------------------------------------------------
+   LIGHT MODE
+--------------------------------------------------------- */
+
+body.light-mode .leadership-card {
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f5f9fc
+    );
+
+    border-color: rgba(20, 80, 120, 0.15);
+}
+
+
+body.light-mode .leadership-card h3 {
+    color: var(--bg-dark);
+}
+
+
+body.light-mode .leadership-organization,
+body.light-mode .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
+    color: #5f7183;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
 
     .leadership-slideshow {
-        aspect-ratio: 4 / 3;
+        height: 320px;
     }
 
 }
 
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    #leadership .section-title {
+        margin-bottom: 32px;
+    }
+
+    .leadership-grid {
+        gap: 18px;
+    }
+
+    .leadership-card {
+        padding: 22px;
+        border-radius: 13px;
+    }
+
+    .leadership-card h3 {
+        font-size: 1.05rem;
+        margin-right: 35px;
+    }
+
+    .leadership-organization {
+        font-size: 0.8rem;
+        margin-bottom: 16px;
+    }
+
+    .leadership-slideshow {
+        height: 240px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .leadership-role {
+        font-size: 0.78rem;
+    }
+
+    .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
+        font-size: 0.82rem;
+        line-height: 1.65;
+    }
+
+}
 
 /* =========================================================
    CONTACT
