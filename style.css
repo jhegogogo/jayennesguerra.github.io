@@ -1523,14 +1523,52 @@ ol {
 
 
 /* ---------------------------------------------------------
-   LEADERSHIP GRID
+   LEADERSHIP HORIZONTAL CAROUSEL
 --------------------------------------------------------- */
 
 .leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+
     gap: 24px;
-    align-items: stretch;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 4px 4px 20px;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    cursor: grab;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+.leadership-grid:active {
+    cursor: grabbing;
+}
+
+
+/* scrollbar */
+
+.leadership-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.leadership-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.leadership-grid::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.leadership-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-light);
 }
 
 
@@ -1543,6 +1581,8 @@ ol {
 
     display: flex;
     flex-direction: column;
+
+    flex: 0 0 calc(50% - 12px);
 
     padding: 30px;
     min-height: 100%;
@@ -1557,6 +1597,8 @@ ol {
     border-radius: 16px;
 
     overflow: hidden;
+
+    scroll-snap-align: start;
 
     transition:
         transform 0.3s ease,
@@ -1588,7 +1630,7 @@ ol {
 }
 
 
-/* decorative number */
+/* decorative circle */
 
 .leadership-card::after {
     content: "";
@@ -1778,8 +1820,6 @@ ol {
 }
 
 
-/* give text-only cards a more intentional layout */
-
 .leadership-card:not(:has(.leadership-slideshow))::before {
     height: 4px;
 }
@@ -1822,12 +1862,13 @@ body.light-mode .leadership-card > p:not(.leadership-date):not(.leadership-organ
 
 @media (max-width: 900px) {
 
-    .leadership-grid {
-        grid-template-columns: 1fr;
+    .leadership-card {
+        flex: 0 0 75%;
     }
 
     .leadership-slideshow {
-        height: 320px;
+        width: 55%;
+        height: 150px;
     }
 
 }
@@ -1843,37 +1884,56 @@ body.light-mode .leadership-card > p:not(.leadership-date):not(.leadership-organ
         margin-bottom: 32px;
     }
 
+
     .leadership-grid {
         gap: 18px;
+
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
+
     .leadership-card {
+        flex: 0 0 88%;
+
         padding: 22px;
+
         border-radius: 13px;
     }
 
+
     .leadership-card h3 {
         font-size: 1.05rem;
+
         margin-right: 35px;
     }
 
+
     .leadership-organization {
         font-size: 0.8rem;
+
         margin-bottom: 16px;
     }
 
+
     .leadership-slideshow {
-        height: 240px;
-        margin-bottom: 20px;
+        width: 75%;
+        height: 150px;
+
+        margin: 0 auto 20px;
+
         border-radius: 10px;
     }
+
 
     .leadership-role {
         font-size: 0.78rem;
     }
 
+
     .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
         font-size: 0.82rem;
+
         line-height: 1.65;
     }
 
