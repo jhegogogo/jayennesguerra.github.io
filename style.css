@@ -2622,3 +2622,33 @@ button:focus-visible {
 
     transform: translateY(-2px);
 }
+
+/* =========================================================
+   ANTI-DOWNLOAD / MEDIA PROTECTION
+========================================================= */
+
+/* Prevent dragging of portfolio images and videos */
+img,
+video {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+/* Prevent selecting media */
+img,
+video {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+/* Prevent pointer interaction directly on images */
+img {
+    pointer-events: none;
+}
+
+/* Keep project videos playable */
+video {
+    -webkit-user-drag: none;
+    user-select: none;
+}
