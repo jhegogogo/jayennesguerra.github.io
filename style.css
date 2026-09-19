@@ -1316,7 +1316,7 @@ ol {
 
 
 /* =========================================================
-   RYLIM VIDEO SLIDE
+   RYLIM AVP VIDEO
 ========================================================= */
 
 .rylim-video-slide video {
@@ -1325,10 +1325,7 @@ ol {
     width: 100%;
     height: 100%;
 
-    max-width: none;
-    max-height: none;
-
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 
     margin: 0;
