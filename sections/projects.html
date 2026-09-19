@@ -61,22 +61,80 @@
                 </div>
 
 
-                <div class="project-media">
+                <!-- RYLIM IMAGE CAROUSEL -->
 
-                    <video
-                        controls
-                        controlsList="nodownload"
-                        disablePictureInPicture
-                        preload="metadata"
-                        draggable="false"
+                <div class="project-media rylim-carousel">
+
+                    <button
+                        type="button"
+                        class="rylim-carousel-arrow rylim-prev"
+                        aria-label="Previous Rylim image"
                     >
+                        ‹
+                    </button>
 
-                        <source
-                            src="assets/Rylim_Memory_Atlas_AVP.mp4"
-                            type="video/mp4"
+
+                    <div class="rylim-carousel-track">
+
+                        <img
+                            src="assets/rylim/Rylim1.jpeg"
+                            alt="Rylim Memory Atlas screenshot 1"
+                            class="rylim-slide active"
+                            draggable="false"
                         >
 
-                    </video>
+                        <img
+                            src="assets/rylim/Rylim2.jpeg"
+                            alt="Rylim Memory Atlas screenshot 2"
+                            class="rylim-slide"
+                            draggable="false"
+                        >
+
+                        <img
+                            src="assets/rylim/Rylim3.jpeg"
+                            alt="Rylim Memory Atlas screenshot 3"
+                            class="rylim-slide"
+                            draggable="false"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="rylim-carousel-arrow rylim-next"
+                        aria-label="Next Rylim image"
+                    >
+                        ›
+                    </button>
+
+                </div>
+
+
+                <!-- RYLIM IMAGE INDICATORS -->
+
+                <div
+                    class="rylim-carousel-indicators"
+                    aria-label="Rylim image navigation"
+                >
+
+                    <button
+                        type="button"
+                        class="rylim-dot active"
+                        aria-label="Show Rylim image 1"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="rylim-dot"
+                        aria-label="Show Rylim image 2"
+                    ></button>
+
+                    <button
+                        type="button"
+                        class="rylim-dot"
+                        aria-label="Show Rylim image 3"
+                    ></button>
 
                 </div>
 
