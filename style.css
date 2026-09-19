@@ -1461,6 +1461,18 @@ ol {
    EDUCATION
 ========================================================= */
 
+.education-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* ---------------------------------------------------------
+   EDUCATION CARD
+--------------------------------------------------------- */
+
 .education-card {
     position: relative;
 
@@ -1479,6 +1491,20 @@ ol {
 
     box-shadow:
         0 10px 30px rgba(0, 0, 0, .15);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(50, 185, 242, .4);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .2);
 }
 
 
@@ -1495,6 +1521,7 @@ ol {
     color: var(--white);
 
     font-size: 1.15rem;
+    line-height: 1.4;
 }
 
 .education-card h4 {
@@ -1503,6 +1530,7 @@ ol {
     color: var(--accent-light);
 
     font-size: .9rem;
+    line-height: 1.5;
 }
 
 .education-card p {
@@ -1511,6 +1539,7 @@ ol {
     color: var(--muted);
 
     font-size: .88rem;
+    line-height: 1.6;
 }
 
 .education-date {
@@ -1522,11 +1551,13 @@ ol {
 
     font-size: .75rem;
     font-weight: 700;
+
+    letter-spacing: .02em;
 }
 
 
 /* ---------------------------------------------------------
-   FEU LOGO
+   EDUCATION LOGO
 --------------------------------------------------------- */
 
 .education-logo {
@@ -1541,12 +1572,12 @@ ol {
 }
 
 .education-logo img {
+    display: block;
+
     width: 100%;
     height: 100%;
 
     object-fit: contain;
-
-    display: block;
 }
 
 
@@ -1556,6 +1587,7 @@ ol {
 
 body.light-mode .education-card {
     background: var(--card);
+
     border-color: var(--border);
 }
 
@@ -1565,20 +1597,44 @@ body.light-mode .education-card h3 {
 
 
 /* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .education-card {
+        gap: 28px;
+    }
+
+    .education-logo {
+        width: 105px;
+        height: 105px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
    MOBILE
 --------------------------------------------------------- */
 
 @media (max-width: 600px) {
 
+    .education-list {
+        gap: 18px;
+    }
+
     .education-card {
+        gap: 20px;
+
         padding: 24px;
 
-        gap: 24px;
+        border-radius: 13px;
     }
 
     .education-logo {
-        width: 85px;
-        height: 85px;
+        width: 80px;
+        height: 80px;
     }
 
     .education-card h3 {
@@ -1590,7 +1646,11 @@ body.light-mode .education-card h3 {
     }
 
     .education-card p {
-        font-size: .82rem;
+        font-size: .8rem;
+    }
+
+    .education-date {
+        font-size: .68rem;
     }
 
 }
