@@ -255,111 +255,152 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       RYLIM IMAGE CAROUSEL
-    ========================================= */
+  /* =========================================
+   RYLIM IMAGE CAROUSEL
+========================================= */
 
-    function setupRylimCarousel() {
+function setupRylimCarousel() {
 
-        const carousels =
-            document.querySelectorAll(
-                ".rylim-carousel"
+    const carousels =
+        document.querySelectorAll(
+            ".rylim-carousel"
+        );
+
+    carousels.forEach((carousel) => {
+
+        const images =
+            carousel.querySelectorAll(
+                ".rylim-slide"
             );
 
-        carousels.forEach((carousel) => {
+        const previousButton =
+            carousel.querySelector(
+                ".rylim-prev"
+            );
 
-            const images =
-                carousel.querySelectorAll(
-                    ".rylim-carousel-image"
-                );
+        const nextButton =
+            carousel.querySelector(
+                ".rylim-next"
+            );
 
-            const previousButton =
-                carousel.querySelector(
-                    ".rylim-carousel-prev"
-                );
+        const indicators =
+            carousel.parentElement.querySelectorAll(
+                ".rylim-dot"
+            );
 
-            const nextButton =
-                carousel.querySelector(
-                    ".rylim-carousel-next"
-                );
+        if (
+            images.length === 0 ||
+            !previousButton ||
+            !nextButton
+        ) {
+            return;
+        }
 
-            if (
-                images.length === 0 ||
-                !previousButton ||
-                !nextButton
-            ) {
-                return;
+
+        let currentIndex = 0;
+
+
+        /* =====================================
+           SHOW IMAGE
+        ===================================== */
+
+        function showImage(index) {
+
+            currentIndex = index;
+
+            images.forEach(
+                (image, imageIndex) => {
+
+                    image.classList.toggle(
+                        "active",
+                        imageIndex === currentIndex
+                    );
+
+                }
+            );
+
+
+            /* Update indicators */
+
+            indicators.forEach(
+                (dot, dotIndex) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        dotIndex === currentIndex
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================
+           PREVIOUS
+        ===================================== */
+
+        previousButton.addEventListener(
+            "click",
+            () => {
+
+                currentIndex =
+                    (currentIndex - 1 + images.length) %
+                    images.length;
+
+                showImage(currentIndex);
+
             }
+        );
 
 
-            let currentIndex = 0;
+        /* =====================================
+           NEXT
+        ===================================== */
+
+        nextButton.addEventListener(
+            "click",
+            () => {
+
+                currentIndex =
+                    (currentIndex + 1) %
+                    images.length;
+
+                showImage(currentIndex);
+
+            }
+        );
 
 
-            /* =====================================
-               SHOW CURRENT IMAGE
-            ===================================== */
+        /* =====================================
+           INDICATORS / DOTS
+        ===================================== */
 
-            function showImage(index) {
+        indicators.forEach(
+            (dot, dotIndex) => {
 
-                images.forEach(
-                    (image, imageIndex) => {
+                dot.addEventListener(
+                    "click",
+                    () => {
 
-                        image.classList.toggle(
-                            "active",
-                            imageIndex === index
-                        );
+                        showImage(dotIndex);
 
                     }
                 );
 
             }
+        );
 
 
-            /* =====================================
-               PREVIOUS IMAGE
-            ===================================== */
+        /* =====================================
+           INITIAL IMAGE
+        ===================================== */
 
-            previousButton.addEventListener(
-                "click",
-                () => {
+        showImage(0);
 
-                    currentIndex =
-                        (currentIndex - 1 + images.length) %
-                        images.length;
+    });
 
-                    showImage(currentIndex);
-
-                }
-            );
-
-
-            /* =====================================
-               NEXT IMAGE
-            ===================================== */
-
-            nextButton.addEventListener(
-                "click",
-                () => {
-
-                    currentIndex =
-                        (currentIndex + 1) %
-                        images.length;
-
-                    showImage(currentIndex);
-
-                }
-            );
-
-
-            /* =====================================
-               INITIAL IMAGE
-            ===================================== */
-
-            showImage(currentIndex);
-
-        });
-
-    }
+}
 
 
     /* =========================================
