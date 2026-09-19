@@ -768,18 +768,20 @@ ol {
 }
 
 .experience-logo {
-    width: 52px;
+    width: 100px;
     height: 52px;
 
     flex-shrink: 0;
 
-    object-fit: cover;
+    object-fit: contain;
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     border: 1px solid var(--border);
 
     background: #ffffff;
+
+    padding: 4px;
 
     box-shadow:
         0 4px 12px rgba(0, 0, 0, .12);
@@ -862,6 +864,20 @@ ol {
 
     .experience-date {
         text-align: left;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .experience-logo {
+        width: 90px;
+        height: 48px;
+    }
+
+    .experience-company {
+        gap: 12px;
     }
 
 }
