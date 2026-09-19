@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     async function loadSections() {
+
         try {
+
             await Promise.all(
                 sections.map(async ({ file, container }) => {
 
@@ -48,26 +50,37 @@ document.addEventListener("DOMContentLoaded", () => {
                         await fetch(file);
 
                     if (!response.ok) {
+
                         throw new Error(
                             `Failed to load ${file}: ${response.status}`
                         );
+
                     }
 
                     const html =
                         await response.text();
 
                     target.innerHTML = html;
+
                 })
             );
+
 
             /*
              * These must run AFTER the external
              * section HTML has been loaded.
              */
+
             setupNavigation();
+
             setupProjectTabs();
+
+            setupRylimCarousel();
+
             setupLeadershipSlideshow();
+
             setupMediaProtection();
+
 
         } catch (error) {
 
@@ -77,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         }
+
     }
 
 
@@ -148,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         });
+
     }
 
 
@@ -236,6 +251,114 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         });
+
+    }
+
+
+    /* =========================================
+       RYLIM IMAGE CAROUSEL
+    ========================================= */
+
+    function setupRylimCarousel() {
+
+        const carousels =
+            document.querySelectorAll(
+                ".rylim-carousel"
+            );
+
+        carousels.forEach((carousel) => {
+
+            const images =
+                carousel.querySelectorAll(
+                    ".rylim-carousel-image"
+                );
+
+            const previousButton =
+                carousel.querySelector(
+                    ".rylim-carousel-prev"
+                );
+
+            const nextButton =
+                carousel.querySelector(
+                    ".rylim-carousel-next"
+                );
+
+            if (
+                images.length === 0 ||
+                !previousButton ||
+                !nextButton
+            ) {
+                return;
+            }
+
+
+            let currentIndex = 0;
+
+
+            /* =====================================
+               SHOW CURRENT IMAGE
+            ===================================== */
+
+            function showImage(index) {
+
+                images.forEach(
+                    (image, imageIndex) => {
+
+                        image.classList.toggle(
+                            "active",
+                            imageIndex === index
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================
+               PREVIOUS IMAGE
+            ===================================== */
+
+            previousButton.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex =
+                        (currentIndex - 1 + images.length) %
+                        images.length;
+
+                    showImage(currentIndex);
+
+                }
+            );
+
+
+            /* =====================================
+               NEXT IMAGE
+            ===================================== */
+
+            nextButton.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex =
+                        (currentIndex + 1) %
+                        images.length;
+
+                    showImage(currentIndex);
+
+                }
+            );
+
+
+            /* =====================================
+               INITIAL IMAGE
+            ===================================== */
+
+            showImage(currentIndex);
+
+        });
+
     }
 
 
@@ -305,6 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, interval);
 
         });
+
     }
 
 
@@ -443,6 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
+
     }
 
 
@@ -635,138 +760,143 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-   /* =========================================
-   MEDIA / COPY PROTECTION
-========================================= */
+    /* =========================================
+       MEDIA / COPY PROTECTION
+    ========================================= */
 
-function setupMediaProtection() {
+    function setupMediaProtection() {
 
-    /* =====================================
-       PREVENT IMAGE / VIDEO DRAGGING
-    ===================================== */
+        /* =====================================
+           PREVENT IMAGE / VIDEO DRAGGING
+        ===================================== */
 
-    const media =
-        document.querySelectorAll("img, video");
+        const media =
+            document.querySelectorAll(
+                "img, video"
+            );
 
-    media.forEach((element) => {
+        media.forEach((element) => {
 
-        element.setAttribute(
-            "draggable",
-            "false"
-        );
+            element.setAttribute(
+                "draggable",
+                "false"
+            );
 
-        element.addEventListener(
-            "dragstart",
+            element.addEventListener(
+                "dragstart",
+                (event) => {
+
+                    event.preventDefault();
+
+                }
+            );
+
+        });
+
+
+        /* =====================================
+           PREVENT RIGHT-CLICK
+        ===================================== */
+
+        document.addEventListener(
+            "contextmenu",
             (event) => {
+
                 event.preventDefault();
+
             }
         );
 
-    });
 
+        /* =====================================
+           PREVENT COPYING / CUTTING
+        ===================================== */
 
-    /* =====================================
-       PREVENT RIGHT-CLICK
-    ===================================== */
+        document.addEventListener(
+            "copy",
+            (event) => {
 
-    document.addEventListener(
-        "contextmenu",
-        (event) => {
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    /* =====================================
-       PREVENT COPYING / CUTTING
-    ===================================== */
-
-    document.addEventListener(
-        "copy",
-        (event) => {
-
-            event.preventDefault();
-
-        }
-    );
-
-    document.addEventListener(
-        "cut",
-        (event) => {
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    /* =====================================
-       PREVENT PASTE
-    ===================================== */
-
-    document.addEventListener(
-        "paste",
-        (event) => {
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    /* =====================================
-       DISABLE COMMON KEYBOARD SHORTCUTS
-    ===================================== */
-
-    document.addEventListener(
-        "keydown",
-        (event) => {
-
-            const key =
-                event.key.toLowerCase();
-
-            const modifier =
-                event.ctrlKey ||
-                event.metaKey;
-
-            if (!modifier) {
-                return;
-            }
-
-
-            /* Copy */
-
-            if (key === "c") {
                 event.preventDefault();
+
             }
+        );
 
+        document.addEventListener(
+            "cut",
+            (event) => {
 
-            /* Cut */
-
-            if (key === "x") {
                 event.preventDefault();
+
             }
+        );
 
 
-            /* Select All */
+        /* =====================================
+           PREVENT PASTE
+        ===================================== */
 
-            if (key === "a") {
+        document.addEventListener(
+            "paste",
+            (event) => {
+
                 event.preventDefault();
+
             }
+        );
 
 
-            /* Save Page */
+        /* =====================================
+           DISABLE COMMON KEYBOARD SHORTCUTS
+        ===================================== */
 
-            if (key === "s") {
-                event.preventDefault();
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                const key =
+                    event.key.toLowerCase();
+
+                const modifier =
+                    event.ctrlKey ||
+                    event.metaKey;
+
+                if (!modifier) {
+                    return;
+                }
+
+
+                /* Copy */
+
+                if (key === "c") {
+                    event.preventDefault();
+                }
+
+
+                /* Cut */
+
+                if (key === "x") {
+                    event.preventDefault();
+                }
+
+
+                /* Select All */
+
+                if (key === "a") {
+                    event.preventDefault();
+                }
+
+
+                /* Save Page */
+
+                if (key === "s") {
+                    event.preventDefault();
+                }
+
             }
+        );
 
-        }
-    );
+    }
 
-}
 
     /* =========================================
        INITIALIZE
