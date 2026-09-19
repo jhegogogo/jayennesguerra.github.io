@@ -1838,21 +1838,42 @@ body.light-mode .leadership-card {
     background: linear-gradient(
         145deg,
         #ffffff,
-        #f5f9fc
+        #f7fafc
     );
 
-    border-color: rgba(20, 80, 120, 0.15);
+    border-color: #d6e2eb;
+
+    box-shadow:
+        0 8px 24px rgba(20, 50, 80, 0.06);
 }
 
 
 body.light-mode .leadership-card h3 {
-    color: var(--bg-dark);
+    color: #172033 !important;
 }
 
 
-body.light-mode .leadership-organization,
+body.light-mode .leadership-organization {
+    color: #58708a !important;
+}
+
+
 body.light-mode .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
-    color: #5f7183;
+    color: #58708a !important;
+}
+
+
+body.light-mode .leadership-role {
+    color: #008fca !important;
+}
+
+
+body.light-mode .leadership-date {
+    color: #008fca !important;
+
+    background: rgba(0, 157, 214, 0.07);
+
+    border-color: rgba(0, 157, 214, 0.18);
 }
 
 
