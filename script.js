@@ -635,87 +635,138 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       MEDIA PROTECTION
-    ========================================= */
+   /* =========================================
+   MEDIA / COPY PROTECTION
+========================================= */
 
-    function setupMediaProtection() {
+function setupMediaProtection() {
 
+    /* =====================================
+       PREVENT IMAGE / VIDEO DRAGGING
+    ===================================== */
 
-        /* =====================================
-           PREVENT IMAGE / VIDEO DRAGGING
-        ===================================== */
+    const media =
+        document.querySelectorAll("img, video");
 
-        const media =
-            document.querySelectorAll(
-                "img, video"
-            );
+    media.forEach((element) => {
 
-        media.forEach((element) => {
+        element.setAttribute(
+            "draggable",
+            "false"
+        );
 
-            element.setAttribute(
-                "draggable",
-                "false"
-            );
-
-            element.addEventListener(
-                "dragstart",
-                (event) => {
-
-                    event.preventDefault();
-
-                }
-            );
-
-        });
-
-
-        /* =====================================
-           PREVENT RIGHT-CLICK ON MEDIA
-        ===================================== */
-
-        document.addEventListener(
-            "contextmenu",
+        element.addEventListener(
+            "dragstart",
             (event) => {
-
-                const target =
-                    event.target.closest(
-                        "img, video"
-                    );
-
-                if (target) {
-
-                    event.preventDefault();
-
-                }
-
+                event.preventDefault();
             }
         );
 
+    });
 
-        /* =====================================
-           DISABLE COMMON SAVE SHORTCUT
-        ===================================== */
 
-        document.addEventListener(
-            "keydown",
-            (event) => {
+    /* =====================================
+       PREVENT RIGHT-CLICK
+    ===================================== */
 
-                if (
-                    (event.ctrlKey ||
-                        event.metaKey) &&
-                    event.key.toLowerCase() === "s"
-                ) {
+    document.addEventListener(
+        "contextmenu",
+        (event) => {
 
-                    event.preventDefault();
+            event.preventDefault();
 
-                }
+        }
+    );
 
+
+    /* =====================================
+       PREVENT COPYING / CUTTING
+    ===================================== */
+
+    document.addEventListener(
+        "copy",
+        (event) => {
+
+            event.preventDefault();
+
+        }
+    );
+
+    document.addEventListener(
+        "cut",
+        (event) => {
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    /* =====================================
+       PREVENT PASTE
+    ===================================== */
+
+    document.addEventListener(
+        "paste",
+        (event) => {
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    /* =====================================
+       DISABLE COMMON KEYBOARD SHORTCUTS
+    ===================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            const key =
+                event.key.toLowerCase();
+
+            const modifier =
+                event.ctrlKey ||
+                event.metaKey;
+
+            if (!modifier) {
+                return;
             }
-        );
 
-    }
 
+            /* Copy */
+
+            if (key === "c") {
+                event.preventDefault();
+            }
+
+
+            /* Cut */
+
+            if (key === "x") {
+                event.preventDefault();
+            }
+
+
+            /* Select All */
+
+            if (key === "a") {
+                event.preventDefault();
+            }
+
+
+            /* Save Page */
+
+            if (key === "s") {
+                event.preventDefault();
+            }
+
+        }
+    );
+
+}
 
     /* =========================================
        INITIALIZE
