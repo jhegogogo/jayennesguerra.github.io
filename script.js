@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             await Promise.all(
                 sections.map(async ({ file, container }) => {
+
                     const target =
                         document.getElementById(container);
 
@@ -43,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         return;
                     }
 
-                    const response = await fetch(file);
+                    const response =
+                        await fetch(file);
 
                     if (!response.ok) {
                         throw new Error(
@@ -51,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
                     }
 
-                    const html = await response.text();
+                    const html =
+                        await response.text();
 
                     target.innerHTML = html;
                 })
@@ -64,13 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
             setupNavigation();
             setupProjectTabs();
             setupLeadershipSlideshow();
-            preventImageDragging();
+            setupMediaProtection();
 
         } catch (error) {
+
             console.error(
                 "Error loading portfolio sections:",
                 error
             );
+
         }
     }
 
@@ -80,51 +85,68 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupNavigation() {
-        const navLinks = document.querySelectorAll(
-            '.nav-links a[href^="#"]'
-        );
+
+        const navLinks =
+            document.querySelectorAll(
+                '.nav-links a[href^="#"]'
+            );
 
         navLinks.forEach((link) => {
-            link.addEventListener("click", (event) => {
-                const targetId =
-                    link.getAttribute("href");
 
-                if (!targetId || targetId === "#") {
-                    return;
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const targetId =
+                        link.getAttribute("href");
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    const header =
+                        document.querySelector(
+                            ".site-header"
+                        );
+
+                    const headerHeight =
+                        header
+                            ? header.offsetHeight
+                            : 0;
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.scrollY -
+                        headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+
+                    history.pushState(
+                        null,
+                        "",
+                        targetId
+                    );
+
                 }
+            );
 
-                const target =
-                    document.querySelector(targetId);
-
-                if (!target) {
-                    return;
-                }
-
-                event.preventDefault();
-
-                const header =
-                    document.querySelector(".site-header");
-
-                const headerHeight = header
-                    ? header.offsetHeight
-                    : 0;
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    headerHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth"
-                });
-
-                history.pushState(
-                    null,
-                    "",
-                    targetId
-                );
-            });
         });
     }
 
@@ -134,13 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupProjectTabs() {
+
         const projectCards =
-            document.querySelectorAll(".project-card");
+            document.querySelectorAll(
+                ".project-card"
+            );
 
         projectCards.forEach((card) => {
 
             const tabs =
-                card.querySelectorAll(".project-tab");
+                card.querySelectorAll(
+                    ".project-tab"
+                );
 
             const panels =
                 card.querySelectorAll(
@@ -149,39 +176,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
             tabs.forEach((tab) => {
 
-                tab.addEventListener("click", () => {
+                tab.addEventListener(
+                    "click",
+                    () => {
 
-                    const targetTab =
-                        tab.getAttribute("data-tab");
-
-
-                    /* Remove active state from tabs */
-                    tabs.forEach((item) => {
-                        item.classList.remove("active");
-                    });
+                        const targetTab =
+                            tab.getAttribute(
+                                "data-tab"
+                            );
 
 
-                    /* Hide all panels */
-                    panels.forEach((panel) => {
-                        panel.classList.remove("active");
-                    });
+                        /* Remove active state from tabs */
+
+                        tabs.forEach((item) => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        });
 
 
-                    /* Activate clicked tab */
-                    tab.classList.add("active");
+                        /* Hide all panels */
+
+                        panels.forEach((panel) => {
+
+                            panel.classList.remove(
+                                "active"
+                            );
+
+                        });
 
 
-                    /* Show matching panel */
-                    const targetPanel =
-                        card.querySelector(
-                            `.project-tab-panel[data-panel="${targetTab}"]`
+                        /* Activate clicked tab */
+
+                        tab.classList.add(
+                            "active"
                         );
 
-                    if (targetPanel) {
-                        targetPanel.classList.add("active");
-                    }
 
-                });
+                        /* Show matching panel */
+
+                        const targetPanel =
+                            card.querySelector(
+                                `.project-tab-panel[data-panel="${targetTab}"]`
+                            );
+
+                        if (targetPanel) {
+
+                            targetPanel.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
 
             });
 
@@ -194,6 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     function setupLeadershipSlideshow() {
+
         const slideshows =
             document.querySelectorAll(
                 ".leadership-slideshow"
@@ -202,7 +253,9 @@ document.addEventListener("DOMContentLoaded", () => {
         slideshows.forEach((slideshow) => {
 
             const images =
-                slideshow.querySelectorAll("img");
+                slideshow.querySelectorAll(
+                    "img"
+                );
 
             if (images.length <= 1) {
                 return;
@@ -218,26 +271,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             /* Set first image as active */
-            images.forEach((image, index) => {
-                image.classList.toggle(
-                    "active",
-                    index === 0
-                );
-            });
+
+            images.forEach(
+                (image, index) => {
+
+                    image.classList.toggle(
+                        "active",
+                        index === 0
+                    );
+
+                }
+            );
 
 
             /* Automatic slideshow */
+
             setInterval(() => {
 
                 images[currentIndex]
-                    .classList.remove("active");
+                    .classList.remove(
+                        "active"
+                    );
 
                 currentIndex =
                     (currentIndex + 1) %
                     images.length;
 
                 images[currentIndex]
-                    .classList.add("active");
+                    .classList.add(
+                        "active"
+                    );
 
             }, interval);
 
@@ -252,20 +315,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function setupThemeToggle() {
 
         const themeToggle =
-            document.getElementById("themeToggle");
+            document.getElementById(
+                "themeToggle"
+            );
 
         const themeToggleIcon =
             document.getElementById(
                 "themeToggleIcon"
             );
 
-        if (!themeToggle || !themeToggleIcon) {
+        if (
+            !themeToggle ||
+            !themeToggleIcon
+        ) {
             return;
         }
 
 
         const savedTheme =
-            localStorage.getItem("theme");
+            localStorage.getItem(
+                "theme"
+            );
 
 
         /* =====================================
@@ -278,7 +348,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "light-mode"
             );
 
-            themeToggleIcon.textContent = "☀";
+            themeToggleIcon.textContent =
+                "☀";
 
             themeToggle.setAttribute(
                 "aria-label",
@@ -296,7 +367,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "light-mode"
             );
 
-            themeToggleIcon.textContent = "☾";
+            themeToggleIcon.textContent =
+                "☾";
 
             themeToggle.setAttribute(
                 "aria-label",
@@ -307,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "title",
                 "Switch to light mode"
             );
+
         }
 
 
@@ -325,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /* Save selected theme */
+
                 localStorage.setItem(
                     "theme",
                     isLightMode
@@ -334,9 +408,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /* Update icon and accessibility text */
+
                 if (isLightMode) {
 
-                    themeToggleIcon.textContent = "☀";
+                    themeToggleIcon.textContent =
+                        "☀";
 
                     themeToggle.setAttribute(
                         "aria-label",
@@ -350,7 +426,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else {
 
-                    themeToggleIcon.textContent = "☾";
+                    themeToggleIcon.textContent =
+                        "☾";
 
                     themeToggle.setAttribute(
                         "aria-label",
@@ -361,6 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "title",
                         "Switch to light mode"
                     );
+
                 }
 
             }
@@ -394,7 +472,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 "resumeConfirm"
             );
 
-        if (!resumeButton || !resumeModal) {
+        if (
+            !resumeButton ||
+            !resumeModal
+        ) {
             return;
         }
 
@@ -416,6 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.body.style.overflow =
                 "hidden";
+
         }
 
 
@@ -436,10 +518,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.body.style.overflow =
                 "";
+
         }
 
 
         /* Open using Resume button */
+
         resumeButton.addEventListener(
             "click",
             openResumeModal
@@ -447,6 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* Close using X button */
+
         if (resumeClose) {
 
             resumeClose.addEventListener(
@@ -458,6 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* Close using Got it button */
+
         if (resumeConfirm) {
 
             resumeConfirm.addEventListener(
@@ -503,11 +589,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         "active"
                     )
                 ) {
+
                     closeResumeModal();
+
                 }
 
             }
         );
+
     }
 
 
@@ -542,28 +631,89 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 800);
 
         }, 3600);
+
     }
 
 
     /* =========================================
-       PREVENT IMAGE DRAGGING
+       MEDIA PROTECTION
     ========================================= */
 
-    function preventImageDragging() {
+    function setupMediaProtection() {
 
-        const images =
-            document.querySelectorAll("img");
 
-        images.forEach((image) => {
+        /* =====================================
+           PREVENT IMAGE / VIDEO DRAGGING
+        ===================================== */
 
-            image.addEventListener(
+        const media =
+            document.querySelectorAll(
+                "img, video"
+            );
+
+        media.forEach((element) => {
+
+            element.setAttribute(
+                "draggable",
+                "false"
+            );
+
+            element.addEventListener(
                 "dragstart",
                 (event) => {
+
                     event.preventDefault();
+
                 }
             );
 
         });
+
+
+        /* =====================================
+           PREVENT RIGHT-CLICK ON MEDIA
+        ===================================== */
+
+        document.addEventListener(
+            "contextmenu",
+            (event) => {
+
+                const target =
+                    event.target.closest(
+                        "img, video"
+                    );
+
+                if (target) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================
+           DISABLE COMMON SAVE SHORTCUT
+        ===================================== */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    (event.ctrlKey ||
+                        event.metaKey) &&
+                    event.key.toLowerCase() === "s"
+                ) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+        );
+
     }
 
 
