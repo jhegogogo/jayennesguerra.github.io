@@ -26,7 +26,10 @@
 
 </head>
 
-<body>
+<body
+    oncontextmenu="return false;"
+    onselectstart="return false;"
+>
 
 
     <!-- =========================================
@@ -44,6 +47,7 @@
                 src="assets/ProfilePic_Portfolio.jpg"
                 alt="Jayenn Esguerra"
                 class="intro-photo"
+                draggable="false"
             >
 
             <p class="intro-name">
@@ -136,15 +140,18 @@
 
             </ul>
 
-           <button
-    type="button"
-    class="theme-toggle"
-    id="themeToggle"
-    aria-label="Switch to light mode"
-    title="Switch to light mode"
->
-    <span id="themeToggleIcon" class="theme-toggle-icon">☀</span>
-</button>
+            <button
+                type="button"
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Switch to light mode"
+                title="Switch to light mode"
+            >
+                <span
+                    id="themeToggleIcon"
+                    class="theme-toggle-icon"
+                >☀</span>
+            </button>
 
         </nav>
 
@@ -233,6 +240,7 @@
                             src="assets/ProfilePic_Portfolio.jpg"
                             alt="Jayenn Esguerra"
                             class="hero-photo"
+                            draggable="false"
                         >
 
                     </div>
