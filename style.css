@@ -1122,6 +1122,12 @@ ol {
 }
 
 .technology-list span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
     padding: 5px 9px;
 
     color: var(--accent-light);
@@ -1215,6 +1221,163 @@ ol {
     transform: translateX(3px);
 }
 
+
+/* =========================================================
+   RYLIM PROJECT SLIDESHOW
+========================================================= */
+
+.rylim-slideshow {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    background: var(--bg);
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rylim-slide {
+    display: none;
+
+    width: 100%;
+    max-height: 430px;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    -webkit-user-drag: none;
+
+    pointer-events: none;
+}
+
+.rylim-slide.active {
+    display: block;
+}
+
+
+/* =========================================================
+   RYLIM SLIDESHOW ARROWS
+========================================================= */
+
+.rylim-prev,
+.rylim-next {
+    position: absolute;
+
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    color: #ffffff;
+
+    background: rgba(8, 14, 29, .72);
+
+    border: 1px solid rgba(255, 255, 255, .16);
+
+    border-radius: 50%;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.rylim-prev {
+    left: 14px;
+}
+
+.rylim-next {
+    right: 14px;
+}
+
+.rylim-prev:hover,
+.rylim-next:hover {
+    color: #ffffff;
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.05);
+}
+
+
+/* =========================================================
+   RYLIM SLIDESHOW INDICATORS
+========================================================= */
+
+.rylim-slideshow-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+.rylim-slideshow-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    background: rgba(255, 255, 255, .4);
+
+    border: 0;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.rylim-slideshow-dot.active {
+    background: var(--accent);
+
+    transform: scale(1.25);
+}
+
+
 /* =========================================================
    RYLIM PROJECT TABS
 ========================================================= */
@@ -1253,7 +1416,8 @@ ol {
 
     background: rgba(50, 185, 242, .06);
 
-    border-color: rgba(50, 185, 242, .35);
+    border-color:
+        rgba(50, 185, 242, .35);
 
     transform: translateY(-1px);
 }
@@ -1280,7 +1444,8 @@ ol {
 .project-tab-panel {
     display: none;
 
-    animation: projectTabFade .2s ease;
+    animation:
+        projectTabFade .2s ease;
 }
 
 .project-tab-panel.active {
@@ -1316,7 +1481,7 @@ ol {
 
 
 /* =========================================================
-   RYLIM PROJECT MEDIA
+   RYLIM PROJECT VIDEO
 ========================================================= */
 
 .featured-project .project-media {
@@ -1335,6 +1500,7 @@ ol {
     object-fit: contain;
 }
 
+
 /* =========================================================
    PROJECT VIDEO SIZE
 ========================================================= */
@@ -1349,6 +1515,67 @@ ol {
     object-fit: contain;
 }
 
+
+/* =========================================================
+   RESPONSIVE PROJECTS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-project {
+        grid-column: auto;
+    }
+
+    .project-card {
+        padding: 24px;
+    }
+
+    .rylim-slide {
+        max-height: 380px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-top {
+        gap: 12px;
+    }
+
+    .project-type {
+        font-size: .62rem;
+    }
+
+    .rylim-slide {
+        max-height: 300px;
+    }
+
+    .rylim-prev,
+    .rylim-next {
+        width: 36px;
+        height: 36px;
+
+        font-size: 1.1rem;
+    }
+
+    .rylim-prev {
+        left: 9px;
+    }
+
+    .rylim-next {
+        right: 9px;
+    }
+
+}
 /* =========================================================
    CERTIFICATIONS
 ========================================================= */
