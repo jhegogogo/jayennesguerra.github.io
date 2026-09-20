@@ -424,7 +424,7 @@ ol {
 .intro-name-label {
     margin: 0 0 8px;
 
-    color: var(--accent-light);
+    color: #ffffff;
 
     font-size: .78rem;
     font-weight: 800;
@@ -432,6 +432,9 @@ ol {
     letter-spacing: .25em;
 
     text-transform: uppercase;
+
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, .45);
 }
 
 
@@ -442,7 +445,7 @@ ol {
 .intro-greeting {
     margin: 0;
 
-    color: var(--white);
+    color: #ffffff;
 
     font-size: clamp(
         2rem,
@@ -455,10 +458,16 @@ ol {
     line-height: 1.15;
 
     letter-spacing: -.025em;
+
+    text-shadow:
+        0 3px 18px rgba(0, 0, 0, .45);
 }
 
 .intro-greeting span {
-    color: var(--accent);
+    color: #32b9f2;
+
+    text-shadow:
+        0 3px 18px rgba(50, 185, 242, .25);
 }
 
 
@@ -471,13 +480,16 @@ ol {
 
     margin: 12px 0 0;
 
-    color: var(--muted);
+    color: #dbe7f5;
 
     font-size: 1rem;
 
     line-height: 1.5;
 
     min-height: 1.5em;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, .55);
 }
 
 
