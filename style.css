@@ -865,34 +865,22 @@ body.light-mode .intro-photo {
 
 
 /* =========================================================
-   THEME CIRCLE TRANSITION
+   THEME VIEW TRANSITION
 ========================================================= */
 
-.theme-transition-circle {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    z-index: 999999;
-
-    width: 0;
-    height: 0;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    transform: translate(-50%, -50%) scale(0);
-
-    will-change: transform;
-
-    /* Prevent weird rendering/clipping */
-    overflow: hidden;
-
-    /* The browser should render this above the page */
-    isolation: isolate;
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
 }
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+}
+
 
 
 /* =========================================================
