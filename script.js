@@ -703,35 +703,26 @@ function setupThemeToggle() {
 
 
             /* =================================
-               CALCULATE REQUIRED CIRCLE SIZE
-            ================================= */
+   CALCULATE CIRCLE SIZE
+================================= */
 
-            const distanceToLeft =
-                centerX;
+const maxX = Math.max(
+    centerX,
+    window.innerWidth - centerX
+);
 
-            const distanceToRight =
-                window.innerWidth -
-                centerX;
-
-            const distanceToTop =
-                centerY;
-
-            const distanceToBottom =
-                window.innerHeight -
-                centerY;
+const maxY = Math.max(
+    centerY,
+    window.innerHeight - centerY
+);
 
 
-            const maxDistance =
-                Math.max(
-                    distanceToLeft,
-                    distanceToRight,
-                    distanceToTop,
-                    distanceToBottom
-                );
+const radius = Math.sqrt(
+    Math.pow(maxX, 2) +
+    Math.pow(maxY, 2)
+);
 
-
-            const circleSize =
-                maxDistance * 2;
+const circleSize = radius * 2;
 
 
             /* =================================
