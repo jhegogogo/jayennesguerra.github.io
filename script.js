@@ -251,101 +251,274 @@ setupMediaProtection();
 
     }
 
-    /* =========================================
-       CERTIFICATIONS
+       /* =========================================
+       CERTIFICATION CAROUSELS
     ========================================= */
-     function setupCertificationCarousels() {
-    const carousels = document.querySelectorAll(".certification-carousel");
 
-    carousels.forEach((carousel) => {
-        const cards = Array.from(
-            carousel.querySelectorAll(".certification-card")
-        );
+    function setupCertificationCarousels() {
 
-        const previousButton = carousel.querySelector(".certification-prev");
-        const nextButton = carousel.querySelector(".certification-next");
+        const carousels =
+            document.querySelectorAll(
+                ".certification-carousel"
+            );
 
-        const category = carousel.parentElement;
 
-        const dots = Array.from(
-            category.querySelectorAll(".certification-dot")
-        );
+        carousels.forEach((carousel) => {
 
-        if (
-            cards.length === 0 ||
-            !previousButton ||
-            !nextButton
-        ) {
-            return;
-        }
-
-        let currentIndex = parseInt(
-            carousel.dataset.startIndex,
-            10
-        );
-
-        if (
-            Number.isNaN(currentIndex) ||
-            currentIndex < 0 ||
-            currentIndex >= cards.length
-        ) {
-            currentIndex = 0;
-        }
-
-        function showCertification(index) {
-            currentIndex =
-                (index + cards.length) % cards.length;
-
-            cards.forEach((card, cardIndex) => {
-                card.classList.toggle(
-                    "active",
-                    cardIndex === currentIndex
+            const cards =
+                Array.from(
+                    carousel.querySelectorAll(
+                        ".certification-card"
+                    )
                 );
-            });
 
-            dots.forEach((dot, dotIndex) => {
-                /*
-                 * There are only 3 dots even when there are
-                 * more than 3 certificates.
-                 *
-                 * The dots represent the visible carousel
-                 * position, not individual certificates.
-                 */
-                const dotPosition =
-                    currentIndex % dots.length;
-
-                dot.classList.toggle(
-                    "active",
-                    dotIndex === dotPosition
+            const previousButton =
+                carousel.querySelector(
+                    ".certification-prev"
                 );
-            });
-        }
 
-        previousButton.addEventListener("click", () => {
-            showCertification(currentIndex - 1);
+            const nextButton =
+                carousel.querySelector(
+                    ".certification-next"
+                );
+
+            const category =
+                carousel.closest(
+                    ".certification-category"
+                );
+
+            const dots =
+                category
+                    ? Array.from(
+                        category.querySelectorAll(
+                            ".certification-dot"
+                        )
+                    )
+                    : [];
+
+
+            if (
+                cards.length === 0 ||
+                !previousButton ||
+                !nextButton
+            ) {
+                return;
+            }
+
+
+            /* =====================================
+               DETERMINE STARTING CERTIFICATION
+            ===================================== */
+
+            const startIndex =
+                parseInt(
+                    carousel.dataset.startIndex,
+                    10
+                );
+
+            let currentIndex =
+                Number.isNaN(startIndex)
+                    ? 0
+                    : startIndex;
+
+
+            if (
+                currentIndex < 0 ||
+                currentIndex >= cards.length
+            ) {
+                currentIndex = 0;
+            }
+
+
+            /* =====================================
+               CERTIFICATION ORDER
+            ===================================== */
+
+            function getIndex(offset) {
+
+                return (
+                    currentIndex +
+                    offset +
+                    cards.length
+                ) % cards.length;
+
+            }
+
+            function updateCarousel() {
+
+                const previousIndex =
+                    getIndex(-1);
+
+                const centerIndex =
+                    getIndex(0);
+
+                const nextIndex =
+                    getIndex(1);
+
+
+                cards.forEach((card, index) => {
+
+                    card.classList.remove(
+                        "certification-card-left",
+                        "certification-card-center",
+                        "certification-card-right"
+                    );
+
+                    if (
+                        index === previousIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-left"
+                        );
+
+                    } else if (
+                        index === centerIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-center"
+                        );
+
+                    } else if (
+                        index === nextIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-right"
+                        );
+
+                    }
+
+                });
+
+
+                updateDots();
+
+            }
+
+
+            /* =====================================
+               UPDATE DOTS
+            ===================================== */
+
+            function updateDots() {
+
+                if (dots.length === 0) {
+                    return;
+                }
+
+                dots.forEach((dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === 1
+                    );
+
+                });
+
+            }
+
+
+            /* =====================================
+               PREVIOUS CERTIFICATION
+            ===================================== */
+
+            previousButton.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex =
+                        (
+                            currentIndex -
+                            1 +
+                            cards.length
+                        ) %
+                        cards.length;
+
+                    updateCarousel();
+
+                }
+            );
+
+
+            /* =====================================
+               NEXT CERTIFICATION
+            ===================================== */
+
+            nextButton.addEventListener(
+                "click",
+                () => {
+
+                    currentIndex =
+                        (
+                            currentIndex +
+                            1
+                        ) %
+                        cards.length;
+
+                    updateCarousel();
+
+                }
+            );
+
+
+            /* =====================================
+               DOT INDICATORS
+            ===================================== */
+
+            dots.forEach(
+                (dot, dotIndex) => {
+
+                    dot.addEventListener(
+                        "click",
+                        () => {
+
+                        
+
+                            if (dotIndex === 0) {
+
+                                currentIndex =
+                                    (
+                                        currentIndex -
+                                        1 +
+                                        cards.length
+                                    ) %
+                                    cards.length;
+
+                            } else if (
+                                dotIndex === 2
+                            ) {
+
+                                currentIndex =
+                                    (
+                                        currentIndex +
+                                        1
+                                    ) %
+                                    cards.length;
+
+                            }
+
+
+                            updateCarousel();
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /* =====================================
+               INITIAL POSITION
+            ===================================== */
+
+            updateCarousel();
+
         });
 
-        nextButton.addEventListener("click", () => {
-            showCertification(currentIndex + 1);
-        });
-
-        dots.forEach((dot, dotIndex) => {
-            dot.addEventListener("click", () => {
-
-                /*
-                 * Move to the certificate represented by
-                 * the selected carousel position.
-                 */
-                const targetIndex =
-                    dotIndex % cards.length;
-
-                showCertification(targetIndex);
-            });
-        });
-
-        showCertification(currentIndex);
-    });
-}
+    }
+    
     /* =========================================
        RYLIM MEDIA CAROUSEL
     ========================================= */
