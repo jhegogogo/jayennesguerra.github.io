@@ -528,45 +528,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
-       THEME TOGGLE
-    ========================================= */
+ /* =========================================
+   THEME TOGGLE
+========================================= */
 
-    function setupThemeToggle() {
+function setupThemeToggle() {
 
-        const themeToggle =
-            document.getElementById(
-                "themeToggle"
-            );
+    const themeToggle =
+        document.getElementById(
+            "themeToggle"
+        );
 
-        const themeToggleIcon =
-            document.getElementById(
-                "themeToggleIcon"
-            );
+    const themeToggleIcon =
+        document.getElementById(
+            "themeToggleIcon"
+        );
 
-        if (
-            !themeToggle ||
-            !themeToggleIcon
-        ) {
-            return;
-        }
-
-
-        const savedTheme =
-            localStorage.getItem(
-                "theme"
-            );
+    if (
+        !themeToggle ||
+        !themeToggleIcon
+    ) {
+        return;
+    }
 
 
-        /* =====================================
-           RESTORE SAVED THEME
-        ===================================== */
+    let themeTransitioning = false;
 
-        if (savedTheme === "light") {
 
-            document.body.classList.add(
-                "light-mode"
-            );
+    /* =====================================
+       UPDATE THEME BUTTON
+    ===================================== */
+
+    function updateThemeButton(isLightMode) {
+
+        if (isLightMode) {
 
             themeToggleIcon.textContent =
                 "☀";
@@ -583,10 +578,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else {
 
-            document.body.classList.remove(
-                "light-mode"
-            );
-
             themeToggleIcon.textContent =
                 "☾";
 
@@ -602,69 +593,272 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-
-        /* =====================================
-           TOGGLE THEME
-        ===================================== */
-
-        themeToggle.addEventListener(
-            "click",
-            () => {
-
-                const isLightMode =
-                    document.body.classList.toggle(
-                        "light-mode"
-                    );
+    }
 
 
-                /* Save selected theme */
+    /* =====================================
+       RESTORE SAVED THEME
+    ===================================== */
+
+    const savedTheme =
+        localStorage.getItem(
+            "theme"
+        );
+
+    const initialLightMode =
+        savedTheme === "light";
+
+
+    if (initialLightMode) {
+
+        document.body.classList.add(
+            "light-mode"
+        );
+
+    } else {
+
+        document.body.classList.remove(
+            "light-mode"
+        );
+
+    }
+
+
+    updateThemeButton(
+        initialLightMode
+    );
+
+
+    /* =====================================
+       THEME CIRCLE TRANSITION
+    ===================================== */
+
+    themeToggle.addEventListener(
+        "click",
+        () => {
+
+            /* Prevent double-clicking during animation */
+
+            if (themeTransitioning) {
+                return;
+            }
+
+
+            const currentlyLight =
+                document.body.classList.contains(
+                    "light-mode"
+                );
+
+            const targetLightMode =
+                !currentlyLight;
+
+
+            /* =================================
+               REDUCED MOTION
+            ================================= */
+
+            const prefersReducedMotion =
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
+
+
+            if (prefersReducedMotion) {
+
+                document.body.classList.toggle(
+                    "light-mode",
+                    targetLightMode
+                );
 
                 localStorage.setItem(
                     "theme",
-                    isLightMode
+                    targetLightMode
                         ? "light"
                         : "dark"
                 );
 
+                updateThemeButton(
+                    targetLightMode
+                );
 
-                /* Update icon and accessibility text */
-
-                if (isLightMode) {
-
-                    themeToggleIcon.textContent =
-                        "☀";
-
-                    themeToggle.setAttribute(
-                        "aria-label",
-                        "Switch to dark mode"
-                    );
-
-                    themeToggle.setAttribute(
-                        "title",
-                        "Switch to dark mode"
-                    );
-
-                } else {
-
-                    themeToggleIcon.textContent =
-                        "☾";
-
-                    themeToggle.setAttribute(
-                        "aria-label",
-                        "Switch to light mode"
-                    );
-
-                    themeToggle.setAttribute(
-                        "title",
-                        "Switch to light mode"
-                    );
-
-                }
+                return;
 
             }
-        );
 
-    }
+
+            /* =================================
+               GET BUTTON POSITION
+            ================================= */
+
+            const buttonRect =
+                themeToggle.getBoundingClientRect();
+
+            const centerX =
+                buttonRect.left +
+                buttonRect.width / 2;
+
+            const centerY =
+                buttonRect.top +
+                buttonRect.height / 2;
+
+
+            /* =================================
+               CALCULATE REQUIRED CIRCLE SIZE
+            ================================= */
+
+            const distanceToLeft =
+                centerX;
+
+            const distanceToRight =
+                window.innerWidth -
+                centerX;
+
+            const distanceToTop =
+                centerY;
+
+            const distanceToBottom =
+                window.innerHeight -
+                centerY;
+
+
+            const maxDistance =
+                Math.max(
+                    distanceToLeft,
+                    distanceToRight,
+                    distanceToTop,
+                    distanceToBottom
+                );
+
+
+            const circleSize =
+                maxDistance * 2;
+
+
+            /* =================================
+               CREATE TRANSITION CIRCLE
+            ================================= */
+
+            const transitionCircle =
+                document.createElement(
+                    "div"
+                );
+
+            transitionCircle.className =
+                "theme-transition-circle";
+
+
+            /* Target theme background */
+
+            transitionCircle.style.background =
+                targetLightMode
+                    ? "#f5f8fc"
+                    : "#080e1d";
+
+
+            transitionCircle.style.left =
+                `${centerX}px`;
+
+            transitionCircle.style.top =
+                `${centerY}px`;
+
+            transitionCircle.style.width =
+                `${circleSize}px`;
+
+            transitionCircle.style.height =
+                `${circleSize}px`;
+
+
+            /* =================================
+               START SMALL
+            ================================= */
+
+            transitionCircle.style.transform =
+                "translate(-50%, -50%) scale(0)";
+
+
+            document.body.appendChild(
+                transitionCircle
+            );
+
+
+            themeTransitioning = true;
+
+
+            /* =================================
+               UPDATE BUTTON IMMEDIATELY
+            ================================= */
+
+            updateThemeButton(
+                targetLightMode
+            );
+
+
+            /* =================================
+               EXPAND CIRCLE
+            ================================= */
+
+            requestAnimationFrame(() => {
+
+                requestAnimationFrame(() => {
+
+                    transitionCircle.style.transition =
+                        "transform .7s cubic-bezier(.76,0,.24,1)";
+
+                    transitionCircle.style.transform =
+                        "translate(-50%, -50%) scale(1)";
+
+                });
+
+            });
+
+
+            /* =================================
+               FINISH TRANSITION
+            ================================= */
+
+            transitionCircle.addEventListener(
+                "transitionend",
+                () => {
+
+                    /*
+                     * Now switch the actual
+                     * page theme underneath.
+                     */
+
+                    document.body.classList.toggle(
+                        "light-mode",
+                        targetLightMode
+                    );
+
+
+                    /* Save theme */
+
+                    localStorage.setItem(
+                        "theme",
+                        targetLightMode
+                            ? "light"
+                            : "dark"
+                    );
+
+
+                    /*
+                     * Remove transition circle.
+                     */
+
+                    transitionCircle.remove();
+
+                    themeTransitioning = false;
+
+                },
+                {
+                    once: true
+                }
+            );
+
+        }
+    );
+
+}
 
 
     /* =========================================
