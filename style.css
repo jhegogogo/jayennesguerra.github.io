@@ -3701,39 +3701,27 @@ button:focus-visible {
 
     .site-header {
         position: sticky;
-
         top: 10px;
-
         width: calc(100% - 20px);
-
         margin-inline: auto;
-
         border-radius: 15px;
     }
 
     .navbar {
         width: 100%;
-
         min-height: 58px;
-
         padding: 0 15px;
-
         flex-direction: row;
-
         gap: 12px;
     }
 
     .nav-links {
-        width: auto;
-
-        display: flex;
-
-        flex-wrap: nowrap;
-
-        justify-content: flex-end;
-
-        gap: 10px;
-    }
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+}
 
     .nav-links a {
         font-size: .68rem;
@@ -3754,7 +3742,6 @@ button:focus-visible {
 
     .hero-card {
         max-width: 500px;
-
         margin-inline: auto;
     }
 
