@@ -824,38 +824,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       INTRO SCREEN
-    ========================================= */
+   INTRO SCREEN
+========================================= */
 
-    function setupIntroScreen() {
+function setupIntroScreen() {
 
-        const introScreen =
-            document.getElementById(
-                "introScreen"
-            );
+    const introScreen =
+        document.getElementById(
+            "introScreen"
+        );
 
-        if (!introScreen) {
-            return;
-        }
+    if (!introScreen) {
+        return;
+    }
 
+
+    /*
+     * Intro duration:
+     * 7 seconds gives enough time for the
+     * animations without making the opening
+     * feel too long.
+     */
+
+    const INTRO_DURATION = 7000;
+
+
+    /* =====================================
+       START INTRO ANIMATIONS
+    ===================================== */
+
+    requestAnimationFrame(() => {
+
+        introScreen.classList.add(
+            "intro-start"
+        );
+
+    });
+
+
+    /* =====================================
+       HIDE INTRO
+    ===================================== */
+
+    setTimeout(() => {
+
+        introScreen.classList.add(
+            "hidden"
+        );
+
+
+        /*
+         * Remove the intro from the page
+         * after the fade-out finishes.
+         */
 
         setTimeout(() => {
 
-            introScreen.classList.add(
-                "hidden"
-            );
+            introScreen.style.display =
+                "none";
 
+        }, 1000);
 
-            setTimeout(() => {
+    }, INTRO_DURATION);
 
-                introScreen.style.display =
-                    "none";
-
-            }, 800);
-
-        }, 3600);
-
-    }
+}
 
 
     /* =========================================
