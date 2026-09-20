@@ -145,14 +145,16 @@ ol {
     width: 100%;
     height: 100vh;
 
+    overflow: hidden;
+
     background: var(--bg);
 
     opacity: 1;
     visibility: visible;
 
     transition:
-        opacity .85s ease,
-        visibility .85s ease;
+        opacity .9s ease,
+        visibility .9s ease;
 }
 
 .intro-screen.hidden {
@@ -161,10 +163,94 @@ ol {
     pointer-events: none;
 }
 
+
+/* =========================================================
+   MOVING BACKGROUND NAME
+========================================================= */
+
+.intro-name-marquee {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 1;
+}
+
+.intro-name-track {
+    display: flex;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        introNameMove 22s linear infinite;
+}
+
+.intro-name-track span {
+    display: block;
+
+    margin-right: 80px;
+
+    color: var(--white);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        8rem,
+        17vw,
+        18rem
+    );
+
+    font-weight: 400;
+
+    letter-spacing: -.04em;
+
+    line-height: .9;
+
+    opacity: .035;
+}
+
+@keyframes introNameMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   INTRO CONTENT
+========================================================= */
+
 .intro-content {
-    width: auto;
-    max-width: 90%;
-    height: auto;
+    position: relative;
+
+    z-index: 3;
+
+    width: min(
+        900px,
+        calc(100% - 48px)
+    );
 
     display: flex;
     flex-direction: column;
@@ -173,75 +259,387 @@ ol {
 
     text-align: center;
 
-    animation: introContentIn .8s ease both;
+    padding: 40px 24px;
 }
+
+
+/* =========================================================
+   INTRO IMAGE
+========================================================= */
+
+.intro-image-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 300px;
+    height: 380px;
+
+    margin-bottom: 24px;
+
+    opacity: 0;
+
+    animation:
+        introImageFadeIn 1.4s ease forwards;
+
+    animation-delay: .5s;
+}
+
+.intro-image-wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50, 185, 242, .18),
+            transparent 68%
+        );
+
+    filter: blur(20px);
+
+    z-index: -1;
+}
+
 
 .intro-photo {
     display: block;
 
-    width: 120px !important;
-    height: 120px !important;
+    width: 300px !important;
+    height: 380px !important;
 
-    max-width: 120px !important;
-    max-height: 120px !important;
+    max-width: 300px !important;
+    max-height: 380px !important;
 
-    min-width: 120px;
-    min-height: 120px;
+    object-fit: contain;
+    object-position: center bottom;
 
-    object-fit: cover;
-    object-position: center;
+    border: none;
+    border-radius: 0;
 
-    border-radius: 50%;
-    border: 3px solid var(--accent);
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 
-    margin: 0 0 24px;
-
-    box-shadow:
-        0 0 0 8px rgba(50, 185, 242, .08),
-        0 15px 40px rgba(0, 0, 0, .35);
+    filter:
+        drop-shadow(
+            0 20px 45px rgba(0, 0, 0, .35)
+        );
 }
 
-.intro-name {
+
+@keyframes introImageFadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   INTRO TEXT
+========================================================= */
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    opacity: 0;
+
+    animation:
+        introTextFadeIn 1s ease forwards;
+
+    animation-delay: 1.3s;
+}
+
+
+@keyframes introTextFadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   INTRO NAME LABEL
+========================================================= */
+
+.intro-name-label {
     margin: 0 0 8px;
 
     color: var(--accent-light);
 
-    font-size: .8rem;
+    font-size: .78rem;
     font-weight: 800;
 
-    letter-spacing: .18em;
+    letter-spacing: .25em;
+
+    text-transform: uppercase;
 }
+
+
+/* =========================================================
+   INTRO GREETING
+========================================================= */
 
 .intro-greeting {
     margin: 0;
 
     color: var(--white);
 
-    font-size: 2.2rem;
+    font-size: clamp(
+        2rem,
+        4vw,
+        3.4rem
+    );
+
     font-weight: 800;
 
-    line-height: 1.2;
+    line-height: 1.15;
+
+    letter-spacing: -.025em;
 }
 
+.intro-greeting span {
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   INTRO WELCOME
+========================================================= */
+
 .intro-welcome {
-    margin: 10px 0 0;
+    position: relative;
+
+    margin: 12px 0 0;
 
     color: var(--muted);
 
-    font-size: .95rem;
+    font-size: 1rem;
+
     line-height: 1.5;
+
+    min-height: 1.5em;
 }
 
-@keyframes introContentIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
+
+/* Typing cursor */
+
+.intro-welcome::after {
+    content: "";
+
+    display: inline-block;
+
+    width: 2px;
+    height: 1em;
+
+    margin-left: 5px;
+
+    vertical-align: -2px;
+
+    background: var(--accent);
+
+    animation:
+        introCursorBlink .8s steps(1) infinite;
+}
+
+@keyframes introCursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    51%,
+    100% {
+        opacity: 0;
     }
+
+}
+
+
+/* =========================================================
+   INTRO LIGHT MODE
+========================================================= */
+
+body.light-mode .intro-name-track span {
+    color: var(--white);
+
+    opacity: .055;
+}
+
+body.light-mode .intro-image-wrapper::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(21, 158, 215, .16),
+            transparent 68%
+        );
+}
+
+body.light-mode .intro-photo {
+    filter:
+        drop-shadow(
+            0 20px 45px rgba(40, 70, 100, .18)
+        );
+}
+
+
+/* =========================================================
+   RESPONSIVE INTRO
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .intro-name-track span {
+        font-size: clamp(
+            7rem,
+            20vw,
+            13rem
+        );
+    }
+
+    .intro-image-wrapper {
+        width: 270px;
+        height: 350px;
+
+        margin-bottom: 20px;
+    }
+
+    .intro-photo {
+        width: 270px !important;
+        height: 350px !important;
+
+        max-width: 270px !important;
+        max-height: 350px !important;
+    }
+
+    .intro-name-label {
+        font-size: .72rem;
+    }
+
+    .intro-welcome {
+        font-size: .95rem;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .intro-content {
+        width: calc(100% - 28px);
+
+        padding: 24px 12px;
+    }
+
+    .intro-name-track span {
+        font-size: 6rem;
+
+        margin-right: 50px;
+    }
+
+    .intro-image-wrapper {
+        width: 220px;
+        height: 290px;
+
+        margin-bottom: 14px;
+    }
+
+    .intro-image-wrapper::before {
+        width: 190px;
+        height: 190px;
+    }
+
+    .intro-photo {
+        width: 220px !important;
+        height: 290px !important;
+
+        max-width: 220px !important;
+        max-height: 290px !important;
+    }
+
+    .intro-name-label {
+        margin-bottom: 6px;
+
+        font-size: .65rem;
+
+        letter-spacing: .2em;
+    }
+
+    .intro-greeting {
+        font-size: 2rem;
+    }
+
+    .intro-welcome {
+        margin-top: 9px;
+
+        font-size: .88rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .intro-image-wrapper {
+        width: 190px;
+        height: 250px;
+    }
+
+    .intro-photo {
+        width: 190px !important;
+        height: 250px !important;
+
+        max-width: 190px !important;
+        max-height: 250px !important;
+    }
+
+    .intro-greeting {
+        font-size: 1.75rem;
+    }
+
 }
 
 
