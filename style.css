@@ -3882,6 +3882,27 @@ button:focus-visible {
 }
 
 /* =========================================================
+   THEME CIRCLE TRANSITION
+========================================================= */
+
+.theme-transition-circle {
+    position: fixed;
+
+    z-index: 9998;
+
+    width: 0;
+    height: 0;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    will-change: transform;
+}
+
+/* =========================================================
    ANTI-DOWNLOAD / MEDIA PROTECTION
 ========================================================= */
 
