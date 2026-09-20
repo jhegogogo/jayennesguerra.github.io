@@ -465,11 +465,11 @@ ol {
 
 .intro-greeting span {
     color: #32b9f2;
+    -webkit-text-stroke: 1px #ffffff;
 
     text-shadow:
-        0 3px 18px rgba(50, 185, 242, .25);
+        0 3px 16px rgba(0, 0, 0, .55);
 }
-
 
 /* =========================================================
    INTRO WELCOME
