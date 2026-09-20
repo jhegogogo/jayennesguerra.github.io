@@ -459,15 +459,13 @@ ol {
 
     letter-spacing: -.025em;
 
-    text-shadow:
-        0 3px 18px rgba(0, 0, 0, .45);
+    text-shadow:none;
 }
 
 .intro-greeting span {
     color:  #159ed7;
 
-    text-shadow:
-        0 3px 16px rgba(0, 0, 0, .55);
+    text-shadow:none;
 }
 
 /* =========================================================
