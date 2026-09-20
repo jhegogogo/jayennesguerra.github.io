@@ -3727,7 +3727,6 @@ button:focus-visible {
         display: block;
     }
 
-    /* Keep logo on the left */
     .logo {
         position: absolute;
 
@@ -3735,34 +3734,26 @@ button:focus-visible {
         top: 18px;
     }
 
-    /* Center navigation relative to the entire header */
     .nav-links {
-        position: absolute;
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    width: calc(100% - 120px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 14px;
+    margin: 0;
+    padding: 0;
+    transform: translateX(-50%);
+}
 
-        top: 17px;
-        left: 50%;
+.nav-links a {
+    font-size: .68rem;
+    white-space: nowrap;
+}
 
-        width: calc(100% - 110px);
-
-        display: flex;
-        flex-wrap: wrap;
-
-        align-items: center;
-        justify-content: center;
-
-        gap: 8px 14px;
-
-        margin: 0;
-        padding: 0;
-
-        transform: translate(-50%, 0);
-    }
-
-    .nav-links a {
-        font-size: .68rem;
-    }
-
-    /* Keep theme button on the right */
     .theme-toggle {
         position: absolute;
 
@@ -3851,15 +3842,12 @@ button:focus-visible {
 
     .site-header {
         top: 8px;
-
         width: calc(100% - 16px);
-
         border-radius: 14px;
     }
 
     .navbar {
         min-height: 92px;
-
         padding: 12px 13px;
     }
 
@@ -3870,20 +3858,17 @@ button:focus-visible {
         font-size: 1.35rem;
     }
 
-    .nav-links {
-        top: 17px;
+   .nav-links {
+    top: 17px;
+    width: calc(100% - 110px);
+    gap: 7px 11px;
+    justify-content: center;
+}
 
-        width: calc(100% - 100px);
-
-        gap: 7px 11px;
-
-        /* Keep it centered */
-        justify-content: center;
-    }
-
-    .nav-links a {
-        font-size: .62rem;
-    }
+.nav-links a {
+    font-size: .62rem;
+    white-space: nowrap;
+}
 
     .theme-toggle {
         right: 13px;
