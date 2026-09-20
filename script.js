@@ -846,7 +846,7 @@ function setupIntroScreen() {
      * feel too long.
      */
 
-    const INTRO_DURATION = 7000;
+    const INTRO_DURATION = 4500;
 
 
     /* =====================================
