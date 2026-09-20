@@ -2542,7 +2542,7 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 .certification-category {
-    margin-bottom: 52px;
+    margin-bottom: 64px;
 }
 
 .certification-category:last-child {
@@ -2550,7 +2550,7 @@ body.light-mode .intro-photo {
 }
 
 .certification-category-title {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 
     color: var(--white);
 
@@ -2560,47 +2560,127 @@ body.light-mode .intro-photo {
     letter-spacing: -.01em;
 }
 
-.certifications-grid {
-    display: grid;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+/* =========================================================
+   CERTIFICATION CAROUSEL
+========================================================= */
 
-    gap: 20px;
+.certification-carousel {
+    position: relative;
+
+    width: 100%;
+    overflow: hidden;
+
+    padding: 18px 0 10px;
 }
 
+.certification-track {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    transition: transform .45s ease;
+}
+
+
+/* =========================================================
+   CERTIFICATION CARDS
+========================================================= */
+
 .certification-card {
+    position: relative;
+
+    flex: 0 0 58%;
+
     min-width: 0;
 
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr) 120px;
+        minmax(0, 1fr) 110px;
 
     gap: 24px;
 
     align-items: center;
 
-    padding: 26px;
+    margin: 0 -7%;
+
+    padding: 30px;
 
     background: var(--card);
 
     border: 1px solid var(--border);
-    border-radius: 13px;
+    border-radius: 18px;
+
+    opacity: .35;
+
+    transform:
+        scale(.82);
+
+    filter: blur(.15px);
 
     transition:
-        transform .25s ease,
+        transform .45s ease,
+        opacity .45s ease,
         background .25s ease,
-        border-color .25s ease;
+        border-color .25s ease,
+        box-shadow .45s ease;
+
+    z-index: 1;
 }
 
-.certification-card:hover {
-    transform: translateY(-4px);
 
-    background: var(--card-hover);
+/* =========================================================
+   ACTIVE / CENTER CERTIFICATION
+========================================================= */
+
+.certification-card.active {
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    background: var(--card);
 
     border-color:
-        rgba(50, 185, 242, .45);
+        rgba(50, 185, 242, .5);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .18);
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   PREVIOUS / NEXT CERTIFICATIONS
+========================================================= */
+
+.certification-card.prev,
+.certification-card.next {
+    opacity: .48;
+
+    transform:
+        scale(.84);
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HIDDEN CERTIFICATIONS
+========================================================= */
+
+.certification-card.hidden {
+    opacity: 0;
+
+    transform:
+        scale(.72);
+
+    pointer-events: none;
+
+    z-index: 0;
 }
 
 
@@ -2610,33 +2690,6 @@ body.light-mode .intro-photo {
 
 .certification-content {
     min-width: 0;
-}
-
-
-/* =========================================================
-   CERTIFICATION LOGOS
-========================================================= */
-
-.certification-logo {
-    width: 120px;
-    height: 100px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-}
-
-.certification-logo img {
-    display: block;
-
-    width: auto;
-    height: auto;
-
-    max-width: 100%;
-    max-height: 80px;
-
-    object-fit: contain;
 }
 
 
@@ -2659,7 +2712,7 @@ body.light-mode .intro-photo {
 
 
 /* =========================================================
-   CERTIFICATION CONTENT
+   CERTIFICATION TITLE
 ========================================================= */
 
 .certification-card h3 {
@@ -2672,6 +2725,11 @@ body.light-mode .intro-photo {
     line-height: 1.5;
 }
 
+
+/* =========================================================
+   CERTIFICATION PROVIDER
+========================================================= */
+
 .certification-card p {
     color: var(--muted);
 
@@ -2679,6 +2737,11 @@ body.light-mode .intro-photo {
 
     line-height: 1.6;
 }
+
+
+/* =========================================================
+   CERTIFICATION LINK
+========================================================= */
 
 .certification-card a {
     display: inline-block;
@@ -2698,6 +2761,11 @@ body.light-mode .intro-photo {
     color: var(--white);
 }
 
+
+/* =========================================================
+   CERTIFICATION NOTE
+========================================================= */
+
 .certification-note {
     display: block;
 
@@ -2711,36 +2779,332 @@ body.light-mode .intro-photo {
 
 
 /* =========================================================
-   CERTIFICATION RESPONSIVE
+   CERTIFICATION LOGOS
 ========================================================= */
 
-@media (max-width: 800px) {
+.certification-logo {
+    width: 110px;
+    height: 100px;
 
-    .certifications-grid {
-        grid-template-columns: 1fr;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.certification-logo img {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 78px;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
+
+.certification-carousel-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: var(--white);
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    font-size: 1.45rem;
+    font-weight: 400;
+
+    line-height: 1;
+
+    transform:
+        translateY(-50%);
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+    z-index: 10;
+}
+
+.certification-carousel-arrow:hover {
+    color: var(--accent);
+
+    background: var(--card-hover);
+
+    border-color: var(--accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+.certification-carousel-prev {
+    left: 12px;
+}
+
+.certification-carousel-next {
+    right: 12px;
+}
+
+
+/* =========================================================
+   CAROUSEL INDICATORS
+========================================================= */
+
+.certification-carousel-indicators {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.certification-carousel-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    background: var(--border);
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.certification-carousel-dot:hover {
+    transform: scale(1.15);
+}
+
+.certification-carousel-dot.active {
+    width: 25px;
+
+    background: var(--accent);
+
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .certification-card {
+        flex-basis: 68%;
+
+        margin: 0 -9%;
+
+        grid-template-columns:
+            minmax(0, 1fr) 95px;
+
+        gap: 18px;
+
+        padding: 26px;
     }
 
-    .certification-category {
-        margin-bottom: 42px;
+    .certification-logo {
+        width: 95px;
+        height: 90px;
+    }
+
+    .certification-logo img {
+        max-height: 70px;
     }
 
 }
 
-@media (max-width: 600px) {
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .certification-category {
+        margin-bottom: 48px;
+    }
+
+    .certification-carousel {
+        padding-top: 12px;
+    }
 
     .certification-card {
-        grid-template-columns: 1fr;
+        flex-basis: 82%;
 
-        gap: 18px;
+        margin: 0 -17%;
+
+        grid-template-columns:
+            minmax(0, 1fr) 80px;
+
+        gap: 16px;
 
         padding: 24px;
+
+        border-radius: 16px;
+    }
+
+    .certification-card.active {
+        transform: scale(1);
+    }
+
+    .certification-card.prev,
+    .certification-card.next {
+        transform: scale(.82);
+    }
+
+    .certification-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .certification-logo img {
+        max-height: 62px;
+    }
+
+    .certification-carousel-arrow {
+        width: 40px;
+        height: 40px;
+
+        font-size: 1.25rem;
+    }
+
+    .certification-carousel-prev {
+        left: 8px;
+    }
+
+    .certification-carousel-next {
+        right: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .certification-category-title {
+        margin-bottom: 18px;
+
+        font-size: 1rem;
+    }
+
+    .certification-carousel {
+        padding-top: 8px;
+    }
+
+    .certification-card {
+        flex-basis: 88%;
+
+        margin: 0 -24%;
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        padding: 22px;
+    }
+
+    .certification-card.prev,
+    .certification-card.next {
+        transform: scale(.8);
+    }
+
+    .certification-card h3 {
+        font-size: .95rem;
+    }
+
+    .certification-card p {
+        font-size: .78rem;
+    }
+
+    .certification-card a {
+        font-size: .75rem;
     }
 
     .certification-logo {
         width: 100%;
-        height: 80px;
+        height: 70px;
 
         justify-content: flex-start;
+    }
+
+    .certification-logo img {
+        max-height: 58px;
+    }
+
+    .certification-carousel-arrow {
+        width: 36px;
+        height: 36px;
+
+        font-size: 1.1rem;
+    }
+
+    .certification-carousel-prev {
+        left: 5px;
+    }
+
+    .certification-carousel-next {
+        right: 5px;
+    }
+
+    .certification-carousel-indicators {
+        gap: 8px;
+
+        margin-top: 18px;
+    }
+
+    .certification-carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .certification-carousel-dot.active {
+        width: 22px;
     }
 
 }
