@@ -737,15 +737,6 @@ const circleSize = radius * 2;
             transitionCircle.className =
                 "theme-transition-circle";
 
-
-            /* Target theme background */
-
-            transitionCircle.style.background =
-                targetLightMode
-                    ? "#f5f8fc"
-                    : "#080e1d";
-
-
             transitionCircle.style.left =
                 `${centerX}px`;
 
