@@ -633,211 +633,137 @@ function setupThemeToggle() {
        THEME CIRCLE TRANSITION
     ===================================== */
 
-    themeToggle.addEventListener(
-        "click",
-        () => {
+   themeToggle.addEventListener("click", async () => {
 
-            /* Prevent double-clicking during animation */
+    if (themeTransitioning) {
+        return;
+    }
 
-            if (themeTransitioning) {
-                return;
-            }
+    themeTransitioning = true;
 
+    const currentlyLight =
+        document.body.classList.contains("light-mode");
 
-            const currentlyLight =
-                document.body.classList.contains(
-                    "light-mode"
-                );
+    const targetLightMode =
+        !currentlyLight;
 
-            const targetLightMode =
-                !currentlyLight;
 
+    /* =====================================
+       GET BUTTON POSITION
+    ===================================== */
 
-            /* =================================
-               REDUCED MOTION
-            ================================= */
+    const buttonRect =
+        themeToggle.getBoundingClientRect();
 
-            const prefersReducedMotion =
-                window.matchMedia(
-                    "(prefers-reduced-motion: reduce)"
-                ).matches;
+    const centerX =
+        buttonRect.left +
+        buttonRect.width / 2;
 
+    const centerY =
+        buttonRect.top +
+        buttonRect.height / 2;
 
-            if (prefersReducedMotion) {
 
-                document.body.classList.toggle(
-                    "light-mode",
-                    targetLightMode
-                );
+    /* =====================================
+       CALCULATE CIRCLE SIZE
+    ===================================== */
 
-                localStorage.setItem(
-                    "theme",
-                    targetLightMode
-                        ? "light"
-                        : "dark"
-                );
+    const maxX =
+        Math.max(
+            centerX,
+            window.innerWidth - centerX
+        );
 
-                updateThemeButton(
-                    targetLightMode
-                );
+    const maxY =
+        Math.max(
+            centerY,
+            window.innerHeight - centerY
+        );
 
-                return;
+    const radius =
+        Math.hypot(maxX, maxY);
 
-            }
 
+    /* =====================================
+       CHANGE THEME
+    ===================================== */
 
-            /* =================================
-               GET BUTTON POSITION
-            ================================= */
+    const changeTheme = () => {
 
-            const buttonRect =
-                themeToggle.getBoundingClientRect();
+        document.body.classList.toggle(
+            "light-mode",
+            targetLightMode
+        );
 
-            const centerX =
-                buttonRect.left +
-                buttonRect.width / 2;
+        localStorage.setItem(
+            "theme",
+            targetLightMode
+                ? "light"
+                : "dark"
+        );
 
-            const centerY =
-                buttonRect.top +
-                buttonRect.height / 2;
+        updateThemeButton(
+            targetLightMode
+        );
+    };
 
 
-            /* =================================
-   CALCULATE CIRCLE SIZE
-================================= */
+    /* =====================================
+       START VIEW TRANSITION
+    ===================================== */
 
-const maxX = Math.max(
-    centerX,
-    window.innerWidth - centerX
-);
+    if (!document.startViewTransition) {
 
-const maxY = Math.max(
-    centerY,
-    window.innerHeight - centerY
-);
+        changeTheme();
 
+        themeTransitioning = false;
 
-const radius = Math.sqrt(
-    Math.pow(maxX, 2) +
-    Math.pow(maxY, 2)
-);
+        return;
+    }
 
-const circleSize = radius * 2;
 
+    const transition =
+        document.startViewTransition(
+            changeTheme
+        );
 
-            /* =================================
-               CREATE TRANSITION CIRCLE
-            ================================= */
 
-            const transitionCircle =
-                document.createElement(
-                    "div"
-                );
+    /* =====================================
+       CIRCULAR REVEAL
+    ===================================== */
 
-            transitionCircle.className =
-                "theme-transition-circle";
+    await transition.ready;
 
-            transitionCircle.style.left =
-                `${centerX}px`;
 
-            transitionCircle.style.top =
-                `${centerY}px`;
+    document.documentElement.animate(
+        {
+            clipPath: [
+                `circle(0px at ${centerX}px ${centerY}px)`,
 
-            transitionCircle.style.width =
-                `${circleSize}px`;
+                `circle(${radius}px at ${centerX}px ${centerY}px)`
+            ]
+        },
+        {
+            duration: 750,
 
-            transitionCircle.style.height =
-                `${circleSize}px`;
+            easing:
+                "cubic-bezier(.76, 0, .24, 1)",
 
-
-            /* =================================
-               START SMALL
-            ================================= */
-
-            transitionCircle.style.transform =
-                "translate(-50%, -50%) scale(0)";
-
-
-            document.body.appendChild(
-                transitionCircle
-            );
-
-
-            themeTransitioning = true;
-
-
-            /* =================================
-               UPDATE BUTTON IMMEDIATELY
-            ================================= */
-
-            updateThemeButton(
-                targetLightMode
-            );
-
-
-            /* =================================
-               EXPAND CIRCLE
-            ================================= */
-
-            requestAnimationFrame(() => {
-
-    transitionCircle.style.transition =
-        "transform .75s cubic-bezier(.76, 0, .24, 1)";
-
-    transitionCircle.style.transform =
-        "translate(-50%, -50%) scale(1)";
-
-});
-
-
-
-            /* =================================
-               FINISH TRANSITION
-            ================================= */
-
-            transitionCircle.addEventListener(
-                "transitionend",
-                () => {
-
-                    /*
-                     * Now switch the actual
-                     * page theme underneath.
-                     */
-
-                    document.body.classList.toggle(
-                        "light-mode",
-                        targetLightMode
-                    );
-
-
-                    /* Save theme */
-
-                    localStorage.setItem(
-                        "theme",
-                        targetLightMode
-                            ? "light"
-                            : "dark"
-                    );
-
-
-                    /*
-                     * Remove transition circle.
-                     */
-
-                    transitionCircle.remove();
-
-                    themeTransitioning = false;
-
-                },
-                {
-                    once: true
-                }
-            );
-
+            pseudoElement:
+                "::view-transition-new(root)"
         }
     );
 
-}
+
+    /* =====================================
+       WAIT UNTIL FINISHED
+    ===================================== */
+
+    await transition.finished;
+
+    themeTransitioning = false;
+
+});
 
 
     /* =========================================
