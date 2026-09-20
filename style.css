@@ -3606,17 +3606,13 @@ body.light-mode .leadership-date {
 
 footer {
     padding: 30px 0;
-
     background: var(--bg);
-
     border-top: 1px solid var(--border);
 }
 
 footer p {
     color: var(--muted-2);
-
     font-size: .75rem;
-
     text-align: center;
 }
 
@@ -3628,7 +3624,6 @@ footer p {
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--accent);
-
     outline-offset: 4px;
 }
 
@@ -3641,23 +3636,18 @@ button:focus-visible {
 
     .site-header {
         top: 12px;
-
         width: calc(100% - 28px);
-
         border-radius: 16px;
     }
 
     .navbar {
         min-height: 68px;
-
         padding: 0 18px;
-
         gap: 20px;
     }
 
     .nav-links {
         gap: 15px;
-        transform: translateY(-4px);
     }
 
 
