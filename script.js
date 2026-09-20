@@ -774,14 +774,16 @@ if (prefersReducedMotion) {
             ]
         },
         {
-            duration: 750,
+    duration: 750,
 
-            easing:
-                "cubic-bezier(.76, 0, .24, 1)",
+    easing:
+        "cubic-bezier(.76, 0, .24, 1)",
 
-            pseudoElement:
-                "::view-transition-new(root)"
-        }
+    fill: "both",
+
+    pseudoElement:
+        "::view-transition-new(root)"
+}
     );
 
 
