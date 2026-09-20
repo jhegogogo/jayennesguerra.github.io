@@ -789,8 +789,6 @@ ol {
 
     object-fit: contain;
 
-    background: #ffffff;
-
     border: 1px solid rgba(255, 255, 255, .12);
 
     user-select: none;
@@ -801,16 +799,18 @@ ol {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    OLLOPA
-   Rectangular logo
---------------------------------------------------------- */
+   327 × 128 rectangular logo
+========================================================= */
 
 .experience-logo[src*="Ollopa"] {
     width: 96px;
     height: 64px;
 
     padding: 8px;
+
+    background: #ffffff;
 
     border-radius: 12px;
 
@@ -820,17 +820,39 @@ ol {
 }
 
 
-/* ---------------------------------------------------------
-   KMC + ALIGNERR
-   Rounded square logos
---------------------------------------------------------- */
+/* =========================================================
+   KMC
+   Rounded square
+========================================================= */
 
-.experience-logo[src*="KMC"],
+.experience-logo[src*="KMC"] {
+    width: 68px;
+    height: 68px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border-radius: 14px;
+
+    object-fit: contain;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ALIGNERR
+   Rounded square
+========================================================= */
+
 .experience-logo[src*="Alignerr"] {
     width: 68px;
     height: 68px;
 
-    padding: 9px;
+    padding: 0;
+
+    background: transparent;
 
     border-radius: 14px;
 
@@ -1134,7 +1156,9 @@ ol {
     }
 
 
-    /* Ollopa */
+    /* =====================================================
+       OLLOPA LOGO
+    ===================================================== */
 
     .experience-logo[src*="Ollopa"] {
         width: 88px;
@@ -1146,20 +1170,24 @@ ol {
     }
 
 
-    /* KMC + Alignerr */
+    /* =====================================================
+       KMC + ALIGNERR LOGOS
+    ===================================================== */
 
     .experience-logo[src*="KMC"],
     .experience-logo[src*="Alignerr"] {
         width: 64px;
         height: 64px;
 
-        padding: 8px;
+        padding: 0;
 
         border-radius: 13px;
     }
 
 
-    /* Timeline */
+    /* =====================================================
+       TIMELINE
+    ===================================================== */
 
     .experience-timeline {
         margin-left: 6px;
@@ -1170,6 +1198,7 @@ ol {
     .experience-timeline-dot {
         left: -35px;
     }
+
 }
 
 
@@ -1196,7 +1225,9 @@ ol {
     }
 
 
-    /* Ollopa */
+    /* =====================================================
+       OLLOPA LOGO
+    ===================================================== */
 
     .experience-logo[src*="Ollopa"] {
         width: 82px;
@@ -1208,20 +1239,24 @@ ol {
     }
 
 
-    /* KMC + Alignerr */
+    /* =====================================================
+       KMC + ALIGNERR LOGOS
+    ===================================================== */
 
     .experience-logo[src*="KMC"],
     .experience-logo[src*="Alignerr"] {
         width: 60px;
         height: 60px;
 
-        padding: 8px;
+        padding: 0;
 
         border-radius: 12px;
     }
 
 
-    /* Company name */
+    /* =====================================================
+       COMPANY INFORMATION
+    ===================================================== */
 
     .experience-company-info h3 {
         font-size: 1rem;
@@ -1232,14 +1267,18 @@ ol {
     }
 
 
-    /* Meta */
+    /* =====================================================
+       META
+    ===================================================== */
 
     .experience-meta {
         margin-bottom: 26px;
     }
 
 
-    /* Timeline */
+    /* =====================================================
+       TIMELINE
+    ===================================================== */
 
     .experience-timeline {
         margin-left: 4px;
@@ -1259,7 +1298,9 @@ ol {
     }
 
 
-    /* Role */
+    /* =====================================================
+       ROLE
+    ===================================================== */
 
     .experience-role-header h4 {
         font-size: .9rem;
@@ -1272,8 +1313,8 @@ ol {
     .experience-timeline-content .experience-list {
         font-size: .82rem;
     }
-}
 
+}
 
 /* =========================================================
    SKILLS
