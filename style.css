@@ -2551,12 +2551,9 @@ body.light-mode .intro-photo {
 
 .certification-category-title {
     margin-bottom: 24px;
-
     color: var(--white);
-
     font-size: 1.15rem;
     font-weight: 800;
-
     letter-spacing: -.01em;
 }
 
@@ -2567,20 +2564,15 @@ body.light-mode .intro-photo {
 
 .certification-carousel {
     position: relative;
-
     width: 100%;
+    height: 390px;
     overflow: hidden;
-
-    padding: 18px 0 10px;
 }
 
-.certification-track {
-    display: flex;
-    align-items: center;
-
+.certification-carousel-track {
+    position: relative;
     width: 100%;
-
-    transition: transform .45s ease;
+    height: 100%;
 }
 
 
@@ -2589,22 +2581,18 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 .certification-card {
-    position: relative;
+    position: absolute;
 
-    flex: 0 0 58%;
+    top: 50%;
+    left: 50%;
 
-    min-width: 0;
+    width: 58%;
+    min-height: 270px;
 
     display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr) 110px;
-
+    grid-template-columns: minmax(0, 1fr) 110px;
     gap: 24px;
-
     align-items: center;
-
-    margin: 0 -7%;
 
     padding: 30px;
 
@@ -2613,74 +2601,95 @@ body.light-mode .intro-photo {
     border: 1px solid var(--border);
     border-radius: 18px;
 
-    opacity: .35;
+    opacity: 0;
+    pointer-events: none;
 
     transform:
-        scale(.82);
-
-    filter: blur(.15px);
+        translate(-50%, -50%)
+        scale(.78);
 
     transition:
-        transform .45s ease,
-        opacity .45s ease,
+        transform .5s cubic-bezier(.22, .61, .36, 1),
+        opacity .4s ease,
+        filter .4s ease,
         background .25s ease,
         border-color .25s ease,
-        box-shadow .45s ease;
+        box-shadow .4s ease;
+
+    will-change: transform, opacity;
 
     z-index: 1;
 }
 
 
 /* =========================================================
-   ACTIVE / CENTER CERTIFICATION
+   CENTER CARD
 ========================================================= */
 
-.certification-card.active {
+.certification-card.certification-card-center {
     opacity: 1;
 
+    pointer-events: auto;
+
     transform:
+        translate(-50%, -50%)
         scale(1);
 
     background: var(--card);
 
     border-color:
-        rgba(50, 185, 242, .5);
+        rgba(50, 185, 242, .45);
 
     box-shadow:
         0 18px 45px rgba(0, 0, 0, .18);
+
+    filter: none;
 
     z-index: 3;
 }
 
 
 /* =========================================================
-   PREVIOUS / NEXT CERTIFICATIONS
+   LEFT CARD
 ========================================================= */
 
-.certification-card.prev,
-.certification-card.next {
+.certification-card.certification-card-left {
     opacity: .48;
 
+    pointer-events: none;
+
     transform:
-        scale(.84);
+        translate(
+            calc(-50% - 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
 
     z-index: 2;
 }
 
 
 /* =========================================================
-   HIDDEN CERTIFICATIONS
+   RIGHT CARD
 ========================================================= */
 
-.certification-card.hidden {
-    opacity: 0;
-
-    transform:
-        scale(.72);
+.certification-card.certification-card-right {
+    opacity: .48;
 
     pointer-events: none;
 
-    z-index: 0;
+    transform:
+        translate(
+            calc(-50% + 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
+
+    z-index: 2;
 }
 
 
@@ -2837,13 +2846,12 @@ body.light-mode .intro-photo {
     border: 1px solid var(--border);
     border-radius: 50%;
 
-    font-size: 1.45rem;
+    font-size: 1.5rem;
     font-weight: 400;
 
     line-height: 1;
 
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 
     cursor: pointer;
 
@@ -2868,20 +2876,20 @@ body.light-mode .intro-photo {
         scale(1.06);
 }
 
-.certification-carousel-prev {
+.certification-prev {
     left: 12px;
 }
 
-.certification-carousel-next {
+.certification-next {
     right: 12px;
 }
 
 
 /* =========================================================
-   CAROUSEL INDICATORS
+   CAROUSEL DOTS
 ========================================================= */
 
-.certification-carousel-indicators {
+.certification-carousel-dots {
     display: flex;
 
     align-items: center;
@@ -2889,10 +2897,10 @@ body.light-mode .intro-photo {
 
     gap: 10px;
 
-    margin-top: 22px;
+    margin-top: 20px;
 }
 
-.certification-carousel-dot {
+.certification-dot {
     width: 9px;
     height: 9px;
 
@@ -2904,24 +2912,30 @@ body.light-mode .intro-photo {
 
     border-radius: 50%;
 
+    opacity: .65;
+
     cursor: pointer;
 
     transition:
         width .25s ease,
         background .25s ease,
+        opacity .25s ease,
         transform .25s ease;
 }
 
-.certification-carousel-dot:hover {
+.certification-dot:hover {
     transform: scale(1.15);
+    opacity: 1;
 }
 
-.certification-carousel-dot.active {
+.certification-dot.active {
     width: 25px;
 
     background: var(--accent);
 
     border-radius: 999px;
+
+    opacity: 1;
 }
 
 
@@ -2931,10 +2945,12 @@ body.light-mode .intro-photo {
 
 @media (max-width: 1000px) {
 
-    .certification-card {
-        flex-basis: 68%;
+    .certification-carousel {
+        height: 370px;
+    }
 
-        margin: 0 -9%;
+    .certification-card {
+        width: 68%;
 
         grid-template-columns:
             minmax(0, 1fr) 95px;
@@ -2942,6 +2958,24 @@ body.light-mode .intro-photo {
         gap: 18px;
 
         padding: 26px;
+    }
+
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 275px),
+                -50%
+            )
+            scale(.78);
+    }
+
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 275px),
+                -50%
+            )
+            scale(.78);
     }
 
     .certification-logo {
@@ -2967,13 +3001,13 @@ body.light-mode .intro-photo {
     }
 
     .certification-carousel {
-        padding-top: 12px;
+        height: 350px;
     }
 
     .certification-card {
-        flex-basis: 82%;
+        width: 78%;
 
-        margin: 0 -17%;
+        min-height: 255px;
 
         grid-template-columns:
             minmax(0, 1fr) 80px;
@@ -2985,13 +3019,22 @@ body.light-mode .intro-photo {
         border-radius: 16px;
     }
 
-    .certification-card.active {
-        transform: scale(1);
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 230px),
+                -50%
+            )
+            scale(.76);
     }
 
-    .certification-card.prev,
-    .certification-card.next {
-        transform: scale(.82);
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 230px),
+                -50%
+            )
+            scale(.76);
     }
 
     .certification-logo {
@@ -3010,11 +3053,11 @@ body.light-mode .intro-photo {
         font-size: 1.25rem;
     }
 
-    .certification-carousel-prev {
+    .certification-prev {
         left: 8px;
     }
 
-    .certification-carousel-next {
+    .certification-next {
         right: 8px;
     }
 
@@ -3034,13 +3077,13 @@ body.light-mode .intro-photo {
     }
 
     .certification-carousel {
-        padding-top: 8px;
+        height: 400px;
     }
 
     .certification-card {
-        flex-basis: 88%;
+        width: 82%;
 
-        margin: 0 -24%;
+        min-height: 300px;
 
         grid-template-columns: 1fr;
 
@@ -3049,9 +3092,22 @@ body.light-mode .intro-photo {
         padding: 22px;
     }
 
-    .certification-card.prev,
-    .certification-card.next {
-        transform: scale(.8);
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 185px),
+                -50%
+            )
+            scale(.72);
+    }
+
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 185px),
+                -50%
+            )
+            scale(.72);
     }
 
     .certification-card h3 {
@@ -3068,7 +3124,7 @@ body.light-mode .intro-photo {
 
     .certification-logo {
         width: 100%;
-        height: 70px;
+        height: 65px;
 
         justify-content: flex-start;
     }
@@ -3084,26 +3140,26 @@ body.light-mode .intro-photo {
         font-size: 1.1rem;
     }
 
-    .certification-carousel-prev {
+    .certification-prev {
         left: 5px;
     }
 
-    .certification-carousel-next {
+    .certification-next {
         right: 5px;
     }
 
-    .certification-carousel-indicators {
+    .certification-carousel-dots {
         gap: 8px;
 
         margin-top: 18px;
     }
 
-    .certification-carousel-dot {
+    .certification-dot {
         width: 8px;
         height: 8px;
     }
 
-    .certification-carousel-dot.active {
+    .certification-dot.active {
         width: 22px;
     }
 
