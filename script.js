@@ -790,17 +790,14 @@ const circleSize = radius * 2;
 
             requestAnimationFrame(() => {
 
-                requestAnimationFrame(() => {
+    transitionCircle.style.transition =
+        "transform .75s cubic-bezier(.76, 0, .24, 1)";
 
-                    transitionCircle.style.transition =
-                        "transform .7s cubic-bezier(.76,0,.24,1)";
+    transitionCircle.style.transform =
+        "translate(-50%, -50%) scale(1)";
 
-                    transitionCircle.style.transform =
-                        "translate(-50%, -50%) scale(1)";
+});
 
-                });
-
-            });
 
 
             /* =================================
