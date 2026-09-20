@@ -732,11 +732,9 @@ body.light-mode .intro-photo {
 
 .navbar {
     width: 100%;
-
     min-height: 72px;
 
     margin-inline: auto;
-
     padding: 0 22px;
 
     display: flex;
@@ -775,10 +773,14 @@ body.light-mode .intro-photo {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 15px 27px;
+
     margin: 0;
     padding: 0;
+
     list-style: none;
+
     transform: translateY(-3px);
 }
 
@@ -790,8 +792,7 @@ body.light-mode .intro-photo {
     font-size: .82rem;
     font-weight: 700;
 
-    transition:
-        color .2s ease;
+    transition: color .2s ease;
 }
 
 .nav-links a::after {
@@ -807,8 +808,7 @@ body.light-mode .intro-photo {
 
     background: var(--accent);
 
-    transition:
-        width .2s ease;
+    transition: width .2s ease;
 }
 
 .nav-links a:hover {
@@ -3636,13 +3636,17 @@ button:focus-visible {
 
     .site-header {
         top: 12px;
+
         width: calc(100% - 28px);
+
         border-radius: 16px;
     }
 
     .navbar {
         min-height: 68px;
+
         padding: 0 18px;
+
         gap: 20px;
     }
 
@@ -3650,15 +3654,15 @@ button:focus-visible {
         gap: 15px;
     }
 
-
     .nav-links a {
         font-size: .7rem;
     }
 
+    /* Slightly raise Leadership and Contact */
     .nav-links li:nth-child(5),
-.nav-links li:nth-child(6) {
-    transform: translateY(-4px);
-}
+    .nav-links li:nth-child(6) {
+        transform: translateY(-4px);
+    }
 
     .hero-container,
     .hero-grid {
@@ -3677,8 +3681,8 @@ button:focus-visible {
     .projects-grid {
         grid-template-columns: 1fr;
     }
-
 }
+
 
 /* =========================================================
    MOBILE
@@ -3701,30 +3705,69 @@ button:focus-visible {
 
     .site-header {
         position: sticky;
+
         top: 10px;
+
         width: calc(100% - 20px);
+
         margin-inline: auto;
+
         border-radius: 15px;
     }
 
     .navbar {
+        position: relative;
+
         width: 100%;
-        min-height: 58px;
-        padding: 0 15px;
-        flex-direction: row;
-        gap: 12px;
+
+        min-height: 88px;
+
+        padding: 12px 15px;
+
+        display: block;
     }
 
+    /* Keep logo on the left */
+    .logo {
+        position: absolute;
+
+        left: 15px;
+        top: 18px;
+    }
+
+    /* Center navigation relative to the entire header */
     .nav-links {
-    width: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 14px;
-}
+        position: absolute;
+
+        top: 17px;
+        left: 50%;
+
+        width: calc(100% - 110px);
+
+        display: flex;
+        flex-wrap: wrap;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px 14px;
+
+        margin: 0;
+        padding: 0;
+
+        transform: translate(-50%, 0);
+    }
 
     .nav-links a {
         font-size: .68rem;
+    }
+
+    /* Keep theme button on the right */
+    .theme-toggle {
+        position: absolute;
+
+        right: 15px;
+        top: 10px;
     }
 
     .hero {
@@ -3742,6 +3785,7 @@ button:focus-visible {
 
     .hero-card {
         max-width: 500px;
+
         margin-inline: auto;
     }
 
@@ -3796,7 +3840,6 @@ button:focus-visible {
     .project-card h3 {
         font-size: 1.15rem;
     }
-
 }
 
 
@@ -3815,32 +3858,37 @@ button:focus-visible {
     }
 
     .navbar {
-        min-height: 56px;
+        min-height: 92px;
 
-        padding: 0 13px;
-
-        gap: 10px;
+        padding: 12px 13px;
     }
 
     .logo {
+        left: 13px;
+        top: 18px;
+
         font-size: 1.35rem;
     }
 
     .nav-links {
-    display: flex;
+        top: 17px;
 
-    width: auto;
+        width: calc(100% - 100px);
 
-    flex-wrap: wrap;
+        gap: 7px 11px;
 
-    justify-content: flex-end;
+        /* Keep it centered */
+        justify-content: center;
+    }
 
-    gap: 8px 12px;
-}
+    .nav-links a {
+        font-size: .62rem;
+    }
 
-.nav-links a {
-    font-size: .62rem;
-}
+    .theme-toggle {
+        right: 13px;
+        top: 10px;
+    }
 
     .intro-photo {
         width: 95px !important;
@@ -3890,7 +3938,6 @@ button:focus-visible {
 
         gap: 10px;
     }
-
 }
 
 /* =========================================================
