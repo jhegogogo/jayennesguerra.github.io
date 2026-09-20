@@ -642,10 +642,40 @@ function setupThemeToggle() {
     themeTransitioning = true;
 
     const currentlyLight =
-        document.body.classList.contains("light-mode");
+    document.body.classList.contains("light-mode");
 
-    const targetLightMode =
-        !currentlyLight;
+const targetLightMode =
+    !currentlyLight;
+
+
+const prefersReducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+if (prefersReducedMotion) {
+
+    document.body.classList.toggle(
+        "light-mode",
+        targetLightMode
+    );
+
+    localStorage.setItem(
+        "theme",
+        targetLightMode
+            ? "light"
+            : "dark"
+    );
+
+    updateThemeButton(
+        targetLightMode
+    );
+
+    themeTransitioning = false;
+
+    return;
+}
+
 
 
     /* =====================================
