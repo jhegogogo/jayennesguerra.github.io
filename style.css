@@ -129,6 +129,117 @@ ol {
 
 
 /* =========================================================
+   INTRO SCREEN
+========================================================= */
+
+.intro-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: var(--bg);
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+.intro-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOVING BACKGROUND NAME
+   KEEP THIS
+========================================================= */
+
+.intro-name-marquee {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 1;
+}
+
+.intro-name-track {
+    display: flex;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        introNameMove 22s linear infinite;
+}
+
+.intro-name-track span {
+    display: block;
+
+    margin-right: 80px;
+
+    color: var(--white);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        8rem,
+        17vw,
+        18rem
+    );
+
+    font-weight: 400;
+
+    letter-spacing: -.04em;
+
+    line-height: .9;
+
+    opacity: .035;
+}
+
+@keyframes introNameMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
    INTRO CONTENT
 ========================================================= */
 
@@ -160,7 +271,7 @@ ol {
     position: absolute;
 
     left: 50%;
-    top: 52%;
+    top: 51%;
 
     transform: translate(-50%, -50%);
 
@@ -390,6 +501,20 @@ ol {
         introCursorBlink .8s steps(1) infinite;
 }
 
+@keyframes introCursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
 
 /* =========================================================
    INTRO LIGHT MODE
@@ -423,6 +548,15 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 @media (max-width: 900px) {
+
+    .intro-name-track span {
+        font-size: clamp(
+            7rem,
+            20vw,
+            13rem
+        );
+    }
+
 
     .intro-image-wrapper {
         width: 650px;
@@ -472,11 +606,23 @@ body.light-mode .intro-photo {
         padding: 0;
     }
 
+    .intro-name-track span {
+        font-size: 6rem;
+
+        margin-right: 50px;
+    }
+
+
     .intro-image-wrapper {
         width: 520px;
         height: 520px;
 
         top: 48%;
+    }
+
+    .intro-image-wrapper::before {
+        width: 360px;
+        height: 360px;
     }
 
     .intro-photo {
@@ -485,11 +631,6 @@ body.light-mode .intro-photo {
 
         max-width: 520px !important;
         max-height: 520px !important;
-    }
-
-    .intro-image-wrapper::before {
-        width: 360px;
-        height: 360px;
     }
 
     .intro-text {
@@ -524,6 +665,10 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 @media (max-width: 400px) {
+
+    .intro-name-track span {
+        font-size: 5rem;
+    }
 
     .intro-image-wrapper {
         width: 440px;
