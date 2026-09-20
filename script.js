@@ -796,7 +796,7 @@ if (prefersReducedMotion) {
     themeTransitioning = false;
 
 });
-
+}
 
     /* =========================================
        RESUME MODAL
