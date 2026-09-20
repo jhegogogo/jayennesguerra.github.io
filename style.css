@@ -465,7 +465,6 @@ ol {
 
 .intro-greeting span {
     color: #080e1d;
-    -webkit-text-stroke: 1px #ffffff;
 
     text-shadow:
         0 3px 16px rgba(0, 0, 0, .55);
