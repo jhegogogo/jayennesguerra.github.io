@@ -720,8 +720,6 @@ ol {
 
     padding: 32px;
 
-    margin-bottom: 22px;
-
     background: var(--card);
 
     border: 1px solid var(--border);
@@ -739,10 +737,6 @@ ol {
         box-shadow .25s ease;
 }
 
-.experience-card:last-child {
-    margin-bottom: 0;
-}
-
 .experience-card:hover {
     transform: translateY(-4px);
 
@@ -751,8 +745,7 @@ ol {
     border-color:
         rgba(50, 185, 242, .45);
 
-    border-left-color:
-        var(--accent);
+    border-left-color: var(--accent);
 
     box-shadow:
         0 15px 40px rgba(0, 0, 0, .25);
@@ -760,144 +753,105 @@ ol {
 
 
 /* =========================================================
-   EXPERIENCE META
+   EXPERIENCE HEADER
 ========================================================= */
 
-.experience-meta {
+.experience-header {
     display: flex;
 
-    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 
-    gap: 8px;
-
-    margin-top: -8px;
-    margin-bottom: 24px;
-
-    color: var(--muted-2);
-
-    font-size: .78rem;
-    font-weight: 600;
-}
-
-.experience-meta span {
-    padding: 4px 8px;
-
-    background:
-        rgba(50, 185, 242, .06);
-
-    border: 1px solid
-        rgba(50, 185, 242, .14);
-
-    border-radius: 5px;
-}
-
-
-/* =========================================================
-   OLLOPA EXPERIENCE TIMELINE
-========================================================= */
-
-.experience-timeline {
-    position: relative;
-
-    margin-top: 8px;
-}
-
-
-/* Vertical connecting line */
-
-.experience-timeline::before {
-    content: "";
-
-    position: absolute;
-
-    top: 8px;
-    bottom: 8px;
-
-    left: 7px;
-
-    width: 2px;
-
-    background:
-        var(--border);
-
-    border-radius: 2px;
-}
-
-
-/* =========================================================
-   TIMELINE ITEM
-========================================================= */
-
-.experience-timeline-item {
-    position: relative;
-
-    display: block;
-
-    padding-left: 32px;
+    gap: 30px;
 
     margin-bottom: 30px;
 }
 
-.experience-timeline-item:last-child {
-    margin-bottom: 0;
-}
+.experience-company {
+    display: flex;
 
+    align-items: flex-start;
 
-/* =========================================================
-   TIMELINE DOT
-========================================================= */
+    gap: 16px;
 
-.experience-timeline-dot {
-    position: absolute;
-
-    top: 5px;
-    left: 0;
-
-    width: 16px;
-    height: 16px;
-
-    background:
-        var(--card);
-
-    border: 3px solid
-        var(--accent);
-
-    border-radius: 50%;
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   TIMELINE ROLE CONTENT
-========================================================= */
-
-.experience-timeline-content {
     min-width: 0;
 }
 
-.experience-role-header {
-    margin-bottom: 14px;
+
+/* =========================================================
+   COMPANY LOGO
+========================================================= */
+
+.experience-logo {
+    display: block;
+
+    width: 88px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border: 1px solid
+        rgba(255, 255, 255, .15);
+
+    border-radius: 10px;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    -webkit-user-drag: none;
 }
 
-.experience-role-header h4 {
+
+/* =========================================================
+   COMPANY INFORMATION
+========================================================= */
+
+.experience-company-info {
+    min-width: 0;
+}
+
+.experience-company-info h3 {
     margin: 0 0 5px;
 
     color: var(--white);
 
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.2rem;
 
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
-.experience-role-date {
-    display: block;
+.experience-company-info p {
+    margin: 0;
 
-    color: var(--muted-2);
+    color: var(--muted);
 
-    font-size: .78rem;
+    font-size: .88rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   EXPERIENCE DATE
+========================================================= */
+
+.experience-date {
+    flex-shrink: 0;
+
+    color: var(--accent-light);
+
+    font-size: .82rem;
     font-weight: 600;
+
+    text-align: right;
+
+    white-space: nowrap;
 }
 
 
@@ -912,7 +866,7 @@ ol {
 
     color: var(--muted);
 
-    font-size: .88rem;
+    font-size: .9rem;
 
     line-height: 1.7;
 }
@@ -929,46 +883,227 @@ ol {
 
 
 /* =========================================================
-   EXPERIENCE RESPONSIVE
+   EXPERIENCE TIMELINE
 ========================================================= */
 
-@media (max-width: 600px) {
+.experience-timeline {
+    position: relative;
+
+    margin-top: 28px;
+
+    padding-left: 42px;
+}
+
+.experience-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+    bottom: 8px;
+
+    left: 10px;
+
+    width: 2px;
+
+    background:
+        rgba(50, 185, 242, .18);
+}
+
+
+/* =========================================================
+   EXPERIENCE ITEM
+========================================================= */
+
+.experience-item {
+    position: relative;
+
+    margin-bottom: 32px;
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   TIMELINE DOT
+========================================================= */
+
+.experience-item::before {
+    content: "";
+
+    position: absolute;
+
+    top: 7px;
+    left: -37px;
+
+    width: 12px;
+    height: 12px;
+
+    background: var(--card);
+
+    border: 3px solid var(--accent);
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   EXPERIENCE ITEM TITLE
+========================================================= */
+
+.experience-item h4 {
+    margin: 0 0 6px;
+
+    color: var(--white);
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+.experience-item-date {
+    margin: 0 0 14px;
+
+    color: var(--accent-light);
+
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EXPERIENCE ITEM DESCRIPTION
+========================================================= */
+
+.experience-item-list {
+    margin: 0;
+
+    padding-left: 20px;
+
+    color: var(--muted);
+
+    font-size: .86rem;
+
+    line-height: 1.7;
+}
+
+.experience-item-list li {
+    margin-bottom: 8px;
+
+    list-style: disc;
+}
+
+.experience-item-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   EXPERIENCE TAGS
+========================================================= */
+
+.experience-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 10px;
+}
+
+.experience-tag {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 9px;
+
+    color: var(--accent-light);
+
+    background:
+        rgba(50, 185, 242, .08);
+
+    border: 1px solid
+        rgba(50, 185, 242, .16);
+
+    border-radius: 5px;
+
+    font-size: .7rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE EXPERIENCE
+========================================================= */
+
+@media (max-width: 700px) {
 
     .experience-card {
         padding: 24px;
-
-        border-left-width: 3px;
     }
 
-    .experience-timeline-item {
-        padding-left: 28px;
+    .experience-header {
+        flex-direction: column;
 
-        margin-bottom: 26px;
+        gap: 18px;
     }
 
-    .experience-timeline::before {
-        left: 6px;
+    .experience-date {
+        text-align: left;
     }
 
-    .experience-timeline-dot {
-        left: 0;
-
-        width: 14px;
-        height: 14px;
-
-        border-width: 2px;
-    }
-
-    .experience-role-header h4 {
-        font-size: .95rem;
-    }
-
-    .experience-list {
-        font-size: .84rem;
+    .experience-logo {
+        width: 78px;
+        height: 58px;
     }
 
 }
 
+@media (max-width: 500px) {
+
+    .experience-card {
+        padding: 20px;
+    }
+
+    .experience-company {
+        gap: 12px;
+    }
+
+    .experience-logo {
+        width: 70px;
+        height: 54px;
+
+        padding: 6px;
+    }
+
+    .experience-company-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .experience-company-info p {
+        font-size: .8rem;
+    }
+
+    .experience-timeline {
+        padding-left: 34px;
+    }
+
+    .experience-timeline::before {
+        left: 8px;
+    }
+
+    .experience-item::before {
+        left: -31px;
+    }
+
+}
 
 /* =========================================================
    SKILLS
