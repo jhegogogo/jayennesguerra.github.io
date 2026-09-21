@@ -802,15 +802,12 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 .hero {
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - var(--nav-height));
 
     display: flex;
     align-items: center;
 
-    padding:
-        calc(var(--nav-height) + 48px)
-        0
-        85px;
+    padding: 90px 0;
 }
 
 .hero-container,
@@ -818,29 +815,29 @@ body.light-mode .intro-photo {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(320px, .72fr);
+        minmax(0, 1.35fr)
+        minmax(320px, .65fr);
 
     align-items: center;
 
-    gap: 70px;
+    gap: 80px;
 }
 
 .hero-content {
     min-width: 0;
 }
 
-.eyebrow {
-    margin-bottom: 18px;
+.eyebrow,
+.hero-eyebrow {
+    margin-bottom: 20px;
 
-    color: var(--accent);
+    color: var(--accent-light);
 
     font-size: .72rem;
     font-weight: 800;
 
-    letter-spacing: .13em;
-
-    line-height: 1.6;
+    letter-spacing: .12em;
+    line-height: 1.7;
 }
 
 .hero h1 {
@@ -849,16 +846,15 @@ body.light-mode .intro-photo {
     color: var(--white);
 
     font-size: clamp(
-        3.4rem,
+        3rem,
         7vw,
         5.8rem
     );
 
-    line-height: .98;
-
     font-weight: 900;
 
     letter-spacing: -.055em;
+    line-height: .98;
 }
 
 .hero h1 span {
@@ -870,38 +866,36 @@ body.light-mode .intro-photo {
 
     color: var(--light);
 
-    font-size: 1.35rem;
+    font-size: clamp(
+        1.2rem,
+        2.5vw,
+        1.7rem
+    );
+
     font-weight: 600;
 
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 .hero-description {
-    max-width: 650px;
+    max-width: 680px;
 
-    margin-top: 20px;
+    margin-top: 22px;
 
     color: var(--muted);
 
-    font-size: .98rem;
-
+    font-size: 1rem;
     line-height: 1.8;
 }
-
-
-/* =========================================================
-   HERO BUTTONS
-========================================================= */
 
 .hero-buttons,
 .hero-actions {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 12px;
 
-    margin-top: 30px;
+    margin-top: 32px;
 }
 
 .btn {
@@ -994,13 +988,9 @@ body.light-mode .intro-photo {
     display: flex;
 
     align-items: center;
-
     gap: 9px;
-
     margin-bottom: 22px;
-
     color: var(--muted);
-
     font-size: .75rem;
     font-weight: 700;
 }
@@ -1008,13 +998,9 @@ body.light-mode .intro-photo {
 .status-dot {
     width: 8px;
     height: 8px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: var(--success);
-
     box-shadow:
         0 0 0 5px rgba(67, 223, 131, .08);
 }
@@ -1039,7 +1025,6 @@ body.light-mode .intro-photo {
     font-size: .85rem;
     line-height: 1.7;
 }
-
 
 /* =========================================================
    CONTACT
@@ -1422,20 +1407,17 @@ button:focus-visible {
 
     .hero {
         min-height: auto;
-
         padding: 75px 0;
     }
 
     .hero-container,
     .hero-grid {
         grid-template-columns: 1fr;
-
         gap: 45px;
     }
 
     .hero-card {
         max-width: 500px;
-
         margin-inline: auto;
     }
 
@@ -1575,7 +1557,6 @@ button:focus-visible {
     .hero-buttons .btn,
     .hero-actions .btn {
         width: 100%;
-
         flex: none;
     }
 
