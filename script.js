@@ -117,52 +117,46 @@ function setupNavigation() {
 
         {
             name: "home",
-
             start: "home",
-
             end: "education"
         },
 
         {
             name: "experience",
-
             start: "experience",
-
             end: "leadership"
         },
 
         {
             name: "projects",
-
             start: "projects",
-
             end: "projects"
         },
 
         {
             name: "certifications",
-
             start: "certifications",
-
             end: "certifications"
         },
 
         {
             name: "contact",
-
             start: "contact",
-
             end: "contact"
         }
 
     ];
 
 
+    /* =====================================
+       CURRENT GROUP
+    ===================================== */
+
     let currentGroup =
         navigationGroups[0];
 
 
-    let navigationScrolling = false;
+    let navigationTransitioning = false;
 
 
     /* =====================================
@@ -248,7 +242,7 @@ function setupNavigation() {
 
 
     /* =====================================
-       FIND GROUP
+       FIND GROUP BY TARGET
     ===================================== */
 
     function getGroupByTarget(targetId) {
@@ -258,6 +252,118 @@ function setupNavigation() {
                 group.start === targetId ||
                 group.end === targetId
         );
+
+    }
+
+
+    /* =====================================
+       GET TRANSITION NAME
+    ===================================== */
+
+    function getTransitionName(
+        fromGroup,
+        toGroup
+    ) {
+
+        return `${fromGroup.name}-to-${toGroup.name}`;
+
+    }
+
+
+    /* =====================================
+       CREATE TRANSITION ELEMENT
+    ===================================== */
+
+    let transitionElement =
+        document.querySelector(
+            ".page-transition"
+        );
+
+
+    if (!transitionElement) {
+
+        transitionElement =
+            document.createElement("div");
+
+        transitionElement.className =
+            "page-transition";
+
+        document.body.appendChild(
+            transitionElement
+        );
+
+    }
+
+
+    /* =====================================
+       PLAY NAVIGATION TRANSITION
+    ===================================== */
+
+    function playNavigationTransition(
+        transitionName,
+        callback
+    ) {
+
+        if (navigationTransitioning) {
+            return;
+        }
+
+
+        navigationTransitioning = true;
+
+
+        transitionElement.className =
+            "page-transition";
+
+
+        transitionElement.dataset.transition =
+            transitionName;
+
+
+        /*
+         * Force browser reflow so the
+         * animation can restart every time.
+         */
+
+        void transitionElement.offsetWidth;
+
+
+        transitionElement.classList.add(
+            "active"
+        );
+
+
+        /*
+         * Destination changes while the
+         * transition covers the screen.
+         */
+
+        setTimeout(() => {
+
+            callback();
+
+        }, 400);
+
+
+        /*
+         * Transition duration.
+         */
+
+        setTimeout(() => {
+
+            transitionElement.classList.remove(
+                "active"
+            );
+
+            transitionElement.removeAttribute(
+                "data-transition"
+            );
+
+
+            navigationTransitioning =
+                false;
+
+        }, 850);
 
     }
 
@@ -308,52 +414,94 @@ function setupNavigation() {
                     );
 
 
-                if (targetGroup) {
+                if (!targetGroup) {
 
-                    currentGroup =
-                        targetGroup;
+                    return;
 
                 }
 
 
-                const headerHeight =
-                    getHeaderHeight();
+                /*
+                 * Clicking the currently active
+                 * navigation group does nothing.
+                 */
+
+                if (
+                    targetGroup.name ===
+                    currentGroup.name
+                ) {
+
+                    return;
+
+                }
 
 
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    headerHeight;
+                const previousGroup =
+                    currentGroup;
 
 
-                navigationScrolling = true;
+                const transitionName =
+                    getTransitionName(
+                        previousGroup,
+                        targetGroup
+                    );
 
 
-                window.scrollTo({
+                /*
+                 * Change the active group
+                 * immediately so the scroll
+                 * lock belongs to the new group.
+                 */
 
-                    top:
-                        Math.max(
-                            0,
-                            targetPosition
-                        ),
-
-                    behavior: "smooth"
-
-                });
+                currentGroup =
+                    targetGroup;
 
 
-                history.pushState(
-                    null,
-                    "",
-                    targetId
+                /*
+                 * Play the unique transition
+                 * for this FROM → TO route.
+                 */
+
+                playNavigationTransition(
+                    transitionName,
+                    () => {
+
+                        const headerHeight =
+                            getHeaderHeight();
+
+
+                        const targetPosition =
+                            target.getBoundingClientRect().top +
+                            window.scrollY -
+                            headerHeight;
+
+
+                        /*
+                         * Jump instantly instead
+                         * of smooth scrolling.
+                         */
+
+                        window.scrollTo({
+
+                            top:
+                                Math.max(
+                                    0,
+                                    targetPosition
+                                ),
+
+                            behavior: "instant"
+
+                        });
+
+
+                        history.pushState(
+                            null,
+                            "",
+                            targetId
+                        );
+
+                    }
                 );
-
-                setTimeout(() => {
-
-                    navigationScrolling =
-                        false;
-
-                }, 900);
 
             }
         );
@@ -369,7 +517,11 @@ function setupNavigation() {
         "wheel",
         (event) => {
 
-            if (navigationScrolling) {
+            if (
+                navigationTransitioning
+            ) {
+
+                event.preventDefault();
 
                 return;
 
@@ -399,6 +551,7 @@ function setupNavigation() {
             const scrollingUp =
                 event.deltaY < 0;
 
+
             if (
                 scrollingDown &&
                 currentScroll >=
@@ -414,6 +567,7 @@ function setupNavigation() {
                 return;
 
             }
+
 
             if (
                 scrollingUp &&
@@ -441,6 +595,7 @@ function setupNavigation() {
     ===================================== */
 
     let touchStartY = 0;
+    let touchStartX = 0;
 
 
     window.addEventListener(
@@ -459,6 +614,9 @@ function setupNavigation() {
             touchStartY =
                 event.touches[0].clientY;
 
+            touchStartX =
+                event.touches[0].clientX;
+
         },
         {
             passive: true
@@ -471,7 +629,7 @@ function setupNavigation() {
         (event) => {
 
             if (
-                navigationScrolling ||
+                navigationTransitioning ||
                 event.touches.length !== 1
             ) {
 
@@ -500,24 +658,35 @@ function setupNavigation() {
             const currentY =
                 event.touches[0].clientY;
 
+            const currentX =
+                event.touches[0].clientX;
+
 
             const deltaY =
                 currentY - touchStartY;
 
+            const deltaX =
+                currentX - touchStartX;
+
 
             /*
-             * Finger moving upward =
-             * page scrolling downward.
+             * Ignore horizontal swipes.
+             * This prevents the navigation lock
+             * from interfering with carousels.
              */
+
+            if (
+                Math.abs(deltaX) >
+                Math.abs(deltaY)
+            ) {
+
+                return;
+
+            }
+
 
             const scrollingDown =
                 deltaY < 0;
-
-
-            /*
-             * Finger moving downward =
-             * page scrolling upward.
-             */
 
             const scrollingUp =
                 deltaY > 0;
@@ -570,7 +739,29 @@ function setupNavigation() {
         (event) => {
 
             if (
-                navigationScrolling
+                navigationTransitioning
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * Do not interfere with typing
+             * inside form fields.
+             */
+
+            const activeElement =
+                document.activeElement;
+
+            if (
+                activeElement &&
+                (
+                    activeElement.tagName === "INPUT" ||
+                    activeElement.tagName === "TEXTAREA" ||
+                    activeElement.tagName === "SELECT"
+                )
             ) {
 
                 return;
@@ -666,11 +857,6 @@ function setupNavigation() {
             }
 
 
-            /*
-             * Keep the page inside the
-             * current navigation group.
-             */
-
             if (
                 window.scrollY >
                 bounds.end
@@ -678,6 +864,18 @@ function setupNavigation() {
 
                 window.scrollTo({
                     top: bounds.end
+                });
+
+            }
+
+
+            if (
+                window.scrollY <
+                bounds.start
+            ) {
+
+                window.scrollTo({
+                    top: bounds.start
                 });
 
             }
