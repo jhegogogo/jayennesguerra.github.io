@@ -1,383 +1,679 @@
-<section
-    class="section"
-    id="experience"
->
+/* =========================================================
+   EXPERIENCE
+========================================================= */
 
-    <div class="container">
+#experience {
+    position: relative;
+}
 
-        <p class="section-label">
-            EXPERIENCE
-        </p>
+#experience .section-label {
+    margin-bottom: 14px;
+}
 
-        <h2 class="section-title">
-            Work <span>Experience.</span>
-        </h2>
+#experience .section-title {
+    margin-bottom: 48px;
+}
 
 
-        <!-- =====================================================
-             KMC SOLUTIONS
-        ====================================================== -->
+/* =========================================================
+   EXPERIENCE CARD
+========================================================= */
 
-        <div class="experience-card">
+.experience-card {
+    position: relative;
 
-            <div class="experience-header">
+    width: 100%;
 
-                <div class="experience-company">
+    margin-bottom: 20px;
+    padding: 28px 30px;
 
-                    <img
-                        src="assets/logos/KMC.png"
-                        alt="KMC Solutions logo"
-                        class="experience-logo"
-                        draggable="false"
-                    >
+    background: var(--card);
 
-                    <div class="experience-company-info">
+    border: 1px solid var(--border);
+    border-radius: 16px;
 
-                        <h3>
-                            KMC Solutions
-                        </h3>
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
 
-                        <p>
-                            Associate Robot Operator
-                        </p>
+.experience-card:last-child {
+    margin-bottom: 0;
+}
 
-                    </div>
+.experience-card:hover {
+    transform: translateY(-3px);
 
-                </div>
+    background: var(--card-hover);
 
+    border-color:
+        rgba(50, 185, 242, .35);
 
-                <span class="experience-date">
-                    Incoming October 2026
-                </span>
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, .15);
+}
 
-            </div>
 
+/* =========================================================
+   EXPERIENCE HEADER
+========================================================= */
 
-            <div class="experience-meta">
+.experience-header {
+    display: flex;
 
-                <span>
-                    Full-time
-                </span>
+    align-items: flex-start;
+    justify-content: space-between;
 
-                <span>
-                    On-site
-                </span>
+    gap: 24px;
 
-                <span>
-                    Muntinlupa City, Philippines
-                </span>
+    margin-bottom: 18px;
+}
 
-            </div>
+.experience-company {
+    display: flex;
 
+    align-items: center;
 
-            <ul class="experience-list">
+    gap: 16px;
 
-                <li>
-                    Incoming Associate Robot Operator
-                    at KMC Solutions.
-                </li>
+    min-width: 0;
+}
 
-            </ul>
+.experience-company-info {
+    min-width: 0;
+}
 
-        </div>
+.experience-company-info h3 {
+    margin: 0 0 6px;
 
+    color: var(--white);
 
+    font-size: 1.08rem;
+    font-weight: 800;
 
-        <!-- =====================================================
-             ALIGNERR
-        ====================================================== -->
+    line-height: 1.4;
 
-        <div class="experience-card">
+    overflow-wrap: break-word;
+}
 
-            <div class="experience-header">
+.experience-company-info p {
+    margin: 0;
 
-                <div class="experience-company">
+    color: var(--accent-light);
 
-                    <img
-                        src="assets/logos/Alignerr.png"
-                        alt="Alignerr logo"
-                        class="experience-logo"
-                        draggable="false"
-                    >
+    font-size: .82rem;
 
-                    <div class="experience-company-info">
+    line-height: 1.5;
 
-                        <h3>
-                            Alignerr
-                        </h3>
+    overflow-wrap: break-word;
+}
 
-                        <p>
-                            AI Training Contributor
-                        </p>
+.experience-date {
+    flex-shrink: 0;
 
-                    </div>
+    display: inline-flex;
 
-                </div>
+    align-items: center;
 
+    padding: 5px 10px;
 
-                <span class="experience-date">
-                    August 2026 — Present
-                </span>
+    color: var(--accent-light);
 
-            </div>
+    background:
+        rgba(50, 185, 242, .08);
 
+    border:
+        1px solid rgba(50, 185, 242, .15);
 
-            <div class="experience-meta">
+    border-radius: 6px;
 
-                <span>
-                    Freelance Contract
-                </span>
+    font-size: .7rem;
+    font-weight: 700;
 
-                <span>
-                    Remote
-                </span>
+    letter-spacing: .07em;
 
-            </div>
+    white-space: nowrap;
+}
 
 
-            <ul class="experience-list">
+/* =========================================================
+   COMPANY LOGO
+========================================================= */
 
-                <li>
-                    Contributed to AI training and evaluation
-                    tasks based on project-specific guidelines.
-                </li>
+.experience-logo {
+    display: block;
 
-                <li>
-                    Reviewed and assessed AI-generated content
-                    for accuracy, relevance, and quality.
-                </li>
+    flex-shrink: 0;
 
-            </ul>
+    width: 58px;
+    height: 58px;
 
-        </div>
+    padding: 6px;
 
+    object-fit: contain;
 
+    background: rgba(50, 185, 242, .03);
 
-        <!-- =====================================================
-             OLLOPA CORPORATION
-             GROUPED INTERNSHIP TIMELINE
-        ====================================================== -->
+    border:
+        1px solid rgba(50, 185, 242, .15);
 
-        <div class="experience-card ollopa-experience">
+    border-radius: 12px;
 
-            <!-- OLLOPA COMPANY HEADER -->
+    overflow: hidden;
 
-            <div class="experience-header">
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
 
-                <div class="experience-company">
 
-                    <img
-                        src="assets/logos/Ollopa.jpg"
-                        alt="Ollopa Corporation logo"
-                        class="experience-logo"
-                        draggable="false"
-                    >
+/* =========================================================
+   EXPERIENCE META
+========================================================= */
 
-                    <div class="experience-company-info">
+.experience-meta {
+    display: flex;
 
-                        <h3>
-                            Ollopa Corporation
-                        </h3>
+    flex-wrap: wrap;
 
-                        <p>
-                            Internship · 7 mos
-                        </p>
+    gap: 8px;
 
-                    </div>
+    margin-bottom: 24px;
+}
 
-                </div>
+.experience-meta span {
+    display: inline-flex;
 
+    align-items: center;
 
-                <span class="experience-date">
-                    January 2026 — July 2026
-                </span>
+    padding: 6px 10px;
 
-            </div>
+    color: var(--accent-light);
 
+    background:
+        rgba(50, 185, 242, .06);
 
-            <div class="experience-meta">
+    border:
+        1px solid rgba(50, 185, 242, .16);
 
-                <span>
-                    Internship
-                </span>
+    border-radius: 5px;
 
-                <span>
-                    Remote
-                </span>
+    font-size: .7rem;
+    font-weight: 700;
 
-            </div>
+    line-height: 1.3;
+}
 
 
-            <!-- OLLOPA ROLE TIMELINE -->
+/* =========================================================
+   EXPERIENCE BULLET LIST
+========================================================= */
 
-            <div class="experience-timeline">
+.experience-card > .experience-list {
+    margin: 0;
 
+    padding: 0;
 
-                <!-- =================================================
-                     INFORMATION TECHNOLOGY ADMINISTRATOR
-                ================================================== -->
+    list-style: none;
+}
 
-                <div class="experience-timeline-item">
+.experience-list li {
+    position: relative;
 
-                    <div class="experience-timeline-dot"></div>
+    margin-bottom: 8px;
 
-                    <div class="experience-timeline-content">
+    padding-left: 18px;
 
-                        <div class="experience-role-header">
+    color: var(--muted);
 
-                            <div>
+    font-size: .84rem;
 
-                                <h4>
-                                    Information Technology Administrator
-                                </h4>
+    line-height: 1.7;
+}
 
-                                <span class="experience-role-date">
-                                    June 2026 — July 2026
-                                </span>
+.experience-list li:last-child {
+    margin-bottom: 0;
+}
 
-                            </div>
+.experience-list li::before {
+    content: "•";
 
-                        </div>
+    position: absolute;
 
+    left: 0;
+    top: 0;
 
-                        <ul class="experience-list">
+    color: var(--accent);
 
-                            <li>
-                                Oversaw internship operations across
-                                the Game Department and IT Special
-                                Projects Team.
-                            </li>
+    font-weight: 800;
+}
 
-                            <li>
-                                Managed and supported interns throughout
-                                their internship journey while ensuring
-                                compliance with company processes,
-                                project requirements, and performance
-                                expectations.
-                            </li>
 
-                            <li>
-                                Conducted onboarding and orientation
-                                sessions covering company policies,
-                                workflows, tools, and project assignments.
-                            </li>
+/* =========================================================
+   OLLOPA INTERNSHIP TIMELINE
+========================================================= */
 
-                            <li>
-                                Coordinated with Team Leaders across
-                                different teams to monitor project
-                                progress, discuss system updates,
-                                address challenges, and ensure timely
-                                completion of deliverables.
-                            </li>
+.experience-timeline {
+    position: relative;
 
-                            <li>
-                                Handled internship-related documentation,
-                                maintained records, reviewed daily task
-                                submissions, and monitored attendance
-                                and productivity.
-                            </li>
+    margin-left: 8px;
 
-                            <li>
-                                Assisted in evaluating intern performance
-                                and acted as a liaison between Team
-                                Leaders and interns to promote effective
-                                communication, collaboration, and
-                                operational efficiency.
-                            </li>
+    padding-left: 30px;
+}
 
-                        </ul>
+.experience-timeline::before {
+    content: "";
 
-                    </div>
+    position: absolute;
 
-                </div>
+    top: 7px;
+    bottom: 7px;
+    left: 0;
 
+    width: 2px;
 
+    background:
+        rgba(50, 185, 242, .18);
 
-                <!-- =================================================
-                     SOFTWARE DEVELOPER INTERN
-                ================================================== -->
+    border-radius: 999px;
+}
 
-                <div class="experience-timeline-item">
+.experience-timeline-item {
+    position: relative;
 
-                    <div class="experience-timeline-dot"></div>
+    margin-bottom: 32px;
+}
 
-                    <div class="experience-timeline-content">
+.experience-timeline-item:last-child {
+    margin-bottom: 0;
+}
 
-                        <div class="experience-role-header">
+.experience-timeline-dot {
+    position: absolute;
 
-                            <div>
+    top: 4px;
+    left: -36px;
 
-                                <h4>
-                                    Software Developer Intern
-                                </h4>
+    width: 12px;
+    height: 12px;
 
-                                <span class="experience-role-date">
-                                    January 2026 — May 2026
-                                </span>
+    background: var(--card);
 
-                            </div>
+    border: 3px solid var(--accent);
 
-                        </div>
+    border-radius: 50%;
 
+    z-index: 2;
+}
 
-                        <ul class="experience-list">
+.experience-timeline-content {
+    min-width: 0;
+}
 
-                            <li>
-                                Developed a web-based Attendance
-                                Monitoring System as a Full Stack
-                                Developer, contributing to both
-                                frontend and backend development.
-                            </li>
 
-                            <li>
-                                Built features for attendance tracking,
-                                shift management, user administration,
-                                reporting, and appeal request workflows.
-                            </li>
+/* =========================================================
+   OLLOPA ROLE
+========================================================= */
 
-                            <li>
-                                Integrated the user interface, backend
-                                services, and database to support
-                                system functionality.
-                            </li>
+.experience-role-header {
+    margin: 0 0 14px;
+}
 
-                            <li>
-                                Designed and managed database structures
-                                and implemented authentication and
-                                role-based access control.
-                            </li>
+.experience-role-header h4 {
+    margin: 0 0 5px;
 
-                            <li>
-                                Supported Super Admin, Admin, Supervisor,
-                                and Intern account roles within the system.
-                            </li>
+    color: var(--white);
 
-                            <li>
-                                Contributed to wireframe planning and
-                                feature development to improve system
-                                usability.
-                            </li>
+    font-size: .95rem;
+    font-weight: 800;
 
-                            <li>
-                                Served as Team Leader for one month,
-                                coordinating development activities,
-                                delegating tasks, monitoring project
-                                progress, and helping ensure milestones
-                                and deliverables were completed on schedule.
-                            </li>
+    line-height: 1.4;
+}
 
-                        </ul>
+.experience-role-date {
+    display: block;
 
-                    </div>
+    margin: 0;
 
-                </div>
+    color: var(--accent-light);
 
+    font-size: .78rem;
+    font-weight: 600;
 
-            </div>
+    line-height: 1.5;
+}
 
-        </div>
+.experience-timeline-content .experience-list {
+    margin: 0;
 
+    padding: 0;
 
-    </div>
+    list-style: none;
+}
 
-</section>
+.experience-timeline-content .experience-list li {
+    margin-bottom: 9px;
+
+    padding-left: 18px;
+
+    font-size: .84rem;
+    line-height: 1.7;
+}
+
+.experience-timeline-content .experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+body.light-mode .experience-card {
+    background: #ffffff;
+
+    border-color: #d6e2eb;
+
+    box-shadow:
+        0 8px 24px rgba(20, 50, 80, .06);
+}
+
+body.light-mode .experience-card:hover {
+    background: #f7fafc;
+
+    border-color:
+        rgba(0, 157, 214, .3);
+
+    box-shadow:
+        0 14px 30px rgba(20, 50, 80, .09);
+}
+
+body.light-mode .experience-company-info h3 {
+    color: #172033 !important;
+}
+
+body.light-mode .experience-company-info p {
+    color: #008fca !important;
+}
+
+body.light-mode .experience-list li {
+    color: #58708a !important;
+}
+
+body.light-mode .experience-list li::before {
+    color: #008fca;
+}
+
+body.light-mode .experience-date {
+    color: #008fca !important;
+
+    background:
+        rgba(0, 157, 214, .07);
+
+    border-color:
+        rgba(0, 157, 214, .18);
+}
+
+body.light-mode .experience-meta span {
+    color: #008fca;
+
+    background:
+        rgba(0, 157, 214, .06);
+
+    border-color:
+        rgba(0, 157, 214, .16);
+}
+
+body.light-mode .experience-role-header h4 {
+    color: #172033 !important;
+}
+
+body.light-mode .experience-role-date {
+    color: #008fca !important;
+}
+
+body.light-mode .experience-timeline::before {
+    background:
+        rgba(0, 157, 214, .18);
+}
+
+body.light-mode .experience-timeline-dot {
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .experience-card {
+        padding: 26px;
+    }
+
+    .experience-header {
+        gap: 20px;
+    }
+
+    .experience-logo {
+        width: 56px;
+        height: 56px;
+
+        padding: 5px;
+    }
+
+    .experience-timeline {
+        margin-left: 6px;
+
+        padding-left: 28px;
+    }
+
+    .experience-timeline-dot {
+        left: -34px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .experience-card {
+        padding: 22px;
+
+        border-radius: 15px;
+    }
+
+    .experience-header {
+        gap: 16px;
+    }
+
+    .experience-company {
+        gap: 12px;
+    }
+
+    .experience-company-info h3 {
+        font-size: 1rem;
+    }
+
+    .experience-company-info p {
+        font-size: .79rem;
+    }
+
+    .experience-date {
+        font-size: .68rem;
+    }
+
+    .experience-meta {
+        margin-bottom: 22px;
+    }
+
+    .experience-list li {
+        font-size: .81rem;
+
+        line-height: 1.6;
+    }
+
+    .experience-logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .experience-timeline {
+        margin-left: 4px;
+
+        padding-left: 25px;
+    }
+
+    .experience-timeline-item {
+        margin-bottom: 28px;
+    }
+
+    .experience-timeline-dot {
+        left: -31px;
+
+        width: 11px;
+        height: 11px;
+    }
+
+    .experience-role-header h4 {
+        font-size: .9rem;
+    }
+
+    .experience-role-date {
+        font-size: .75rem;
+    }
+
+    .experience-timeline-content .experience-list li {
+        font-size: .81rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    #experience .section-title {
+        margin-bottom: 32px;
+    }
+
+    .experience-card {
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+    .experience-header {
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-bottom: 15px;
+    }
+
+    .experience-company {
+        width: 100%;
+    }
+
+    .experience-company-info {
+        min-width: 0;
+    }
+
+    .experience-company-info h3 {
+        font-size: .94rem;
+
+        line-height: 1.4;
+    }
+
+    .experience-company-info p {
+        font-size: .75rem;
+
+        line-height: 1.45;
+    }
+
+    .experience-date {
+        max-width: 100%;
+
+        white-space: normal;
+
+        font-size: .66rem;
+
+        line-height: 1.35;
+    }
+
+    .experience-meta {
+        gap: 6px;
+
+        margin-bottom: 20px;
+    }
+
+    .experience-meta span {
+        padding: 5px 8px;
+
+        font-size: .65rem;
+    }
+
+    .experience-list li {
+        margin-bottom: 7px;
+
+        padding-left: 16px;
+
+        font-size: .78rem;
+
+        line-height: 1.55;
+    }
+
+    .experience-logo {
+        width: 48px;
+        height: 48px;
+
+        padding: 4px;
+
+        border-radius: 10px;
+    }
+
+    .experience-timeline {
+        margin-left: 3px;
+
+        padding-left: 23px;
+    }
+
+    .experience-timeline-item {
+        margin-bottom: 25px;
+    }
+
+    .experience-timeline-dot {
+        left: -29px;
+
+        width: 10px;
+        height: 10px;
+
+        border-width: 2px;
+    }
+
+    .experience-role-header {
+        margin-bottom: 12px;
+    }
+
+    .experience-role-header h4 {
+        font-size: .87rem;
+    }
+
+    .experience-role-date {
+        font-size: .72rem;
+    }
+
+    .experience-timeline-content .experience-list li {
+        font-size: .76rem;
+
+        line-height: 1.55;
+    }
+}
