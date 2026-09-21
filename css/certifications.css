@@ -74,19 +74,17 @@
 
     flex-shrink: 0;
 
-    background: var(--bg);
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-
-    overflow: hidden;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
 }
 
 .featured-certification-logo img {
     display: block;
 
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
 
     object-fit: contain;
 
@@ -604,11 +602,6 @@ body.light-mode .featured-certification-content a:hover {
     color: #172033;
 }
 
-body.light-mode .featured-certification-logo {
-    background: #f5f8fc;
-    border-color: #d6e2eb;
-}
-
 body.light-mode .featured-certification-image {
     background: #f5f8fc;
     border-color: #d6e2eb;
@@ -906,13 +899,13 @@ body.light-mode .featured-certification-image {
     .featured-certification-logo {
         width: 48px;
         height: 48px;
-
-        border-radius: 10px;
+        background: transparent;
+        border: none;
     }
 
     .featured-certification-logo img {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
     }
 
     .featured-certification-content h3 {
