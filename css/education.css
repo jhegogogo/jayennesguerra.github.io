@@ -1,0 +1,377 @@
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+#education {
+    position: relative;
+}
+
+#education .section-label {
+    margin-bottom: 14px;
+}
+
+#education .section-title {
+    margin-bottom: 48px;
+}
+
+/* ---------------------------------------------------------
+   EDUCATION TIMELINE
+--------------------------------------------------------- */
+
+.education-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.education-list::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 7px;
+    width: 1px;
+    background: var(--border);
+}
+
+.education-item {
+    position: relative;
+    padding-left: 36px;
+}
+
+.education-item::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg);
+    z-index: 1;
+}
+
+/* ---------------------------------------------------------
+   EDUCATION CARD
+--------------------------------------------------------- */
+
+.education-card {
+    position: relative;
+    padding: 26px 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    border-color: rgba(50, 185, 242, .35);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, .15);
+}
+
+/* ---------------------------------------------------------
+   EDUCATION HEADER
+--------------------------------------------------------- */
+
+.education-date {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+
+    color: var(--accent-light);
+    background: rgba(50, 185, 242, .08);
+
+    border: 1px solid rgba(50, 185, 242, .15);
+    border-radius: 6px;
+
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.education-card h3 {
+    width: calc(100% - 90px);
+    margin: 0 0 6px;
+
+    color: var(--white);
+    font-size: 1.05rem;
+    line-height: 1.45;
+    font-weight: 800;
+
+    overflow-wrap: break-word;
+}
+
+.education-program {
+    margin: 0 0 5px;
+
+    color: var(--accent-light);
+    font-size: .86rem;
+    line-height: 1.5;
+    font-weight: 700;
+
+    overflow-wrap: break-word;
+}
+
+.education-school {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: .82rem;
+    line-height: 1.55;
+
+    overflow-wrap: break-word;
+}
+
+/* ---------------------------------------------------------
+   EDUCATION LOGO
+--------------------------------------------------------- */
+
+.education-logo {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(50, 185, 242, .03);
+    border: 1px solid rgba(50, 185, 242, .16);
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.education-logo img {
+    display: block;
+
+    width: 54px;
+    height: 54px;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ---------------------------------------------------------
+   EDUCATION DETAILS
+--------------------------------------------------------- */
+
+.education-details {
+    margin-top: 18px;
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.education-details p {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: .8rem;
+    line-height: 1.65;
+}
+
+/* ---------------------------------------------------------
+   LIGHT MODE
+--------------------------------------------------------- */
+
+body.light-mode .education-card {
+    background: #ffffff;
+    border-color: #d6e2eb;
+    box-shadow: 0 8px 24px rgba(20, 50, 80, .06);
+}
+
+body.light-mode .education-card:hover {
+    background: #f7fafc;
+    border-color: rgba(0, 157, 214, .3);
+    box-shadow: 0 14px 30px rgba(20, 50, 80, .09);
+}
+
+body.light-mode .education-card h3 {
+    color: #172033 !important;
+}
+
+body.light-mode .education-program {
+    color: #008fca !important;
+}
+
+body.light-mode .education-school {
+    color: #58708a !important;
+}
+
+body.light-mode .education-details p {
+    color: #58708a !important;
+}
+
+body.light-mode .education-date {
+    color: #008fca !important;
+    background: rgba(0, 157, 214, .07);
+    border-color: rgba(0, 157, 214, .18);
+}
+
+body.light-mode .education-item::before {
+    background: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+    .education-card {
+        padding: 24px 26px;
+    }
+
+    .education-logo {
+        width: 64px;
+        height: 64px;
+        top: 20px;
+        right: 22px;
+    }
+
+    .education-logo img {
+        width: 49px;
+        height: 49px;
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .education-list {
+        gap: 16px;
+    }
+
+    .education-item {
+        padding-left: 30px;
+    }
+
+    .education-card {
+        padding: 22px;
+        border-radius: 15px;
+    }
+
+    .education-item::before {
+        top: 25px;
+        width: 13px;
+        height: 13px;
+    }
+
+    .education-card h3 {
+        width: calc(100% - 70px);
+        font-size: 1rem;
+    }
+
+    .education-program {
+        font-size: .82rem;
+    }
+
+    .education-school {
+        font-size: .78rem;
+    }
+
+    .education-logo {
+        top: 18px;
+        right: 18px;
+        width: 56px;
+        height: 56px;
+    }
+
+    .education-logo img {
+        width: 43px;
+        height: 43px;
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    #education .section-title {
+        margin-bottom: 32px;
+    }
+
+    .education-list::before {
+        left: 6px;
+    }
+
+    .education-item {
+        padding-left: 25px;
+    }
+
+    .education-item::before {
+        left: 0;
+        top: 22px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .education-card {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .education-date {
+        margin-bottom: 9px;
+        padding: 4px 9px;
+        font-size: .67rem;
+    }
+
+    .education-card h3 {
+        width: calc(100% - 58px);
+        font-size: .94rem;
+        line-height: 1.4;
+    }
+
+    .education-program {
+        font-size: .77rem;
+        line-height: 1.45;
+    }
+
+    .education-school {
+        font-size: .74rem;
+        line-height: 1.45;
+    }
+
+    .education-logo {
+        top: 17px;
+        right: 17px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .education-logo img {
+        width: 39px;
+        height: 39px;
+    }
+
+    .education-details {
+        margin-top: 14px;
+        padding-top: 13px;
+    }
+
+    .education-details p {
+        font-size: .75rem;
+        line-height: 1.55;
+    }
+}
