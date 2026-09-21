@@ -746,27 +746,17 @@ body.light-mode .intro-photo {
 .theme-toggle {
     width: 44px;
     height: 44px;
-
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     justify-self: end;
-
     flex-shrink: 0;
-
     padding: 0;
-
     color: var(--light);
-
     background: transparent;
-
     border: 1px solid var(--border);
     border-radius: 9px;
-
     font-size: 1.05rem;
-
     transition:
         color .2s ease,
         background .2s ease,
@@ -776,22 +766,34 @@ body.light-mode .intro-photo {
 
 .theme-toggle:hover {
     color: var(--accent-light);
-
     background: var(--card);
-
     border-color: var(--accent);
-
     transform: translateY(-2px);
 }
 
 .theme-toggle-icon {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     width: 21px;
     height: 21px;
+}
+
+/* =========================================================
+   THEME VIEW TRANSITION
+========================================================= */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
 }
 
 
@@ -1421,21 +1423,20 @@ button:focus-visible {
 
     .theme-toggle {
         position: absolute;
-
         right: 15px;
         top: 50%;
-
-        transform:
-            translateY(-50%) !important;
-
+        transform: translateY(-50%) !important;
         justify-self: end;
+        transition:
+            color .2s ease,
+            background .2s ease,
+            border-color .2s ease;
     }
 
     .theme-toggle:hover,
     .theme-toggle:active,
     .theme-toggle:focus {
-        transform:
-            translateY(-50%) !important;
+        transform: translateY(-50%) !important;
     }
 
 
@@ -1541,16 +1542,13 @@ button:focus-visible {
     .theme-toggle {
         right: 13px;
         top: 50%;
-
-        transform:
-            translateY(-50%) !important;
+        transform: translateY(-50%) !important;
     }
 
     .theme-toggle:hover,
     .theme-toggle:active,
     .theme-toggle:focus {
-        transform:
-            translateY(-50%) !important;
+        transform: translateY(-50%) !important;
     }
 
 
