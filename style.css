@@ -880,7 +880,6 @@ body.light-mode .intro-photo {
     position: sticky;
     top: 18px;
     z-index: 1000;
-
     width: min(
         calc(100% - 48px),
         var(--max-width)
@@ -931,6 +930,7 @@ body.light-mode .intro-photo {
 
 .nav-links {
     justify-self: center;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -977,25 +977,17 @@ body.light-mode .intro-photo {
 .theme-toggle {
     width: 44px;
     height: 44px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     justify-self: end;
-
     flex-shrink: 0;
-
     padding: 0;
-
     color: var(--light);
-
     background: transparent;
-
     border: 1px solid var(--border);
     border-radius: 9px;
-
     font-size: 1.05rem;
-
     transition:
         color .2s ease,
         background .2s ease,
@@ -1005,24 +997,18 @@ body.light-mode .intro-photo {
 
 .theme-toggle:hover {
     color: var(--accent-light);
-
     background: var(--card);
-
     border-color: var(--accent);
-
     transform: translateY(-2px);
 }
 
 .theme-toggle-icon {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     width: 21px;
     height: 21px;
 }
-
 
 /* =========================================================
    THEME VIEW TRANSITION
