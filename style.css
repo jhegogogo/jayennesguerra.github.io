@@ -3533,81 +3533,47 @@ body.light-mode .education-card h3 {
 
 
 /* ---------------------------------------------------------
-   LEADERSHIP HORIZONTAL CAROUSEL
+   LEADERSHIP CAROUSEL
 --------------------------------------------------------- */
 
 .leadership-grid {
-    display: flex;
-    gap: 24px;
+    position: relative;
 
     width: 100%;
+    height: 470px;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
 
-    padding: 4px 4px 20px;
-
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     touch-action: pan-y;
+
     user-select: none;
     -webkit-user-select: none;
 
     cursor: grab;
-
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) transparent;
-}
-
-.leadership-grid:active {
-    cursor: grabbing;
 }
 
 .leadership-grid.is-dragging {
     cursor: grabbing;
-    scroll-behavior: auto;
 }
 
-.leadership-grid.is-dragging .leadership-card {
-    pointer-events: none;
-}
-
-
-/* ---------------------------------------------------------
-   SCROLLBAR
---------------------------------------------------------- */
-
-.leadership-grid::-webkit-scrollbar {
-    height: 6px;
-}
-
-.leadership-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.leadership-grid::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 10px;
-}
-
-.leadership-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-light);
-}
 
 /* ---------------------------------------------------------
    LEADERSHIP CARD
 --------------------------------------------------------- */
 
 .leadership-card {
-    position: relative;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 58%;
+    min-height: 390px;
 
     display: flex;
     flex-direction: column;
 
-    flex: 0 0 calc(50% - 12px);
-
     padding: 30px;
-    min-height: 100%;
 
     background: linear-gradient(
         145deg,
@@ -3620,39 +3586,95 @@ body.light-mode .education-card h3 {
 
     overflow: hidden;
 
-    scroll-snap-align: start;
+    opacity: 0;
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.78);
 
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        transform .5s cubic-bezier(.22, .61, .36, 1),
+        opacity .4s ease,
+        filter .4s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .4s ease;
+
+    will-change: transform, opacity;
+
+    z-index: 1;
 }
 
 
-/* subtle top accent */
+/* ---------------------------------------------------------
+   CENTER CARD
+--------------------------------------------------------- */
 
-.leadership-card::before {
-    content: "";
+.leadership-card.leadership-card-center {
+    opacity: 1;
 
-    position: absolute;
+    pointer-events: auto;
 
-    top: 0;
-    left: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 
-    width: 100%;
-    height: 3px;
+    border-color:
+        rgba(50, 185, 242, 0.45);
 
-    background: linear-gradient(
-        90deg,
-        var(--accent),
-        rgba(50, 185, 242, 0)
-    );
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18);
 
-    opacity: 0.9;
+    filter: none;
+
+    z-index: 3;
 }
 
 
-/* decorative circle */
+/* ---------------------------------------------------------
+   LEFT / PREVIOUS CARD
+--------------------------------------------------------- */
+
+.leadership-card.leadership-card-left {
+    opacity: .48;
+
+    pointer-events: none;
+
+    transform:
+        translate(
+            calc(-50% - 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
+
+    z-index: 2;
+}
+
+
+/* ---------------------------------------------------------
+   RIGHT / NEXT CARD
+--------------------------------------------------------- */
+
+.leadership-card.leadership-card-right {
+    opacity: .48;
+
+    pointer-events: none;
+
+    transform:
+        translate(
+            calc(-50% + 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
+
+    z-index: 2;
+}
+
 
 /* ---------------------------------------------------------
    ORGANIZATION LOGO
@@ -3691,10 +3713,13 @@ body.light-mode .education-card h3 {
 }
 
 
-.leadership-card:hover {
-    transform: translateY(-5px);
+/* ---------------------------------------------------------
+   CARD HOVER
+--------------------------------------------------------- */
 
-    border-color: rgba(50, 185, 242, 0.42);
+.leadership-card:hover {
+    border-color:
+        rgba(50, 185, 242, 0.42);
 
     box-shadow:
         0 16px 40px rgba(0, 0, 0, 0.22),
@@ -3780,8 +3805,6 @@ body.light-mode .education-card h3 {
 }
 
 
-/* slideshow images */
-
 .leadership-slideshow img {
     position: absolute;
 
@@ -3799,7 +3822,6 @@ body.light-mode .education-card h3 {
         transform 0.7s ease;
 }
 
-
 .leadership-slideshow img.active {
     opacity: 1;
 }
@@ -3812,10 +3834,6 @@ body.light-mode .education-card h3 {
     transform: scale(1.015);
 }
 
-
-/* ---------------------------------------------------------
-   ROLE
---------------------------------------------------------- */
 
 .leadership-role {
     display: inline-flex;
@@ -3837,11 +3855,6 @@ body.light-mode .education-card h3 {
     line-height: 1.3;
 }
 
-
-/* ---------------------------------------------------------
-   DESCRIPTION
---------------------------------------------------------- */
-
 .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     margin: 0;
 
@@ -3852,22 +3865,135 @@ body.light-mode .education-card h3 {
 }
 
 
-/* ---------------------------------------------------------
-   CARDS WITHOUT IMAGES
---------------------------------------------------------- */
-
 .leadership-card:not(:has(.leadership-slideshow)) {
     justify-content: flex-start;
 }
-
 
 .leadership-card:not(:has(.leadership-slideshow))::before {
     height: 4px;
 }
 
-
-.leadership-card:not(:has(.leadership-slideshow)) .leadership-role {
+.leadership-card:not(:has(.leadership-slideshow))
+.leadership-role {
     margin-top: 8px;
+}
+
+
+/* ---------------------------------------------------------
+   CAROUSEL ARROWS
+--------------------------------------------------------- */
+
+.leadership-carousel-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: var(--white);
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+    z-index: 10;
+}
+
+.leadership-carousel-arrow:hover {
+    color: var(--accent);
+
+    background: var(--card-hover);
+
+    border-color: var(--accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+.leadership-prev {
+    left: 12px;
+}
+
+.leadership-next {
+    right: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   CAROUSEL DOTS
+--------------------------------------------------------- */
+
+.leadership-carousel-dots {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.leadership-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    background: var(--border);
+
+    border: none;
+
+    border-radius: 50%;
+
+    opacity: .65;
+
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background .25s ease,
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+.leadership-dot:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.leadership-dot.active {
+    width: 25px;
+
+    background: var(--accent);
+
+    border-radius: 999px;
+
+    opacity: 1;
 }
 
 
@@ -3888,26 +4014,22 @@ body.light-mode .leadership-card {
         0 8px 24px rgba(20, 50, 80, 0.06);
 }
 
-
 body.light-mode .leadership-card h3 {
     color: #172033 !important;
 }
-
 
 body.light-mode .leadership-organization {
     color: #58708a !important;
 }
 
-
-body.light-mode .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
+body.light-mode
+.leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     color: #58708a !important;
 }
-
 
 body.light-mode .leadership-role {
     color: #008fca !important;
 }
-
 
 body.light-mode .leadership-date {
     color: #008fca !important;
@@ -3922,22 +4044,96 @@ body.light-mode .leadership-date {
    TABLET
 --------------------------------------------------------- */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+
+    .leadership-grid {
+        height: 450px;
+    }
 
     .leadership-card {
-        flex: 0 0 75%;
+        width: 68%;
+        min-height: 370px;
+        padding: 26px;
+    }
+
+    .leadership-card.leadership-card-left {
+        transform:
+            translate(
+                calc(-50% - 275px),
+                -50%
+            )
+            scale(.78);
+    }
+
+    .leadership-card.leadership-card-right {
+        transform:
+            translate(
+                calc(-50% + 275px),
+                -50%
+            )
+            scale(.78);
     }
 
     .leadership-slideshow {
         width: 55%;
         height: 150px;
     }
-
 }
 
 
 /* ---------------------------------------------------------
    MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 800px) {
+
+    .leadership-grid {
+        height: 440px;
+    }
+
+    .leadership-card {
+        width: 78%;
+        min-height: 350px;
+        padding: 24px;
+        border-radius: 16px;
+    }
+
+    .leadership-card.leadership-card-left {
+        transform:
+            translate(
+                calc(-50% - 230px),
+                -50%
+            )
+            scale(.76);
+    }
+
+    .leadership-card.leadership-card-right {
+        transform:
+            translate(
+                calc(-50% + 230px),
+                -50%
+            )
+            scale(.76);
+    }
+
+    .leadership-carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .leadership-prev {
+        left: 8px;
+    }
+
+    .leadership-next {
+        right: 8px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
 --------------------------------------------------------- */
 
 @media (max-width: 600px) {
@@ -3946,61 +4142,89 @@ body.light-mode .leadership-date {
         margin-bottom: 32px;
     }
 
-
     .leadership-grid {
-        gap: 18px;
-
-        padding-left: 2px;
-        padding-right: 2px;
+        height: 455px;
     }
-
 
     .leadership-card {
-        flex: 0 0 88%;
-
+        width: 82%;
+        min-height: 350px;
         padding: 22px;
-
-        border-radius: 13px;
+        border-radius: 14px;
     }
 
+    .leadership-card.leadership-card-left {
+        transform:
+            translate(
+                calc(-50% - 185px),
+                -50%
+            )
+            scale(.72);
+    }
+
+    .leadership-card.leadership-card-right {
+        transform:
+            translate(
+                calc(-50% + 185px),
+                -50%
+            )
+            scale(.72);
+    }
 
     .leadership-card h3 {
         font-size: 1.05rem;
-
         margin-right: 35px;
     }
 
-
     .leadership-organization {
         font-size: 0.8rem;
-
         margin-bottom: 16px;
     }
-
 
     .leadership-slideshow {
         width: 75%;
         height: 150px;
-
         margin: 0 auto 20px;
-
         border-radius: 10px;
     }
-
 
     .leadership-role {
         font-size: 0.78rem;
     }
 
-
     .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
         font-size: 0.82rem;
-
         line-height: 1.65;
     }
 
-}
+    .leadership-carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
 
+    .leadership-prev {
+        left: 5px;
+    }
+
+    .leadership-next {
+        right: 5px;
+    }
+
+    .leadership-carousel-dots {
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .leadership-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .leadership-dot.active {
+        width: 22px;
+    }
+}
 /* =========================================================
    CONTACT
 ========================================================= */
