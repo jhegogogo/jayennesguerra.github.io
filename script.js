@@ -76,6 +76,7 @@ setupProjectTabs();
 setupCertificationCarousels();
 setupRylimCarousel();
 setupLeadershipSlideshow();
+            setupLeadershipCarouselDrag();
 setupMediaProtection();
 
 
