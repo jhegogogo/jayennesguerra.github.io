@@ -76,7 +76,7 @@ setupProjectTabs();
 setupCertificationCarousels();
 setupRylimCarousel();
 setupLeadershipSlideshow();
-            setupLeadershipCarouselDrag();
+            setupLeadershipCarousel();
 setupMediaProtection();
 
 
@@ -893,11 +893,6 @@ function setupCertificationCarousels() {
                         "click",
                         () => {
 
-                            /*
-                             * Prevent an invalid
-                             * indicator index.
-                             */
-
                             if (
                                 dotIndex >=
                                 slides.length
@@ -915,11 +910,6 @@ function setupCertificationCarousels() {
                 }
             );
 
-
-            /* =====================================
-               INITIAL SLIDE
-            ===================================== */
-
             showSlide(0);
 
         });
@@ -927,100 +917,216 @@ function setupCertificationCarousels() {
     }
 
 
-    /* =========================================
-       LEADERSHIP SLIDESHOW
-    ========================================= */
-
-    function setupLeadershipSlideshow() {
-
-        const slideshows =
-            document.querySelectorAll(
-                ".leadership-slideshow"
-            );
-
-        slideshows.forEach((slideshow) => {
-
-            const images =
-                slideshow.querySelectorAll(
-                    "img"
-                );
-
-            if (images.length <= 1) {
-                return;
-            }
-
-            let currentIndex = 0;
-
-            const interval =
-                parseInt(
-                    slideshow.dataset.interval,
-                    10
-                ) || 3000;
-
-
-            /* Set first image as active */
-
-            images.forEach(
-                (image, index) => {
-
-                    image.classList.toggle(
-                        "active",
-                        index === 0
-                    );
-
-                }
-            );
-
-
-            /* Automatic slideshow */
-
-            setInterval(() => {
-
-                images[currentIndex]
-                    .classList.remove(
-                        "active"
-                    );
-
-                currentIndex =
-                    (currentIndex + 1) %
-                    images.length;
-
-                images[currentIndex]
-                    .classList.add(
-                        "active"
-                    );
-
-            }, interval);
-
-        });
-
-    }
-
-   /* =========================================
-   LEADERSHIP CAROUSEL DRAG / SWIPE
+  /* =========================================
+   LEADERSHIP CAROUSEL
 ========================================= */
 
-function setupLeadershipCarouselDrag() {
+function setupLeadershipCarousel() {
 
-    const leadershipGrids =
+    const carousels =
         document.querySelectorAll(
             ".leadership-grid"
         );
 
 
-    leadershipGrids.forEach((grid) => {
+    carousels.forEach((carousel) => {
 
-        let isDragging = false;
+        const cards =
+            Array.from(
+                carousel.querySelectorAll(
+                    ".leadership-card"
+                )
+            );
+
+        const previousButton =
+            carousel.querySelector(
+                ".leadership-prev"
+            );
+
+        const nextButton =
+            carousel.querySelector(
+                ".leadership-next"
+            );
+
+        const section =
+            carousel.closest(
+                "#leadership"
+            );
+
+        const dots =
+            section
+                ? Array.from(
+                    section.querySelectorAll(
+                        ".leadership-dot"
+                    )
+                )
+                : [];
+
+
+        if (
+            cards.length === 0 ||
+            !previousButton ||
+            !nextButton
+        ) {
+            return;
+        }
+
+
+        let currentIndex = 0;
+
+        function getIndex(offset) {
+
+            return (
+                currentIndex +
+                offset +
+                cards.length
+            ) % cards.length;
+
+        }
+
+        function updateCarousel() {
+
+            const previousIndex =
+                getIndex(-1);
+
+            const centerIndex =
+                getIndex(0);
+
+            const nextIndex =
+                getIndex(1);
+
+
+            cards.forEach(
+                (card, index) => {
+
+                    card.classList.remove(
+                        "leadership-card-left",
+                        "leadership-card-center",
+                        "leadership-card-right"
+                    );
+
+
+                    if (
+                        index === previousIndex
+                    ) {
+
+                        card.classList.add(
+                            "leadership-card-left"
+                        );
+
+                    } else if (
+                        index === centerIndex
+                    ) {
+
+                        card.classList.add(
+                            "leadership-card-center"
+                        );
+
+                    } else if (
+                        index === nextIndex
+                    ) {
+
+                        card.classList.add(
+                            "leadership-card-right"
+                        );
+
+                    }
+
+                }
+            );
+
+
+            updateDots();
+
+        }
+
+
+        function updateDots() {
+
+            if (dots.length === 0) {
+                return;
+            }
+
+
+            dots.forEach(
+                (dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentIndex
+                    );
+
+                }
+            );
+
+        }
+
+
+        function showPrevious() {
+
+            currentIndex =
+                (
+                    currentIndex -
+                    1 +
+                    cards.length
+                ) %
+                cards.length;
+
+            updateCarousel();
+
+        }
+
+        function showNext() {
+
+            currentIndex =
+                (
+                    currentIndex +
+                    1
+                ) %
+                cards.length;
+
+            updateCarousel();
+
+        }
+
+        previousButton.addEventListener(
+            "click",
+            showPrevious
+        );
+
+
+        nextButton.addEventListener(
+            "click",
+            showNext
+        );
+
+        dots.forEach(
+            (dot, dotIndex) => {
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        currentIndex =
+                            dotIndex;
+
+                        updateCarousel();
+
+                    }
+                );
+
+            }
+        );
+
         let startX = 0;
-        let startScrollLeft = 0;
-        let hasDragged = false;
+        let startY = 0;
+        let isPointerDown = false;
+        let didDrag = false;
+
+        const swipeThreshold = 50;
 
 
-        /* -----------------------------------------
-           POINTER DOWN
-        ----------------------------------------- */
-
-        grid.addEventListener(
+        carousel.addEventListener(
             "pointerdown",
             (event) => {
 
@@ -1030,6 +1136,8 @@ function setupLeadershipCarouselDrag() {
                 ) {
                     return;
                 }
+
+
                 if (
                     event.target.closest(
                         "a, button"
@@ -1039,26 +1147,26 @@ function setupLeadershipCarouselDrag() {
                 }
 
 
-                isDragging = true;
-                hasDragged = false;
+                startX =
+                    event.clientX;
 
-                startX = event.clientX;
+                startY =
+                    event.clientY;
 
-                startScrollLeft =
-                    grid.scrollLeft;
+                isPointerDown = true;
+                didDrag = false;
 
-                grid.style.scrollBehavior = "auto";
 
-                grid.classList.add(
+                carousel.classList.add(
                     "is-dragging"
                 );
 
 
                 if (
-                    grid.setPointerCapture
+                    carousel.setPointerCapture
                 ) {
 
-                    grid.setPointerCapture(
+                    carousel.setPointerCapture(
                         event.pointerId
                     );
 
@@ -1068,155 +1176,129 @@ function setupLeadershipCarouselDrag() {
         );
 
 
-        /* -----------------------------------------
-           POINTER MOVE
-        ----------------------------------------- */
-
-        grid.addEventListener(
+        carousel.addEventListener(
             "pointermove",
             (event) => {
 
-                if (!isDragging) {
+                if (!isPointerDown) {
                     return;
                 }
+
+
                 const deltaX =
-                    event.clientX - startX;
+                    event.clientX -
+                    startX;
+
+                const deltaY =
+                    event.clientY -
+                    startY;
+
 
                 if (
-                    Math.abs(deltaX) > 6
+                    Math.abs(deltaX) >
+                    Math.abs(deltaY)
                 ) {
 
-                    hasDragged = true;
+                    if (
+                        Math.abs(deltaX) >
+                        10
+                    ) {
+
+                        didDrag = true;
+
+                    }
+
                 }
-                grid.scrollLeft =
-                    startScrollLeft -
-                    deltaX;
+
             }
         );
 
-        /* -----------------------------------------
-           POINTER UP
-        ----------------------------------------- */
 
-        grid.addEventListener(
+        carousel.addEventListener(
             "pointerup",
             (event) => {
 
-                if (!isDragging) {
+                if (!isPointerDown) {
                     return;
                 }
 
-                isDragging = false;
+                const deltaX =
+                    event.clientX -
+                    startX;
 
-                grid.classList.remove(
+                const deltaY =
+                    event.clientY -
+                    startY;
+
+                isPointerDown = false;
+
+                carousel.classList.remove(
                     "is-dragging"
                 );
-                grid.style.scrollBehavior = "smooth";
-                if (hasDragged) {
+                if (
+                    Math.abs(deltaX) <=
+                    Math.abs(deltaY)
+                ) {
 
-                    snapToClosestLeadershipCard(
-                        grid
-                    );
+                    return;
+
                 }
+
+                if (
+                    Math.abs(deltaX) <
+                    swipeThreshold
+                ) {
+
+                    return;
+
+                }
+
+                if (deltaX < 0) {
+
+                    showNext();
+                }
+
+                else {
+
+                    showPrevious();
+
+                }
+
             }
         );
 
-        grid.addEventListener(
+
+        carousel.addEventListener(
             "pointercancel",
             () => {
 
-                isDragging = false;
+                isPointerDown = false;
 
-                grid.classList.remove(
+                carousel.classList.remove(
                     "is-dragging"
                 );
 
-                grid.style.scrollBehavior =
-                    "smooth";
-
             }
         );
 
-        /* -----------------------------------------
-           PREVENT CLICK AFTER DRAG
-        ----------------------------------------- */
-
-        grid.addEventListener(
+        carousel.addEventListener(
             "click",
             (event) => {
 
-                if (hasDragged) {
-
+                if (didDrag) {
                     event.preventDefault();
                     event.stopPropagation();
-
-                    hasDragged = false;
+                    didDrag = false;
                 }
+
             },
             true
         );
+
+        updateCarousel();
     });
 
-
-    function snapToClosestLeadershipCard(grid) {
-
-        const cards =
-            Array.from(
-                grid.querySelectorAll(
-                    ".leadership-card"
-                )
-            );
-
-
-        if (cards.length === 0) {
-            return;
-        }
-
-        const gridRect =
-            grid.getBoundingClientRect();
-
-        const currentScroll =
-            grid.scrollLeft;
-
-        let closestCard = null;
-        let closestDistance = Infinity;
-
-        cards.forEach((card) => {
-
-            const cardLeft =
-                card.offsetLeft;
-
-            const distance =
-                Math.abs(
-                    cardLeft -
-                    currentScroll
-                );
-
-            if (
-                distance <
-                closestDistance
-            ) {
-
-                closestDistance =
-                    distance;
-                closestCard =
-                    card;
-            }
-        });
-
-        if (closestCard) {
-
-            grid.scrollTo({
-                left: closestCard.offsetLeft,
-                behavior: "smooth"
-            });
-
-        }
-
-    }
-
 }
-
 
  /* =========================================
    THEME TOGGLE
