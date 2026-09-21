@@ -65,13 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             );
 
-
-            /*
-             * These must run AFTER the external
-             * section HTML has been loaded.
-             */
-
-            setupNavigation();
 setupProjectTabs();
 setupCertificationCarousels();
 setupRylimCarousel();
@@ -91,14 +84,6 @@ setupMediaProtection();
 
     }
 
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-function setupNavigation() {
-    // Navigation is handled by the HTML page links.
-}
 
 
     /* =========================================
