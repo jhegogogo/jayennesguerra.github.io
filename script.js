@@ -92,76 +92,630 @@ setupMediaProtection();
     }
 
 
-    /* =========================================
-       NAVIGATION
-    ========================================= */
+/* =========================================
+   NAVIGATION + SECTION SCROLL LOCK
+========================================= */
 
-    function setupNavigation() {
+function setupNavigation() {
 
-        const navLinks =
-            document.querySelectorAll(
-                '.nav-links a[href^="#"]'
-            );
+    const navLinks =
+        document.querySelectorAll(
+            '.nav-links a[href^="#"]'
+        );
 
-        navLinks.forEach((link) => {
+    const header =
+        document.querySelector(
+            ".site-header"
+        );
 
-            link.addEventListener(
-                "click",
-                (event) => {
 
-                    const targetId =
-                        link.getAttribute("href");
+    /* =====================================
+       NAVIGATION GROUPS
+    ===================================== */
 
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) {
-                        return;
-                    }
+    const navigationGroups = [
 
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
+        {
+            name: "home",
 
-                    if (!target) {
-                        return;
-                    }
+            start: "home",
 
-                    event.preventDefault();
+            end: "education"
+        },
 
-                    const header =
-                        document.querySelector(
-                            ".site-header"
-                        );
+        {
+            name: "experience",
 
-                    const headerHeight =
-                        header
-                            ? header.offsetHeight
-                            : 0;
+            start: "experience",
 
-                    const targetPosition =
-                        target.getBoundingClientRect().top +
-                        window.scrollY -
-                        headerHeight;
+            end: "leadership"
+        },
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: "smooth"
-                    });
+        {
+            name: "projects",
 
-                    history.pushState(
-                        null,
-                        "",
+            start: "projects",
+
+            end: "projects"
+        },
+
+        {
+            name: "certifications",
+
+            start: "certifications",
+
+            end: "certifications"
+        },
+
+        {
+            name: "contact",
+
+            start: "contact",
+
+            end: "contact"
+        }
+
+    ];
+
+
+    let currentGroup =
+        navigationGroups[0];
+
+
+    let navigationScrolling = false;
+
+
+    /* =====================================
+       GET ELEMENT
+    ===================================== */
+
+    function getElement(id) {
+
+        return document.getElementById(id);
+
+    }
+
+
+    /* =====================================
+       GET HEADER HEIGHT
+    ===================================== */
+
+    function getHeaderHeight() {
+
+        return header
+            ? header.offsetHeight
+            : 0;
+
+    }
+
+
+    /* =====================================
+       GET GROUP BOUNDARIES
+    ===================================== */
+
+    function getGroupBounds(group) {
+
+        const startElement =
+            getElement(group.start);
+
+        const endElement =
+            getElement(group.end);
+
+
+        if (
+            !startElement ||
+            !endElement
+        ) {
+
+            return null;
+
+        }
+
+
+        const headerHeight =
+            getHeaderHeight();
+
+
+        const startPosition =
+            startElement.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight;
+
+
+        const endPosition =
+            endElement.getBoundingClientRect().bottom +
+            window.scrollY -
+            window.innerHeight;
+
+
+        return {
+
+            start:
+                Math.max(
+                    0,
+                    startPosition
+                ),
+
+            end:
+                Math.max(
+                    startPosition,
+                    endPosition
+                )
+
+        };
+
+    }
+
+
+    /* =====================================
+       FIND GROUP
+    ===================================== */
+
+    function getGroupByTarget(targetId) {
+
+        return navigationGroups.find(
+            (group) =>
+                group.start === targetId ||
+                group.end === targetId
+        );
+
+    }
+
+
+    /* =====================================
+       NAVIGATION CLICK
+    ===================================== */
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            (event) => {
+
+                const targetId =
+                    link.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(
                         targetId
                     );
 
+
+                if (!target) {
+
+                    return;
+
                 }
+
+
+                event.preventDefault();
+
+
+                const targetGroup =
+                    getGroupByTarget(
+                        targetId.replace("#", "")
+                    );
+
+
+                if (targetGroup) {
+
+                    currentGroup =
+                        targetGroup;
+
+                }
+
+
+                const headerHeight =
+                    getHeaderHeight();
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.scrollY -
+                    headerHeight;
+
+
+                navigationScrolling = true;
+
+
+                window.scrollTo({
+
+                    top:
+                        Math.max(
+                            0,
+                            targetPosition
+                        ),
+
+                    behavior: "smooth"
+
+                });
+
+
+                history.pushState(
+                    null,
+                    "",
+                    targetId
+                );
+
+                setTimeout(() => {
+
+                    navigationScrolling =
+                        false;
+
+                }, 900);
+
+            }
+        );
+
+    });
+
+
+    /* =====================================
+       WHEEL SCROLL LOCK
+    ===================================== */
+
+    window.addEventListener(
+        "wheel",
+        (event) => {
+
+            if (navigationScrolling) {
+
+                return;
+
+            }
+
+
+            const bounds =
+                getGroupBounds(
+                    currentGroup
+                );
+
+
+            if (!bounds) {
+
+                return;
+
+            }
+
+
+            const currentScroll =
+                window.scrollY;
+
+
+            const scrollingDown =
+                event.deltaY > 0;
+
+            const scrollingUp =
+                event.deltaY < 0;
+
+            if (
+                scrollingDown &&
+                currentScroll >=
+                    bounds.end - 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.end
+                });
+
+                return;
+
+            }
+
+            if (
+                scrollingUp &&
+                currentScroll <=
+                    bounds.start + 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.start
+                });
+
+            }
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =====================================
+       TOUCH SCROLL LOCK
+    ===================================== */
+
+    let touchStartY = 0;
+
+
+    window.addEventListener(
+        "touchstart",
+        (event) => {
+
+            if (
+                event.touches.length !== 1
+            ) {
+
+                return;
+
+            }
+
+
+            touchStartY =
+                event.touches[0].clientY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    window.addEventListener(
+        "touchmove",
+        (event) => {
+
+            if (
+                navigationScrolling ||
+                event.touches.length !== 1
+            ) {
+
+                return;
+
+            }
+
+
+            const bounds =
+                getGroupBounds(
+                    currentGroup
+                );
+
+
+            if (!bounds) {
+
+                return;
+
+            }
+
+
+            const currentScroll =
+                window.scrollY;
+
+
+            const currentY =
+                event.touches[0].clientY;
+
+
+            const deltaY =
+                currentY - touchStartY;
+
+
+            /*
+             * Finger moving upward =
+             * page scrolling downward.
+             */
+
+            const scrollingDown =
+                deltaY < 0;
+
+
+            /*
+             * Finger moving downward =
+             * page scrolling upward.
+             */
+
+            const scrollingUp =
+                deltaY > 0;
+
+
+            if (
+                scrollingDown &&
+                currentScroll >=
+                    bounds.end - 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.end
+                });
+
+                return;
+
+            }
+
+
+            if (
+                scrollingUp &&
+                currentScroll <=
+                    bounds.start + 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.start
+                });
+
+            }
+
+        },
+        {
+            passive: false
+        }
+    );
+
+
+    /* =====================================
+       KEYBOARD SCROLL LOCK
+    ===================================== */
+
+    window.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                navigationScrolling
+            ) {
+
+                return;
+
+            }
+
+
+            const bounds =
+                getGroupBounds(
+                    currentGroup
+                );
+
+
+            if (!bounds) {
+
+                return;
+
+            }
+
+
+            const currentScroll =
+                window.scrollY;
+
+
+            const key =
+                event.key;
+
+
+            const scrollingDown =
+                key === "ArrowDown" ||
+                key === "PageDown" ||
+                key === " ";
+
+
+            const scrollingUp =
+                key === "ArrowUp" ||
+                key === "PageUp";
+
+
+            if (
+                scrollingDown &&
+                currentScroll >=
+                    bounds.end - 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.end
+                });
+
+                return;
+
+            }
+
+
+            if (
+                scrollingUp &&
+                currentScroll <=
+                    bounds.start + 2
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: bounds.start
+                });
+
+            }
+
+        }
+    );
+
+
+    /* =====================================
+       RESIZE
+    ===================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            const bounds =
+                getGroupBounds(
+                    currentGroup
+                );
+
+
+            if (!bounds) {
+
+                return;
+
+            }
+
+
+            /*
+             * Keep the page inside the
+             * current navigation group.
+             */
+
+            if (
+                window.scrollY >
+                bounds.end
+            ) {
+
+                window.scrollTo({
+                    top: bounds.end
+                });
+
+            }
+
+        }
+    );
+
+
+    /* =====================================
+       INITIAL HASH
+    ===================================== */
+
+    const initialHash =
+        window.location.hash;
+
+
+    if (initialHash) {
+
+        const targetId =
+            initialHash.replace("#", "");
+
+
+        const targetGroup =
+            getGroupByTarget(
+                targetId
             );
 
-        });
+
+        if (targetGroup) {
+
+            currentGroup =
+                targetGroup;
+
+        }
 
     }
+
+}
 
 
     /* =========================================
