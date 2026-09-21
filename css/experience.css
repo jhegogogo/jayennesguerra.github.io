@@ -2,39 +2,24 @@
    EXPERIENCE
 ========================================================= */
 
-#experience {
-    position: relative;
-}
-
-#experience .section-label {
-    margin-bottom: 14px;
-}
-
-#experience .section-title {
-    margin-bottom: 48px;
-}
-
-/* ---------------------------------------------------------
-   EXPERIENCE LIST
---------------------------------------------------------- */
-
-.experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* ---------------------------------------------------------
-   EXPERIENCE CARD
---------------------------------------------------------- */
-
 .experience-card {
+    width: 100%;
+
     position: relative;
-    padding: 28px 30px;
+
+    display: block;
+
+    padding: 30px 32px;
 
     background: var(--card);
+
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-left: 4px solid var(--accent);
+
+    border-radius: 0 15px 15px 0;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .18);
 
     transition:
         transform .25s ease,
@@ -44,179 +29,411 @@
 }
 
 .experience-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+
     background: var(--card-hover);
-    border-color: rgba(50, 185, 242, .35);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, .15);
+
+    border-color:
+        rgba(50, 185, 242, .45);
+
+    border-left-color: var(--accent);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .25);
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    EXPERIENCE HEADER
---------------------------------------------------------- */
+========================================================= */
 
 .experience-header {
     display: flex;
+
     align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 18px;
+
+    gap: 30px;
+
+    margin-bottom: 26px;
 }
 
-.experience-header h3 {
-    margin: 0 0 6px;
+.experience-company {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   EXPERIENCE LOGOS
+========================================================= */
+
+.experience-logo {
+    display: block;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   OLLOPA
+   327 × 128 rectangular logo
+========================================================= */
+
+.experience-logo[src*="Ollopa"] {
+    width: 96px;
+    height: 64px;
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    object-fit: contain;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   KMC
+   Rounded square
+========================================================= */
+
+.experience-logo[src*="KMC"] {
+    width: 68px;
+    height: 68px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border-radius: 14px;
+
+    object-fit: contain;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ALIGNERR
+   Rounded square
+========================================================= */
+
+.experience-logo[src*="Alignerr"] {
+    width: 68px;
+    height: 68px;
+
+    padding: 0;
+
+    background: transparent;
+
+    border-radius: 14px;
+
+    object-fit: contain;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   EXPERIENCE COMPANY INFO
+========================================================= */
+
+.experience-company-info {
+    min-width: 0;
+}
+
+.experience-company-info h3 {
+    margin: 0 0 5px;
+
     color: var(--white);
-    font-size: 1.08rem;
-    line-height: 1.4;
-    font-weight: 800;
+
+    font-size: 1.15rem;
+
+    line-height: 1.35;
 }
 
-.experience-header p {
+.experience-company-info p {
     margin: 0;
-    color: var(--muted);
-    font-size: .82rem;
+
+    color: var(--accent-light);
+
+    font-size: .85rem;
+
     line-height: 1.5;
 }
+
+
+/* =========================================================
+   EXPERIENCE DATE
+========================================================= */
 
 .experience-date {
     flex-shrink: 0;
 
-    display: inline-flex;
-    align-items: center;
-
-    padding: 5px 10px;
-
     color: var(--accent-light);
-    background: rgba(50, 185, 242, .08);
 
-    border: 1px solid rgba(50, 185, 242, .15);
-    border-radius: 6px;
-
-    font-size: .7rem;
+    font-size: .8rem;
     font-weight: 700;
-    letter-spacing: .07em;
+
+    text-align: right;
+
     white-space: nowrap;
 }
 
-/* ---------------------------------------------------------
-   EXPERIENCE DETAILS
---------------------------------------------------------- */
 
-.experience-card > p {
-    margin: 0 0 8px;
-    color: var(--muted);
-    font-size: .84rem;
-    line-height: 1.6;
+/* =========================================================
+   EXPERIENCE META
+========================================================= */
+
+.experience-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 30px;
 }
 
-.experience-card > p:last-child {
+.experience-meta span {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 7px 11px;
+
+    color: var(--accent-light);
+
+    background:
+        rgba(50, 185, 242, .06);
+
+    border: 1px solid
+        rgba(50, 185, 242, .18);
+
+    border-radius: 5px;
+
+    font-size: .7rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   OLLOPA EXPERIENCE TIMELINE
+========================================================= */
+
+.experience-timeline {
+    position: relative;
+
+    margin-left: 10px;
+
+    padding-left: 32px;
+}
+
+
+/* ---------------------------------------------------------
+   Vertical Timeline Line
+--------------------------------------------------------- */
+
+.experience-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 7px;
+    bottom: 7px;
+
+    left: 0;
+
+    width: 2px;
+
+    background:
+        rgba(50, 185, 242, .18);
+
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   TIMELINE ITEM
+========================================================= */
+
+.experience-timeline-item {
+    position: relative;
+
+    margin-bottom: 34px;
+}
+
+.experience-timeline-item:last-child {
     margin-bottom: 0;
 }
 
-/* ---------------------------------------------------------
-   EXPERIENCE BULLET LIST
---------------------------------------------------------- */
 
-.experience-list li {
-    position: relative;
+/* =========================================================
+   TIMELINE DOT
+========================================================= */
 
-    margin-bottom: 8px;
-    padding-left: 18px;
+.experience-timeline-dot {
+    position: absolute;
+
+    top: 4px;
+
+    left: -39px;
+
+    width: 12px;
+    height: 12px;
+
+    background: var(--card);
+
+    border: 3px solid var(--accent);
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   TIMELINE CONTENT
+========================================================= */
+
+.experience-timeline-content {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   ROLE HEADER
+========================================================= */
+
+.experience-role-header {
+    margin: 0 0 14px;
+}
+
+.experience-role-header h4 {
+    margin: 0 0 5px;
+
+    color: var(--white);
+
+    font-size: .95rem;
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+.experience-role-date {
+    display: block;
+
+    margin: 0;
+
+    color: var(--accent-light);
+
+    font-size: .78rem;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ROLE BULLET LIST
+========================================================= */
+
+.experience-timeline-content .experience-list {
+    margin: 0;
+
+    padding-left: 20px;
 
     color: var(--muted);
-    font-size: .84rem;
+
+    font-size: .85rem;
+
     line-height: 1.7;
+}
+
+.experience-timeline-content .experience-list li {
+    margin-bottom: 9px;
+
+    padding-left: 2px;
+
+    list-style: disc;
+}
+
+.experience-timeline-content .experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   GENERAL EXPERIENCE LIST
+========================================================= */
+
+.experience-list {
+    margin: 0;
+
+    padding-left: 20px;
+
+    color: var(--muted);
+
+    font-size: .88rem;
+
+    line-height: 1.7;
+}
+
+.experience-list li {
+    margin-bottom: 8px;
+
+    list-style: disc;
 }
 
 .experience-list li:last-child {
     margin-bottom: 0;
 }
 
-.experience-list li::before {
-    content: "•";
 
-    position: absolute;
-    left: 0;
-    top: 0;
+/* =========================================================
+   SEPARATION BETWEEN OLLOPA ROLES
+========================================================= */
 
-    color: var(--accent);
-    font-weight: 800;
+/*
+   Gives the IT Administrator section enough breathing room
+   before the Software Developer Intern title.
+*/
+
+.experience-timeline-item:first-child {
+    padding-bottom: 4px;
 }
 
-/* ---------------------------------------------------------
-   COMPANY LOGO
---------------------------------------------------------- */
-
-.experience-logo {
-    width: 58px;
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    background: rgba(50, 185, 242, .03);
-    border: 1px solid rgba(50, 185, 242, .15);
-    border-radius: 12px;
-
-    overflow: hidden;
+.experience-timeline-item:first-child
+.experience-timeline-content {
+    padding-bottom: 4px;
 }
 
-.experience-logo img {
-    display: block;
 
-    width: 46px;
-    height: 46px;
+/* =========================================================
+   RESPONSIVE EXPERIENCE
+========================================================= */
 
-    object-fit: contain;
+@media (max-width: 900px) {
 
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-}
-
-/* ---------------------------------------------------------
-   LIGHT MODE
---------------------------------------------------------- */
-
-body.light-mode .experience-card {
-    background: #ffffff;
-    border-color: #d6e2eb;
-    box-shadow: 0 8px 24px rgba(20, 50, 80, .06);
-}
-
-body.light-mode .experience-card:hover {
-    background: #f7fafc;
-    border-color: rgba(0, 157, 214, .3);
-    box-shadow: 0 14px 30px rgba(20, 50, 80, .09);
-}
-
-body.light-mode .experience-header h3 {
-    color: #172033 !important;
-}
-
-body.light-mode .experience-header p,
-body.light-mode .experience-card > p,
-body.light-mode .experience-list li {
-    color: #58708a !important;
-}
-
-body.light-mode .experience-date {
-    color: #008fca !important;
-    background: rgba(0, 157, 214, .07);
-    border-color: rgba(0, 157, 214, .18);
-}
-
-body.light-mode .experience-list li::before {
-    color: #008fca;
-}
-
-/* ---------------------------------------------------------
-   RESPONSIVE — TABLET
---------------------------------------------------------- */
-
-@media (max-width: 1000px) {
     .experience-card {
         padding: 26px;
     }
@@ -224,105 +441,168 @@ body.light-mode .experience-list li::before {
     .experience-header {
         gap: 20px;
     }
+
+    .experience-date {
+        font-size: .75rem;
+    }
+
+
+    /* =====================================================
+       OLLOPA LOGO
+    ===================================================== */
+
+    .experience-logo[src*="Ollopa"] {
+        width: 88px;
+        height: 60px;
+
+        padding: 7px;
+
+        border-radius: 11px;
+    }
+
+
+    /* =====================================================
+       KMC + ALIGNERR LOGOS
+    ===================================================== */
+
+    .experience-logo[src*="KMC"],
+    .experience-logo[src*="Alignerr"] {
+        width: 64px;
+        height: 64px;
+
+        padding: 0;
+
+        border-radius: 13px;
+    }
+
+
+    /* =====================================================
+       TIMELINE
+    ===================================================== */
+
+    .experience-timeline {
+        margin-left: 6px;
+
+        padding-left: 28px;
+    }
+
+    .experience-timeline-dot {
+        left: -35px;
+    }
+
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE — MOBILE
---------------------------------------------------------- */
 
-@media (max-width: 800px) {
-    .experience-list {
-        gap: 16px;
-    }
+@media (max-width: 600px) {
 
     .experience-card {
         padding: 22px;
-        border-radius: 15px;
-    }
-
-    .experience-header {
-        gap: 16px;
-    }
-
-    .experience-header h3 {
-        font-size: 1rem;
-    }
-
-    .experience-header p {
-        font-size: .79rem;
-    }
-
-    .experience-date {
-        font-size: .68rem;
-    }
-
-    .experience-list li {
-        font-size: .81rem;
-        line-height: 1.6;
-    }
-
-    .experience-logo {
-        width: 52px;
-        height: 52px;
-    }
-
-    .experience-logo img {
-        width: 41px;
-        height: 41px;
-    }
-}
-
-/* ---------------------------------------------------------
-   RESPONSIVE — SMALL MOBILE
---------------------------------------------------------- */
-
-@media (max-width: 600px) {
-    #experience .section-title {
-        margin-bottom: 32px;
-    }
-
-    .experience-card {
-        padding: 20px;
-        border-radius: 14px;
     }
 
     .experience-header {
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 15px;
+
+        gap: 16px;
     }
 
-    .experience-header h3 {
-        font-size: .94rem;
-        line-height: 1.4;
-    }
-
-    .experience-header p {
-        font-size: .75rem;
-        line-height: 1.45;
+    .experience-company {
+        gap: 12px;
     }
 
     .experience-date {
-        max-width: 100%;
+        text-align: left;
+
         white-space: normal;
-        font-size: .66rem;
-        line-height: 1.35;
     }
 
-    .experience-list li {
-        margin-bottom: 7px;
-        padding-left: 16px;
+
+    /* =====================================================
+       OLLOPA LOGO
+    ===================================================== */
+
+    .experience-logo[src*="Ollopa"] {
+        width: 82px;
+        height: 56px;
+
+        padding: 7px;
+
+        border-radius: 10px;
+    }
+
+
+    /* =====================================================
+       KMC + ALIGNERR LOGOS
+    ===================================================== */
+
+    .experience-logo[src*="KMC"],
+    .experience-logo[src*="Alignerr"] {
+        width: 60px;
+        height: 60px;
+
+        padding: 0;
+
+        border-radius: 12px;
+    }
+
+
+    /* =====================================================
+       COMPANY INFORMATION
+    ===================================================== */
+
+    .experience-company-info h3 {
+        font-size: 1rem;
+    }
+
+    .experience-company-info p {
         font-size: .78rem;
-        line-height: 1.55;
     }
 
-    .experience-logo {
-        width: 48px;
-        height: 48px;
+
+    /* =====================================================
+       META
+    ===================================================== */
+
+    .experience-meta {
+        margin-bottom: 26px;
     }
 
-    .experience-logo img {
-        width: 38px;
-        height: 38px;
+
+    /* =====================================================
+       TIMELINE
+    ===================================================== */
+
+    .experience-timeline {
+        margin-left: 4px;
+
+        padding-left: 25px;
     }
+
+    .experience-timeline-item {
+        margin-bottom: 30px;
+    }
+
+    .experience-timeline-dot {
+        left: -32px;
+
+        width: 11px;
+        height: 11px;
+    }
+
+
+    /* =====================================================
+       ROLE
+    ===================================================== */
+
+    .experience-role-header h4 {
+        font-size: .9rem;
+    }
+
+    .experience-role-date {
+        font-size: .75rem;
+    }
+
+    .experience-timeline-content .experience-list {
+        font-size: .82rem;
+    }
+
 }
