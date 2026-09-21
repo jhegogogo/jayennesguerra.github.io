@@ -1557,16 +1557,27 @@ button:focus-visible {
     /* -----------------------------------------------------
        INTRO
     ----------------------------------------------------- */
+    .intro-image-wrapper {
+        width: 157px;
+        height: 157px;
+        padding: 6px;
+        background: #ffffff;
+        border-radius: 24px;
+        overflow: hidden;
+    }
 
     .intro-photo {
-        width: 95px !important;
-        height: 95px !important;
+        width: 145px !important;
+        height: 145px !important;
 
-        max-width: 95px !important;
-        max-height: 95px !important;
+        max-width: 145px !important;
+        max-height: 145px !important;
 
-        min-width: 95px;
-        min-height: 95px;
+        min-width: 145px;
+        min-height: 145px;
+
+        object-fit: cover;
+        border-radius: 18px;
     }
 
     .intro-greeting {
