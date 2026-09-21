@@ -899,7 +899,7 @@ body.light-mode .intro-photo {
     width: 100%;
     min-height: 72px;
     margin-inline: auto;
-    padding: 0 22px;
+    padding: 0 50px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
