@@ -3802,20 +3802,13 @@ body.light-mode .education-card h3 {
 
 .leadership-slideshow {
     position: relative;
-
     width: 50%;
-    height: 175px;
-
+    height: 195px;
     margin: 0 auto 22px;
-
     flex-shrink: 0;
-
     overflow: hidden;
-
     background: var(--bg);
-
     border: 1px solid rgba(255, 255, 255, .07);
-
     border-radius: 10px;
 }
 
@@ -4093,7 +4086,7 @@ body.light-mode .leadership-date {
 
     .leadership-slideshow {
         width: 55%;
-        height: 165px;
+        height: 180px;
     }
 }
 
@@ -4206,6 +4199,10 @@ body.light-mode .leadership-date {
     .leadership-next {
         right: 8px;
     }
+    
+    .leadership-card:nth-child(2) h3 {
+        max-width: 145px;
+    }
 }
 
 
@@ -4277,6 +4274,10 @@ body.light-mode .leadership-date {
         margin-bottom: 7px;
         font-size: .98rem;
         line-height: 1.36;
+    }
+
+    .leadership-card:nth-child(2) h3 {
+        max-width: 135px;
     }
 
 
