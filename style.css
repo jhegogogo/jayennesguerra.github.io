@@ -3538,7 +3538,6 @@ body.light-mode .education-card h3 {
 
 .leadership-grid {
     display: flex;
-
     gap: 24px;
 
     width: 100%;
@@ -3550,6 +3549,9 @@ body.light-mode .education-card h3 {
 
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
 
     cursor: grab;
 
@@ -3561,8 +3563,19 @@ body.light-mode .education-card h3 {
     cursor: grabbing;
 }
 
+.leadership-grid.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
 
-/* scrollbar */
+.leadership-grid.is-dragging .leadership-card {
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   SCROLLBAR
+--------------------------------------------------------- */
 
 .leadership-grid::-webkit-scrollbar {
     height: 6px;
@@ -3579,25 +3592,6 @@ body.light-mode .education-card h3 {
 
 .leadership-grid::-webkit-scrollbar-thumb:hover {
     background: var(--accent-light);
-}
-
-/* ---------------------------------------------------------
-   LEADERSHIP DRAG / SWIPE
---------------------------------------------------------- */
-
-.leadership-grid {
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.leadership-grid.is-dragging {
-    cursor: grabbing;
-    scroll-behavior: auto;
-}
-
-.leadership-grid.is-dragging .leadership-card {
-    pointer-events: none;
 }
 
 /* ---------------------------------------------------------
