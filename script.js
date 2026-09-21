@@ -1606,16 +1606,10 @@ if (prefersReducedMotion) {
 
         }
 
-
-        /* Open using Resume button */
-
         resumeButton.addEventListener(
             "click",
             openResumeModal
         );
-
-
-        /* Close using X button */
 
         if (resumeClose) {
 
@@ -1687,7 +1681,7 @@ if (prefersReducedMotion) {
     }
 
 
-    /* =========================================
+ /* =========================================
    INTRO SCREEN
 ========================================= */
 
@@ -1702,20 +1696,20 @@ function setupIntroScreen() {
         return;
     }
 
+    const introPlayed =
+        sessionStorage.getItem(
+            "portfolioIntroPlayed"
+        );
 
-    /*
-     * Intro duration:
-     * 7 seconds gives enough time for the
-     * animations without making the opening
-     * feel too long.
-     */
+    if (introPlayed === "true") {
 
+        introScreen.style.display =
+            "none";
+
+        return;
+
+    }
     const INTRO_DURATION = 4500;
-
-
-    /* =====================================
-       START INTRO ANIMATIONS
-    ===================================== */
 
     requestAnimationFrame(() => {
 
@@ -1726,21 +1720,16 @@ function setupIntroScreen() {
     });
 
 
-    /* =====================================
-       HIDE INTRO
-    ===================================== */
-
     setTimeout(() => {
 
         introScreen.classList.add(
             "hidden"
         );
 
-
-        /*
-         * Remove the intro from the page
-         * after the fade-out finishes.
-         */
+        sessionStorage.setItem(
+            "portfolioIntroPlayed",
+            "true"
+        );
 
         setTimeout(() => {
 
