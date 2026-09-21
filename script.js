@@ -252,7 +252,7 @@ setupMediaProtection();
 
     }
 
-      /* =========================================
+/* =========================================
    CERTIFICATION CAROUSELS
 ========================================= */
 
@@ -308,7 +308,7 @@ function setupCertificationCarousels() {
 
 
         /* =====================================
-           DETERMINE STARTING CERTIFICATION
+           STARTING POSITION
         ===================================== */
 
         const startIndex =
@@ -332,7 +332,7 @@ function setupCertificationCarousels() {
 
 
         /* =====================================
-           CERTIFICATION ORDER
+           GET CARD INDEX
         ===================================== */
 
         function getIndex(offset) {
@@ -362,42 +362,44 @@ function setupCertificationCarousels() {
                 getIndex(1);
 
 
-            cards.forEach((card, index) => {
+            cards.forEach(
+                (card, index) => {
 
-                card.classList.remove(
-                    "certification-card-left",
-                    "certification-card-center",
-                    "certification-card-right"
-                );
-
-
-                if (
-                    index === previousIndex
-                ) {
-
-                    card.classList.add(
-                        "certification-card-left"
-                    );
-
-                } else if (
-                    index === centerIndex
-                ) {
-
-                    card.classList.add(
-                        "certification-card-center"
-                    );
-
-                } else if (
-                    index === nextIndex
-                ) {
-
-                    card.classList.add(
+                    card.classList.remove(
+                        "certification-card-left",
+                        "certification-card-center",
                         "certification-card-right"
                     );
 
-                }
 
-            });
+                    if (
+                        index === previousIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-left"
+                        );
+
+                    } else if (
+                        index === centerIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-center"
+                        );
+
+                    } else if (
+                        index === nextIndex
+                    ) {
+
+                        card.classList.add(
+                            "certification-card-right"
+                        );
+
+                    }
+
+                }
+            );
 
 
             updateDots();
@@ -411,18 +413,16 @@ function setupCertificationCarousels() {
 
         function updateDots() {
 
-            if (dots.length === 0) {
-                return;
-            }
+            dots.forEach(
+                (dot, index) => {
 
+                    dot.classList.toggle(
+                        "active",
+                        index === currentIndex
+                    );
 
-            dots.forEach((dot, index) => {
-                dot.classList.toggle(
-                    "active",
-                    index === 1
-                );
-
-            });
+                }
+            );
 
         }
 
@@ -445,11 +445,6 @@ function setupCertificationCarousels() {
 
         }
 
-
-        /* =====================================
-           NEXT CERTIFICATION
-        ===================================== */
-
         function showNext() {
 
             currentIndex =
@@ -463,30 +458,16 @@ function setupCertificationCarousels() {
 
         }
 
-
-        /* =====================================
-           PREVIOUS BUTTON
-        ===================================== */
-
         previousButton.addEventListener(
             "click",
             showPrevious
         );
 
 
-        /* =====================================
-           NEXT BUTTON
-        ===================================== */
-
         nextButton.addEventListener(
             "click",
             showNext
         );
-
-
-        /* =====================================
-           DOT INDICATORS
-        ===================================== */
 
         dots.forEach(
             (dot, dotIndex) => {
@@ -495,17 +476,17 @@ function setupCertificationCarousels() {
                     "click",
                     () => {
 
-                        if (dotIndex === 0) {
-
-                            showPrevious();
-
-                        } else if (
-                            dotIndex === 2
+                        if (
+                            dotIndex >= cards.length
                         ) {
-
-                            showNext();
-
+                            return;
                         }
+
+
+                        currentIndex =
+                            dotIndex;
+
+                        updateCarousel();
 
                     }
                 );
@@ -533,16 +514,10 @@ function setupCertificationCarousels() {
 
             const swipeThreshold = 50;
 
-
-            /* ---------------------------------
-               POINTER DOWN
-            --------------------------------- */
-
             track.addEventListener(
                 "pointerdown",
                 (event) => {
 
-                    /* Ignore right/middle mouse buttons */
                     if (
                         event.pointerType === "mouse" &&
                         event.button !== 0
@@ -559,8 +534,11 @@ function setupCertificationCarousels() {
                     }
 
 
-                    startX = event.clientX;
-                    startY = event.clientY;
+                    startX =
+                        event.clientX;
+
+                    startY =
+                        event.clientY;
 
                     isPointerDown = true;
                     didDrag = false;
@@ -569,6 +547,7 @@ function setupCertificationCarousels() {
                     track.classList.add(
                         "is-dragging"
                     );
+
 
                     if (
                         track.setPointerCapture
@@ -579,14 +558,8 @@ function setupCertificationCarousels() {
                         );
 
                     }
-
                 }
             );
-
-
-            /* ---------------------------------
-               POINTER MOVE
-            --------------------------------- */
 
             track.addEventListener(
                 "pointermove",
@@ -596,12 +569,13 @@ function setupCertificationCarousels() {
                         return;
                     }
 
-
                     const deltaX =
-                        event.clientX - startX;
+                        event.clientX -
+                        startX;
 
                     const deltaY =
-                        event.clientY - startY;
+                        event.clientY -
+                        startY;
 
                     if (
                         Math.abs(deltaX) >
@@ -622,11 +596,6 @@ function setupCertificationCarousels() {
                 }
             );
 
-
-            /* ---------------------------------
-               POINTER UP
-            --------------------------------- */
-
             track.addEventListener(
                 "pointerup",
                 (event) => {
@@ -637,10 +606,12 @@ function setupCertificationCarousels() {
 
 
                     const deltaX =
-                        event.clientX - startX;
+                        event.clientX -
+                        startX;
 
                     const deltaY =
-                        event.clientY - startY;
+                        event.clientY -
+                        startY;
 
 
                     isPointerDown = false;
@@ -663,27 +634,21 @@ function setupCertificationCarousels() {
                         Math.abs(deltaX) <
                         swipeThreshold
                     ) {
-
                         return;
-
                     }
 
                     if (deltaX < 0) {
 
                         showNext();
-                    }
 
-                    else {
+                    } else {
 
                         showPrevious();
+
                     }
+
                 }
             );
-
-
-            /* ---------------------------------
-               POINTER CANCEL
-            --------------------------------- */
 
             track.addEventListener(
                 "pointercancel",
@@ -694,32 +659,29 @@ function setupCertificationCarousels() {
                     track.classList.remove(
                         "is-dragging"
                     );
+
                 }
             );
-
-            /* ---------------------------------
-               PREVENT CLICK AFTER DRAG
-            --------------------------------- */
 
             track.addEventListener(
                 "click",
                 (event) => {
+
                     if (didDrag) {
+
                         event.preventDefault();
                         event.stopPropagation();
 
                         didDrag = false;
 
                     }
+
                 },
                 true
             );
+
         }
 
-
-        /* =====================================
-           INITIAL POSITION
-        ===================================== */
         updateCarousel();
     });
 }
@@ -751,12 +713,6 @@ function setupCertificationCarousels() {
                 carousel.querySelector(
                     ".rylim-next"
                 );
-
-            /*
-             * The indicators are directly after
-             * the carousel, so search from the
-             * carousel's parent.
-             */
 
             const indicators =
                 carousel.parentElement.querySelectorAll(
