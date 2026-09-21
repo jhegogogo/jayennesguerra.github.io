@@ -3613,15 +3613,21 @@ body.light-mode .education-card h3 {
 
 .leadership-card.leadership-card-center {
     opacity: 1;
+
     pointer-events: auto;
+
     transform:
         translate(-50%, -50%)
         scale(1);
+
     border-color:
         rgba(50, 185, 242, 0.45);
+
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.18);
+
     filter: none;
+
     z-index: 3;
 }
 
@@ -3676,19 +3682,26 @@ body.light-mode .education-card h3 {
 
 .leadership-logo {
     position: absolute;
+
     top: 18px;
     right: 22px;
+
     width: 74px;
     height: 74px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+
     background: rgba(50, 185, 242, 0.03);
+
     border: 1px solid rgba(50, 185, 242, 0.18);
     border-radius: 50%;
+
     overflow: hidden;
+
     opacity: .95;
+
     z-index: 2;
 }
 
@@ -3727,15 +3740,23 @@ body.light-mode .education-card h3 {
 .leadership-date {
     display: inline-flex;
     align-items: center;
+
     width: fit-content;
+
     margin-bottom: 12px;
+
     padding: 5px 10px;
+
     color: var(--accent-light);
+
     background: rgba(50, 185, 242, 0.08);
+
     border: 1px solid rgba(50, 185, 242, 0.15);
     border-radius: 6px;
+
     font-size: .72rem;
     font-weight: 700;
+
     letter-spacing: .08em;
 }
 
@@ -3746,13 +3767,16 @@ body.light-mode .education-card h3 {
 
 .leadership-card h3 {
     width: calc(100% - 92px);
+
     margin: 0 0 8px;
+
     color: var(--white);
+
     font-size: 1.18rem;
     line-height: 1.35;
     font-weight: 700;
+
     overflow-wrap: break-word;
-    word-break: normal;
 }
 
 
@@ -3762,9 +3786,12 @@ body.light-mode .education-card h3 {
 
 .leadership-organization {
     margin: 0 0 20px;
+
     color: var(--muted);
+
     font-size: .86rem;
     line-height: 1.55;
+
     overflow-wrap: break-word;
 }
 
@@ -3775,34 +3802,48 @@ body.light-mode .education-card h3 {
 
 .leadership-slideshow {
     position: relative;
+
     width: 50%;
-    height: 150px;
+    height: 175px;
+
     margin: 0 auto 22px;
+
     flex-shrink: 0;
+
     overflow: hidden;
+
     background: var(--bg);
+
     border: 1px solid rgba(255, 255, 255, .07);
+
     border-radius: 10px;
 }
 
-
 .leadership-slideshow img {
     position: absolute;
+
     inset: 0;
+
     display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     opacity: 0;
+
     transition:
         opacity .7s ease,
         transform .7s ease;
 }
 
-
 .leadership-slideshow img.active {
     opacity: 1;
 }
+
+
+/* subtle image zoom */
 
 .leadership-card:hover
 .leadership-slideshow img.active {
@@ -3817,14 +3858,22 @@ body.light-mode .education-card h3 {
 .leadership-role {
     display: inline-flex;
     align-items: center;
+
     width: fit-content;
+
     margin: 0 0 10px;
+
     padding-left: 12px;
+
     color: var(--accent-light);
+
     font-size: .82rem;
     font-weight: 700;
+
     border-left: 3px solid var(--accent);
+
     line-height: 1.3;
+
     overflow-wrap: break-word;
 }
 
@@ -3835,9 +3884,12 @@ body.light-mode .education-card h3 {
 
 .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     margin: 0;
+
     color: var(--muted);
+
     font-size: .88rem;
     line-height: 1.7;
+
     overflow-wrap: break-word;
 }
 
@@ -3848,21 +3900,32 @@ body.light-mode .education-card h3 {
 
 .leadership-carousel-arrow {
     position: absolute;
+
     top: 50%;
+
     width: 44px;
     height: 44px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 0;
+
     color: var(--white);
+
     background: var(--card);
+
     border: 1px solid var(--border);
+
     border-radius: 50%;
+
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1;
+
     transform: translateY(-50%);
+
     cursor: pointer;
 
     transition:
@@ -3870,13 +3933,17 @@ body.light-mode .education-card h3 {
         background .2s ease,
         border-color .2s ease,
         transform .2s ease;
+
     z-index: 10;
 }
 
 .leadership-carousel-arrow:hover {
     color: var(--accent);
+
     background: var(--card-hover);
+
     border-color: var(--accent);
+
     transform:
         translateY(-50%)
         scale(1.06);
@@ -3900,19 +3967,28 @@ body.light-mode .education-card h3 {
 
     align-items: center;
     justify-content: center;
+
     gap: 10px;
+
     margin-top: 20px;
 }
 
 .leadership-dot {
     width: 9px;
     height: 9px;
+
     padding: 0;
+
     background: var(--border);
+
     border: none;
+
     border-radius: 50%;
+
     opacity: .65;
+
     cursor: pointer;
+
     transition:
         width .25s ease,
         background .25s ease,
@@ -3922,7 +3998,6 @@ body.light-mode .education-card h3 {
 
 .leadership-dot:hover {
     transform: scale(1.15);
-
     opacity: 1;
 }
 
@@ -3973,7 +4048,9 @@ body.light-mode .leadership-role {
 
 body.light-mode .leadership-date {
     color: #008fca !important;
+
     background: rgba(0, 157, 214, 0.07);
+
     border-color: rgba(0, 157, 214, 0.18);
 }
 
@@ -3990,7 +4067,9 @@ body.light-mode .leadership-date {
 
     .leadership-card {
         width: 68%;
+
         min-height: 370px;
+
         padding: 26px;
     }
 
@@ -4014,7 +4093,7 @@ body.light-mode .leadership-date {
 
     .leadership-slideshow {
         width: 55%;
-        height: 150px;
+        height: 165px;
     }
 }
 
@@ -4026,15 +4105,15 @@ body.light-mode .leadership-date {
 @media (max-width: 800px) {
 
     .leadership-grid {
-        height: 455px;
+        height: 440px;
     }
 
     .leadership-card {
         width: 78%;
 
-        min-height: 370px;
+        min-height: 350px;
 
-        padding: 24px;
+        padding: 22px;
 
         border-radius: 16px;
     }
@@ -4057,57 +4136,66 @@ body.light-mode .leadership-date {
             scale(.76);
     }
 
+    .leadership-date {
+        margin: 0;
+    }
+
     .leadership-logo {
-        position: relative;
-        top: auto;
-        right: auto;
-        align-self: flex-end;
-        width: 62px;
-        height: 62px;
-        margin: -2px 0 12px;
+        position: absolute;
+
+        top: 22px;
+        right: 22px;
+
+        width: 58px;
+        height: 58px;
     }
 
     .leadership-logo img {
-        width: 50px;
-        height: 50px;
+        width: 46px;
+        height: 46px;
     }
 
     .leadership-card h3 {
         width: 100%;
-        margin: 0 0 8px;
-        font-size: 1.08rem;
+
+        margin-top: 18px;
+        margin-bottom: 8px;
+
+        font-size: 1.05rem;
         line-height: 1.35;
     }
 
 
     .leadership-organization {
         font-size: .82rem;
-        margin-bottom: 16px;
+
+        margin-bottom: 14px;
     }
 
 
     .leadership-slideshow {
-        width: 70%;
+        width: 72%;
         height: 145px;
-        margin: 0 auto 20px;
+
+        margin: 0 auto 18px;
     }
 
 
     .leadership-role {
-        font-size: .8rem;
+        font-size: .79rem;
     }
 
 
     .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
-        font-size: .84rem;
-
-        line-height: 1.65;
+        font-size: .82rem;
+        line-height: 1.6;
     }
 
 
     .leadership-carousel-arrow {
         width: 40px;
         height: 40px;
+
         font-size: 1.25rem;
     }
 
@@ -4131,19 +4219,16 @@ body.light-mode .leadership-date {
         margin-bottom: 32px;
     }
 
-
     .leadership-grid {
-        height: 475px;
+        height: 445px;
     }
-
 
     .leadership-card {
         width: 82%;
-        min-height: 390px;
-        padding: 22px;
+        min-height: 355px;
+        padding: 20px;
         border-radius: 14px;
     }
-
 
     .leadership-card.leadership-card-left {
         transform:
@@ -4163,64 +4248,73 @@ body.light-mode .leadership-date {
             scale(.72);
     }
 
-
-    /* -----------------------------------------------------
-       MOBILE LOGO
-    ----------------------------------------------------- */
+    .leadership-date {
+        margin: 0;
+        padding: 4px 9px;
+        font-size: .68rem;
+    }
 
     .leadership-logo {
-        width: 58px;
-        height: 58px;
-        margin: -2px 0 11px;
+        top: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
     }
 
     .leadership-logo img {
-        width: 46px;
-        height: 46px;
+        width: 43px;
+        height: 43px;
     }
 
 
     /* -----------------------------------------------------
-       MOBILE TITLE
+       TITLE
     ----------------------------------------------------- */
 
     .leadership-card h3 {
         width: 100%;
-        margin: 0 0 8px;
-        font-size: 1rem;
-        line-height: 1.38;
+        margin-top: 17px;
+        margin-bottom: 7px;
+        font-size: .98rem;
+        line-height: 1.36;
     }
 
 
     .leadership-organization {
-        font-size: .78rem;
-        line-height: 1.5;
-        margin-bottom: 14px;
+        font-size: .76rem;
+        line-height: 1.48;
+        margin-bottom: 12px;
     }
 
 
     /* -----------------------------------------------------
-       MOBILE IMAGE
+       IMAGE
     ----------------------------------------------------- */
 
     .leadership-slideshow {
         width: 78%;
         height: 140px;
-        margin: 0 auto 18px;
+        margin: 0 auto 17px;
         border-radius: 9px;
     }
 
 
     .leadership-role {
-        font-size: .76rem;
-        padding-left: 10px;
+        font-size: .75rem;
+        padding-left: 9px;
+        margin-bottom: 8px;
     }
 
 
     .leadership-card > p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
-        font-size: .8rem;
-        line-height: 1.6;
+        font-size: .79rem;
+        line-height: 1.55;
     }
+
+
+    /* -----------------------------------------------------
+       ARROWS
+    ----------------------------------------------------- */
 
     .leadership-carousel-arrow {
         width: 36px;
