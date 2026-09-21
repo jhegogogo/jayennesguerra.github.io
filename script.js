@@ -996,7 +996,7 @@ function setupCertificationCarousels() {
 
     }
 
-    /* =========================================
+   /* =========================================
    LEADERSHIP CAROUSEL DRAG / SWIPE
 ========================================= */
 
@@ -1015,6 +1015,11 @@ function setupLeadershipCarouselDrag() {
         let startScrollLeft = 0;
         let hasDragged = false;
 
+
+        /* -----------------------------------------
+           POINTER DOWN
+        ----------------------------------------- */
+
         grid.addEventListener(
             "pointerdown",
             (event) => {
@@ -1025,7 +1030,6 @@ function setupLeadershipCarouselDrag() {
                 ) {
                     return;
                 }
-
                 if (
                     event.target.closest(
                         "a, button"
@@ -1043,10 +1047,12 @@ function setupLeadershipCarouselDrag() {
                 startScrollLeft =
                     grid.scrollLeft;
 
+                grid.style.scrollBehavior = "auto";
 
                 grid.classList.add(
                     "is-dragging"
                 );
+
 
                 if (
                     grid.setPointerCapture
@@ -1073,13 +1079,11 @@ function setupLeadershipCarouselDrag() {
                 if (!isDragging) {
                     return;
                 }
-
-
                 const deltaX =
                     event.clientX - startX;
 
                 if (
-                    Math.abs(deltaX) > 8
+                    Math.abs(deltaX) > 6
                 ) {
 
                     hasDragged = true;
@@ -1090,34 +1094,32 @@ function setupLeadershipCarouselDrag() {
             }
         );
 
-
         /* -----------------------------------------
            POINTER UP
         ----------------------------------------- */
 
         grid.addEventListener(
             "pointerup",
-            () => {
+            (event) => {
 
                 if (!isDragging) {
                     return;
                 }
 
-
                 isDragging = false;
-
 
                 grid.classList.remove(
                     "is-dragging"
                 );
+                grid.style.scrollBehavior = "smooth";
+                if (hasDragged) {
 
+                    snapToClosestLeadershipCard(
+                        grid
+                    );
+                }
             }
         );
-
-
-        /* -----------------------------------------
-           POINTER CANCEL
-        ----------------------------------------- */
 
         grid.addEventListener(
             "pointercancel",
@@ -1129,9 +1131,11 @@ function setupLeadershipCarouselDrag() {
                     "is-dragging"
                 );
 
+                grid.style.scrollBehavior =
+                    "smooth";
+
             }
         );
-
 
         /* -----------------------------------------
            PREVENT CLICK AFTER DRAG
@@ -1147,14 +1151,69 @@ function setupLeadershipCarouselDrag() {
                     event.stopPropagation();
 
                     hasDragged = false;
-
                 }
-
             },
             true
         );
-
     });
+
+
+    function snapToClosestLeadershipCard(grid) {
+
+        const cards =
+            Array.from(
+                grid.querySelectorAll(
+                    ".leadership-card"
+                )
+            );
+
+
+        if (cards.length === 0) {
+            return;
+        }
+
+        const gridRect =
+            grid.getBoundingClientRect();
+
+        const currentScroll =
+            grid.scrollLeft;
+
+        let closestCard = null;
+        let closestDistance = Infinity;
+
+        cards.forEach((card) => {
+
+            const cardLeft =
+                card.offsetLeft;
+
+            const distance =
+                Math.abs(
+                    cardLeft -
+                    currentScroll
+                );
+
+            if (
+                distance <
+                closestDistance
+            ) {
+
+                closestDistance =
+                    distance;
+                closestCard =
+                    card;
+            }
+        });
+
+        if (closestCard) {
+
+            grid.scrollTo({
+                left: closestCard.offsetLeft,
+                behavior: "smooth"
+            });
+
+        }
+
+    }
 
 }
 
