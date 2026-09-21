@@ -21,40 +21,14 @@
 
 .education-list {
     position: relative;
-
     display: flex;
     flex-direction: column;
-
     gap: 20px;
 }
 
 
 .education-item {
     position: relative;
-
-    padding-left: 36px;
-}
-
-.education-item::before {
-    content: "";
-
-    position: absolute;
-
-    top: 28px;
-    left: 0;
-
-    width: 15px;
-    height: 15px;
-
-    background: var(--bg);
-
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 0 4px var(--bg);
-
-    z-index: 1;
 }
 
 
@@ -299,21 +273,10 @@ body.light-mode .education-item::before {
         gap: 16px;
     }
 
-    .education-item {
-        padding-left: 30px;
-    }
-
     .education-card {
         padding: 22px;
 
         border-radius: 15px;
-    }
-
-    .education-item::before {
-        top: 25px;
-
-        width: 13px;
-        height: 13px;
     }
 
     .education-card h3 {
@@ -355,20 +318,8 @@ body.light-mode .education-item::before {
         margin-bottom: 32px;
     }
 
-    .education-list::before {
-        left: 6px;
-    }
-
     .education-item {
         padding-left: 25px;
-    }
-
-    .education-item::before {
-        left: 0;
-        top: 22px;
-
-        width: 12px;
-        height: 12px;
     }
 
     .education-card {
@@ -382,7 +333,7 @@ body.light-mode .education-item::before {
 
         padding: 4px 9px;
 
-        font-size: .63rem;
+        font-size: .55rem;
     }
 
     .education-card h3 {
