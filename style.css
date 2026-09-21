@@ -887,28 +887,22 @@ body.light-mode .intro-photo {
     );
 
     margin-inline: auto;
-
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 18px;
-
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-
     box-shadow: 0 12px 35px rgba(0, 0, 0, .18);
 }
 
 .navbar {
     width: 100%;
     min-height: 72px;
-
     margin-inline: auto;
     padding: 0 22px;
-
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-
     gap: 32px;
 }
 
@@ -918,13 +912,11 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 .logo {
+    justify-self: start;
     flex-shrink: 0;
-
     color: var(--white);
-
     font-size: 1.6rem;
     font-weight: 900;
-
     letter-spacing: -.04em;
 }
 
@@ -938,44 +930,34 @@ body.light-mode .intro-photo {
 ========================================================= */
 
 .nav-links {
+    justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: 15px 27px;
-
+    gap: 15px 32px;
     margin: 0;
     padding: 0;
-
     list-style: none;
-
     transform: translateY(-3px);
 }
 
 .nav-links a {
     position: relative;
-
     color: var(--muted);
-
     font-size: .82rem;
     font-weight: 700;
-
+    white-space: nowrap;
     transition: color .2s ease;
 }
 
 .nav-links a::after {
     content: "";
-
     position: absolute;
-
     left: 0;
     bottom: -8px;
-
     width: 0;
     height: 2px;
-
     background: var(--accent);
-
     transition: width .2s ease;
 }
 
@@ -999,6 +981,7 @@ body.light-mode .intro-photo {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    justify-self: end;
 
     flex-shrink: 0;
 
@@ -4239,18 +4222,13 @@ button:focus-visible {
     }
 
     .nav-links {
-        gap: 15px;
+        gap: 15px 24px;
     }
 
     .nav-links a {
         font-size: .7rem;
     }
 
-    /* Slightly raise Leadership and Contact */
-    .nav-links li:nth-child(5),
-    .nav-links li:nth-child(6) {
-        transform: translateY(-4px);
-    }
 
     .hero-container,
     .hero-grid {
@@ -4271,7 +4249,6 @@ button:focus-visible {
     }
 }
 
-
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -4289,82 +4266,104 @@ button:focus-visible {
         );
     }
 
-    /* FLOATING STICKY HEADER */
+
+    /* =====================================================
+       FLOATING STICKY HEADER
+    ===================================================== */
 
     .site-header {
         position: sticky;
-
         top: 10px;
-
         width: calc(100% - 20px);
-
         margin-inline: auto;
-
         border-radius: 15px;
     }
 
+
     .navbar {
         position: relative;
-
         width: 100%;
-
-        min-height: 88px;
-
+        min-height: 104px;
         padding: 12px 15px;
-
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 0;
     }
+
+
+    /* =====================================================
+       MOBILE LOGO
+    ===================================================== */
 
     .logo {
         position: absolute;
-
         left: 15px;
-        top: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        justify-self: start;
     }
 
-    .nav-links {
-    position: absolute;
-    top: 17px;
-    left: 50%;
-    width: calc(100% - 120px);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px 14px;
-    margin: 0;
-    padding: 0;
-    transform: translateX(-50%);
-}
 
-.nav-links a {
-    font-size: .68rem;
-    white-space: nowrap;
-}
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    .nav-links {
+        position: absolute;
+        top: 13px;
+        left: 50%;
+        width: 220px;
+        max-width: calc(100% - 100px);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        column-gap: 17px;
+        row-gap: 9px;
+        margin: 0;
+        padding: 0;
+
+        transform: translateX(-50%);
+    }
+
+    .nav-links a {
+        font-size: .68rem;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       MOBILE THEME TOGGLE
+    ===================================================== */
 
     .theme-toggle {
         position: absolute;
-
         right: 15px;
-        top: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        justify-self: end;
     }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
         min-height: auto;
-
         padding: 75px 0;
     }
 
     .hero-container,
     .hero-grid {
         grid-template-columns: 1fr;
-
         gap: 45px;
     }
 
     .hero-card {
         max-width: 500px;
-
         margin-inline: auto;
     }
 
@@ -4427,49 +4426,54 @@ button:focus-visible {
 ========================================================= */
 
 @media (max-width: 600px) {
-
     .site-header {
         top: 8px;
         width: calc(100% - 16px);
         border-radius: 14px;
     }
 
+
     .navbar {
-        min-height: 92px;
+        min-height: 100px;
         padding: 12px 13px;
     }
 
+
     .logo {
         left: 13px;
-        top: 18px;
-
+        top: 50%;
+        transform: translateY(-50%);
         font-size: 1.35rem;
     }
 
-   .nav-links {
-    top: 17px;
-    width: calc(100% - 110px);
-    gap: 7px 11px;
-    justify-content: center;
-}
 
-.nav-links a {
-    font-size: .62rem;
-    white-space: nowrap;
-}
+    .nav-links {
+        top: 12px;
+        width: 220px;
+        max-width: calc(100% - 92px);
+        column-gap: 14px;
+        row-gap: 8px;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: .62rem;
+        white-space: nowrap;
+    }
+
 
     .theme-toggle {
         right: 13px;
-        top: 10px;
+        top: 50%;
+        transform: translateY(-50%);
     }
+
 
     .intro-photo {
         width: 95px !important;
         height: 95px !important;
-
         max-width: 95px !important;
         max-height: 95px !important;
-
         min-width: 95px;
         min-height: 95px;
     }
@@ -4485,6 +4489,7 @@ button:focus-visible {
     .intro-welcome {
         font-size: .85rem;
     }
+
 
     .hero-buttons,
     .hero-actions {
