@@ -28,19 +28,6 @@
     gap: 20px;
 }
 
-.education-list::before {
-    content: "";
-
-    position: absolute;
-
-    top: 10px;
-    bottom: 10px;
-    left: 7px;
-
-    width: 1px;
-
-    background: var(--border);
-}
 
 .education-item {
     position: relative;
@@ -129,7 +116,7 @@
 
     border-radius: 6px;
 
-    font-size: .72rem;
+    font-size: .66rem;
     font-weight: 700;
 
     letter-spacing: .08em;
@@ -395,7 +382,7 @@ body.light-mode .education-item::before {
 
         padding: 4px 9px;
 
-        font-size: .67rem;
+        font-size: .63rem;
     }
 
     .education-card h3 {
