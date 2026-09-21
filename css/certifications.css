@@ -1,0 +1,639 @@
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
+
+#certifications {
+    position: relative;
+}
+
+#certifications .section-label {
+    margin-bottom: 14px;
+}
+
+#certifications .section-title {
+    margin-bottom: 48px;
+}
+
+/* ---------------------------------------------------------
+   CERTIFICATION CATEGORY
+--------------------------------------------------------- */
+
+.certification-category {
+    margin-bottom: 64px;
+}
+
+.certification-category:last-child {
+    margin-bottom: 0;
+}
+
+.certification-category-title {
+    margin-bottom: 24px;
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -.01em;
+}
+
+.certification-category-title span {
+    color: var(--accent);
+    font-size: .85em;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+/* ---------------------------------------------------------
+   CERTIFICATION CAROUSEL
+--------------------------------------------------------- */
+
+.certification-carousel {
+    position: relative;
+    width: 100%;
+    height: 390px;
+
+    overflow: hidden;
+
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+.certification-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.certification-carousel-track.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ---------------------------------------------------------
+   CERTIFICATION CARD
+--------------------------------------------------------- */
+
+.certification-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 58%;
+    min-height: 270px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 110px;
+    gap: 24px;
+    align-items: center;
+
+    padding: 30px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.78);
+
+    transition:
+        transform .5s cubic-bezier(.22, .61, .36, 1),
+        opacity .4s ease,
+        filter .4s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .4s ease;
+
+    will-change: transform, opacity;
+    z-index: 1;
+}
+
+/* ---------------------------------------------------------
+   CAROUSEL POSITIONS
+--------------------------------------------------------- */
+
+.certification-card.certification-card-center {
+    opacity: 1;
+    pointer-events: auto;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    background: var(--card);
+    border-color: rgba(50, 185, 242, .45);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .18);
+
+    filter: none;
+    z-index: 3;
+}
+
+.certification-card.certification-card-left {
+    opacity: .48;
+    pointer-events: none;
+
+    transform:
+        translate(
+            calc(-50% - 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
+    z-index: 2;
+}
+
+.certification-card.certification-card-right {
+    opacity: .48;
+    pointer-events: none;
+
+    transform:
+        translate(
+            calc(-50% + 330px),
+            -50%
+        )
+        scale(.82);
+
+    filter: brightness(.9);
+    z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   CERTIFICATION CONTENT
+--------------------------------------------------------- */
+
+.certification-content {
+    min-width: 0;
+}
+
+.certification-date {
+    display: block;
+    margin-bottom: 9px;
+
+    color: var(--muted-2);
+
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+
+.certification-card h3 {
+    margin-bottom: 7px;
+
+    color: var(--white);
+
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.certification-card p {
+    color: var(--muted);
+
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+.certification-card a {
+    display: inline-block;
+    margin-top: 15px;
+
+    color: var(--accent-light);
+
+    font-size: .8rem;
+    font-weight: 700;
+
+    transition: color .2s ease;
+}
+
+.certification-card a:hover {
+    color: var(--white);
+}
+
+.certification-note {
+    display: block;
+    margin-top: 15px;
+
+    color: var(--muted-2);
+
+    font-size: .75rem;
+    font-style: italic;
+}
+
+/* ---------------------------------------------------------
+   CERTIFICATION LOGO
+--------------------------------------------------------- */
+
+.certification-logo {
+    width: 110px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.certification-logo img {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 78px;
+
+    object-fit: contain;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ---------------------------------------------------------
+   CAROUSEL ARROWS
+--------------------------------------------------------- */
+
+.certification-carousel-arrow {
+    position: absolute;
+    top: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: var(--white);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+    z-index: 10;
+}
+
+.certification-carousel-arrow:hover {
+    color: var(--accent);
+    background: var(--card-hover);
+    border-color: var(--accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+.certification-prev {
+    left: 12px;
+}
+
+.certification-next {
+    right: 12px;
+}
+
+/* ---------------------------------------------------------
+   CAROUSEL DOTS
+--------------------------------------------------------- */
+
+.certification-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.certification-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    background: var(--border);
+
+    border: none;
+    border-radius: 50%;
+
+    opacity: .65;
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background .25s ease,
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+.certification-dot:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.certification-dot.active {
+    width: 25px;
+
+    background: var(--accent);
+
+    border-radius: 999px;
+    opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   LIGHT MODE
+--------------------------------------------------------- */
+
+body.light-mode .certification-card {
+    background: #ffffff;
+    border-color: #d6e2eb;
+
+    box-shadow:
+        0 8px 24px rgba(20, 50, 80, .06);
+}
+
+body.light-mode .certification-card.certification-card-center {
+    background: #ffffff;
+    border-color: rgba(0, 157, 214, .32);
+
+    box-shadow:
+        0 14px 35px rgba(20, 50, 80, .09);
+}
+
+body.light-mode .certification-card h3 {
+    color: #172033 !important;
+}
+
+body.light-mode .certification-card p {
+    color: #58708a !important;
+}
+
+body.light-mode .certification-date {
+    color: #71869b;
+}
+
+body.light-mode .certification-card a {
+    color: #008fca;
+}
+
+body.light-mode .certification-card a:hover {
+    color: #172033;
+}
+
+body.light-mode .certification-note {
+    color: #71869b;
+}
+
+body.light-mode .certification-category-title {
+    color: #172033 !important;
+}
+
+body.light-mode .certification-category-title span {
+    color: #008fca;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+    .certification-carousel {
+        height: 380px;
+    }
+
+    .certification-card {
+        width: 68%;
+        min-height: 270px;
+        padding: 26px;
+    }
+
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 275px),
+                -50%
+            )
+            scale(.78);
+    }
+
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 275px),
+                -50%
+            )
+            scale(.78);
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    #certifications .section-title {
+        margin-bottom: 32px;
+    }
+
+    .certification-category {
+        margin-bottom: 48px;
+    }
+
+    .certification-category-title {
+        margin-bottom: 20px;
+        font-size: 1.02rem;
+    }
+
+    .certification-carousel {
+        height: 420px;
+    }
+
+    .certification-card {
+        width: 78%;
+        min-height: 310px;
+
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        padding: 22px;
+
+        align-content: center;
+    }
+
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 230px),
+                -50%
+            )
+            scale(.76);
+    }
+
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 230px),
+                -50%
+            )
+            scale(.76);
+    }
+
+    .certification-content {
+        order: 1;
+    }
+
+    .certification-logo {
+        width: 100%;
+        height: 75px;
+        order: 0;
+    }
+
+    .certification-logo img {
+        max-height: 62px;
+    }
+
+    .certification-card h3 {
+        font-size: .94rem;
+        line-height: 1.45;
+    }
+
+    .certification-card p {
+        font-size: .78rem;
+        line-height: 1.55;
+    }
+
+    .certification-date {
+        font-size: .66rem;
+    }
+
+    .certification-card a {
+        font-size: .76rem;
+    }
+
+    .certification-carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .certification-prev {
+        left: 8px;
+    }
+
+    .certification-next {
+        right: 8px;
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .certification-category {
+        margin-bottom: 42px;
+    }
+
+    .certification-category-title {
+        margin-bottom: 18px;
+        font-size: .96rem;
+    }
+
+    .certification-carousel {
+        height: 430px;
+    }
+
+    .certification-card {
+        width: 82%;
+        min-height: 320px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .certification-card.certification-card-left {
+        transform:
+            translate(
+                calc(-50% - 185px),
+                -50%
+            )
+            scale(.72);
+    }
+
+    .certification-card.certification-card-right {
+        transform:
+            translate(
+                calc(-50% + 185px),
+                -50%
+            )
+            scale(.72);
+    }
+
+    .certification-logo {
+        height: 68px;
+    }
+
+    .certification-logo img {
+        max-height: 56px;
+    }
+
+    .certification-card h3 {
+        font-size: .9rem;
+    }
+
+    .certification-card p {
+        font-size: .75rem;
+        line-height: 1.5;
+    }
+
+    .certification-note {
+        font-size: .7rem;
+    }
+
+    .certification-carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .certification-prev {
+        left: 5px;
+    }
+
+    .certification-next {
+        right: 5px;
+    }
+
+    .certification-carousel-dots {
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .certification-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .certification-dot.active {
+        width: 22px;
+    }
+}
