@@ -6,26 +6,25 @@
     position: relative;
 }
 
-#leadership .section-label {
-    margin-bottom: 14px;
-}
-
 #leadership .section-title {
     margin-bottom: 48px;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    LEADERSHIP CAROUSEL
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-grid {
     position: relative;
+
     width: 100%;
     height: 470px;
 
     overflow: hidden;
 
     touch-action: pan-y;
+
     user-select: none;
     -webkit-user-select: none;
 
@@ -36,12 +35,14 @@
     cursor: grabbing;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    LEADERSHIP CARD
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-card {
     position: absolute;
+
     top: 50%;
     left: 50%;
 
@@ -55,11 +56,11 @@
 
     background: linear-gradient(
         145deg,
-        rgba(17, 34, 58, 0.96),
-        rgba(12, 27, 47, 0.96)
+        rgba(17, 34, 58, .96),
+        rgba(12, 27, 47, .96)
     );
 
-    border: 1px solid rgba(77, 154, 209, 0.22);
+    border: 1px solid rgba(77, 154, 209, .22);
     border-radius: 16px;
 
     overflow: hidden;
@@ -84,9 +85,10 @@
     z-index: 1;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    CAROUSEL POSITIONS
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-card.leadership-card-center {
     opacity: 1;
@@ -97,12 +99,13 @@
         scale(1);
 
     border-color:
-        rgba(50, 185, 242, 0.45);
+        rgba(50, 185, 242, .45);
 
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.18);
+        0 18px 45px rgba(0, 0, 0, .18);
 
     filter: none;
+
     z-index: 3;
 }
 
@@ -118,6 +121,7 @@
         scale(.82);
 
     filter: brightness(.9);
+
     z-index: 2;
 }
 
@@ -133,15 +137,18 @@
         scale(.82);
 
     filter: brightness(.9);
+
     z-index: 2;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    ORGANIZATION LOGO
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-logo {
     position: absolute;
+
     top: 18px;
     right: 22px;
 
@@ -149,12 +156,16 @@
     height: 74px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    background: rgba(50, 185, 242, 0.03);
+    background:
+        rgba(50, 185, 242, .03);
 
-    border: 1px solid rgba(50, 185, 242, 0.18);
+    border:
+        1px solid rgba(50, 185, 242, .18);
+
     border-radius: 50%;
 
     overflow: hidden;
@@ -177,25 +188,28 @@
     -webkit-user-drag: none;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    CARD HOVER
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-card:hover {
     border-color:
-        rgba(50, 185, 242, 0.42);
+        rgba(50, 185, 242, .42);
 
     box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.22),
-        0 0 25px rgba(50, 185, 242, 0.05);
+        0 16px 40px rgba(0, 0, 0, .22),
+        0 0 25px rgba(50, 185, 242, .05);
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    DATE
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-date {
     display: inline-flex;
+
     align-items: center;
 
     width: fit-content;
@@ -204,19 +218,25 @@
     padding: 5px 10px;
 
     color: var(--accent-light);
-    background: rgba(50, 185, 242, 0.08);
 
-    border: 1px solid rgba(50, 185, 242, 0.15);
+    background:
+        rgba(50, 185, 242, .08);
+
+    border:
+        1px solid rgba(50, 185, 242, .15);
+
     border-radius: 6px;
 
     font-size: .72rem;
     font-weight: 700;
+
     letter-spacing: .08em;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    ORGANIZATION TITLE
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-card h3 {
     width: calc(100% - 92px);
@@ -226,15 +246,17 @@
     color: var(--white);
 
     font-size: 1.18rem;
-    line-height: 1.35;
     font-weight: 700;
+
+    line-height: 1.35;
 
     overflow-wrap: break-word;
 }
 
-/* ---------------------------------------------------------
-   ORGANIZATION NAME / SCHOOL
---------------------------------------------------------- */
+
+/* =========================================================
+   ORGANIZATION / SCHOOL
+========================================================= */
 
 .leadership-organization {
     margin: 0 0 20px;
@@ -242,14 +264,16 @@
     color: var(--muted);
 
     font-size: .86rem;
+
     line-height: 1.55;
 
     overflow-wrap: break-word;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    PHOTO SLIDESHOW
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-slideshow {
     position: relative;
@@ -265,12 +289,15 @@
 
     background: var(--bg);
 
-    border: 1px solid rgba(255, 255, 255, .07);
+    border:
+        1px solid rgba(255, 255, 255, .07);
+
     border-radius: 10px;
 }
 
 .leadership-slideshow img {
     position: absolute;
+
     inset: 0;
 
     display: block;
@@ -285,6 +312,10 @@
     transition:
         opacity .7s ease,
         transform .7s ease;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
 
 .leadership-slideshow img.active {
@@ -296,12 +327,14 @@
     transform: scale(1.015);
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    ROLE
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-role {
     display: inline-flex;
+
     align-items: center;
 
     width: fit-content;
@@ -314,16 +347,18 @@
     font-size: .82rem;
     font-weight: 700;
 
-    border-left: 3px solid var(--accent);
+    border-left:
+        3px solid var(--accent);
 
     line-height: 1.3;
 
     overflow-wrap: break-word;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    DESCRIPTION
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-card >
 p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
@@ -332,23 +367,27 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     color: var(--muted);
 
     font-size: .88rem;
+
     line-height: 1.7;
 
     overflow-wrap: break-word;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    CAROUSEL ARROWS
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-carousel-arrow {
     position: absolute;
+
     top: 50%;
 
     width: 44px;
     height: 44px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -357,11 +396,14 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     color: var(--white);
     background: var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: 50%;
 
     font-size: 1.5rem;
     font-weight: 400;
+
     line-height: 1;
 
     transform: translateY(-50%);
@@ -379,7 +421,9 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
 
 .leadership-carousel-arrow:hover {
     color: var(--accent);
+
     background: var(--card-hover);
+
     border-color: var(--accent);
 
     transform:
@@ -395,16 +439,19 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     right: 12px;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    CAROUSEL DOTS
---------------------------------------------------------- */
+========================================================= */
 
 .leadership-carousel-dots {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     gap: 10px;
+
     margin-top: 20px;
 }
 
@@ -420,6 +467,7 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     border-radius: 50%;
 
     opacity: .65;
+
     cursor: pointer;
 
     transition:
@@ -431,6 +479,7 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
 
 .leadership-dot:hover {
     transform: scale(1.15);
+
     opacity: 1;
 }
 
@@ -440,12 +489,14 @@ p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
     background: var(--accent);
 
     border-radius: 999px;
+
     opacity: 1;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    LIGHT MODE
---------------------------------------------------------- */
+========================================================= */
 
 body.light-mode .leadership-card {
     background: linear-gradient(
@@ -457,7 +508,7 @@ body.light-mode .leadership-card {
     border-color: #d6e2eb;
 
     box-shadow:
-        0 8px 24px rgba(20, 50, 80, 0.06);
+        0 8px 24px rgba(20, 50, 80, .06);
 }
 
 body.light-mode .leadership-card h3 {
@@ -481,22 +532,29 @@ body.light-mode .leadership-role {
 body.light-mode .leadership-date {
     color: #008fca !important;
 
-    background: rgba(0, 157, 214, 0.07);
-    border-color: rgba(0, 157, 214, 0.18);
+    background:
+        rgba(0, 157, 214, .07);
+
+    border-color:
+        rgba(0, 157, 214, .18);
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RESPONSIVE — TABLET
---------------------------------------------------------- */
+========================================================= */
 
 @media (max-width: 1000px) {
+
     .leadership-grid {
         height: 450px;
     }
 
     .leadership-card {
         width: 68%;
+
         min-height: 370px;
+
         padding: 26px;
     }
 
@@ -524,19 +582,24 @@ body.light-mode .leadership-date {
     }
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RESPONSIVE — MOBILE
---------------------------------------------------------- */
+========================================================= */
 
 @media (max-width: 800px) {
+
     .leadership-grid {
         height: 440px;
     }
 
     .leadership-card {
         width: 78%;
+
         min-height: 350px;
+
         padding: 22px;
+
         border-radius: 16px;
     }
 
@@ -563,8 +626,6 @@ body.light-mode .leadership-date {
     }
 
     .leadership-logo {
-        position: absolute;
-
         top: 22px;
         right: 22px;
 
@@ -584,25 +645,25 @@ body.light-mode .leadership-date {
         margin-bottom: 8px;
 
         font-size: 1.05rem;
+
         line-height: 1.35;
     }
 
-    /*
-       SSSC:
-       Keep "Council" from colliding with the logo.
-    */
+    /* SSSC title spacing */
     .leadership-card:nth-child(2) h3 {
         max-width: 145px;
     }
 
     .leadership-organization {
-        font-size: .82rem;
         margin-bottom: 14px;
+
+        font-size: .82rem;
     }
 
     .leadership-slideshow {
         width: 72%;
         height: 145px;
+
         margin: 0 auto 18px;
     }
 
@@ -613,12 +674,14 @@ body.light-mode .leadership-date {
     .leadership-card >
     p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
         font-size: .82rem;
+
         line-height: 1.6;
     }
 
     .leadership-carousel-arrow {
         width: 40px;
         height: 40px;
+
         font-size: 1.25rem;
     }
 
@@ -631,11 +694,13 @@ body.light-mode .leadership-date {
     }
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RESPONSIVE — SMALL MOBILE
---------------------------------------------------------- */
+========================================================= */
 
 @media (max-width: 600px) {
+
     #leadership .section-title {
         margin-bottom: 32px;
     }
@@ -646,8 +711,11 @@ body.light-mode .leadership-date {
 
     .leadership-card {
         width: 82%;
+
         min-height: 355px;
+
         padding: 20px;
+
         border-radius: 14px;
     }
 
@@ -671,7 +739,9 @@ body.light-mode .leadership-date {
 
     .leadership-date {
         margin: 0;
+
         padding: 4px 9px;
+
         font-size: .68rem;
     }
 
@@ -695,46 +765,51 @@ body.light-mode .leadership-date {
         margin-bottom: 7px;
 
         font-size: .98rem;
+
         line-height: 1.36;
     }
 
-    /*
-       SSSC:
-       Give the title a narrower width so "Council"
-       naturally moves to the next line.
-    */
+    /* SSSC title spacing */
     .leadership-card:nth-child(2) h3 {
         max-width: 135px;
     }
 
     .leadership-organization {
-        font-size: .76rem;
-        line-height: 1.48;
         margin-bottom: 12px;
+
+        font-size: .76rem;
+
+        line-height: 1.48;
     }
 
     .leadership-slideshow {
         width: 78%;
         height: 140px;
+
         margin: 0 auto 17px;
+
         border-radius: 9px;
     }
 
     .leadership-role {
-        font-size: .75rem;
-        padding-left: 9px;
         margin-bottom: 8px;
+
+        padding-left: 9px;
+
+        font-size: .75rem;
     }
 
     .leadership-card >
     p:not(.leadership-date):not(.leadership-organization):not(.leadership-role) {
         font-size: .79rem;
+
         line-height: 1.55;
     }
 
     .leadership-carousel-arrow {
         width: 36px;
         height: 36px;
+
         font-size: 1.1rem;
     }
 
@@ -748,6 +823,7 @@ body.light-mode .leadership-date {
 
     .leadership-carousel-dots {
         gap: 8px;
+
         margin-top: 18px;
     }
 
