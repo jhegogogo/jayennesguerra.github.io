@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    setupPageTransitions();
     const sections = [
         {
             file: "sections/experience.html",
@@ -83,8 +83,103 @@ setupMediaProtection();
         }
 
     }
+    /* =========================================
+       TRANSITION
+    ========================================= */
+function setupPageTransitions() {
 
+    document.body.classList.add(
+        "page-transition-ready"
+    );
 
+    document.body.classList.add(
+        "page-enter"
+    );
+
+    requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+            document.body.classList.add(
+                "page-enter-active"
+            );
+
+            document.body.classList.remove(
+                "page-enter"
+            );
+
+        });
+
+    });
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const link =
+                event.target.closest(
+                    "a[href]"
+                );
+
+            if (!link) {
+                return;
+            }
+
+            const href =
+                link.getAttribute("href");
+
+            if (!href) {
+                return;
+            }
+
+            /*
+             * Ignore links that should not
+             * trigger page navigation.
+             */
+
+            if (
+                href.startsWith("#") ||
+                href.startsWith("http://") ||
+                href.startsWith("https://") ||
+                href.startsWith("mailto:") ||
+                href.startsWith("tel:") ||
+                link.target === "_blank" ||
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey
+            ) {
+                return;
+            }
+
+            /*
+             * Only animate actual HTML pages.
+             */
+
+            if (!href.endsWith(".html")) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.body.classList.remove(
+                "page-enter-active"
+            );
+
+            document.body.classList.add(
+                "page-leave"
+            );
+
+            setTimeout(() => {
+
+                window.location.href = href;
+
+            }, 450);
+
+        }
+    );
+
+}
 
     /* =========================================
        RYLIM PROJECT TABS
