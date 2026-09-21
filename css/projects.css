@@ -1,0 +1,579 @@
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+#projects {
+    position: relative;
+}
+
+#projects .section-label {
+    margin-bottom: 14px;
+}
+
+#projects .section-title {
+    margin-bottom: 40px;
+}
+
+/* ---------------------------------------------------------
+   PROJECT TABS
+--------------------------------------------------------- */
+
+.project-tabs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.project-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.project-tab {
+    flex-shrink: 0;
+    padding: 9px 15px;
+
+    color: var(--muted);
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    font-size: .78rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.project-tab:hover {
+    color: var(--white);
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.project-tab.active {
+    color: var(--accent-light);
+    background: rgba(50, 185, 242, .08);
+    border-color: rgba(50, 185, 242, .2);
+}
+
+/* ---------------------------------------------------------
+   PROJECT PANELS
+--------------------------------------------------------- */
+
+.project-panel {
+    display: none;
+}
+
+.project-panel.active {
+    display: block;
+}
+
+/* ---------------------------------------------------------
+   PROJECT CARD
+--------------------------------------------------------- */
+
+.project-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr);
+    gap: 42px;
+    align-items: center;
+
+    padding: 32px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.project-card:hover {
+    background: var(--card-hover);
+    border-color: rgba(50, 185, 242, .3);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .15);
+}
+
+/* ---------------------------------------------------------
+   PROJECT CONTENT
+--------------------------------------------------------- */
+
+.project-content {
+    min-width: 0;
+}
+
+.project-type {
+    display: block;
+    margin-bottom: 10px;
+
+    color: var(--accent);
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.project-card h3 {
+    margin-bottom: 8px;
+
+    color: var(--white);
+    font-size: 1.3rem;
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.project-role {
+    margin-bottom: 16px;
+
+    color: var(--accent-light);
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.project-card p {
+    margin-bottom: 16px;
+
+    color: var(--muted);
+    font-size: .84rem;
+    line-height: 1.7;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.project-tech span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    color: var(--muted);
+    background: rgba(50, 185, 242, .04);
+
+    border: 1px solid rgba(50, 185, 242, .12);
+    border-radius: 5px;
+
+    font-size: .69rem;
+    font-weight: 600;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--accent-light);
+    font-size: .78rem;
+    font-weight: 700;
+
+    transition: color .2s ease;
+}
+
+.project-link:hover {
+    color: var(--white);
+}
+
+/* ---------------------------------------------------------
+   PROJECT MEDIA
+--------------------------------------------------------- */
+
+.project-media {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.project-media img,
+.project-media video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.project-media video {
+    background: #000;
+}
+
+/* ---------------------------------------------------------
+   RYLIM MEDIA CAROUSEL
+--------------------------------------------------------- */
+
+.rylim-carousel {
+    position: relative;
+    width: 100%;
+    height: 310px;
+
+    overflow: hidden;
+
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.rylim-carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.rylim-media {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+
+.rylim-media.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rylim-media img,
+.rylim-media video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.rylim-carousel-arrow {
+    position: absolute;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: var(--white);
+    background: rgba(10, 22, 38, .72);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 50%;
+
+    font-size: 1.3rem;
+    line-height: 1;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+
+    z-index: 5;
+}
+
+.rylim-carousel-arrow:hover {
+    color: var(--accent);
+    background: rgba(10, 22, 38, .9);
+    border-color: var(--accent);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+.rylim-prev {
+    left: 10px;
+}
+
+.rylim-next {
+    right: 10px;
+}
+
+.rylim-carousel-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+.rylim-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    background: rgba(255, 255, 255, .45);
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background .25s ease,
+        opacity .25s ease;
+}
+
+.rylim-dot.active {
+    width: 20px;
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+/* ---------------------------------------------------------
+   PROJECT MEDIA OVERLAY
+--------------------------------------------------------- */
+
+.project-media-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, .25),
+            transparent 45%
+        );
+}
+
+/* ---------------------------------------------------------
+   LIGHT MODE
+--------------------------------------------------------- */
+
+body.light-mode .project-card {
+    background: #ffffff;
+    border-color: #d6e2eb;
+    box-shadow: 0 8px 24px rgba(20, 50, 80, .06);
+}
+
+body.light-mode .project-card:hover {
+    background: #f7fafc;
+    border-color: rgba(0, 157, 214, .3);
+    box-shadow: 0 14px 32px rgba(20, 50, 80, .09);
+}
+
+body.light-mode .project-card h3 {
+    color: #172033 !important;
+}
+
+body.light-mode .project-card p {
+    color: #58708a !important;
+}
+
+body.light-mode .project-role {
+    color: #008fca !important;
+}
+
+body.light-mode .project-type {
+    color: #008fca;
+}
+
+body.light-mode .project-tech span {
+    color: #58708a;
+    background: rgba(0, 157, 214, .04);
+    border-color: rgba(0, 157, 214, .12);
+}
+
+body.light-mode .project-link {
+    color: #008fca;
+}
+
+body.light-mode .project-link:hover {
+    color: #172033;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — TABLET
+--------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px;
+    }
+
+    .project-media {
+        order: -1;
+    }
+
+    .rylim-carousel {
+        height: 300px;
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    #projects .section-title {
+        margin-bottom: 32px;
+    }
+
+    .project-tabs {
+        margin-bottom: 24px;
+        gap: 7px;
+    }
+
+    .project-tab {
+        padding: 8px 12px;
+        font-size: .7rem;
+    }
+
+    .project-card {
+        gap: 22px;
+        padding: 22px;
+        border-radius: 15px;
+    }
+
+    .project-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-card p {
+        font-size: .81rem;
+        line-height: 1.6;
+    }
+
+    .project-tech {
+        gap: 6px;
+    }
+
+    .project-tech span {
+        padding: 5px 8px;
+        font-size: .67rem;
+    }
+
+    .rylim-carousel {
+        height: 260px;
+    }
+
+    .rylim-carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE — SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .project-tabs {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    .project-tab {
+        padding: 7px 10px;
+        font-size: .65rem;
+    }
+
+    .project-card {
+        gap: 18px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .project-type {
+        margin-bottom: 8px;
+        font-size: .63rem;
+    }
+
+    .project-card h3 {
+        font-size: 1rem;
+    }
+
+    .project-role {
+        margin-bottom: 12px;
+        font-size: .76rem;
+    }
+
+    .project-card p {
+        font-size: .77rem;
+        line-height: 1.55;
+    }
+
+    .project-tech span {
+        padding: 5px 7px;
+        font-size: .64rem;
+    }
+
+    .rylim-carousel {
+        height: 220px;
+    }
+
+    .rylim-carousel-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 1.05rem;
+    }
+
+    .rylim-prev {
+        left: 7px;
+    }
+
+    .rylim-next {
+        right: 7px;
+    }
+}
