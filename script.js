@@ -251,270 +251,477 @@ setupMediaProtection();
 
     }
 
-       /* =========================================
-       CERTIFICATION CAROUSELS
-    ========================================= */
+      /* =========================================
+   CERTIFICATION CAROUSELS
+========================================= */
 
-    function setupCertificationCarousels() {
+function setupCertificationCarousels() {
 
-        const carousels =
-            document.querySelectorAll(
-                ".certification-carousel"
+    const carousels =
+        document.querySelectorAll(
+            ".certification-carousel"
+        );
+
+
+    carousels.forEach((carousel) => {
+
+        const cards =
+            Array.from(
+                carousel.querySelectorAll(
+                    ".certification-card"
+                )
             );
 
+        const previousButton =
+            carousel.querySelector(
+                ".certification-prev"
+            );
 
-        carousels.forEach((carousel) => {
+        const nextButton =
+            carousel.querySelector(
+                ".certification-next"
+            );
 
-            const cards =
-                Array.from(
-                    carousel.querySelectorAll(
-                        ".certification-card"
+        const category =
+            carousel.closest(
+                ".certification-category"
+            );
+
+        const dots =
+            category
+                ? Array.from(
+                    category.querySelectorAll(
+                        ".certification-dot"
                     )
+                )
+                : [];
+
+
+        if (
+            cards.length === 0 ||
+            !previousButton ||
+            !nextButton
+        ) {
+            return;
+        }
+
+
+        /* =====================================
+           DETERMINE STARTING CERTIFICATION
+        ===================================== */
+
+        const startIndex =
+            parseInt(
+                carousel.dataset.startIndex,
+                10
+            );
+
+        let currentIndex =
+            Number.isNaN(startIndex)
+                ? 0
+                : startIndex;
+
+
+        if (
+            currentIndex < 0 ||
+            currentIndex >= cards.length
+        ) {
+            currentIndex = 0;
+        }
+
+
+        /* =====================================
+           CERTIFICATION ORDER
+        ===================================== */
+
+        function getIndex(offset) {
+
+            return (
+                currentIndex +
+                offset +
+                cards.length
+            ) % cards.length;
+
+        }
+
+
+        /* =====================================
+           UPDATE CAROUSEL
+        ===================================== */
+
+        function updateCarousel() {
+
+            const previousIndex =
+                getIndex(-1);
+
+            const centerIndex =
+                getIndex(0);
+
+            const nextIndex =
+                getIndex(1);
+
+
+            cards.forEach((card, index) => {
+
+                card.classList.remove(
+                    "certification-card-left",
+                    "certification-card-center",
+                    "certification-card-right"
                 );
 
-            const previousButton =
-                carousel.querySelector(
-                    ".certification-prev"
-                );
 
-            const nextButton =
-                carousel.querySelector(
-                    ".certification-next"
-                );
+                if (
+                    index === previousIndex
+                ) {
 
-            const category =
-                carousel.closest(
-                    ".certification-category"
-                );
+                    card.classList.add(
+                        "certification-card-left"
+                    );
 
-            const dots =
-                category
-                    ? Array.from(
-                        category.querySelectorAll(
-                            ".certification-dot"
-                        )
-                    )
-                    : [];
+                } else if (
+                    index === centerIndex
+                ) {
+
+                    card.classList.add(
+                        "certification-card-center"
+                    );
+
+                } else if (
+                    index === nextIndex
+                ) {
+
+                    card.classList.add(
+                        "certification-card-right"
+                    );
+
+                }
+
+            });
 
 
-            if (
-                cards.length === 0 ||
-                !previousButton ||
-                !nextButton
-            ) {
+            updateDots();
+
+        }
+
+
+        /* =====================================
+           UPDATE DOTS
+        ===================================== */
+
+        function updateDots() {
+
+            if (dots.length === 0) {
                 return;
             }
 
 
-            /* =====================================
-               DETERMINE STARTING CERTIFICATION
-            ===================================== */
-
-            const startIndex =
-                parseInt(
-                    carousel.dataset.startIndex,
-                    10
+            dots.forEach((dot, index) => {
+                dot.classList.toggle(
+                    "active",
+                    index === 1
                 );
 
-            let currentIndex =
-                Number.isNaN(startIndex)
-                    ? 0
-                    : startIndex;
+            });
+
+        }
 
 
-            if (
-                currentIndex < 0 ||
-                currentIndex >= cards.length
-            ) {
-                currentIndex = 0;
-            }
+        /* =====================================
+           PREVIOUS CERTIFICATION
+        ===================================== */
 
+        function showPrevious() {
 
-            /* =====================================
-               CERTIFICATION ORDER
-            ===================================== */
-
-            function getIndex(offset) {
-
-                return (
-                    currentIndex +
-                    offset +
+            currentIndex =
+                (
+                    currentIndex -
+                    1 +
                     cards.length
-                ) % cards.length;
+                ) %
+                cards.length;
+
+            updateCarousel();
+
+        }
+
+
+        /* =====================================
+           NEXT CERTIFICATION
+        ===================================== */
+
+        function showNext() {
+
+            currentIndex =
+                (
+                    currentIndex +
+                    1
+                ) %
+                cards.length;
+
+            updateCarousel();
+
+        }
+
+
+        /* =====================================
+           PREVIOUS BUTTON
+        ===================================== */
+
+        previousButton.addEventListener(
+            "click",
+            showPrevious
+        );
+
+
+        /* =====================================
+           NEXT BUTTON
+        ===================================== */
+
+        nextButton.addEventListener(
+            "click",
+            showNext
+        );
+
+
+        /* =====================================
+           DOT INDICATORS
+        ===================================== */
+
+        dots.forEach(
+            (dot, dotIndex) => {
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        if (dotIndex === 0) {
+
+                            showPrevious();
+
+                        } else if (
+                            dotIndex === 2
+                        ) {
+
+                            showNext();
+
+                        }
+
+                    }
+                );
 
             }
-
-            function updateCarousel() {
-
-                const previousIndex =
-                    getIndex(-1);
-
-                const centerIndex =
-                    getIndex(0);
-
-                const nextIndex =
-                    getIndex(1);
+        );
 
 
-                cards.forEach((card, index) => {
+        /* =====================================
+           DRAG / SWIPE SUPPORT
+        ===================================== */
 
-                    card.classList.remove(
-                        "certification-card-left",
-                        "certification-card-center",
-                        "certification-card-right"
+        const track =
+            carousel.querySelector(
+                ".certification-carousel-track"
+            );
+
+
+        if (track) {
+
+            let startX = 0;
+            let startY = 0;
+            let isPointerDown = false;
+            let didDrag = false;
+
+            const swipeThreshold = 50;
+
+
+            /* ---------------------------------
+               POINTER DOWN
+            --------------------------------- */
+
+            track.addEventListener(
+                "pointerdown",
+                (event) => {
+
+                    /* Ignore right/middle mouse buttons */
+                    if (
+                        event.pointerType === "mouse" &&
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
+
+                    if (
+                        event.target.closest(
+                            "a, button"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    startX = event.clientX;
+                    startY = event.clientY;
+
+                    isPointerDown = true;
+                    didDrag = false;
+
+
+                    track.classList.add(
+                        "is-dragging"
                     );
 
                     if (
-                        index === previousIndex
+                        track.setPointerCapture
                     ) {
 
-                        card.classList.add(
-                            "certification-card-left"
-                        );
-
-                    } else if (
-                        index === centerIndex
-                    ) {
-
-                        card.classList.add(
-                            "certification-card-center"
-                        );
-
-                    } else if (
-                        index === nextIndex
-                    ) {
-
-                        card.classList.add(
-                            "certification-card-right"
+                        track.setPointerCapture(
+                            event.pointerId
                         );
 
                     }
 
-                });
-
-                updateDots();
-            }
-
-            /* =====================================
-               UPDATE DOTS
-            ===================================== */
-
-            function updateDots() {
-
-                if (dots.length === 0) {
-                    return;
-                }
-
-                dots.forEach((dot, index) => {
-
-                    dot.classList.toggle(
-                        "active",
-                        index === 1
-                    );
-
-                });
-
-            }
-
-
-            /* =====================================
-               PREVIOUS CERTIFICATION
-            ===================================== */
-
-            previousButton.addEventListener(
-                "click",
-                () => {
-
-                    currentIndex =
-                        (
-                            currentIndex -
-                            1 +
-                            cards.length
-                        ) %
-                        cards.length;
-
-                    updateCarousel();
-
                 }
             );
 
 
-            /* =====================================
-               NEXT CERTIFICATION
-            ===================================== */
+            /* ---------------------------------
+               POINTER MOVE
+            --------------------------------- */
 
-            nextButton.addEventListener(
-                "click",
-                () => {
+            track.addEventListener(
+                "pointermove",
+                (event) => {
 
-                    currentIndex =
-                        (
-                            currentIndex +
-                            1
-                        ) %
-                        cards.length;
-
-                    updateCarousel();
-
-                }
-            );
+                    if (!isPointerDown) {
+                        return;
+                    }
 
 
-            /* =====================================
-               DOT INDICATORS
-            ===================================== */
+                    const deltaX =
+                        event.clientX - startX;
 
-            dots.forEach(
-                (dot, dotIndex) => {
+                    const deltaY =
+                        event.clientY - startY;
 
-                    dot.addEventListener(
-                        "click",
-                        () => {
+                    if (
+                        Math.abs(deltaX) >
+                        Math.abs(deltaY)
+                    ) {
 
-                        
+                        if (
+                            Math.abs(deltaX) >
+                            10
+                        ) {
 
-                            if (dotIndex === 0) {
-
-                                currentIndex =
-                                    (
-                                        currentIndex -
-                                        1 +
-                                        cards.length
-                                    ) %
-                                    cards.length;
-
-                            } else if (
-                                dotIndex === 2
-                            ) {
-
-                                currentIndex =
-                                    (
-                                        currentIndex +
-                                        1
-                                    ) %
-                                    cards.length;
-
-                            }
-
-
-                            updateCarousel();
+                            didDrag = true;
 
                         }
-                    );
+
+                    }
 
                 }
             );
 
 
-            /* =====================================
-               INITIAL POSITION
-            ===================================== */
+            /* ---------------------------------
+               POINTER UP
+            --------------------------------- */
 
-            updateCarousel();
+            track.addEventListener(
+                "pointerup",
+                (event) => {
 
-        });
+                    if (!isPointerDown) {
+                        return;
+                    }
 
-    }
+
+                    const deltaX =
+                        event.clientX - startX;
+
+                    const deltaY =
+                        event.clientY - startY;
+
+
+                    isPointerDown = false;
+
+
+                    track.classList.remove(
+                        "is-dragging"
+                    );
+
+                    if (
+                        Math.abs(deltaX) <=
+                        Math.abs(deltaY)
+                    ) {
+
+                        return;
+
+                    }
+
+                    if (
+                        Math.abs(deltaX) <
+                        swipeThreshold
+                    ) {
+
+                        return;
+
+                    }
+
+                    if (deltaX < 0) {
+
+                        showNext();
+                    }
+
+                    else {
+
+                        showPrevious();
+                    }
+                }
+            );
+
+
+            /* ---------------------------------
+               POINTER CANCEL
+            --------------------------------- */
+
+            track.addEventListener(
+                "pointercancel",
+                () => {
+
+                    isPointerDown = false;
+
+                    track.classList.remove(
+                        "is-dragging"
+                    );
+                }
+            );
+
+            /* ---------------------------------
+               PREVENT CLICK AFTER DRAG
+            --------------------------------- */
+
+            track.addEventListener(
+                "click",
+                (event) => {
+                    if (didDrag) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        didDrag = false;
+
+                    }
+                },
+                true
+            );
+        }
+
+
+        /* =====================================
+           INITIAL POSITION
+        ===================================== */
+        updateCarousel();
+    });
+}
     
     /* =========================================
        RYLIM MEDIA CAROUSEL
