@@ -2704,12 +2704,20 @@ body.light-mode .intro-photo {
     width: 100%;
     height: 390px;
     overflow: hidden;
+     touch-action: pan-y;
+    cursor: grab;
 }
 
 .certification-carousel-track {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.certification-carousel-track.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 
