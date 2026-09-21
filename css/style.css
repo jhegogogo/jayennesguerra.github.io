@@ -1510,38 +1510,203 @@ button:focus-visible {
     }
 
 
-    /* -----------------------------------------------------
-       INTRO
-    ----------------------------------------------------- */
-    .intro-image-wrapper {
-        width: 157px;
-        height: 157px;
-        padding: 6px;
-        background: #ffffff;
-        border-radius: 24px;
-        overflow: hidden;
+    .intro-content {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
     }
 
-    .intro-photo {
-        width: 145px !important;
-        height: 145px !important;
 
-        max-width: 145px !important;
-        max-height: 145px !important;
+    /* -----------------------------------------
+       MOVING NAME
+    ----------------------------------------- */
 
-        min-width: 145px;
-        min-height: 145px;
+    .intro-name-track span {
+        font-size: 6rem;
+        margin-right: 50px;
+    }
+
+
+    /* -----------------------------------------
+       PROFILE PHOTO
+    ----------------------------------------- */
+
+    .intro-image-wrapper {
+        position: absolute;
+
+        left: 50%;
+        top: 40%;
+
+        width: 340px !important;
+        height: 340px !important;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transform: translate(-50%, -50%);
+
+        opacity: 0;
+
+        animation:
+            introImageFadeIn 1.4s ease forwards;
+
+        animation-delay: .5s;
+    }
+
+
+    .intro-image-wrapper::before {
+        content: "";
+
+        position: absolute;
+
+        width: 360px;
+        height: 360px;
+
+        border-radius: 50%;
+
+        background:
+            radial-gradient(
+                circle,
+                rgba(50, 185, 242, .18),
+                transparent 68%
+            );
+
+        filter: blur(28px);
+
+        z-index: -1;
+    }
+
+
+    .intro-image-wrapper picture {
+        display: block;
+
+        width: 340px !important;
+        height: 340px !important;
+
+        max-width: none !important;
+        max-height: none !important;
+    }
+
+
+    .intro-image-wrapper .intro-photo {
+        display: block;
+
+        width: 340px !important;
+        height: 340px !important;
+
+        max-width: none !important;
+        max-height: none !important;
 
         object-fit: cover;
-        border-radius: 18px;
+        object-position: center;
+
+        border: 5px solid #ffffff;
+        border-radius: 30px;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, .35);
+
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
     }
+
+
+    /* -----------------------------------------
+       INTRO TEXT
+    ----------------------------------------- */
+
+    .intro-text {
+        left: 50%;
+        bottom: 9%;
+
+        width: calc(100% - 28px);
+
+        transform: translateX(-50%);
+    }
+
+
+    .intro-name-label {
+        margin-bottom: 7px;
+
+        font-size: .68rem;
+        letter-spacing: .2em;
+    }
+
 
     .intro-greeting {
-        font-size: 1.7rem;
+        font-size: 2rem;
+        line-height: 1.15;
     }
 
+
+    .intro-greeting span {
+        color: #32b9f2;
+    }
+
+
     .intro-welcome {
-        font-size: .85rem;
+        margin-top: 9px;
+        font-size: .88rem;
+    }
+
+
+    /* -----------------------------------------
+       LIGHT MODE
+    ----------------------------------------- */
+
+    body.light-mode .intro-name-track span {
+        color: #172033;
+        opacity: .055;
+    }
+
+
+    body.light-mode .intro-image-wrapper::before {
+        background:
+            radial-gradient(
+                circle,
+                rgba(21, 158, 215, .16),
+                transparent 68%
+            );
+    }
+
+
+    body.light-mode .intro-image-wrapper .intro-photo {
+        border-color: #ffffff;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 20px 50px rgba(40, 70, 100, .18);
+    }
+
+
+    body.light-mode .intro-name-label {
+        color: #172033;
+        text-shadow: none;
+    }
+
+
+    body.light-mode .intro-greeting {
+        color: #172033;
+        text-shadow: none;
+    }
+
+
+    body.light-mode .intro-greeting span {
+        color: #159ed7;
+    }
+
+
+    body.light-mode .intro-welcome {
+        color: #607086;
+        text-shadow: none;
     }
 
 
