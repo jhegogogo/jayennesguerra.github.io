@@ -2838,6 +2838,13 @@ body.light-mode .intro-photo {
     min-width: 0;
 }
 
+.certification-category-title span {
+    color: var(--accent);
+    font-size: .85em;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
 
 /* =========================================================
    CERTIFICATION DATE
