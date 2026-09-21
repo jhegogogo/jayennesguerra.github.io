@@ -1794,3 +1794,617 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+/* =========================================================
+   PAGE NAVIGATION TRANSITIONS
+   20 UNIQUE DIRECTIONAL TRANSITIONS
+========================================================= */
+
+.page-transition {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    pointer-events: none;
+
+    background: var(--bg);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translate3d(0, 0, 0);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ACTIVE STATE
+========================================================= */
+
+.page-transition.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   1. HOME → EXPERIENCE
+   Vertical curtain from bottom
+========================================================= */
+
+.page-transition[data-transition="home-to-experience"].active {
+    animation: transitionHomeExperience .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionHomeExperience {
+    0% {
+        clip-path: inset(100% 0 0 0);
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 100% 0);
+    }
+}
+
+
+/* =========================================================
+   2. EXPERIENCE → HOME
+   Vertical curtain from top
+========================================================= */
+
+.page-transition[data-transition="experience-to-home"].active {
+    animation: transitionExperienceHome .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionExperienceHome {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(100% 0 0 0);
+    }
+}
+
+
+/* =========================================================
+   3. HOME → PROJECTS
+   Horizontal curtain from right
+========================================================= */
+
+.page-transition[data-transition="home-to-projects"].active {
+    animation: transitionHomeProjects .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionHomeProjects {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+
+/* =========================================================
+   4. PROJECTS → HOME
+   Horizontal curtain from left
+========================================================= */
+
+.page-transition[data-transition="projects-to-home"].active {
+    animation: transitionProjectsHome .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionProjectsHome {
+    0% {
+        clip-path: inset(0 0 0 100%);
+    }
+
+    45% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+
+/* =========================================================
+   5. HOME → CERTIFICATIONS
+   Diagonal wipe
+========================================================= */
+
+.page-transition[data-transition="home-to-certifications"].active {
+    animation: transitionHomeCertifications .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionHomeCertifications {
+    0% {
+        clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+    }
+
+    45% {
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+
+    100% {
+        clip-path: polygon(0 100%, 0 0, 0 0, 0 0);
+    }
+}
+
+
+/* =========================================================
+   6. CERTIFICATIONS → HOME
+   Reverse diagonal wipe
+========================================================= */
+
+.page-transition[data-transition="certifications-to-home"].active {
+    animation: transitionCertificationsHome .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionCertificationsHome {
+    0% {
+        clip-path: polygon(0 100%, 0 0, 0 0, 0 0);
+    }
+
+    45% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+
+    100% {
+        clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+    }
+}
+
+
+/* =========================================================
+   7. HOME → CONTACT
+   Circular reveal
+========================================================= */
+
+.page-transition[data-transition="home-to-contact"].active {
+    animation: transitionHomeContact .85s cubic-bezier(.77, 0, .18, 1) forwards;
+    border-radius: 50%;
+    inset: -75%;
+}
+
+@keyframes transitionHomeContact {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    45% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   8. CONTACT → HOME
+   Circular collapse
+========================================================= */
+
+.page-transition[data-transition="contact-to-home"].active {
+    animation: transitionContactHome .85s cubic-bezier(.77, 0, .18, 1) forwards;
+    border-radius: 50%;
+    inset: -75%;
+}
+
+@keyframes transitionContactHome {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    45% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   9. EXPERIENCE → PROJECTS
+   Split doors
+========================================================= */
+
+.page-transition[data-transition="experience-to-projects"].active {
+    animation: transitionExperienceProjects .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionExperienceProjects {
+    0% {
+        clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    45% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+}
+
+
+/* =========================================================
+   10. PROJECTS → EXPERIENCE
+   Reverse split doors
+========================================================= */
+
+.page-transition[data-transition="projects-to-experience"].active {
+    animation: transitionProjectsExperience .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionProjectsExperience {
+    0% {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+
+    45% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    100% {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+}
+
+
+/* =========================================================
+   11. EXPERIENCE → CERTIFICATIONS
+   Diagonal slide
+========================================================= */
+
+.page-transition[data-transition="experience-to-certifications"].active {
+    animation: transitionExperienceCertifications .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionExperienceCertifications {
+    0% {
+        transform: translateX(-100%) skewX(-12deg);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(0) skewX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%) skewX(12deg);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   12. CERTIFICATIONS → EXPERIENCE
+   Reverse diagonal slide
+========================================================= */
+
+.page-transition[data-transition="certifications-to-experience"].active {
+    animation: transitionCertificationsExperience .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionCertificationsExperience {
+    0% {
+        transform: translateX(100%) skewX(12deg);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(0) skewX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%) skewX(-12deg);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   13. EXPERIENCE → CONTACT
+   Vertical blinds
+========================================================= */
+
+.page-transition[data-transition="experience-to-contact"].active {
+    animation: transitionExperienceContact .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionExperienceContact {
+    0% {
+        clip-path: polygon(
+            0 0,
+            20% 0,
+            20% 0,
+            40% 0,
+            40% 0,
+            60% 0,
+            60% 0,
+            80% 0,
+            80% 0,
+            100% 0,
+            100% 0,
+            0 0
+        );
+    }
+
+    45% {
+        clip-path: polygon(
+            0 0,
+            20% 0,
+            20% 100%,
+            40% 100%,
+            40% 0,
+            60% 0,
+            60% 100%,
+            80% 100%,
+            80% 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   14. CONTACT → EXPERIENCE
+   Reverse blinds
+========================================================= */
+
+.page-transition[data-transition="contact-to-experience"].active {
+    animation: transitionContactExperience .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionContactExperience {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    35% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    60% {
+        clip-path: inset(100% 0 0 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   15. PROJECTS → CERTIFICATIONS
+   Zoom through
+========================================================= */
+
+.page-transition[data-transition="projects-to-certifications"].active {
+    animation: transitionProjectsCertifications .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionProjectsCertifications {
+    0% {
+        transform: scale(.1);
+        opacity: 0;
+    }
+
+    25% {
+        transform: scale(.55);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   16. CERTIFICATIONS → PROJECTS
+   Zoom back
+========================================================= */
+
+.page-transition[data-transition="certifications-to-projects"].active {
+    animation: transitionCertificationsProjects .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionCertificationsProjects {
+    0% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+
+    25% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(.1);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   17. PROJECTS → CONTACT
+   Rotating wipe
+========================================================= */
+
+.page-transition[data-transition="projects-to-contact"].active {
+    animation: transitionProjectsContact .85s cubic-bezier(.77, 0, .18, 1) forwards;
+    transform-origin: center;
+}
+
+@keyframes transitionProjectsContact {
+    0% {
+        transform: rotate(-12deg) scale(0);
+        opacity: 0;
+    }
+
+    35% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(12deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   18. CONTACT → PROJECTS
+   Reverse rotating wipe
+========================================================= */
+
+.page-transition[data-transition="contact-to-projects"].active {
+    animation: transitionContactProjects .85s cubic-bezier(.77, 0, .18, 1) forwards;
+    transform-origin: center;
+}
+
+@keyframes transitionContactProjects {
+    0% {
+        transform: rotate(12deg) scale(1.3);
+        opacity: 0;
+    }
+
+    35% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(-12deg) scale(0);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   19. CERTIFICATIONS → CONTACT
+   Upward curtain
+========================================================= */
+
+.page-transition[data-transition="certifications-to-contact"].active {
+    animation: transitionCertificationsContact .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionCertificationsContact {
+    0% {
+        clip-path: inset(100% 0 0 0);
+    }
+
+    50% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 100% 0);
+    }
+}
+
+
+/* =========================================================
+   20. CONTACT → CERTIFICATIONS
+   Downward curtain
+========================================================= */
+
+.page-transition[data-transition="contact-to-certifications"].active {
+    animation: transitionContactCertifications .85s cubic-bezier(.77, 0, .18, 1) forwards;
+}
+
+@keyframes transitionContactCertifications {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+
+    50% {
+        clip-path: inset(0 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(100% 0 0 0);
+    }
+}
+
+
+/* =========================================================
+   TRANSITION PERFORMANCE
+========================================================= */
+
+.page-transition {
+    will-change:
+        transform,
+        clip-path,
+        opacity;
+
+    contain: layout paint;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page-transition {
+        animation: none !important;
+
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+}
