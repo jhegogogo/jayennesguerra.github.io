@@ -916,7 +916,75 @@ function setupCertificationCarousels() {
 
     }
 
+/* =========================================
+   LEADERSHIP IMAGE SLIDESHOW
+========================================= */
 
+function setupLeadershipSlideshow() {
+
+    const slideshows =
+        document.querySelectorAll(
+            ".leadership-slideshow"
+        );
+
+
+    slideshows.forEach((slideshow) => {
+
+        const slides =
+            Array.from(
+                slideshow.querySelectorAll("img")
+            );
+
+
+        if (slides.length <= 1) {
+            return;
+        }
+
+
+        const interval =
+            parseInt(
+                slideshow.dataset.interval,
+                10
+            ) || 3000;
+
+
+        let currentIndex = 0;
+
+
+        function showSlide(index) {
+
+            slides.forEach(
+                (slide, slideIndex) => {
+
+                    slide.classList.toggle(
+                        "active",
+                        slideIndex === index
+                    );
+
+                }
+            );
+
+        }
+
+
+        showSlide(currentIndex);
+
+
+        setInterval(() => {
+
+            currentIndex =
+                (
+                    currentIndex + 1
+                ) % slides.length;
+
+
+            showSlide(currentIndex);
+
+        }, interval);
+
+    });
+
+}
   /* =========================================
    LEADERSHIP CAROUSEL
 ========================================= */
