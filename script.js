@@ -995,6 +995,168 @@ function setupCertificationCarousels() {
 
     }
 
+    /* =========================================
+   LEADERSHIP CAROUSEL DRAG / SWIPE
+========================================= */
+
+function setupLeadershipCarouselDrag() {
+
+    const leadershipGrids =
+        document.querySelectorAll(
+            ".leadership-grid"
+        );
+
+
+    leadershipGrids.forEach((grid) => {
+
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        let hasDragged = false;
+
+        grid.addEventListener(
+            "pointerdown",
+            (event) => {
+
+                if (
+                    event.pointerType === "mouse" &&
+                    event.button !== 0
+                ) {
+                    return;
+                }
+
+                if (
+                    event.target.closest(
+                        "a, button"
+                    )
+                ) {
+                    return;
+                }
+
+
+                isDragging = true;
+                hasDragged = false;
+
+                startX = event.clientX;
+
+                startScrollLeft =
+                    grid.scrollLeft;
+
+
+                grid.classList.add(
+                    "is-dragging"
+                );
+
+                if (
+                    grid.setPointerCapture
+                ) {
+
+                    grid.setPointerCapture(
+                        event.pointerId
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           POINTER MOVE
+        ----------------------------------------- */
+
+        grid.addEventListener(
+            "pointermove",
+            (event) => {
+
+                if (!isDragging) {
+                    return;
+                }
+
+
+                const deltaX =
+                    event.clientX - startX;
+
+                if (
+                    Math.abs(deltaX) > 8
+                ) {
+
+                    hasDragged = true;
+                }
+                grid.scrollLeft =
+                    startScrollLeft -
+                    deltaX;
+            }
+        );
+
+
+        /* -----------------------------------------
+           POINTER UP
+        ----------------------------------------- */
+
+        grid.addEventListener(
+            "pointerup",
+            () => {
+
+                if (!isDragging) {
+                    return;
+                }
+
+
+                isDragging = false;
+
+
+                grid.classList.remove(
+                    "is-dragging"
+                );
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           POINTER CANCEL
+        ----------------------------------------- */
+
+        grid.addEventListener(
+            "pointercancel",
+            () => {
+
+                isDragging = false;
+
+                grid.classList.remove(
+                    "is-dragging"
+                );
+
+            }
+        );
+
+
+        /* -----------------------------------------
+           PREVENT CLICK AFTER DRAG
+        ----------------------------------------- */
+
+        grid.addEventListener(
+            "click",
+            (event) => {
+
+                if (hasDragged) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    hasDragged = false;
+
+                }
+
+            },
+            true
+        );
+
+    });
+
+}
+
 
  /* =========================================
    THEME TOGGLE
