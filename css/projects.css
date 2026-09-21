@@ -14,193 +14,245 @@
     margin-bottom: 40px;
 }
 
-/* ---------------------------------------------------------
-   PROJECT TABS
---------------------------------------------------------- */
 
-.project-tabs {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-    overflow-x: auto;
-    scrollbar-width: none;
+/* =========================================================
+   PROJECT GRID
+========================================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
 }
 
-.project-tabs::-webkit-scrollbar {
-    display: none;
-}
 
-.project-tab {
-    flex-shrink: 0;
-    padding: 9px 15px;
-
-    color: var(--muted);
-    background: transparent;
-
-    border: 1px solid transparent;
-    border-radius: 7px;
-
-    font-size: .78rem;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition:
-        color .2s ease,
-        background .2s ease,
-        border-color .2s ease;
-}
-
-.project-tab:hover {
-    color: var(--white);
-    background: var(--card);
-    border-color: var(--border);
-}
-
-.project-tab.active {
-    color: var(--accent-light);
-    background: rgba(50, 185, 242, .08);
-    border-color: rgba(50, 185, 242, .2);
-}
-
-/* ---------------------------------------------------------
-   PROJECT PANELS
---------------------------------------------------------- */
-
-.project-panel {
-    display: none;
-}
-
-.project-panel.active {
-    display: block;
-}
-
-/* ---------------------------------------------------------
+/* =========================================================
    PROJECT CARD
---------------------------------------------------------- */
+========================================================= */
 
 .project-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr);
-    gap: 42px;
-    align-items: center;
+    position: relative;
 
     padding: 32px;
 
     background: var(--card);
+
     border: 1px solid var(--border);
     border-radius: 18px;
 
     transition:
         background .25s ease,
         border-color .25s ease,
-        box-shadow .25s ease;
+        box-shadow .25s ease,
+        transform .25s ease;
 }
 
 .project-card:hover {
     background: var(--card-hover);
-    border-color: rgba(50, 185, 242, .3);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, .15);
+
+    border-color:
+        rgba(50, 185, 242, .3);
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, .15);
+
+    transform: translateY(-2px);
 }
 
-/* ---------------------------------------------------------
-   PROJECT CONTENT
---------------------------------------------------------- */
 
-.project-content {
-    min-width: 0;
+/* =========================================================
+   PROJECT HEADER
+========================================================= */
+
+.project-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 12px;
+}
+
+.project-number {
+    color: var(--muted-2);
+
+    font-size: .7rem;
+    font-weight: 800;
+
+    letter-spacing: .08em;
 }
 
 .project-type {
     display: block;
-    margin-bottom: 10px;
 
     color: var(--accent);
+
     font-size: .68rem;
     font-weight: 800;
+
     letter-spacing: .1em;
+
+    text-align: right;
 }
+
+
+/* =========================================================
+   PROJECT TITLE / ROLE
+========================================================= */
 
 .project-card h3 {
     margin-bottom: 8px;
 
     color: var(--white);
+
     font-size: 1.3rem;
-    line-height: 1.35;
     font-weight: 800;
+
+    line-height: 1.35;
+
+    overflow-wrap: break-word;
 }
 
 .project-role {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 
     color: var(--accent-light);
+
     font-size: .82rem;
     font-weight: 700;
+
+    line-height: 1.5;
 }
 
-.project-card p {
-    margin-bottom: 16px;
 
-    color: var(--muted);
-    font-size: .84rem;
-    line-height: 1.7;
-}
+/* =========================================================
+   TECHNOLOGIES
+========================================================= */
 
-.project-tech {
+.technology-list {
     display: flex;
     flex-wrap: wrap;
+
     gap: 7px;
-    margin-bottom: 20px;
+
+    margin-bottom: 24px;
 }
 
-.project-tech span {
+.technology-list span {
     display: inline-flex;
     align-items: center;
+
+    gap: 6px;
 
     padding: 5px 9px;
 
     color: var(--muted);
-    background: rgba(50, 185, 242, .04);
 
-    border: 1px solid rgba(50, 185, 242, .12);
+    background:
+        rgba(50, 185, 242, .04);
+
+    border:
+        1px solid rgba(50, 185, 242, .12);
+
     border-radius: 5px;
 
     font-size: .69rem;
     font-weight: 600;
+
+    line-height: 1.3;
 }
 
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
+.technology-list .skill-icon {
     color: var(--accent-light);
-    font-size: .78rem;
-    font-weight: 700;
 
-    transition: color .2s ease;
+    font-size: .9rem;
+
+    flex-shrink: 0;
 }
 
-.project-link:hover {
-    color: var(--white);
+
+/* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+.project-description {
+    margin-bottom: 18px;
+
+    color: var(--muted);
+
+    font-size: .84rem;
+
+    line-height: 1.7;
+
+    overflow-wrap: break-word;
 }
 
-/* ---------------------------------------------------------
+.project-description:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PROJECT FEATURES
+========================================================= */
+
+.project-features {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin: 0 0 24px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.project-features li {
+    position: relative;
+
+    padding-left: 18px;
+
+    color: var(--muted);
+
+    font-size: .82rem;
+
+    line-height: 1.65;
+
+    overflow-wrap: break-word;
+}
+
+.project-features li::before {
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    color: var(--accent);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
    PROJECT MEDIA
---------------------------------------------------------- */
+========================================================= */
 
 .project-media {
     position: relative;
+
     width: 100%;
-    min-width: 0;
 
     overflow: hidden;
 
     background: var(--bg);
-    border: 1px solid var(--border);
+
+    border:
+        1px solid var(--border);
+
     border-radius: 12px;
 }
 
@@ -222,35 +274,46 @@
     background: #000;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RYLIM MEDIA CAROUSEL
---------------------------------------------------------- */
+========================================================= */
 
 .rylim-carousel {
     position: relative;
+
     width: 100%;
     height: 310px;
+
+    margin-bottom: 18px;
 
     overflow: hidden;
 
     touch-action: pan-y;
+
     user-select: none;
     -webkit-user-select: none;
 }
 
 .rylim-carousel-track {
     position: relative;
+
     width: 100%;
     height: 100%;
 }
 
-.rylim-media {
+.rylim-slide {
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    width: 100%;
+    height: 100%;
 
     opacity: 0;
 
@@ -259,15 +322,20 @@
     transition:
         opacity .45s ease,
         transform .45s ease;
+
+    z-index: 1;
 }
 
-.rylim-media.active {
+.rylim-slide.active {
     opacity: 1;
+
     pointer-events: auto;
+
+    z-index: 2;
 }
 
-.rylim-media img,
-.rylim-media video {
+.rylim-slide img,
+.rylim-slide video {
     display: block;
 
     width: 100%;
@@ -280,26 +348,42 @@
     -webkit-user-drag: none;
 }
 
+.rylim-slide video {
+    background: #000;
+}
+
+
+/* =========================================================
+   RYLIM CAROUSEL ARROWS
+========================================================= */
+
 .rylim-carousel-arrow {
     position: absolute;
+
     top: 50%;
 
     width: 40px;
     height: 40px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     padding: 0;
 
     color: var(--white);
-    background: rgba(10, 22, 38, .72);
 
-    border: 1px solid rgba(255, 255, 255, .12);
+    background:
+        rgba(10, 22, 38, .72);
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
     border-radius: 50%;
 
     font-size: 1.3rem;
+
     line-height: 1;
 
     transform: translateY(-50%);
@@ -317,7 +401,10 @@
 
 .rylim-carousel-arrow:hover {
     color: var(--accent);
-    background: rgba(10, 22, 38, .9);
+
+    background:
+        rgba(10, 22, 38, .9);
+
     border-color: var(--accent);
 
     transform:
@@ -333,18 +420,21 @@
     right: 10px;
 }
 
-.rylim-carousel-dots {
-    position: absolute;
-    left: 50%;
-    bottom: 12px;
 
+/* =========================================================
+   RYLIM CAROUSEL INDICATORS
+========================================================= */
+
+.rylim-carousel-indicators {
     display: flex;
+
     align-items: center;
+    justify-content: center;
+
     gap: 7px;
 
-    transform: translateX(-50%);
-
-    z-index: 5;
+    margin-top: 14px;
+    margin-bottom: 28px;
 }
 
 .rylim-dot {
@@ -353,9 +443,11 @@
 
     padding: 0;
 
-    background: rgba(255, 255, 255, .45);
+    background:
+        rgba(255, 255, 255, .35);
 
     border: none;
+
     border-radius: 50%;
 
     cursor: pointer;
@@ -366,48 +458,219 @@
         opacity .25s ease;
 }
 
+.rylim-dot:hover {
+    opacity: 1;
+}
+
 .rylim-dot.active {
     width: 20px;
+
     background: var(--accent);
+
     border-radius: 999px;
 }
 
-/* ---------------------------------------------------------
-   PROJECT MEDIA OVERLAY
---------------------------------------------------------- */
 
-.project-media-overlay {
-    position: absolute;
-    inset: 0;
+/* =========================================================
+   RYLIM INFORMATION TABS
+========================================================= */
 
+.project-tabs {
     display: flex;
+
     align-items: center;
-    justify-content: center;
 
-    pointer-events: none;
+    gap: 10px;
 
-    background:
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, .25),
-            transparent 45%
-        );
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
 }
 
-/* ---------------------------------------------------------
+.project-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.project-tab {
+    flex-shrink: 0;
+
+    padding: 9px 15px;
+
+    color: var(--muted);
+
+    background: transparent;
+
+    border:
+        1px solid transparent;
+
+    border-radius: 7px;
+
+    font-size: .78rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+.project-tab:hover {
+    color: var(--white);
+
+    background: var(--card);
+
+    border-color: var(--border);
+}
+
+.project-tab.active {
+    color: var(--accent-light);
+
+    background:
+        rgba(50, 185, 242, .08);
+
+    border-color:
+        rgba(50, 185, 242, .2);
+}
+
+
+/* =========================================================
+   PROJECT TAB CONTENT
+========================================================= */
+
+.project-tab-content {
+    width: 100%;
+}
+
+.project-tab-panel {
+    display: none;
+}
+
+.project-tab-panel.active {
+    display: block;
+}
+
+
+/* =========================================================
+   PROJECT TAB PANEL SPACING
+========================================================= */
+
+.project-tab-panel .project-description {
+    margin-bottom: 18px;
+}
+
+.project-tab-panel .project-description:last-child {
+    margin-bottom: 0;
+}
+
+.project-tab-panel .project-features {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.project-image {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    background: var(--bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+.project-image img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 360px;
+
+    object-fit: cover;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+
+    transition:
+        transform .4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.01);
+}
+
+
+/* =========================================================
+   PROJECT LINK
+========================================================= */
+
+.project-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 22px;
+
+    color: var(--accent-light);
+
+    font-size: .78rem;
+    font-weight: 700;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+}
+
+.project-link:hover {
+    color: var(--white);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
    LIGHT MODE
---------------------------------------------------------- */
+========================================================= */
 
 body.light-mode .project-card {
     background: #ffffff;
+
     border-color: #d6e2eb;
-    box-shadow: 0 8px 24px rgba(20, 50, 80, .06);
+
+    box-shadow:
+        0 8px 24px rgba(20, 50, 80, .06);
 }
 
 body.light-mode .project-card:hover {
     background: #f7fafc;
-    border-color: rgba(0, 157, 214, .3);
-    box-shadow: 0 14px 32px rgba(20, 50, 80, .09);
+
+    border-color:
+        rgba(0, 157, 214, .3);
+
+    box-shadow:
+        0 14px 32px rgba(20, 50, 80, .09);
 }
 
 body.light-mode .project-card h3 {
@@ -426,10 +689,30 @@ body.light-mode .project-type {
     color: #008fca;
 }
 
-body.light-mode .project-tech span {
+body.light-mode .project-number {
+    color: #71869b;
+}
+
+body.light-mode .technology-list span {
     color: #58708a;
-    background: rgba(0, 157, 214, .04);
-    border-color: rgba(0, 157, 214, .12);
+
+    background:
+        rgba(0, 157, 214, .04);
+
+    border-color:
+        rgba(0, 157, 214, .12);
+}
+
+body.light-mode .technology-list .skill-icon {
+    color: #008fca;
+}
+
+body.light-mode .project-features li {
+    color: #58708a;
+}
+
+body.light-mode .project-features li::before {
+    color: #008fca;
 }
 
 body.light-mode .project-link {
@@ -440,19 +723,15 @@ body.light-mode .project-link:hover {
     color: #172033;
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RESPONSIVE — TABLET
---------------------------------------------------------- */
+========================================================= */
 
 @media (max-width: 1000px) {
-    .project-card {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 28px;
-    }
 
-    .project-media {
-        order: -1;
+    .project-card {
+        padding: 28px;
     }
 
     .rylim-carousel {
@@ -460,47 +739,61 @@ body.light-mode .project-link:hover {
     }
 }
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    RESPONSIVE — MOBILE
---------------------------------------------------------- */
+========================================================= */
 
 @media (max-width: 800px) {
+
     #projects .section-title {
         margin-bottom: 32px;
     }
 
-    .project-tabs {
-        margin-bottom: 24px;
-        gap: 7px;
-    }
-
-    .project-tab {
-        padding: 8px 12px;
-        font-size: .7rem;
-    }
-
     .project-card {
-        gap: 22px;
         padding: 22px;
+
         border-radius: 15px;
+    }
+
+    .project-top {
+        gap: 12px;
+    }
+
+    .project-type {
+        font-size: .64rem;
     }
 
     .project-card h3 {
         font-size: 1.1rem;
     }
 
-    .project-card p {
+    .project-role {
+        font-size: .79rem;
+    }
+
+    .technology-list {
+        gap: 6px;
+
+        margin-bottom: 20px;
+    }
+
+    .technology-list span {
+        padding: 5px 8px;
+
+        font-size: .67rem;
+    }
+
+    .project-description {
         font-size: .81rem;
+
         line-height: 1.6;
     }
 
-    .project-tech {
-        gap: 6px;
-    }
+    .project-features li {
+        font-size: .79rem;
 
-    .project-tech span {
-        padding: 5px 8px;
-        font-size: .67rem;
+        line-height: 1.6;
     }
 
     .rylim-carousel {
@@ -510,34 +803,52 @@ body.light-mode .project-link:hover {
     .rylim-carousel-arrow {
         width: 38px;
         height: 38px;
+
         font-size: 1.2rem;
     }
-}
 
-/* ---------------------------------------------------------
-   RESPONSIVE — SMALL MOBILE
---------------------------------------------------------- */
-
-@media (max-width: 600px) {
     .project-tabs {
-        margin-bottom: 20px;
-        padding-bottom: 10px;
+        margin-bottom: 22px;
+
+        gap: 7px;
     }
 
     .project-tab {
-        padding: 7px 10px;
-        font-size: .65rem;
+        padding: 8px 12px;
+
+        font-size: .7rem;
     }
 
+    .project-image img {
+        max-height: 300px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
     .project-card {
-        gap: 18px;
         padding: 20px;
+
         border-radius: 14px;
     }
 
+    .project-top {
+        align-items: flex-start;
+    }
+
+    .project-number {
+        font-size: .64rem;
+    }
+
     .project-type {
-        margin-bottom: 8px;
-        font-size: .63rem;
+        font-size: .61rem;
+
+        text-align: right;
     }
 
     .project-card h3 {
@@ -546,26 +857,54 @@ body.light-mode .project-link:hover {
 
     .project-role {
         margin-bottom: 12px;
-        font-size: .76rem;
+
+        font-size: .75rem;
     }
 
-    .project-card p {
-        font-size: .77rem;
+    .technology-list {
+        gap: 5px;
+
+        margin-bottom: 18px;
+    }
+
+    .technology-list span {
+        padding: 5px 7px;
+
+        font-size: .63rem;
+    }
+
+    .technology-list .skill-icon {
+        font-size: .8rem;
+    }
+
+    .project-description {
+        font-size: .76rem;
+
         line-height: 1.55;
     }
 
-    .project-tech span {
-        padding: 5px 7px;
-        font-size: .64rem;
+    .project-features {
+        gap: 7px;
+    }
+
+    .project-features li {
+        padding-left: 16px;
+
+        font-size: .75rem;
+
+        line-height: 1.55;
     }
 
     .rylim-carousel {
         height: 220px;
+
+        margin-bottom: 14px;
     }
 
     .rylim-carousel-arrow {
         width: 34px;
         height: 34px;
+
         font-size: 1.05rem;
     }
 
@@ -575,5 +914,48 @@ body.light-mode .project-link:hover {
 
     .rylim-next {
         right: 7px;
+    }
+
+    .rylim-carousel-indicators {
+        gap: 6px;
+
+        margin-top: 12px;
+        margin-bottom: 22px;
+    }
+
+    .rylim-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .rylim-dot.active {
+        width: 18px;
+    }
+
+    .project-tabs {
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+
+        gap: 6px;
+    }
+
+    .project-tab {
+        padding: 7px 10px;
+
+        font-size: .64rem;
+    }
+
+    .project-image {
+        margin-bottom: 16px;
+    }
+
+    .project-image img {
+        max-height: 240px;
+    }
+
+    .project-link {
+        margin-top: 18px;
+
+        font-size: .75rem;
     }
 }
