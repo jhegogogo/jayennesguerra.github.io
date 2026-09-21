@@ -392,11 +392,8 @@ setupMediaProtection();
 
                 });
 
-
                 updateDots();
-
             }
-
 
             /* =====================================
                UPDATE DOTS
