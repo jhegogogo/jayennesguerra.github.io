@@ -2140,6 +2140,85 @@ function setupIntroScreen() {
         );
 
     }
+    /* =========================================
+   PAGE BACKGROUND MARQUEE
+========================================= */
+
+function setupPageBackgroundMarquee() {
+
+    const marquee =
+        document.querySelector(
+            ".page-background-marquee"
+        );
+
+    const track =
+        document.querySelector(
+            ".page-background-track"
+        );
+
+    if (!marquee || !track) {
+        return;
+    }
+
+
+    /* =====================================
+       DETERMINE CURRENT PAGE
+    ===================================== */
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop() || "index.html";
+
+
+    const pageTitles = {
+
+        "index.html":
+            "JAYENN ESGUERRA ·",
+
+        "experience_page.html":
+            "EXPERIENCE ·",
+
+        "project_page.html":
+            "PROJECT ·",
+
+        "certifications_page.html":
+            "CERTIFICATIONS ·",
+
+        "contact.html":
+            "CONTACT ·"
+
+    };
+
+
+    const title =
+        pageTitles[currentPage];
+
+
+    if (!title) {
+        return;
+    }
+
+
+    /* =====================================
+       CREATE MARQUEE CONTENT
+    ===================================== */
+
+    track.innerHTML = "";
+
+
+    for (let i = 0; i < 8; i++) {
+
+        const span =
+            document.createElement("span");
+
+        span.textContent = title;
+
+        track.appendChild(span);
+
+    }
+
+}
 
 
     /* =========================================
@@ -2149,6 +2228,7 @@ function setupIntroScreen() {
 setupResumeModal();
 setupIntroScreen();
 setupThemeToggle();
+setupPageBackgroundMarquee();
 
 window.portfolioSectionsReady =
     loadSections();
