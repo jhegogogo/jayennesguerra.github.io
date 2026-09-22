@@ -127,7 +127,7 @@ function setupPageTransitions() {
 
 
     /* =========================================
-       PAGE NAVIGATION
+       PAGE LINK NAVIGATION
     ========================================= */
 
     let transitioning = false;
@@ -155,10 +155,6 @@ function setupPageTransitions() {
             }
 
 
-            /* ---------------------------------
-               IGNORE SPECIAL LINKS
-            --------------------------------- */
-
             if (
                 href === "#" ||
                 href.startsWith("mailto:") ||
@@ -180,10 +176,6 @@ function setupPageTransitions() {
                 );
 
 
-            /* ---------------------------------
-               SAME WEBSITE ONLY
-            --------------------------------- */
-
             if (
                 destination.origin !==
                 window.location.origin
@@ -191,10 +183,6 @@ function setupPageTransitions() {
                 return;
             }
 
-
-            /* ---------------------------------
-               HTML PAGES ONLY
-            --------------------------------- */
 
             if (
                 !destination.pathname
@@ -209,10 +197,6 @@ function setupPageTransitions() {
                     .split("/")
                     .pop();
 
-
-            /* ---------------------------------
-               SAME PAGE
-            --------------------------------- */
 
             if (
                 destinationPage ===
@@ -232,10 +216,6 @@ function setupPageTransitions() {
             transitioning = true;
 
 
-            /* =================================
-               FIND PAGE POSITIONS
-            ================================= */
-
             const currentIndex =
                 pageOrder.indexOf(
                     currentPage
@@ -247,10 +227,6 @@ function setupPageTransitions() {
                     destinationPage
                 );
 
-
-            /* =================================
-               FALLBACK
-            ================================= */
 
             if (
                 currentIndex === -1 ||
@@ -284,7 +260,7 @@ function setupPageTransitions() {
 
 
             /* =================================
-               SAVE FOR ENTERING PAGE
+               SAVE ENTER TRANSITION
             ================================= */
 
             sessionStorage.setItem(
@@ -303,7 +279,7 @@ function setupPageTransitions() {
 
 
             /* =================================
-               NAVIGATE AFTER EXIT
+               NAVIGATE
             ================================= */
 
             setTimeout(() => {
@@ -312,6 +288,74 @@ function setupPageTransitions() {
                     destination.href;
 
             }, 350);
+
+        }
+    );
+
+
+    /* =========================================
+       BROWSER BACK / FORWARD
+    ========================================= */
+
+    window.addEventListener(
+        "pageshow",
+        () => {
+
+            sessionStorage.removeItem(
+                "pageTransition"
+            );
+
+        }
+    );
+
+
+    window.addEventListener(
+        "popstate",
+        () => {
+
+            const currentIndex =
+                pageOrder.indexOf(
+                    currentPage
+                );
+
+
+            const currentUrl =
+                window.location.pathname
+                    .split("/")
+                    .pop() || "index.html";
+
+
+            const destinationIndex =
+                pageOrder.indexOf(
+                    currentUrl
+                );
+
+
+            if (
+                currentIndex === -1 ||
+                destinationIndex === -1
+            ) {
+                return;
+            }
+
+
+            const transitionNumber =
+                (
+                    currentIndex * 5 +
+                    destinationIndex +
+                    1
+                ) % 20 || 20;
+
+
+            const transitionClass =
+                String(
+                    transitionNumber
+                ).padStart(2, "0");
+
+
+            document.body.classList.add(
+                `page-transition-${transitionClass}`
+            );
 
         }
     );
