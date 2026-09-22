@@ -160,7 +160,7 @@ function setupPageTransitions() {
             --------------------------------- */
 
             if (
-                href.startsWith("#") ||
+                href === "#" ||
                 href.startsWith("mailto:") ||
                 href.startsWith("tel:") ||
                 link.target === "_blank" ||
@@ -266,10 +266,7 @@ function setupPageTransitions() {
 
 
             /* =================================
-               CALCULATE TRANSITION
-               
-               Each page pair receives
-               a different transition.
+               SELECT TRANSITION
             ================================= */
 
             const transitionNumber =
@@ -287,7 +284,7 @@ function setupPageTransitions() {
 
 
             /* =================================
-               SAVE TRANSITION FOR NEXT PAGE
+               SAVE FOR ENTERING PAGE
             ================================= */
 
             sessionStorage.setItem(
@@ -297,7 +294,16 @@ function setupPageTransitions() {
 
 
             /* =================================
-               NAVIGATE
+               EXIT CURRENT PAGE
+            ================================= */
+
+            document.body.classList.add(
+                `page-exit-${transitionClass}`
+            );
+
+
+            /* =================================
+               NAVIGATE AFTER EXIT
             ================================= */
 
             setTimeout(() => {
