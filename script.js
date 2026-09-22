@@ -88,29 +88,66 @@ setupMediaProtection();
     ========================================= */
 function setupPageTransitions() {
 
-    document.body.classList.add(
-        "page-transition-ready"
+    const pageOrder = [
+        "index.html",
+        "experience_page.html",
+        "project_page.html",
+        "certifications_page.html",
+        "contact.html"
+    ];
+
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop() || "index.html";
+
+    const transitionDirection =
+        sessionStorage.getItem(
+            "pageTransitionDirection"
+        );
+
+    const transition =
+        document.createElement("div");
+
+    transition.className =
+        "page-transition";
+
+    document.body.appendChild(
+        transition
     );
 
-    document.body.classList.add(
-        "page-enter"
-    );
+    /*
+     * Animate the new page into view.
+     */
 
-    requestAnimationFrame(() => {
+    if (
+        transitionDirection === "next" ||
+        transitionDirection === "prev"
+    ) {
 
-        requestAnimationFrame(() => {
+        transition.classList.add(
+            transitionDirection === "next"
+                ? "enter-next"
+                : "enter-prev"
+        );
 
-            document.body.classList.add(
-                "page-enter-active"
-            );
+        sessionStorage.removeItem(
+            "pageTransitionDirection"
+        );
 
-            document.body.classList.remove(
-                "page-enter"
-            );
+    } else {
 
-        });
+        transition.style.display =
+            "none";
 
-    });
+    }
+
+    /*
+     * Prevent repeated navigation clicks
+     * during the transition.
+     */
+
+    let transitioning = false;
 
     document.addEventListener(
         "click",
@@ -133,14 +170,11 @@ function setupPageTransitions() {
             }
 
             /*
-             * Ignore links that should not
-             * trigger page navigation.
+             * Ignore non-page links.
              */
 
             if (
                 href.startsWith("#") ||
-                href.startsWith("http://") ||
-                href.startsWith("https://") ||
                 href.startsWith("mailto:") ||
                 href.startsWith("tel:") ||
                 link.target === "_blank" ||
@@ -152,29 +186,100 @@ function setupPageTransitions() {
                 return;
             }
 
+            const destination =
+                new URL(
+                    link.href,
+                    window.location.href
+                );
+
             /*
-             * Only animate actual HTML pages.
+             * Only handle links to this website.
              */
 
-            if (!href.endsWith(".html")) {
+            if (
+                destination.origin !==
+                window.location.origin
+            ) {
+                return;
+            }
+
+            /*
+             * Only handle HTML page navigation.
+             */
+
+            if (
+                !destination.pathname
+                    .endsWith(".html")
+            ) {
+                return;
+            }
+
+            /*
+             * Don't animate a link to
+             * the current page.
+             */
+
+            const destinationPage =
+                destination.pathname
+                    .split("/")
+                    .pop();
+
+            if (
+                destinationPage ===
+                currentPage
+            ) {
+                return;
+            }
+
+            if (transitioning) {
                 return;
             }
 
             event.preventDefault();
 
-            document.body.classList.remove(
-                "page-enter-active"
+            transitioning = true;
+
+            const currentIndex =
+                pageOrder.indexOf(
+                    currentPage
+                );
+
+            const destinationIndex =
+                pageOrder.indexOf(
+                    destinationPage
+                );
+
+            const direction =
+                destinationIndex >
+                currentIndex
+                    ? "next"
+                    : "prev";
+
+            sessionStorage.setItem(
+                "pageTransitionDirection",
+                direction
             );
 
-            document.body.classList.add(
-                "page-leave"
+            transition.style.display =
+                "block";
+
+            transition.classList.remove(
+                "enter-next",
+                "enter-prev"
+            );
+
+            transition.classList.add(
+                direction === "next"
+                    ? "leave-next"
+                    : "leave-prev"
             );
 
             setTimeout(() => {
 
-                window.location.href = href;
+                window.location.href =
+                    destination.href;
 
-            }, 450);
+            }, 650);
 
         }
     );
