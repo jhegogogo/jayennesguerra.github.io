@@ -117,7 +117,9 @@ function setupPageTransitions() {
     );
 
     /*
-     * Animate the new page into view.
+     * -----------------------------------------------------
+     * ENTERING A NEW PAGE
+     * -----------------------------------------------------
      */
 
     if (
@@ -125,26 +127,72 @@ function setupPageTransitions() {
         transitionDirection === "prev"
     ) {
 
-        transition.classList.add(
+        const directionClass =
             transitionDirection === "next"
                 ? "enter-next"
-                : "enter-prev"
+                : "enter-prev";
+
+        /*
+         * Keep the screen covered while
+         * dynamically loaded sections finish.
+         */
+
+        transition.classList.add(
+            directionClass
         );
 
         sessionStorage.removeItem(
             "pageTransitionDirection"
         );
 
+        const revealPage = () => {
+
+            requestAnimationFrame(() => {
+
+                transition.classList.add(
+                    "transition-ready"
+                );
+
+            });
+
+        };
+
+        /*
+         * Wait for sections to finish loading.
+         */
+
+        if (
+            window.portfolioSectionsReady &&
+            typeof
+                window.portfolioSectionsReady.then ===
+                "function"
+        ) {
+
+            window.portfolioSectionsReady
+                .then(revealPage)
+                .catch(revealPage);
+
+        } else {
+
+            revealPage();
+
+        }
+
     } else {
 
-        transition.style.display =
-            "none";
+        /*
+         * Direct page load:
+         * no transition overlay needed.
+         */
+
+        transition.remove();
 
     }
 
     /*
-     * Prevent repeated navigation clicks
-     * during the transition.
+     * -----------------------------------------------------
+     * NAVIGATION
+     * -----------------------------------------------------
      */
 
     let transitioning = false;
@@ -170,7 +218,7 @@ function setupPageTransitions() {
             }
 
             /*
-             * Ignore non-page links.
+             * Ignore links that should behave normally.
              */
 
             if (
@@ -193,7 +241,7 @@ function setupPageTransitions() {
                 );
 
             /*
-             * Only handle links to this website.
+             * Only handle same-origin links.
              */
 
             if (
@@ -204,7 +252,7 @@ function setupPageTransitions() {
             }
 
             /*
-             * Only handle HTML page navigation.
+             * Only handle HTML pages.
              */
 
             if (
@@ -214,15 +262,15 @@ function setupPageTransitions() {
                 return;
             }
 
-            /*
-             * Don't animate a link to
-             * the current page.
-             */
-
             const destinationPage =
                 destination.pathname
                     .split("/")
                     .pop();
+
+            /*
+             * Don't transition to the
+             * page we're already on.
+             */
 
             if (
                 destinationPage ===
@@ -238,6 +286,10 @@ function setupPageTransitions() {
             event.preventDefault();
 
             transitioning = true;
+
+            /*
+             * Determine navigation direction.
+             */
 
             const currentIndex =
                 pageOrder.indexOf(
@@ -260,13 +312,12 @@ function setupPageTransitions() {
                 direction
             );
 
-            transition.style.display =
-                "block";
+            /*
+             * Prepare the outgoing transition.
+             */
 
-            transition.classList.remove(
-                "enter-next",
-                "enter-prev"
-            );
+            transition.className =
+                "page-transition";
 
             transition.classList.add(
                 direction === "next"
@@ -274,12 +325,17 @@ function setupPageTransitions() {
                     : "leave-prev"
             );
 
+            /*
+             * Navigate after the outgoing
+             * animation has completed.
+             */
+
             setTimeout(() => {
 
                 window.location.href =
                     destination.href;
 
-            }, 650);
+            }, 600);
 
         }
     );
@@ -2070,12 +2126,13 @@ function setupIntroScreen() {
        INITIALIZE
     ========================================= */
 
-    setupResumeModal();
+setupResumeModal();
+setupIntroScreen();
+setupThemeToggle();
 
-    setupIntroScreen();
-
-    setupThemeToggle();
-
+window.portfolioSectionsReady =
     loadSections();
+
+setupPageTransitions();
 
 });
