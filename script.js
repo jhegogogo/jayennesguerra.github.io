@@ -104,6 +104,9 @@ function setupPageTransitions() {
             .split("/")
             .pop() || "index.html";
 
+    const pageContent =
+    document.querySelector(".page-content");
+
 
     /* =========================================
        PAGE ENTER
@@ -113,17 +116,17 @@ function setupPageTransitions() {
         sessionStorage.getItem("pageTransition");
 
 
-    if (savedTransition) {
+if (savedTransition && pageContent) {
 
-        document.body.classList.add(
-            `page-transition-${savedTransition}`
-        );
+    pageContent.classList.add(
+        `page-transition-${savedTransition}`
+    );
 
-        sessionStorage.removeItem(
-            "pageTransition"
-        );
+    sessionStorage.removeItem(
+        "pageTransition"
+    );
 
-    }
+}
 
 
     /* =========================================
@@ -309,56 +312,60 @@ function setupPageTransitions() {
     );
 
 
-    window.addEventListener(
-        "popstate",
-        () => {
+   window.addEventListener(
+    "popstate",
+    () => {
 
-            const currentIndex =
-                pageOrder.indexOf(
-                    currentPage
-                );
-
-
-            const currentUrl =
-                window.location.pathname
-                    .split("/")
-                    .pop() || "index.html";
+        const currentIndex =
+            pageOrder.indexOf(
+                currentPage
+            );
 
 
-            const destinationIndex =
-                pageOrder.indexOf(
-                    currentUrl
-                );
+        const currentUrl =
+            window.location.pathname
+                .split("/")
+                .pop() || "index.html";
 
 
-            if (
-                currentIndex === -1 ||
-                destinationIndex === -1
-            ) {
-                return;
-            }
+        const destinationIndex =
+            pageOrder.indexOf(
+                currentUrl
+            );
 
 
-            const transitionNumber =
-                (
-                    currentIndex * 5 +
-                    destinationIndex +
-                    1
-                ) % 20 || 20;
+        if (
+            currentIndex === -1 ||
+            destinationIndex === -1
+        ) {
+            return;
+        }
 
 
-            const transitionClass =
-                String(
-                    transitionNumber
-                ).padStart(2, "0");
+        const transitionNumber =
+            (
+                currentIndex * 5 +
+                destinationIndex +
+                1
+            ) % 20 || 20;
 
 
-            document.body.classList.add(
+        const transitionClass =
+            String(
+                transitionNumber
+            ).padStart(2, "0");
+
+
+        if (pageContent) {
+
+            pageContent.classList.add(
                 `page-transition-${transitionClass}`
             );
 
         }
-    );
+
+    }
+);
 
 }
     
