@@ -83,9 +83,11 @@ setupMediaProtection();
         }
 
     }
-    /* =========================================
-       TRANSITION
-    ========================================= */
+    
+/* =========================================
+   TRANSITION
+========================================= */
+
 function setupPageTransitions() {
 
     const pageOrder = [
@@ -96,34 +98,31 @@ function setupPageTransitions() {
         "contact.html"
     ];
 
+
     const currentPage =
         window.location.pathname
             .split("/")
             .pop() || "index.html";
-
-    const transitionDirection =
-        sessionStorage.getItem(
-            "pageTransitionDirection"
-        );
 
 
     /* =========================================
        PAGE ENTER
     ========================================= */
 
-    if (
-        transitionDirection === "next" ||
-        transitionDirection === "prev"
-    ) {
+    const savedTransition =
+        sessionStorage.getItem(
+            "pageTransition"
+        );
+
+
+    if (savedTransition) {
 
         document.body.classList.add(
-            transitionDirection === "next"
-                ? "page-enter-next"
-                : "page-enter-prev"
+            `page-transition-${savedTransition}`
         );
 
         sessionStorage.removeItem(
-            "pageTransitionDirection"
+            "pageTransition"
         );
 
     }
@@ -145,6 +144,7 @@ function setupPageTransitions() {
                     "a[href]"
                 );
 
+
             if (!link) {
                 return;
             }
@@ -152,6 +152,7 @@ function setupPageTransitions() {
 
             const href =
                 link.getAttribute("href");
+
 
             if (!href) {
                 return;
@@ -235,20 +236,25 @@ function setupPageTransitions() {
             transitioning = true;
 
 
-            /* ---------------------------------
-               DETERMINE DIRECTION
-            --------------------------------- */
+            /* =================================
+               DETERMINE PAGE POSITIONS
+            ================================= */
 
             const currentIndex =
                 pageOrder.indexOf(
                     currentPage
                 );
 
+
             const destinationIndex =
                 pageOrder.indexOf(
                     destinationPage
                 );
 
+
+            /* =================================
+               DETERMINE NAVIGATION DIRECTION
+            ================================= */
 
             let direction = "next";
 
@@ -267,30 +273,52 @@ function setupPageTransitions() {
             }
 
 
-            /* ---------------------------------
-               SAVE DIRECTION FOR NEW PAGE
-            --------------------------------- */
+            /* =================================
+               GENERATE ONE OF 20 TRANSITIONS
+            ================================= */
+
+            const transitionNumber =
+                (
+                    Math.abs(
+                        currentIndex -
+                        destinationIndex
+                    ) +
+                    destinationIndex +
+                    1
+                ) % 20 || 20;
+
+
+            const transitionClass =
+                String(
+                    transitionNumber
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            /* =================================
+               SAVE TRANSITION
+            ================================= */
 
             sessionStorage.setItem(
-                "pageTransitionDirection",
-                direction
+                "pageTransition",
+                transitionClass
             );
 
 
-            /* ---------------------------------
-               ANIMATE CURRENT PAGE
-            --------------------------------- */
+            /* =================================
+               CURRENT PAGE EXIT
+            ================================= */
 
             document.body.classList.add(
-                direction === "next"
-                    ? "page-leave-next"
-                    : "page-leave-prev"
+                `page-transition-${transitionClass}`
             );
 
 
-            /* ---------------------------------
+            /* =================================
                NAVIGATE
-            --------------------------------- */
+            ================================= */
 
             setTimeout(() => {
 
@@ -303,6 +331,7 @@ function setupPageTransitions() {
     );
 
 }
+    
     /* =========================================
        RYLIM PROJECT TABS
     ========================================= */
