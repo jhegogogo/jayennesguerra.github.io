@@ -1756,14 +1756,10 @@ body {
    MULTI-PAGE SLIDE TRANSITIONS
 ========================================================= */
 
-/* ---------------------------------------------------------
-   PAGE ENTER
---------------------------------------------------------- */
-
 body.page-enter-next {
     animation:
         pageSlideInNext
-        .55s
+        .6s
         cubic-bezier(.22, 1, .36, 1)
         both;
 }
@@ -1771,15 +1767,10 @@ body.page-enter-next {
 body.page-enter-prev {
     animation:
         pageSlideInPrev
-        .55s
+        .6s
         cubic-bezier(.22, 1, .36, 1)
         both;
 }
-
-
-/* ---------------------------------------------------------
-   PAGE LEAVE
---------------------------------------------------------- */
 
 body.page-leave-next {
     animation:
@@ -1798,93 +1789,71 @@ body.page-leave-prev {
 }
 
 
-/* ---------------------------------------------------------
-   ENTER — NEXT
---------------------------------------------------------- */
+/* NEXT PAGE ENTERS FROM RIGHT */
 
 @keyframes pageSlideInNext {
-
     from {
-        opacity: 0;
-        transform: translateX(70px);
+        opacity: .35;
+        transform: translateX(90px) scale(.985);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   ENTER — PREVIOUS
---------------------------------------------------------- */
+/* PREVIOUS PAGE ENTERS FROM LEFT */
 
 @keyframes pageSlideInPrev {
-
     from {
-        opacity: 0;
-        transform: translateX(-70px);
+        opacity: .35;
+        transform: translateX(-90px) scale(.985);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   LEAVE — NEXT
---------------------------------------------------------- */
+/* CURRENT PAGE LEAVES TO LEFT */
 
 @keyframes pageSlideOutNext {
-
     from {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
 
     to {
-        opacity: 0;
-        transform: translateX(-70px);
+        opacity: .35;
+        transform: translateX(-90px) scale(.985);
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   LEAVE — PREVIOUS
---------------------------------------------------------- */
+/* CURRENT PAGE LEAVES TO RIGHT */
 
 @keyframes pageSlideOutPrev {
-
     from {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
 
     to {
-        opacity: 0;
-        transform: translateX(70px);
+        opacity: .35;
+        transform: translateX(90px) scale(.985);
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   REDUCED MOTION
---------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
-
     body.page-enter-next,
     body.page-enter-prev,
     body.page-leave-next,
     body.page-leave-prev {
         animation: none;
     }
-
 }
