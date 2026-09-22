@@ -83,7 +83,7 @@ setupMediaProtection();
         }
 
     }
-    
+
 /* =========================================
    TRANSITION
 ========================================= */
@@ -110,9 +110,7 @@ function setupPageTransitions() {
     ========================================= */
 
     const savedTransition =
-        sessionStorage.getItem(
-            "pageTransition"
-        );
+        sessionStorage.getItem("pageTransition");
 
 
     if (savedTransition) {
@@ -140,9 +138,7 @@ function setupPageTransitions() {
         (event) => {
 
             const link =
-                event.target.closest(
-                    "a[href]"
-                );
+                event.target.closest("a[href]");
 
 
             if (!link) {
@@ -237,7 +233,7 @@ function setupPageTransitions() {
 
 
             /* =================================
-               DETERMINE PAGE POSITIONS
+               FIND PAGE POSITIONS
             ================================= */
 
             const currentIndex =
@@ -253,36 +249,32 @@ function setupPageTransitions() {
 
 
             /* =================================
-               DETERMINE NAVIGATION DIRECTION
+               FALLBACK
             ================================= */
 
-            let direction = "next";
-
-
             if (
-                currentIndex !== -1 &&
-                destinationIndex !== -1
+                currentIndex === -1 ||
+                destinationIndex === -1
             ) {
 
-                direction =
-                    destinationIndex >
-                    currentIndex
-                        ? "next"
-                        : "prev";
+                window.location.href =
+                    destination.href;
+
+                return;
 
             }
 
 
             /* =================================
-               GENERATE ONE OF 20 TRANSITIONS
+               CALCULATE TRANSITION
+               
+               Each page pair receives
+               a different transition.
             ================================= */
 
             const transitionNumber =
                 (
-                    Math.abs(
-                        currentIndex -
-                        destinationIndex
-                    ) +
+                    currentIndex * 5 +
                     destinationIndex +
                     1
                 ) % 20 || 20;
@@ -291,28 +283,16 @@ function setupPageTransitions() {
             const transitionClass =
                 String(
                     transitionNumber
-                ).padStart(
-                    2,
-                    "0"
-                );
+                ).padStart(2, "0");
 
 
             /* =================================
-               SAVE TRANSITION
+               SAVE TRANSITION FOR NEXT PAGE
             ================================= */
 
             sessionStorage.setItem(
                 "pageTransition",
                 transitionClass
-            );
-
-
-            /* =================================
-               CURRENT PAGE EXIT
-            ================================= */
-
-            document.body.classList.add(
-                `page-transition-${transitionClass}`
             );
 
 
@@ -325,7 +305,7 @@ function setupPageTransitions() {
                 window.location.href =
                     destination.href;
 
-            }, 500);
+            }, 350);
 
         }
     );
