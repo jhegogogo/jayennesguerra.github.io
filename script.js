@@ -106,96 +106,35 @@ function setupPageTransitions() {
             "pageTransitionDirection"
         );
 
-    const transition =
-        document.createElement("div");
 
-    transition.className =
-        "page-transition";
-
-    document.body.appendChild(
-        transition
-    );
-
-    /*
-     * -----------------------------------------------------
-     * ENTERING A NEW PAGE
-     * -----------------------------------------------------
-     */
+    /* =========================================
+       PAGE ENTER
+    ========================================= */
 
     if (
         transitionDirection === "next" ||
         transitionDirection === "prev"
     ) {
 
-        const directionClass =
+        document.body.classList.add(
             transitionDirection === "next"
-                ? "enter-next"
-                : "enter-prev";
-
-        /*
-         * Keep the screen covered while
-         * dynamically loaded sections finish.
-         */
-
-        transition.classList.add(
-            directionClass
+                ? "page-enter-next"
+                : "page-enter-prev"
         );
 
         sessionStorage.removeItem(
             "pageTransitionDirection"
         );
 
-        const revealPage = () => {
-
-            requestAnimationFrame(() => {
-
-                transition.classList.add(
-                    "transition-ready"
-                );
-
-            });
-
-        };
-
-        /*
-         * Wait for sections to finish loading.
-         */
-
-        if (
-            window.portfolioSectionsReady &&
-            typeof
-                window.portfolioSectionsReady.then ===
-                "function"
-        ) {
-
-            window.portfolioSectionsReady
-                .then(revealPage)
-                .catch(revealPage);
-
-        } else {
-
-            revealPage();
-
-        }
-
-    } else {
-
-        /*
-         * Direct page load:
-         * no transition overlay needed.
-         */
-
-        transition.remove();
-
     }
 
-    /*
-     * -----------------------------------------------------
-     * NAVIGATION
-     * -----------------------------------------------------
-     */
+
+    /* =========================================
+       PAGE NAVIGATION
+    ========================================= */
 
     let transitioning = false;
+
 
     document.addEventListener(
         "click",
@@ -210,6 +149,7 @@ function setupPageTransitions() {
                 return;
             }
 
+
             const href =
                 link.getAttribute("href");
 
@@ -217,9 +157,10 @@ function setupPageTransitions() {
                 return;
             }
 
-            /*
-             * Ignore links that should behave normally.
-             */
+
+            /* ---------------------------------
+               IGNORE SPECIAL LINKS
+            --------------------------------- */
 
             if (
                 href.startsWith("#") ||
@@ -234,15 +175,17 @@ function setupPageTransitions() {
                 return;
             }
 
+
             const destination =
                 new URL(
                     link.href,
                     window.location.href
                 );
 
-            /*
-             * Only handle same-origin links.
-             */
+
+            /* ---------------------------------
+               SAME WEBSITE ONLY
+            --------------------------------- */
 
             if (
                 destination.origin !==
@@ -251,9 +194,10 @@ function setupPageTransitions() {
                 return;
             }
 
-            /*
-             * Only handle HTML pages.
-             */
+
+            /* ---------------------------------
+               HTML PAGES ONLY
+            --------------------------------- */
 
             if (
                 !destination.pathname
@@ -262,15 +206,16 @@ function setupPageTransitions() {
                 return;
             }
 
+
             const destinationPage =
                 destination.pathname
                     .split("/")
                     .pop();
 
-            /*
-             * Don't transition to the
-             * page we're already on.
-             */
+
+            /* ---------------------------------
+               SAME PAGE
+            --------------------------------- */
 
             if (
                 destinationPage ===
@@ -279,17 +224,20 @@ function setupPageTransitions() {
                 return;
             }
 
+
             if (transitioning) {
                 return;
             }
+
 
             event.preventDefault();
 
             transitioning = true;
 
-            /*
-             * Determine navigation direction.
-             */
+
+            /* ---------------------------------
+               DETERMINE DIRECTION
+            --------------------------------- */
 
             const currentIndex =
                 pageOrder.indexOf(
@@ -301,47 +249,60 @@ function setupPageTransitions() {
                     destinationPage
                 );
 
-            const direction =
-                destinationIndex >
-                currentIndex
-                    ? "next"
-                    : "prev";
+
+            let direction = "next";
+
+
+            if (
+                currentIndex !== -1 &&
+                destinationIndex !== -1
+            ) {
+
+                direction =
+                    destinationIndex >
+                    currentIndex
+                        ? "next"
+                        : "prev";
+
+            }
+
+
+            /* ---------------------------------
+               SAVE DIRECTION FOR NEW PAGE
+            --------------------------------- */
 
             sessionStorage.setItem(
                 "pageTransitionDirection",
                 direction
             );
 
-            /*
-             * Prepare the outgoing transition.
-             */
 
-            transition.className =
-                "page-transition";
+            /* ---------------------------------
+               ANIMATE CURRENT PAGE
+            --------------------------------- */
 
-            transition.classList.add(
+            document.body.classList.add(
                 direction === "next"
-                    ? "leave-next"
-                    : "leave-prev"
+                    ? "page-leave-next"
+                    : "page-leave-prev"
             );
 
-            /*
-             * Navigate after the outgoing
-             * animation has completed.
-             */
+
+            /* ---------------------------------
+               NAVIGATE
+            --------------------------------- */
 
             setTimeout(() => {
 
                 window.location.href =
                     destination.href;
 
-            }, 600);
+            }, 500);
 
         }
     );
 
 }
-
     /* =========================================
        RYLIM PROJECT TABS
     ========================================= */
