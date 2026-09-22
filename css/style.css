@@ -2647,3 +2647,171 @@ body.page-exit-20 {
         transform: scale(.94);
     }
 }
+
+/* =========================================================
+   HEADER TRANSITION
+========================================================= */
+
+body.page-transition-01 .site-header {
+    animation: transition01 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-02 .site-header {
+    animation: transition02 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-03 .site-header {
+    animation: transition03 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-04 .site-header {
+    animation: transition04 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-05 .site-header {
+    animation: transition05 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-06 .site-header {
+    animation: transition06 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-07 .site-header {
+    animation: transition07 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-08 .site-header {
+    animation: transition08 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-09 .site-header {
+    animation: transition09 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-10 .site-header {
+    animation: transition10 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-11 .site-header {
+    animation: transition11 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-12 .site-header {
+    animation: transition12 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-13 .site-header {
+    animation: transition13 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-14 .site-header {
+    animation: transition14 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-15 .site-header {
+    animation: transition15 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-16 .site-header {
+    animation: transition16 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-17 .site-header {
+    animation: transition17 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-18 .site-header {
+    animation: transition18 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-19 .site-header {
+    animation: transition19 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-transition-20 .site-header {
+    animation: transition20 .55s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+/* =========================================================
+   HEADER EXIT TRANSITION
+========================================================= */
+
+body.page-exit-01 .site-header {
+    animation: exit01 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-02 .site-header {
+    animation: exit02 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-03 .site-header {
+    animation: exit03 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-04 .site-header {
+    animation: exit04 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-05 .site-header {
+    animation: exit05 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-06 .site-header {
+    animation: exit06 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-07 .site-header {
+    animation: exit07 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-08 .site-header {
+    animation: exit08 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-09 .site-header {
+    animation: exit09 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-10 .site-header {
+    animation: exit10 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-11 .site-header {
+    animation: exit11 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-12 .site-header {
+    animation: exit12 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-13 .site-header {
+    animation: exit13 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-14 .site-header {
+    animation: exit14 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-15 .site-header {
+    animation: exit15 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-16 .site-header {
+    animation: exit16 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-17 .site-header {
+    animation: exit17 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-18 .site-header {
+    animation: exit18 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-19 .site-header {
+    animation: exit19 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
+
+body.page-exit-20 .site-header {
+    animation: exit20 .35s cubic-bezier(.76, 0, .24, 1) both;
+}
