@@ -1878,7 +1878,7 @@ body {
    MULTI-PAGE TRANSITIONS — 20 UNIQUE DIRECTIONS
 ========================================================= */
 
-body[class*="page-transition-"] {
+.page-content[class*="page-transition-"] {
     animation-duration: .55s;
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
@@ -1889,7 +1889,7 @@ body[class*="page-transition-"] {
    01 — SLIDE LEFT
 ========================================================= */
 
-body.page-transition-01 {
+.page-content.page-transition-01 {
     animation-name: transition01;
 }
 
@@ -1910,7 +1910,7 @@ body.page-transition-01 {
    02 — SLIDE RIGHT
 ========================================================= */
 
-body.page-transition-02 {
+.page-content.page-transition-02 {
     animation-name: transition02;
 }
 
@@ -1931,7 +1931,7 @@ body.page-transition-02 {
    03 — SLIDE UP
 ========================================================= */
 
-body.page-transition-03 {
+.page-content.page-transition-03 {
     animation-name: transition03;
 }
 
@@ -1952,7 +1952,7 @@ body.page-transition-03 {
    04 — SLIDE DOWN
 ========================================================= */
 
-body.page-transition-04 {
+.page-content.page-transition-04 {
     animation-name: transition04;
 }
 
@@ -1973,7 +1973,7 @@ body.page-transition-04 {
    05 — DIAGONAL TOP LEFT
 ========================================================= */
 
-body.page-transition-05 {
+.page-content.page-transition-05 {
     animation-name: transition05;
 }
 
@@ -1994,7 +1994,7 @@ body.page-transition-05 {
    06 — DIAGONAL TOP RIGHT
 ========================================================= */
 
-body.page-transition-06 {
+.page-content.page-transition-06 {
     animation-name: transition06;
 }
 
@@ -2015,7 +2015,7 @@ body.page-transition-06 {
    07 — DIAGONAL BOTTOM LEFT
 ========================================================= */
 
-body.page-transition-07 {
+.page-content.page-transition-07 {
     animation-name: transition07;
 }
 
@@ -2036,7 +2036,7 @@ body.page-transition-07 {
    08 — DIAGONAL BOTTOM RIGHT
 ========================================================= */
 
-body.page-transition-08 {
+.page-content.page-transition-08 {
     animation-name: transition08;
 }
 
@@ -2057,7 +2057,7 @@ body.page-transition-08 {
    09 — SCALE IN
 ========================================================= */
 
-body.page-transition-09 {
+.page-content.page-transition-09 {
     animation-name: transition09;
 }
 
@@ -2078,7 +2078,7 @@ body.page-transition-09 {
    10 — SCALE OUT-IN
 ========================================================= */
 
-body.page-transition-10 {
+.page-content.page-transition-10 {
     animation-name: transition10;
 }
 
@@ -2099,7 +2099,7 @@ body.page-transition-10 {
    11 — ROTATE LEFT
 ========================================================= */
 
-body.page-transition-11 {
+.page-content.page-transition-11 {
     animation-name: transition11;
     transform-origin: right center;
 }
@@ -2121,7 +2121,7 @@ body.page-transition-11 {
    12 — ROTATE RIGHT
 ========================================================= */
 
-body.page-transition-12 {
+.page-content.page-transition-12 {
     animation-name: transition12;
     transform-origin: left center;
 }
@@ -2143,7 +2143,7 @@ body.page-transition-12 {
    13 — FLIP X
 ========================================================= */
 
-body.page-transition-13 {
+.page-content.page-transition-13 {
     animation-name: transition13;
     perspective: 1000px;
 }
@@ -2165,7 +2165,7 @@ body.page-transition-13 {
    14 — FLIP X REVERSE
 ========================================================= */
 
-body.page-transition-14 {
+.page-content.page-transition-14 {
     animation-name: transition14;
     perspective: 1000px;
 }
@@ -2187,7 +2187,7 @@ body.page-transition-14 {
    15 — FLIP Y
 ========================================================= */
 
-body.page-transition-15 {
+.page-content.page-transition-15 {
     animation-name: transition15;
     perspective: 1000px;
 }
@@ -2209,7 +2209,7 @@ body.page-transition-15 {
    16 — FLIP Y REVERSE
 ========================================================= */
 
-body.page-transition-16 {
+.page-content.page-transition-16 {
     animation-name: transition16;
     perspective: 1000px;
 }
@@ -2231,7 +2231,7 @@ body.page-transition-16 {
    17 — DIAGONAL SCALE
 ========================================================= */
 
-body.page-transition-17 {
+.page-content.page-transition-17 {
     animation-name: transition17;
 }
 
@@ -2252,7 +2252,7 @@ body.page-transition-17 {
    18 — DIAGONAL SCALE REVERSE
 ========================================================= */
 
-body.page-transition-18 {
+.page-content.page-transition-18 {
     animation-name: transition18;
 }
 
@@ -2273,7 +2273,7 @@ body.page-transition-18 {
    19 — BLUR + SLIDE
 ========================================================= */
 
-body.page-transition-19 {
+.page-content.page-transition-19 {
     animation-name: transition19;
 }
 
@@ -2296,7 +2296,7 @@ body.page-transition-19 {
    20 — BLUR + SCALE
 ========================================================= */
 
-body.page-transition-20 {
+.page-content.page-transition-20 {
     animation-name: transition20;
 }
 
@@ -2321,7 +2321,7 @@ body.page-transition-20 {
 
 @media (prefers-reduced-motion: reduce) {
 
-    body[class*="page-transition-"] {
+    .page-content[class*="page-transition-"] {
         animation: none !important;
         transform: none !important;
         filter: none !important;
@@ -2332,12 +2332,11 @@ body.page-transition-20 {
 
 /* =========================================================
    DIRECTIONAL PAGE EXIT TRANSITIONS
+   BODY STAYS STATIONARY SO FIXED MARQUEE STAYS FIXED
 ========================================================= */
 
 body.page-exit {
-    animation-duration: .35s !important;
-    animation-timing-function: cubic-bezier(.76, 0, .24, 1) !important;
-    animation-fill-mode: both !important;
+    animation: none !important;
 }
 
 
@@ -2345,8 +2344,9 @@ body.page-exit {
    EXIT 01 — MOVE LEFT
 ========================================================= */
 
-body.page-exit-01 {
-    animation-name: exit01 !important;
+body.page-exit-01 > main,
+body.page-exit-01 > footer {
+    animation: exit01 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit01 {
@@ -2366,8 +2366,9 @@ body.page-exit-01 {
    EXIT 02 — MOVE RIGHT
 ========================================================= */
 
-body.page-exit-02 {
-    animation-name: exit02 !important;
+body.page-exit-02 > main,
+body.page-exit-02 > footer {
+    animation: exit02 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit02 {
@@ -2387,8 +2388,9 @@ body.page-exit-02 {
    EXIT 03 — MOVE UP
 ========================================================= */
 
-body.page-exit-03 {
-    animation-name: exit03 !important;
+body.page-exit-03 > main,
+body.page-exit-03 > footer {
+    animation: exit03 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit03 {
@@ -2408,8 +2410,9 @@ body.page-exit-03 {
    EXIT 04 — MOVE DOWN
 ========================================================= */
 
-body.page-exit-04 {
-    animation-name: exit04 !important;
+body.page-exit-04 > main,
+body.page-exit-04 > footer {
+    animation: exit04 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit04 {
@@ -2429,8 +2432,9 @@ body.page-exit-04 {
    EXIT 05 — DIAGONAL TOP LEFT
 ========================================================= */
 
-body.page-exit-05 {
-    animation-name: exit05 !important;
+body.page-exit-05 > main,
+body.page-exit-05 > footer {
+    animation: exit05 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit05 {
@@ -2450,8 +2454,9 @@ body.page-exit-05 {
    EXIT 06 — DIAGONAL TOP RIGHT
 ========================================================= */
 
-body.page-exit-06 {
-    animation-name: exit06 !important;
+body.page-exit-06 > main,
+body.page-exit-06 > footer {
+    animation: exit06 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit06 {
@@ -2471,8 +2476,9 @@ body.page-exit-06 {
    EXIT 07 — DIAGONAL BOTTOM LEFT
 ========================================================= */
 
-body.page-exit-07 {
-    animation-name: exit07 !important;
+body.page-exit-07 > main,
+body.page-exit-07 > footer {
+    animation: exit07 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit07 {
@@ -2492,8 +2498,9 @@ body.page-exit-07 {
    EXIT 08 — DIAGONAL BOTTOM RIGHT
 ========================================================= */
 
-body.page-exit-08 {
-    animation-name: exit08 !important;
+body.page-exit-08 > main,
+body.page-exit-08 > footer {
+    animation: exit08 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit08 {
@@ -2513,8 +2520,9 @@ body.page-exit-08 {
    EXIT 09 — SCALE DOWN
 ========================================================= */
 
-body.page-exit-09 {
-    animation-name: exit09 !important;
+body.page-exit-09 > main,
+body.page-exit-09 > footer {
+    animation: exit09 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit09 {
@@ -2534,8 +2542,9 @@ body.page-exit-09 {
    EXIT 10 — SCALE UP
 ========================================================= */
 
-body.page-exit-10 {
-    animation-name: exit10 !important;
+body.page-exit-10 > main,
+body.page-exit-10 > footer {
+    animation: exit10 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit10 {
@@ -2555,8 +2564,9 @@ body.page-exit-10 {
    EXIT 11 — ROTATE LEFT
 ========================================================= */
 
-body.page-exit-11 {
-    animation-name: exit11 !important;
+body.page-exit-11 > main,
+body.page-exit-11 > footer {
+    animation: exit11 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     transform-origin: right center;
 }
 
@@ -2577,8 +2587,9 @@ body.page-exit-11 {
    EXIT 12 — ROTATE RIGHT
 ========================================================= */
 
-body.page-exit-12 {
-    animation-name: exit12 !important;
+body.page-exit-12 > main,
+body.page-exit-12 > footer {
+    animation: exit12 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     transform-origin: left center;
 }
 
@@ -2599,8 +2610,9 @@ body.page-exit-12 {
    EXIT 13 — FLIP X
 ========================================================= */
 
-body.page-exit-13 {
-    animation-name: exit13 !important;
+body.page-exit-13 > main,
+body.page-exit-13 > footer {
+    animation: exit13 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
 
@@ -2621,8 +2633,9 @@ body.page-exit-13 {
    EXIT 14 — FLIP X REVERSE
 ========================================================= */
 
-body.page-exit-14 {
-    animation-name: exit14 !important;
+body.page-exit-14 > main,
+body.page-exit-14 > footer {
+    animation: exit14 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
 
@@ -2643,8 +2656,9 @@ body.page-exit-14 {
    EXIT 15 — FLIP Y
 ========================================================= */
 
-body.page-exit-15 {
-    animation-name: exit15 !important;
+body.page-exit-15 > main,
+body.page-exit-15 > footer {
+    animation: exit15 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
 
@@ -2665,8 +2679,9 @@ body.page-exit-15 {
    EXIT 16 — FLIP Y REVERSE
 ========================================================= */
 
-body.page-exit-16 {
-    animation-name: exit16 !important;
+body.page-exit-16 > main,
+body.page-exit-16 > footer {
+    animation: exit16 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
 
@@ -2687,8 +2702,9 @@ body.page-exit-16 {
    EXIT 17 — DIAGONAL SCALE
 ========================================================= */
 
-body.page-exit-17 {
-    animation-name: exit17 !important;
+body.page-exit-17 > main,
+body.page-exit-17 > footer {
+    animation: exit17 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit17 {
@@ -2708,8 +2724,9 @@ body.page-exit-17 {
    EXIT 18 — DIAGONAL SCALE REVERSE
 ========================================================= */
 
-body.page-exit-18 {
-    animation-name: exit18 !important;
+body.page-exit-18 > main,
+body.page-exit-18 > footer {
+    animation: exit18 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit18 {
@@ -2729,8 +2746,9 @@ body.page-exit-18 {
    EXIT 19 — BLUR + SLIDE
 ========================================================= */
 
-body.page-exit-19 {
-    animation-name: exit19 !important;
+body.page-exit-19 > main,
+body.page-exit-19 > footer {
+    animation: exit19 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit19 {
@@ -2752,15 +2770,16 @@ body.page-exit-19 {
    EXIT 20 — BLUR + SCALE
 ========================================================= */
 
-body.page-exit-20 {
-    animation-name: exit20 !important;
+body.page-exit-20 > main,
+body.page-exit-20 > footer {
+    animation: exit20 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
 @keyframes exit20 {
     from {
         opacity: 1;
         filter: blur(0);
-        transform: scale(1);
+        transform: scale(.94);
     }
 
     to {
@@ -2772,86 +2791,91 @@ body.page-exit-20 {
 
 /* =========================================================
    HEADER TRANSITIONS
-   Keeps header synchronized without excessive fading/blur
+   Header stays inside .page-content
 ========================================================= */
 
-body.page-transition-01 .site-header {
+
+/* =========================================================
+   HEADER ENTRANCE
+========================================================= */
+
+.page-content.page-transition-01 .site-header {
     animation: headerTransition01 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-02 .site-header {
+.page-content.page-transition-02 .site-header {
     animation: headerTransition02 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-03 .site-header {
+.page-content.page-transition-03 .site-header {
     animation: headerTransition03 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-04 .site-header {
+.page-content.page-transition-04 .site-header {
     animation: headerTransition04 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-05 .site-header {
+.page-content.page-transition-05 .site-header {
     animation: headerTransition05 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-06 .site-header {
+.page-content.page-transition-06 .site-header {
     animation: headerTransition06 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-07 .site-header {
+.page-content.page-transition-07 .site-header {
     animation: headerTransition07 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-08 .site-header {
+.page-content.page-transition-08 .site-header {
     animation: headerTransition08 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-09 .site-header {
+.page-content.page-transition-09 .site-header {
     animation: headerTransition09 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-10 .site-header {
+.page-content.page-transition-10 .site-header {
     animation: headerTransition10 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-11 .site-header {
+.page-content.page-transition-11 .site-header {
     animation: headerTransition11 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-12 .site-header {
+.page-content.page-transition-12 .site-header {
     animation: headerTransition12 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-13 .site-header {
+.page-content.page-transition-13 .site-header {
     animation: headerTransition13 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-14 .site-header {
+.page-content.page-transition-14 .site-header {
     animation: headerTransition14 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-15 .site-header {
+.page-content.page-transition-15 .site-header {
     animation: headerTransition15 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-16 .site-header {
+.page-content.page-transition-16 .site-header {
     animation: headerTransition16 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-17 .site-header {
+.page-content.page-transition-17 .site-header {
     animation: headerTransition17 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-18 .site-header {
+.page-content.page-transition-18 .site-header {
     animation: headerTransition18 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-19 .site-header {
+.page-content.page-transition-19 .site-header {
     animation: headerTransition19 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-transition-20 .site-header {
+.page-content.page-transition-20 .site-header {
     animation: headerTransition20 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
@@ -2861,147 +2885,63 @@ body.page-transition-20 .site-header {
 ========================================================= */
 
 @keyframes headerTransition01 {
-    from {
-        opacity: .9;
-        transform: translateX(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: .9; transform: translateX(100px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes headerTransition02 {
-    from {
-        opacity: .9;
-        transform: translateX(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: .9; transform: translateX(-100px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes headerTransition03 {
-    from {
-        opacity: .9;
-        transform: translateY(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: .9; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes headerTransition04 {
-    from {
-        opacity: .9;
-        transform: translateY(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: .9; transform: translateY(-100px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes headerTransition05 {
-    from {
-        opacity: .9;
-        transform: translate(-90px, -90px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+    from { opacity: .9; transform: translate(-90px, -90px); }
+    to { opacity: 1; transform: translate(0, 0); }
 }
 
 @keyframes headerTransition06 {
-    from {
-        opacity: .9;
-        transform: translate(90px, -90px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+    from { opacity: .9; transform: translate(90px, -90px); }
+    to { opacity: 1; transform: translate(0, 0); }
 }
 
 @keyframes headerTransition07 {
-    from {
-        opacity: .9;
-        transform: translate(-90px, 90px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+    from { opacity: .9; transform: translate(-90px, 90px); }
+    to { opacity: 1; transform: translate(0, 0); }
 }
 
 @keyframes headerTransition08 {
-    from {
-        opacity: .9;
-        transform: translate(90px, 90px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
+    from { opacity: .9; transform: translate(90px, 90px); }
+    to { opacity: 1; transform: translate(0, 0); }
 }
 
 @keyframes headerTransition09 {
-    from {
-        opacity: .9;
-        transform: scale(.88);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: .9; transform: scale(.88); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes headerTransition10 {
-    from {
-        opacity: .9;
-        transform: scale(1.12);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: .9; transform: scale(1.12); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes headerTransition11 {
-    from {
-        opacity: .9;
-        transform: translateX(60px) rotate(-4deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0) rotate(0);
-    }
+    from { opacity: .9; transform: translateX(60px) rotate(-4deg); }
+    to { opacity: 1; transform: translateX(0) rotate(0); }
 }
 
 @keyframes headerTransition12 {
-    from {
-        opacity: .9;
-        transform: translateX(-60px) rotate(4deg);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0) rotate(0);
-    }
+    from { opacity: .9; transform: translateX(-60px) rotate(4deg); }
+    to { opacity: 1; transform: translateX(0) rotate(0); }
 }
 
 @keyframes headerTransition13 {
@@ -3009,7 +2949,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: perspective(1000px) rotateX(-8deg);
     }
-
     to {
         opacity: 1;
         transform: perspective(1000px) rotateX(0);
@@ -3021,7 +2960,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: perspective(1000px) rotateX(8deg);
     }
-
     to {
         opacity: 1;
         transform: perspective(1000px) rotateX(0);
@@ -3033,7 +2971,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: perspective(1000px) rotateY(-8deg);
     }
-
     to {
         opacity: 1;
         transform: perspective(1000px) rotateY(0);
@@ -3045,7 +2982,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: perspective(1000px) rotateY(8deg);
     }
-
     to {
         opacity: 1;
         transform: perspective(1000px) rotateY(0);
@@ -3057,7 +2993,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: translate(70px, 70px) scale(.94);
     }
-
     to {
         opacity: 1;
         transform: translate(0, 0) scale(1);
@@ -3069,7 +3004,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: translate(-70px, -70px) scale(.94);
     }
-
     to {
         opacity: 1;
         transform: translate(0, 0) scale(1);
@@ -3081,7 +3015,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: translateX(60px);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
@@ -3093,7 +3026,6 @@ body.page-transition-20 .site-header {
         opacity: .9;
         transform: scale(.94);
     }
-
     to {
         opacity: 1;
         transform: scale(1);
@@ -3102,86 +3034,87 @@ body.page-transition-20 .site-header {
 
 
 /* =========================================================
-   HEADER EXIT TRANSITIONS
+   HEADER EXIT
+   Body stays stationary — only header moves
 ========================================================= */
 
-body.page-exit-01 .site-header {
+body.page-exit-01 .page-content .site-header {
     animation: headerExit01 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-02 .site-header {
+body.page-exit-02 .page-content .site-header {
     animation: headerExit02 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-03 .site-header {
+body.page-exit-03 .page-content .site-header {
     animation: headerExit03 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-04 .site-header {
+body.page-exit-04 .page-content .site-header {
     animation: headerExit04 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-05 .site-header {
+body.page-exit-05 .page-content .site-header {
     animation: headerExit05 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-06 .site-header {
+body.page-exit-06 .page-content .site-header {
     animation: headerExit06 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-07 .site-header {
+body.page-exit-07 .page-content .site-header {
     animation: headerExit07 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-08 .site-header {
+body.page-exit-08 .page-content .site-header {
     animation: headerExit08 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-09 .site-header {
+body.page-exit-09 .page-content .site-header {
     animation: headerExit09 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-10 .site-header {
+body.page-exit-10 .page-content .site-header {
     animation: headerExit10 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-11 .site-header {
+body.page-exit-11 .page-content .site-header {
     animation: headerExit11 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-12 .site-header {
+body.page-exit-12 .page-content .site-header {
     animation: headerExit12 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-13 .site-header {
+body.page-exit-13 .page-content .site-header {
     animation: headerExit13 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-14 .site-header {
+body.page-exit-14 .page-content .site-header {
     animation: headerExit14 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-15 .site-header {
+body.page-exit-15 .page-content .site-header {
     animation: headerExit15 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-16 .site-header {
+body.page-exit-16 .page-content .site-header {
     animation: headerExit16 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-17 .site-header {
+body.page-exit-17 .page-content .site-header {
     animation: headerExit17 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-18 .site-header {
+body.page-exit-18 .page-content .site-header {
     animation: headerExit18 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-19 .site-header {
+body.page-exit-19 .page-content .site-header {
     animation: headerExit19 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-20 .site-header {
+body.page-exit-20 .page-content .site-header {
     animation: headerExit20 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
@@ -3191,147 +3124,63 @@ body.page-exit-20 .site-header {
 ========================================================= */
 
 @keyframes headerExit01 {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateX(-100px);
-    }
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: .9; transform: translateX(-100px); }
 }
 
 @keyframes headerExit02 {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateX(100px);
-    }
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: .9; transform: translateX(100px); }
 }
 
 @keyframes headerExit03 {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateY(-100px);
-    }
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: .9; transform: translateY(-100px); }
 }
 
 @keyframes headerExit04 {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateY(100px);
-    }
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: .9; transform: translateY(100px); }
 }
 
 @keyframes headerExit05 {
-    from {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translate(-90px, -90px);
-    }
+    from { opacity: 1; transform: translate(0, 0); }
+    to { opacity: .9; transform: translate(-90px, -90px); }
 }
 
 @keyframes headerExit06 {
-    from {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translate(90px, -90px);
-    }
+    from { opacity: 1; transform: translate(0, 0); }
+    to { opacity: .9; transform: translate(90px, -90px); }
 }
 
 @keyframes headerExit07 {
-    from {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translate(-90px, 90px);
-    }
+    from { opacity: 1; transform: translate(0, 0); }
+    to { opacity: .9; transform: translate(-90px, 90px); }
 }
 
 @keyframes headerExit08 {
-    from {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translate(90px, 90px);
-    }
+    from { opacity: 1; transform: translate(0, 0); }
+    to { opacity: .9; transform: translate(90px, 90px); }
 }
 
 @keyframes headerExit09 {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    to {
-        opacity: .9;
-        transform: scale(.88);
-    }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: .9; transform: scale(.88); }
 }
 
 @keyframes headerExit10 {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    to {
-        opacity: .9;
-        transform: scale(1.12);
-    }
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: .9; transform: scale(1.12); }
 }
 
 @keyframes headerExit11 {
-    from {
-        opacity: 1;
-        transform: translateX(0) rotate(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateX(-60px) rotate(4deg);
-    }
+    from { opacity: 1; transform: translateX(0) rotate(0); }
+    to { opacity: .9; transform: translateX(-60px) rotate(4deg); }
 }
 
 @keyframes headerExit12 {
-    from {
-        opacity: 1;
-        transform: translateX(0) rotate(0);
-    }
-
-    to {
-        opacity: .9;
-        transform: translateX(60px) rotate(-4deg);
-    }
+    from { opacity: 1; transform: translateX(0) rotate(0); }
+    to { opacity: .9; transform: translateX(60px) rotate(-4deg); }
 }
 
 @keyframes headerExit13 {
@@ -3339,7 +3188,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: perspective(1000px) rotateX(0);
     }
-
     to {
         opacity: .9;
         transform: perspective(1000px) rotateX(8deg);
@@ -3351,7 +3199,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: perspective(1000px) rotateX(0);
     }
-
     to {
         opacity: .9;
         transform: perspective(1000px) rotateX(-8deg);
@@ -3363,7 +3210,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: perspective(1000px) rotateY(0);
     }
-
     to {
         opacity: .9;
         transform: perspective(1000px) rotateY(8deg);
@@ -3375,7 +3221,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: perspective(1000px) rotateY(0);
     }
-
     to {
         opacity: .9;
         transform: perspective(1000px) rotateY(-8deg);
@@ -3387,7 +3232,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: translate(0, 0) scale(1);
     }
-
     to {
         opacity: .9;
         transform: translate(-70px, -70px) scale(.94);
@@ -3399,7 +3243,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: translate(0, 0) scale(1);
     }
-
     to {
         opacity: .9;
         transform: translate(70px, 70px) scale(.94);
@@ -3411,7 +3254,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: translateX(0);
     }
-
     to {
         opacity: .9;
         transform: translateX(-60px);
@@ -3423,7 +3265,6 @@ body.page-exit-20 .site-header {
         opacity: 1;
         transform: scale(1);
     }
-
     to {
         opacity: .9;
         transform: scale(.94);
