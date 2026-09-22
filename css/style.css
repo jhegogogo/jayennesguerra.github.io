@@ -153,6 +153,11 @@ ol {
     background: var(--bg);
 }
 
+.section > .container {
+    position: relative;
+    z-index: 2;
+}
+
 .section-label {
     margin-bottom: 14px;
 
