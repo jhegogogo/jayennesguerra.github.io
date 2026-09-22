@@ -1753,107 +1753,457 @@ body {
 }
 
 /* =========================================================
-   MULTI-PAGE SLIDE TRANSITIONS
+   MULTI-PAGE TRANSITIONS — 20 UNIQUE DIRECTIONS
 ========================================================= */
 
-body.page-enter-next {
-    animation:
-        pageSlideInNext
-        .6s
-        cubic-bezier(.22, 1, .36, 1)
-        both;
-}
-
-body.page-enter-prev {
-    animation:
-        pageSlideInPrev
-        .6s
-        cubic-bezier(.22, 1, .36, 1)
-        both;
-}
-
-body.page-leave-next {
-    animation:
-        pageSlideOutNext
-        .5s
-        cubic-bezier(.76, 0, .24, 1)
-        both;
-}
-
-body.page-leave-prev {
-    animation:
-        pageSlideOutPrev
-        .5s
-        cubic-bezier(.76, 0, .24, 1)
-        both;
+body[class*="page-transition-"] {
+    animation-duration: .55s;
+    animation-timing-function: cubic-bezier(.76, 0, .24, 1);
+    animation-fill-mode: both;
 }
 
 
-/* NEXT PAGE ENTERS FROM RIGHT */
+/* =========================================================
+   01 — SLIDE LEFT
+========================================================= */
 
-@keyframes pageSlideInNext {
+body.page-transition-01 {
+    animation-name: transition01;
+}
+
+@keyframes transition01 {
     from {
-        opacity: .35;
-        transform: translateX(90px) scale(.985);
+        opacity: 0;
+        transform: translateX(100px);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translateX(0);
     }
 }
 
 
-/* PREVIOUS PAGE ENTERS FROM LEFT */
+/* =========================================================
+   02 — SLIDE RIGHT
+========================================================= */
 
-@keyframes pageSlideInPrev {
+body.page-transition-02 {
+    animation-name: transition02;
+}
+
+@keyframes transition02 {
     from {
-        opacity: .35;
-        transform: translateX(-90px) scale(.985);
+        opacity: 0;
+        transform: translateX(-100px);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translateX(0);
     }
 }
 
 
-/* CURRENT PAGE LEAVES TO LEFT */
+/* =========================================================
+   03 — SLIDE UP
+========================================================= */
 
-@keyframes pageSlideOutNext {
+body.page-transition-03 {
+    animation-name: transition03;
+}
+
+@keyframes transition03 {
     from {
-        opacity: 1;
-        transform: translateX(0) scale(1);
+        opacity: 0;
+        transform: translateY(100px);
     }
 
     to {
-        opacity: .35;
-        transform: translateX(-90px) scale(.985);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 
-/* CURRENT PAGE LEAVES TO RIGHT */
+/* =========================================================
+   04 — SLIDE DOWN
+========================================================= */
 
-@keyframes pageSlideOutPrev {
+body.page-transition-04 {
+    animation-name: transition04;
+}
+
+@keyframes transition04 {
     from {
-        opacity: 1;
-        transform: translateX(0) scale(1);
+        opacity: 0;
+        transform: translateY(-100px);
     }
 
     to {
-        opacity: .35;
-        transform: translateX(90px) scale(.985);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+
+/* =========================================================
+   05 — DIAGONAL TOP LEFT
+========================================================= */
+
+body.page-transition-05 {
+    animation-name: transition05;
+}
+
+@keyframes transition05 {
+    from {
+        opacity: 0;
+        transform: translate(-90px, -90px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+/* =========================================================
+   06 — DIAGONAL TOP RIGHT
+========================================================= */
+
+body.page-transition-06 {
+    animation-name: transition06;
+}
+
+@keyframes transition06 {
+    from {
+        opacity: 0;
+        transform: translate(90px, -90px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+/* =========================================================
+   07 — DIAGONAL BOTTOM LEFT
+========================================================= */
+
+body.page-transition-07 {
+    animation-name: transition07;
+}
+
+@keyframes transition07 {
+    from {
+        opacity: 0;
+        transform: translate(-90px, 90px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+/* =========================================================
+   08 — DIAGONAL BOTTOM RIGHT
+========================================================= */
+
+body.page-transition-08 {
+    animation-name: transition08;
+}
+
+@keyframes transition08 {
+    from {
+        opacity: 0;
+        transform: translate(90px, 90px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+/* =========================================================
+   09 — SCALE IN
+========================================================= */
+
+body.page-transition-09 {
+    animation-name: transition09;
+}
+
+@keyframes transition09 {
+    from {
+        opacity: 0;
+        transform: scale(.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   10 — SCALE OUT-IN
+========================================================= */
+
+body.page-transition-10 {
+    animation-name: transition10;
+}
+
+@keyframes transition10 {
+    from {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   11 — ROTATE LEFT
+========================================================= */
+
+body.page-transition-11 {
+    animation-name: transition11;
+    transform-origin: right center;
+}
+
+@keyframes transition11 {
+    from {
+        opacity: 0;
+        transform: translateX(60px) rotate(-4deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+
+/* =========================================================
+   12 — ROTATE RIGHT
+========================================================= */
+
+body.page-transition-12 {
+    animation-name: transition12;
+    transform-origin: left center;
+}
+
+@keyframes transition12 {
+    from {
+        opacity: 0;
+        transform: translateX(-60px) rotate(4deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+
+/* =========================================================
+   13 — FLIP X
+========================================================= */
+
+body.page-transition-13 {
+    animation-name: transition13;
+    perspective: 1000px;
+}
+
+@keyframes transition13 {
+    from {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(-8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0);
+    }
+}
+
+
+/* =========================================================
+   14 — FLIP X REVERSE
+========================================================= */
+
+body.page-transition-14 {
+    animation-name: transition14;
+    perspective: 1000px;
+}
+
+@keyframes transition14 {
+    from {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0);
+    }
+}
+
+
+/* =========================================================
+   15 — FLIP Y
+========================================================= */
+
+body.page-transition-15 {
+    animation-name: transition15;
+    perspective: 1000px;
+}
+
+@keyframes transition15 {
+    from {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+}
+
+
+/* =========================================================
+   16 — FLIP Y REVERSE
+========================================================= */
+
+body.page-transition-16 {
+    animation-name: transition16;
+    perspective: 1000px;
+}
+
+@keyframes transition16 {
+    from {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(8deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+}
+
+
+/* =========================================================
+   17 — DIAGONAL SCALE
+========================================================= */
+
+body.page-transition-17 {
+    animation-name: transition17;
+}
+
+@keyframes transition17 {
+    from {
+        opacity: 0;
+        transform: translate(70px, 70px) scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   18 — DIAGONAL SCALE REVERSE
+========================================================= */
+
+body.page-transition-18 {
+    animation-name: transition18;
+}
+
+@keyframes transition18 {
+    from {
+        opacity: 0;
+        transform: translate(-70px, -70px) scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   19 — BLUR + SLIDE
+========================================================= */
+
+body.page-transition-19 {
+    animation-name: transition19;
+}
+
+@keyframes transition19 {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   20 — BLUR + SCALE
+========================================================= */
+
+body.page-transition-20 {
+    animation-name: transition20;
+}
+
+@keyframes transition20 {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-    body.page-enter-next,
-    body.page-enter-prev,
-    body.page-leave-next,
-    body.page-leave-prev {
-        animation: none;
+
+    body[class*="page-transition-"] {
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
     }
+
 }
