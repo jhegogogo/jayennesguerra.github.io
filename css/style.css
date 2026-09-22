@@ -1026,6 +1026,88 @@ body.light-mode .intro-photo {
     line-height: 1.7;
 }
 
+/* =========================================================
+   PAGE BACKGROUND MOVING MARQUEE
+========================================================= */
+
+.page-background-marquee {
+    position: fixed;
+
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    transform: translateY(-50%);
+
+    overflow: hidden;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 0;
+
+    display: flex;
+    align-items: center;
+
+    opacity: .055;
+}
+
+
+.page-background-track {
+    display: flex;
+
+    align-items: center;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        pageBackgroundMarquee
+        28s
+        linear
+        infinite;
+}
+
+
+.page-background-track span {
+    flex-shrink: 0;
+
+    display: block;
+
+    padding-right: 80px;
+
+    font-size: clamp(
+        5rem,
+        12vw,
+        11rem
+    );
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -.045em;
+
+    color: var(--white);
+
+    user-select: none;
+}
+
+
+@keyframes pageBackgroundMarquee {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
 
 /* =========================================================
    MOBILE
