@@ -1027,11 +1027,12 @@ body.light-mode .intro-photo {
 }
 
 /* =========================================================
-   PAGE BACKGROUND MARQUEE — FINAL LAYERING
+   PAGE BACKGROUND MARQUEE — LAYERING
 ========================================================= */
 
 .page-background-marquee {
     position: fixed;
+
     top: 50%;
     left: 0;
 
@@ -1043,8 +1044,10 @@ body.light-mode .intro-photo {
     overflow: hidden;
 
     pointer-events: none;
+    user-select: none;
 
-    z-index: 0 !important;
+    /* Above section backgrounds */
+    z-index: 1 !important;
 
     display: flex;
     align-items: center;
@@ -1057,21 +1060,55 @@ body.light-mode .intro-photo {
    PAGE CONTENT LAYER
 ========================================================= */
 
-/* Do NOT put the entire main above the marquee */
+/* Main itself must not create a layer */
 main {
     position: relative;
     z-index: auto;
 }
 
 
-/* Footer stays above the marquee */
-footer {
+/* Sections stay below the marquee,
+   but their actual content stays above it */
+
+main > * {
+    position: relative;
+    z-index: auto;
+}
+
+
+/* =========================================================
+   ACTUAL CONTENT ABOVE MARQUEE
+========================================================= */
+
+main .container,
+main .narrow,
+main .hero-container,
+main .hero-grid,
+main .hero-content,
+main .hero-card,
+main .card,
+main [class*="card"],
+main [class*="content"] {
     position: relative;
     z-index: 2;
 }
 
 
-/* Header stays above everything */
+/* =========================================================
+   SECTIONS MUST NOT FORM A LAYER ABOVE MARQUEE
+========================================================= */
+
+main section,
+main > section {
+    position: relative;
+    z-index: auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 .site-header {
     position: relative;
     z-index: 1000;
@@ -1079,37 +1116,12 @@ footer {
 
 
 /* =========================================================
-   CONTENT ABOVE MARQUEE
+   FOOTER
 ========================================================= */
 
-main > * {
+footer {
     position: relative;
-    z-index: 1;
-}
-
-
-/* Containers and actual content */
-main .container,
-main .narrow,
-main .hero-container,
-main .hero-content,
-main .hero-card,
-main .card,
-main [class*="card"],
-main [class*="content"] {
-    position: relative;
-    z-index: 1;
-}
-
-
-/* =========================================================
-   IMPORTANT:
-   DO NOT CREATE A FULL-PAGE STACKING LAYER
-========================================================= */
-
-main section,
-main > section {
-    z-index: auto;
+    z-index: 2;
 }
 
 
@@ -1123,7 +1135,6 @@ main > section {
     pointer-events: none;
     user-select: none;
 }
-
 
 /* =========================================================
    MOBILE
