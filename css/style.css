@@ -1027,7 +1027,7 @@ body.light-mode .intro-photo {
 }
 
 /* =========================================================
-   PAGE BACKGROUND MOVING MARQUEE
+   PAGE BACKGROUND MARQUEE — FINAL LAYERING
 ========================================================= */
 
 .page-background-marquee {
@@ -1044,7 +1044,7 @@ body.light-mode .intro-photo {
 
     pointer-events: none;
 
-    z-index: 0;
+    z-index: 0 !important;
 
     display: flex;
     align-items: center;
@@ -1053,68 +1053,23 @@ body.light-mode .intro-photo {
 }
 
 
-.page-background-track {
-    display: flex;
-    align-items: center;
-
-    width: max-content;
-
-    white-space: nowrap;
-
-    animation:
-        pageBackgroundMarquee
-        28s
-        linear
-        infinite;
-}
-
-
-.page-background-track span {
-    flex-shrink: 0;
-
-    display: block;
-
-    padding-right: 80px;
-
-    font-size: clamp(
-        5rem,
-        12vw,
-        11rem
-    );
-
-    line-height: 1;
-
-    font-weight: 800;
-
-    letter-spacing: -.045em;
-
-    color: var(--white);
-
-    user-select: none;
-}
-
-
-@keyframes pageBackgroundMarquee {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-
-}
-
-
 /* =========================================================
-   MARQUEE LAYERING
+   PAGE CONTENT LAYER
 ========================================================= */
 
-/* Decorative marquee stays behind the actual content */
-.page-background-marquee {
-    z-index: 0;
+/* Do NOT put the entire main above the marquee */
+main {
+    position: relative;
+    z-index: auto;
 }
+
+
+/* Footer stays above the marquee */
+footer {
+    position: relative;
+    z-index: 2;
+}
+
 
 /* Header stays above everything */
 .site-header {
@@ -1122,38 +1077,51 @@ body.light-mode .intro-photo {
     z-index: 1000;
 }
 
-/* Main and footer must NOT create a layer above the marquee */
-main,
-footer {
+
+/* =========================================================
+   CONTENT ABOVE MARQUEE
+========================================================= */
+
+main > * {
     position: relative;
+    z-index: 1;
+}
+
+
+/* Containers and actual content */
+main .container,
+main .narrow,
+main .hero-container,
+main .hero-content,
+main .hero-card,
+main .card,
+main [class*="card"],
+main [class*="content"] {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   DO NOT CREATE A FULL-PAGE STACKING LAYER
+========================================================= */
+
+main section,
+main > section {
     z-index: auto;
 }
 
 
-/* Keep actual content above the marquee */
+/* =========================================================
+   MARQUEE MUST REMAIN NON-INTERACTIVE
+========================================================= */
 
-main > *,
-footer > * {
-    position: relative;
-    z-index: 1;
-}
-
-
-/* Keep cards, text, buttons, and containers interactive */
-
-.container,
-.hero-container,
-.hero-content,
-.hero-card,
-.section,
-.section > *,
-.card,
-.project-card,
-.certification-card,
-.experience-card,
-.leadership-card {
-    position: relative;
-    z-index: 1;
+.page-background-marquee,
+.page-background-track,
+.page-background-track span {
+    pointer-events: none;
+    user-select: none;
 }
 
 
