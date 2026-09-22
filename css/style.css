@@ -976,6 +976,7 @@ body.light-mode .intro-photo {
 .hero-card,
 .profile-card {
     width: 100%;
+   position: relative;
 
     padding: 28px;
 
