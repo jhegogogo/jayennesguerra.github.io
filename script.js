@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    setupPageTransitions();
+
     const sections = [
         {
             file: "sections/experience.html",
