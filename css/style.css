@@ -2207,3 +2207,443 @@ body.page-transition-20 {
     }
 
 }
+
+/* =========================================================
+   DIRECTIONAL PAGE EXIT TRANSITIONS
+========================================================= */
+
+body.page-exit {
+    animation-duration: .35s !important;
+    animation-timing-function: cubic-bezier(.76, 0, .24, 1) !important;
+    animation-fill-mode: both !important;
+}
+
+
+/* =========================================================
+   EXIT 01 — MOVE LEFT
+========================================================= */
+
+body.page-exit-01 {
+    animation-name: exit01 !important;
+}
+
+@keyframes exit01 {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 02 — MOVE RIGHT
+========================================================= */
+
+body.page-exit-02 {
+    animation-name: exit02 !important;
+}
+
+@keyframes exit02 {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 03 — MOVE UP
+========================================================= */
+
+body.page-exit-03 {
+    animation-name: exit03 !important;
+}
+
+@keyframes exit03 {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 04 — MOVE DOWN
+========================================================= */
+
+body.page-exit-04 {
+    animation-name: exit04 !important;
+}
+
+@keyframes exit04 {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 05 — DIAGONAL TOP LEFT
+========================================================= */
+
+body.page-exit-05 {
+    animation-name: exit05 !important;
+}
+
+@keyframes exit05 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-90px, -90px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 06 — DIAGONAL TOP RIGHT
+========================================================= */
+
+body.page-exit-06 {
+    animation-name: exit06 !important;
+}
+
+@keyframes exit06 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(90px, -90px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 07 — DIAGONAL BOTTOM LEFT
+========================================================= */
+
+body.page-exit-07 {
+    animation-name: exit07 !important;
+}
+
+@keyframes exit07 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-90px, 90px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 08 — DIAGONAL BOTTOM RIGHT
+========================================================= */
+
+body.page-exit-08 {
+    animation-name: exit08 !important;
+}
+
+@keyframes exit08 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(90px, 90px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 09 — SCALE DOWN
+========================================================= */
+
+body.page-exit-09 {
+    animation-name: exit09 !important;
+}
+
+@keyframes exit09 {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(.88);
+    }
+}
+
+
+/* =========================================================
+   EXIT 10 — SCALE UP
+========================================================= */
+
+body.page-exit-10 {
+    animation-name: exit10 !important;
+}
+
+@keyframes exit10 {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   EXIT 11 — ROTATE LEFT
+========================================================= */
+
+body.page-exit-11 {
+    animation-name: exit11 !important;
+    transform-origin: right center;
+}
+
+@keyframes exit11 {
+    from {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-60px) rotate(4deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 12 — ROTATE RIGHT
+========================================================= */
+
+body.page-exit-12 {
+    animation-name: exit12 !important;
+    transform-origin: left center;
+}
+
+@keyframes exit12 {
+    from {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(60px) rotate(-4deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 13 — FLIP X
+========================================================= */
+
+body.page-exit-13 {
+    animation-name: exit13 !important;
+    perspective: 1000px;
+}
+
+@keyframes exit13 {
+    from {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(8deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 14 — FLIP X REVERSE
+========================================================= */
+
+body.page-exit-14 {
+    animation-name: exit14 !important;
+    perspective: 1000px;
+}
+
+@keyframes exit14 {
+    from {
+        opacity: 1;
+        transform: perspective(1000px) rotateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: perspective(1000px) rotateX(-8deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 15 — FLIP Y
+========================================================= */
+
+body.page-exit-15 {
+    animation-name: exit15 !important;
+    perspective: 1000px;
+}
+
+@keyframes exit15 {
+    from {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(8deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 16 — FLIP Y REVERSE
+========================================================= */
+
+body.page-exit-16 {
+    animation-name: exit16 !important;
+    perspective: 1000px;
+}
+
+@keyframes exit16 {
+    from {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-8deg);
+    }
+}
+
+
+/* =========================================================
+   EXIT 17 — DIAGONAL SCALE
+========================================================= */
+
+body.page-exit-17 {
+    animation-name: exit17 !important;
+}
+
+@keyframes exit17 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-70px, -70px) scale(.94);
+    }
+}
+
+
+/* =========================================================
+   EXIT 18 — DIAGONAL SCALE REVERSE
+========================================================= */
+
+body.page-exit-18 {
+    animation-name: exit18 !important;
+}
+
+@keyframes exit18 {
+    from {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(70px, 70px) scale(.94);
+    }
+}
+
+
+/* =========================================================
+   EXIT 19 — BLUR + SLIDE
+========================================================= */
+
+body.page-exit-19 {
+    animation-name: exit19 !important;
+}
+
+@keyframes exit19 {
+    from {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        filter: blur(8px);
+        transform: translateX(-60px);
+    }
+}
+
+
+/* =========================================================
+   EXIT 20 — BLUR + SCALE
+========================================================= */
+
+body.page-exit-20 {
+    animation-name: exit20 !important;
+}
+
+@keyframes exit20 {
+    from {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(.94);
+    }
+}
