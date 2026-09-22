@@ -1046,7 +1046,7 @@ body.light-mode .intro-photo {
     pointer-events: none;
     user-select: none;
 
-    z-index: 0;
+    z-index: 1;
 
     display: flex;
     align-items: center;
