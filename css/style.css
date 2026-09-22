@@ -158,6 +158,11 @@ ol {
     z-index: 2;
 }
 
+.page-content {
+    position: relative;
+    z-index: 2;
+}
+
 .section-label {
     margin-bottom: 14px;
 
