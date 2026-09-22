@@ -1108,12 +1108,50 @@ body.light-mode .intro-photo {
 
 
 /* =========================================================
-   KEEP PAGE CONTENT ABOVE THE MARQUEE
+   MARQUEE LAYERING
 ========================================================= */
 
-.site-header,
+/* Decorative marquee stays behind the actual content */
+.page-background-marquee {
+    z-index: 0;
+}
+
+/* Header stays above everything */
+.site-header {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Main and footer must NOT create a layer above the marquee */
 main,
 footer {
+    position: relative;
+    z-index: auto;
+}
+
+
+/* Keep actual content above the marquee */
+
+main > *,
+footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Keep cards, text, buttons, and containers interactive */
+
+.container,
+.hero-container,
+.hero-content,
+.hero-card,
+.section,
+.section > *,
+.card,
+.project-card,
+.certification-card,
+.experience-card,
+.leadership-card {
     position: relative;
     z-index: 1;
 }
