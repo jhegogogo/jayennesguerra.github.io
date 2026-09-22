@@ -1026,6 +1026,135 @@ body.light-mode .intro-photo {
     line-height: 1.7;
 }
 
+/* =========================================================
+   PAGE BACKGROUND MOVING MARQUEE
+========================================================= */
+
+.page-background-marquee {
+    position: fixed;
+    top: 50%;
+    left: 0;
+
+    width: 100%;
+    height: 180px;
+
+    transform: translateY(-50%);
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    display: flex;
+    align-items: center;
+
+    opacity: .055;
+}
+
+
+.page-background-track {
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        pageBackgroundMarquee
+        28s
+        linear
+        infinite;
+}
+
+
+.page-background-track span {
+    flex-shrink: 0;
+
+    display: block;
+
+    padding-right: 80px;
+
+    font-size: clamp(
+        5rem,
+        12vw,
+        11rem
+    );
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -.045em;
+
+    color: var(--white);
+
+    user-select: none;
+}
+
+
+@keyframes pageBackgroundMarquee {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   KEEP PAGE CONTENT ABOVE THE MARQUEE
+========================================================= */
+
+.site-header,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .page-background-marquee {
+        height: 140px;
+    }
+
+
+    .page-background-track span {
+        font-size: clamp(
+            4rem,
+            18vw,
+            7rem
+        );
+
+        padding-right: 55px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .page-background-track {
+        animation: none;
+        transform: translateX(0);
+    }
+
+}
 
 /* =========================================================
    RESUME MODAL
