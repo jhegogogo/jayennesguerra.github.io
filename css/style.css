@@ -1870,10 +1870,14 @@ body {
 }
 
 /* =========================================================
-   MULTI-PAGE TRANSITIONS — 20 UNIQUE DIRECTIONS
+   ENTRANCE TRANSITION BASE
 ========================================================= */
 
 .page-content[class*="page-transition-"] {
+    animation: none !important;
+}
+
+.page-content[class*="page-transition-"] .page-transition-layer {
     animation-duration: .55s;
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
@@ -1884,7 +1888,7 @@ body {
    01 — SLIDE LEFT
 ========================================================= */
 
-.page-content.page-transition-01 {
+.page-content.page-transition-01 .page-transition-layer {
     animation-name: transition01;
 }
 
@@ -1905,7 +1909,7 @@ body {
    02 — SLIDE RIGHT
 ========================================================= */
 
-.page-content.page-transition-02 {
+.page-content.page-transition-02 .page-transition-layer {
     animation-name: transition02;
 }
 
@@ -1926,7 +1930,7 @@ body {
    03 — SLIDE UP
 ========================================================= */
 
-.page-content.page-transition-03 {
+.page-content.page-transition-03 .page-transition-layer {
     animation-name: transition03;
 }
 
@@ -1947,7 +1951,7 @@ body {
    04 — SLIDE DOWN
 ========================================================= */
 
-.page-content.page-transition-04 {
+.page-content.page-transition-04 .page-transition-layer {
     animation-name: transition04;
 }
 
@@ -1968,7 +1972,7 @@ body {
    05 — DIAGONAL TOP LEFT
 ========================================================= */
 
-.page-content.page-transition-05 {
+.page-content.page-transition-05 .page-transition-layer {
     animation-name: transition05;
 }
 
@@ -1989,7 +1993,7 @@ body {
    06 — DIAGONAL TOP RIGHT
 ========================================================= */
 
-.page-content.page-transition-06 {
+.page-content.page-transition-06 .page-transition-layer {
     animation-name: transition06;
 }
 
@@ -2010,7 +2014,7 @@ body {
    07 — DIAGONAL BOTTOM LEFT
 ========================================================= */
 
-.page-content.page-transition-07 {
+.page-content.page-transition-07 .page-transition-layer {
     animation-name: transition07;
 }
 
@@ -2031,7 +2035,7 @@ body {
    08 — DIAGONAL BOTTOM RIGHT
 ========================================================= */
 
-.page-content.page-transition-08 {
+.page-content.page-transition-08 .page-transition-layer {
     animation-name: transition08;
 }
 
@@ -2052,7 +2056,7 @@ body {
    09 — SCALE IN
 ========================================================= */
 
-.page-content.page-transition-09 {
+.page-content.page-transition-09 .page-transition-layer {
     animation-name: transition09;
 }
 
@@ -2073,7 +2077,7 @@ body {
    10 — SCALE OUT-IN
 ========================================================= */
 
-.page-content.page-transition-10 {
+.page-content.page-transition-10 .page-transition-layer {
     animation-name: transition10;
 }
 
@@ -2094,7 +2098,7 @@ body {
    11 — ROTATE LEFT
 ========================================================= */
 
-.page-content.page-transition-11 {
+.page-content.page-transition-11 .page-transition-layer {
     animation-name: transition11;
     transform-origin: right center;
 }
@@ -2116,7 +2120,7 @@ body {
    12 — ROTATE RIGHT
 ========================================================= */
 
-.page-content.page-transition-12 {
+.page-content.page-transition-12 .page-transition-layer {
     animation-name: transition12;
     transform-origin: left center;
 }
@@ -2138,7 +2142,7 @@ body {
    13 — FLIP X
 ========================================================= */
 
-.page-content.page-transition-13 {
+.page-content.page-transition-13 .page-transition-layer {
     animation-name: transition13;
     perspective: 1000px;
 }
@@ -2160,7 +2164,7 @@ body {
    14 — FLIP X REVERSE
 ========================================================= */
 
-.page-content.page-transition-14 {
+.page-content.page-transition-14 .page-transition-layer {
     animation-name: transition14;
     perspective: 1000px;
 }
@@ -2182,7 +2186,7 @@ body {
    15 — FLIP Y
 ========================================================= */
 
-.page-content.page-transition-15 {
+.page-content.page-transition-15 .page-transition-layer {
     animation-name: transition15;
     perspective: 1000px;
 }
@@ -2204,7 +2208,7 @@ body {
    16 — FLIP Y REVERSE
 ========================================================= */
 
-.page-content.page-transition-16 {
+.page-content.page-transition-16 .page-transition-layer {
     animation-name: transition16;
     perspective: 1000px;
 }
@@ -2226,7 +2230,7 @@ body {
    17 — DIAGONAL SCALE
 ========================================================= */
 
-.page-content.page-transition-17 {
+.page-content.page-transition-17 .page-transition-layer {
     animation-name: transition17;
 }
 
@@ -2247,7 +2251,7 @@ body {
    18 — DIAGONAL SCALE REVERSE
 ========================================================= */
 
-.page-content.page-transition-18 {
+.page-content.page-transition-18 .page-transition-layer {
     animation-name: transition18;
 }
 
@@ -2268,7 +2272,7 @@ body {
    19 — BLUR + SLIDE
 ========================================================= */
 
-.page-content.page-transition-19 {
+.page-content.page-transition-19 .page-transition-layer {
     animation-name: transition19;
 }
 
@@ -2291,7 +2295,7 @@ body {
    20 — BLUR + SCALE
 ========================================================= */
 
-.page-content.page-transition-20 {
+.page-content.page-transition-20 .page-transition-layer {
     animation-name: transition20;
 }
 
@@ -2317,6 +2321,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
 
     .page-content[class*="page-transition-"] {
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+
+    .page-content[class*="page-transition-"] .page-transition-layer {
         animation: none !important;
         transform: none !important;
         filter: none !important;
