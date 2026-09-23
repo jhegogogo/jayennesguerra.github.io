@@ -1882,6 +1882,7 @@ body {
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
    opacity: 1 !important;
+   will-change: auto;
 }
 
 
