@@ -27,7 +27,7 @@
 .skill-card {
     position: relative;
     padding: 26px;
-    background: var(--card);
+    background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
