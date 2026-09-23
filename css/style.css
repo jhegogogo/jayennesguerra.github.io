@@ -1872,6 +1872,7 @@ body {
 /* =========================================================
    ENTRANCE TRANSITION BASE
 ========================================================= */
+
 .page-content[class*="page-transition-"] {
     animation: none !important;
 }
@@ -1882,10 +1883,7 @@ body {
     animation-fill-mode: both;
     opacity: 1 !important;
     will-change: auto;
-    position: relative;
-    z-index: 2;
 }
-
 
 /* =========================================================
    01 — SLIDE LEFT
@@ -1898,12 +1896,12 @@ body {
 @keyframes transition01 {
     from {
         opacity: 1;
-        transform: none;
+        transform: translateX(100px);
     }
 
     to {
         opacity: 1;
-        transform: none;
+        transform: translateX(0);
     }
 }
 
@@ -1979,10 +1977,10 @@ body {
     animation-name: transition05;
 }
 
-@keyframes transition05 {
+@keyframes transition06 {
     from {
         opacity: 1;
-        transform: translate(-90px, -90px);
+        transform: translate(90px, -90px);
     }
 
     to {
