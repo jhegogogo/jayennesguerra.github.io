@@ -1682,14 +1682,7 @@ button:focus-visible {
     .section-title {
         font-size: 2rem;
     }
-
-    .contact-links {
-        flex-direction: column;
-
-        gap: 10px;
-    }
 }
-
 
 /* =========================================================
    REDUCED MOTION
