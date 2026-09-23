@@ -1877,7 +1877,6 @@ body {
     animation-duration: .55s;
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
-    isolation: isolate;
 }
 
 
