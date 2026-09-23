@@ -1,0 +1,171 @@
+/* =========================================================
+   TEXT REVEAL ANIMATIONS
+========================================================= */
+
+/* Base state */
+
+.text-reveal,
+.text-reveal-up,
+.text-reveal-mask,
+.text-reveal-word {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   FADE + SLIDE UP
+========================================================= */
+
+.text-reveal-up {
+    transform: translateY(24px);
+    animation:
+        textRevealUp .8s cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+@keyframes textRevealUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   LETTER REVEAL
+========================================================= */
+
+.text-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    animation:
+        letterReveal .55s cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+@keyframes letterReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   WORD REVEAL
+========================================================= */
+
+.text-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(12px);
+    animation:
+        wordReveal .6s cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+@keyframes wordReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   MASK REVEAL
+========================================================= */
+
+.text-reveal-mask {
+    display: inline-block;
+    clip-path: inset(0 100% 0 0);
+    animation:
+        maskReveal 1s cubic-bezier(.76, 0, .24, 1)
+        forwards;
+}
+
+@keyframes maskReveal {
+
+    from {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+
+}
+
+
+/* =========================================================
+   STAGGER SUPPORT
+========================================================= */
+
+.text-delay-1 {
+    animation-delay: .10s;
+}
+
+.text-delay-2 {
+    animation-delay: .20s;
+}
+
+.text-delay-3 {
+    animation-delay: .30s;
+}
+
+.text-delay-4 {
+    animation-delay: .40s;
+}
+
+.text-delay-5 {
+    animation-delay: .50s;
+}
+
+.text-delay-6 {
+    animation-delay: .60s;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .text-reveal,
+    .text-reveal-up,
+    .text-reveal-mask,
+    .text-reveal-word,
+    .text-letter,
+    .text-word {
+        opacity: 1;
+        transform: none;
+        clip-path: none;
+        animation: none !important;
+    }
+
+}
