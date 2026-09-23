@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             file: "sections/leadership.html",
             container: "leadership-container"
+        },
+        {
+            file: "sections/contact.html",
+            container: "contact-container"
         }
     ];
 
@@ -65,11 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             );
 
-setupProjectTabs();
-setupCertificationCarousels();
-setupRylimCarousel();
-setupLeadershipSlideshow();
-setupMediaProtection();
+
+            setupProjectTabs();
+            setupCertificationCarousels();
+            setupRylimCarousel();
+            setupLeadershipSlideshow();
+            setupLeadershipCarousel();
+            setupMediaProtection();
 
 
         } catch (error) {
@@ -83,292 +89,7 @@ setupMediaProtection();
 
     }
 
-/* =========================================
-   TRANSITION
-========================================= */
 
-function setupPageTransitions() {
-
-    const pageOrder = [
-        "index.html",
-        "experience_page.html",
-        "project_page.html",
-        "certifications_page.html",
-        "contact.html"
-    ];
-
-
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop() || "index.html";
-
-const pageContent =
-    document.querySelector(".page-content");
-
-const transitionLayer =
-    document.querySelector(".page-transition-layer");
-
-
-    /* =========================================
-       PAGE ENTER
-    ========================================= */
-
-    const savedTransition =
-        sessionStorage.getItem("pageTransition");
-
-
-if (savedTransition && transitionLayer) {
-
-    pageContent.classList.add(
-        `page-transition-${savedTransition}`
-    );
-
-    sessionStorage.removeItem(
-        "pageTransition"
-    );
-}
-
-    /* =========================================
-       PAGE LINK NAVIGATION
-    ========================================= */
-
-    let transitioning = false;
-
-
-    document.addEventListener(
-        "click",
-        (event) => {
-
-            const link =
-                event.target.closest("a[href]");
-
-
-            if (!link) {
-                return;
-            }
-
-
-            const href =
-                link.getAttribute("href");
-
-
-            if (!href) {
-                return;
-            }
-
-
-            if (
-                href === "#" ||
-                href.startsWith("mailto:") ||
-                href.startsWith("tel:") ||
-                link.target === "_blank" ||
-                event.ctrlKey ||
-                event.metaKey ||
-                event.shiftKey ||
-                event.altKey
-            ) {
-                return;
-            }
-
-
-            const destination =
-                new URL(
-                    link.href,
-                    window.location.href
-                );
-
-
-            if (
-                destination.origin !==
-                window.location.origin
-            ) {
-                return;
-            }
-
-
-            if (
-                !destination.pathname
-                    .endsWith(".html")
-            ) {
-                return;
-            }
-
-
-            const destinationPage =
-                destination.pathname
-                    .split("/")
-                    .pop();
-
-
-            if (
-                destinationPage ===
-                currentPage
-            ) {
-                return;
-            }
-
-
-            if (transitioning) {
-                return;
-            }
-
-
-            event.preventDefault();
-
-            transitioning = true;
-
-
-            const currentIndex =
-                pageOrder.indexOf(
-                    currentPage
-                );
-
-
-            const destinationIndex =
-                pageOrder.indexOf(
-                    destinationPage
-                );
-
-
-            if (
-                currentIndex === -1 ||
-                destinationIndex === -1
-            ) {
-
-                window.location.href =
-                    destination.href;
-
-                return;
-
-            }
-
-
-            /* =================================
-               SELECT TRANSITION
-            ================================= */
-
-            const transitionNumber =
-                (
-                    currentIndex * 5 +
-                    destinationIndex +
-                    1
-                ) % 20 || 20;
-
-
-            const transitionClass =
-                String(
-                    transitionNumber
-                ).padStart(2, "0");
-
-
-            /* =================================
-               SAVE ENTER TRANSITION
-            ================================= */
-
-            sessionStorage.setItem(
-                "pageTransition",
-                transitionClass
-            );
-
-
-            /* =================================
-               EXIT CURRENT PAGE
-            ================================= */
-
-            document.body.classList.add(
-                `page-exit-${transitionClass}`
-            );
-
-
-            /* =================================
-               NAVIGATE
-            ================================= */
-
-            setTimeout(() => {
-
-                window.location.href =
-                    destination.href;
-
-            }, 350);
-
-        }
-    );
-
-
-    /* =========================================
-       BROWSER BACK / FORWARD
-    ========================================= */
-
-    window.addEventListener(
-        "pageshow",
-        () => {
-
-            sessionStorage.removeItem(
-                "pageTransition"
-            );
-
-        }
-    );
-
-
-   window.addEventListener(
-    "popstate",
-    () => {
-
-        const currentIndex =
-            pageOrder.indexOf(
-                currentPage
-            );
-
-
-        const currentUrl =
-            window.location.pathname
-                .split("/")
-                .pop() || "index.html";
-
-
-        const destinationIndex =
-            pageOrder.indexOf(
-                currentUrl
-            );
-
-
-        if (
-            currentIndex === -1 ||
-            destinationIndex === -1
-        ) {
-            return;
-        }
-
-
-        const transitionNumber =
-            (
-                currentIndex * 5 +
-                destinationIndex +
-                1
-            ) % 20 || 20;
-
-
-        const transitionClass =
-            String(
-                transitionNumber
-            ).padStart(2, "0");
-
-
-        if (pageContent) {
-
-            pageContent.classList.add(
-                `page-transition-${transitionClass}`
-            );
-
-        }
-
-    }
-);
-
-}
-    
     /* =========================================
        RYLIM PROJECT TABS
     ========================================= */
@@ -379,6 +100,7 @@ if (savedTransition && transitionLayer) {
             document.querySelectorAll(
                 ".project-card"
             );
+
 
         projectCards.forEach((card) => {
 
@@ -391,6 +113,7 @@ if (savedTransition && transitionLayer) {
                 card.querySelectorAll(
                     ".project-tab-panel"
                 );
+
 
             tabs.forEach((tab) => {
 
@@ -440,6 +163,7 @@ if (savedTransition && transitionLayer) {
                                 `.project-tab-panel[data-panel="${targetTab}"]`
                             );
 
+
                         if (targetPanel) {
 
                             targetPanel.classList.add(
@@ -457,440 +181,482 @@ if (savedTransition && transitionLayer) {
 
     }
 
-/* =========================================
-   CERTIFICATION CAROUSELS
-========================================= */
 
-function setupCertificationCarousels() {
+    /* =========================================
+       CERTIFICATION CAROUSELS
+    ========================================= */
 
-    const carousels =
-        document.querySelectorAll(
-            ".certification-carousel"
-        );
+    function setupCertificationCarousels() {
 
-
-    carousels.forEach((carousel) => {
-
-        const cards =
-            Array.from(
-                carousel.querySelectorAll(
-                    ".certification-card"
-                )
+        const carousels =
+            document.querySelectorAll(
+                ".certification-carousel"
             );
 
-        const previousButton =
-            carousel.querySelector(
-                ".certification-prev"
-            );
 
-        const nextButton =
-            carousel.querySelector(
-                ".certification-next"
-            );
+        carousels.forEach((carousel) => {
 
-        const category =
-            carousel.closest(
-                ".certification-category"
-            );
-
-        const dots =
-            category
-                ? Array.from(
-                    category.querySelectorAll(
-                        ".certification-dot"
+            const cards =
+                Array.from(
+                    carousel.querySelectorAll(
+                        ".certification-card"
                     )
-                )
-                : [];
+                );
 
 
-        if (
-            cards.length === 0 ||
-            !previousButton ||
-            !nextButton
-        ) {
-            return;
-        }
+            const previousButton =
+                carousel.querySelector(
+                    ".certification-prev"
+                );
 
 
-        /* =====================================
-           STARTING POSITION
-        ===================================== */
-
-        const startIndex =
-            parseInt(
-                carousel.dataset.startIndex,
-                10
-            );
-
-        let currentIndex =
-            Number.isNaN(startIndex)
-                ? 0
-                : startIndex;
+            const nextButton =
+                carousel.querySelector(
+                    ".certification-next"
+                );
 
 
-        if (
-            currentIndex < 0 ||
-            currentIndex >= cards.length
-        ) {
-            currentIndex = 0;
-        }
+            const category =
+                carousel.closest(
+                    ".certification-category"
+                );
 
 
-        /* =====================================
-           GET CARD INDEX
-        ===================================== */
-
-        function getIndex(offset) {
-
-            return (
-                currentIndex +
-                offset +
-                cards.length
-            ) % cards.length;
-
-        }
+            const dots =
+                category
+                    ? Array.from(
+                        category.querySelectorAll(
+                            ".certification-dot"
+                        )
+                    )
+                    : [];
 
 
-        /* =====================================
-           UPDATE CAROUSEL
-        ===================================== */
-
-        function updateCarousel() {
-
-            const previousIndex =
-                getIndex(-1);
-
-            const centerIndex =
-                getIndex(0);
-
-            const nextIndex =
-                getIndex(1);
+            if (
+                cards.length === 0 ||
+                !previousButton ||
+                !nextButton
+            ) {
+                return;
+            }
 
 
-            cards.forEach(
-                (card, index) => {
+            /* =====================================
+               STARTING POSITION
+            ===================================== */
 
-                    card.classList.remove(
-                        "certification-card-left",
-                        "certification-card-center",
-                        "certification-card-right"
-                    );
+            const startIndex =
+                parseInt(
+                    carousel.dataset.startIndex,
+                    10
+                );
 
 
-                    if (
-                        index === previousIndex
-                    ) {
+            let currentIndex =
+                Number.isNaN(startIndex)
+                    ? 0
+                    : startIndex;
 
-                        card.classList.add(
-                            "certification-card-left"
-                        );
 
-                    } else if (
-                        index === centerIndex
-                    ) {
+            if (
+                currentIndex < 0 ||
+                currentIndex >= cards.length
+            ) {
 
-                        card.classList.add(
-                            "certification-card-center"
-                        );
+                currentIndex = 0;
 
-                    } else if (
-                        index === nextIndex
-                    ) {
+            }
 
-                        card.classList.add(
+
+            /* =====================================
+               GET CARD INDEX
+            ===================================== */
+
+            function getIndex(offset) {
+
+                return (
+                    currentIndex +
+                    offset +
+                    cards.length
+                ) % cards.length;
+
+            }
+
+
+            /* =====================================
+               UPDATE CAROUSEL
+            ===================================== */
+
+            function updateCarousel() {
+
+                const previousIndex =
+                    getIndex(-1);
+
+
+                const centerIndex =
+                    getIndex(0);
+
+
+                const nextIndex =
+                    getIndex(1);
+
+
+                cards.forEach(
+                    (card, index) => {
+
+                        card.classList.remove(
+                            "certification-card-left",
+                            "certification-card-center",
                             "certification-card-right"
                         );
 
-                    }
-
-                }
-            );
-
-
-            updateDots();
-
-        }
-
-
-        /* =====================================
-           UPDATE DOTS
-        ===================================== */
-
-        function updateDots() {
-
-            dots.forEach(
-                (dot, index) => {
-
-                    dot.classList.toggle(
-                        "active",
-                        index === currentIndex
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =====================================
-           PREVIOUS CERTIFICATION
-        ===================================== */
-
-        function showPrevious() {
-
-            currentIndex =
-                (
-                    currentIndex -
-                    1 +
-                    cards.length
-                ) %
-                cards.length;
-
-            updateCarousel();
-
-        }
-
-        function showNext() {
-
-            currentIndex =
-                (
-                    currentIndex +
-                    1
-                ) %
-                cards.length;
-
-            updateCarousel();
-
-        }
-
-        previousButton.addEventListener(
-            "click",
-            showPrevious
-        );
-
-
-        nextButton.addEventListener(
-            "click",
-            showNext
-        );
-
-        dots.forEach(
-            (dot, dotIndex) => {
-
-                dot.addEventListener(
-                    "click",
-                    () => {
 
                         if (
-                            dotIndex >= cards.length
+                            index === previousIndex
                         ) {
-                            return;
+
+                            card.classList.add(
+                                "certification-card-left"
+                            );
+
+                        } else if (
+                            index === centerIndex
+                        ) {
+
+                            card.classList.add(
+                                "certification-card-center"
+                            );
+
+                        } else if (
+                            index === nextIndex
+                        ) {
+
+                            card.classList.add(
+                                "certification-card-right"
+                            );
+
                         }
 
+                    }
+                );
 
-                        currentIndex =
-                            dotIndex;
 
-                        updateCarousel();
+                updateDots();
+
+            }
+
+
+            /* =====================================
+               UPDATE DOTS
+            ===================================== */
+
+            function updateDots() {
+
+                dots.forEach(
+                    (dot, index) => {
+
+                        dot.classList.toggle(
+                            "active",
+                            index === currentIndex
+                        );
 
                     }
                 );
 
             }
-        );
 
 
-        /* =====================================
-           DRAG / SWIPE SUPPORT
-        ===================================== */
+            /* =====================================
+               PREVIOUS CERTIFICATION
+            ===================================== */
 
-        const track =
-            carousel.querySelector(
-                ".certification-carousel-track"
+            function showPrevious() {
+
+                currentIndex =
+                    (
+                        currentIndex -
+                        1 +
+                        cards.length
+                    ) %
+                    cards.length;
+
+
+                updateCarousel();
+
+            }
+
+
+            /* =====================================
+               NEXT CERTIFICATION
+            ===================================== */
+
+            function showNext() {
+
+                currentIndex =
+                    (
+                        currentIndex +
+                        1
+                    ) %
+                    cards.length;
+
+
+                updateCarousel();
+
+            }
+
+
+            previousButton.addEventListener(
+                "click",
+                showPrevious
             );
 
 
-        if (track) {
-
-            let startX = 0;
-            let startY = 0;
-            let isPointerDown = false;
-            let didDrag = false;
-
-            const swipeThreshold = 50;
-
-            track.addEventListener(
-                "pointerdown",
-                (event) => {
-
-                    if (
-                        event.pointerType === "mouse" &&
-                        event.button !== 0
-                    ) {
-                        return;
-                    }
-
-                    if (
-                        event.target.closest(
-                            "a, button"
-                        )
-                    ) {
-                        return;
-                    }
+            nextButton.addEventListener(
+                "click",
+                showNext
+            );
 
 
-                    startX =
-                        event.clientX;
+            dots.forEach(
+                (dot, dotIndex) => {
 
-                    startY =
-                        event.clientY;
+                    dot.addEventListener(
+                        "click",
+                        () => {
 
-                    isPointerDown = true;
-                    didDrag = false;
+                            if (
+                                dotIndex >= cards.length
+                            ) {
+                                return;
+                            }
 
 
-                    track.classList.add(
-                        "is-dragging"
+                            currentIndex =
+                                dotIndex;
+
+
+                            updateCarousel();
+
+                        }
                     );
 
-
-                    if (
-                        track.setPointerCapture
-                    ) {
-
-                        track.setPointerCapture(
-                            event.pointerId
-                        );
-
-                    }
                 }
             );
 
-            track.addEventListener(
-                "pointermove",
-                (event) => {
 
-                    if (!isPointerDown) {
-                        return;
-                    }
+            /* =====================================
+               DRAG / SWIPE SUPPORT
+            ===================================== */
 
-                    const deltaX =
-                        event.clientX -
-                        startX;
+            const track =
+                carousel.querySelector(
+                    ".certification-carousel-track"
+                );
 
-                    const deltaY =
-                        event.clientY -
-                        startY;
 
-                    if (
-                        Math.abs(deltaX) >
-                        Math.abs(deltaY)
-                    ) {
+            if (track) {
+
+                let startX = 0;
+                let startY = 0;
+                let isPointerDown = false;
+                let didDrag = false;
+
+                const swipeThreshold = 50;
+
+
+                track.addEventListener(
+                    "pointerdown",
+                    (event) => {
 
                         if (
-                            Math.abs(deltaX) >
-                            10
+                            event.pointerType === "mouse" &&
+                            event.button !== 0
+                        ) {
+                            return;
+                        }
+
+
+                        if (
+                            event.target.closest(
+                                "a, button"
+                            )
+                        ) {
+                            return;
+                        }
+
+
+                        startX =
+                            event.clientX;
+
+
+                        startY =
+                            event.clientY;
+
+
+                        isPointerDown = true;
+                        didDrag = false;
+
+
+                        track.classList.add(
+                            "is-dragging"
+                        );
+
+
+                        if (
+                            track.setPointerCapture
                         ) {
 
-                            didDrag = true;
+                            track.setPointerCapture(
+                                event.pointerId
+                            );
 
                         }
 
                     }
-
-                }
-            );
-
-            track.addEventListener(
-                "pointerup",
-                (event) => {
-
-                    if (!isPointerDown) {
-                        return;
-                    }
+                );
 
 
-                    const deltaX =
-                        event.clientX -
-                        startX;
+                track.addEventListener(
+                    "pointermove",
+                    (event) => {
 
-                    const deltaY =
-                        event.clientY -
-                        startY;
-
-
-                    isPointerDown = false;
+                        if (!isPointerDown) {
+                            return;
+                        }
 
 
-                    track.classList.remove(
-                        "is-dragging"
-                    );
+                        const deltaX =
+                            event.clientX -
+                            startX;
 
-                    if (
-                        Math.abs(deltaX) <=
-                        Math.abs(deltaY)
-                    ) {
 
-                        return;
+                        const deltaY =
+                            event.clientY -
+                            startY;
 
-                    }
 
-                    if (
-                        Math.abs(deltaX) <
-                        swipeThreshold
-                    ) {
-                        return;
-                    }
+                        if (
+                            Math.abs(deltaX) >
+                            Math.abs(deltaY)
+                        ) {
 
-                    if (deltaX < 0) {
+                            if (
+                                Math.abs(deltaX) >
+                                10
+                            ) {
 
-                        showNext();
+                                didDrag = true;
 
-                    } else {
+                            }
 
-                        showPrevious();
+                        }
 
                     }
+                );
 
-                }
-            );
 
-            track.addEventListener(
-                "pointercancel",
-                () => {
+                track.addEventListener(
+                    "pointerup",
+                    (event) => {
 
-                    isPointerDown = false;
+                        if (!isPointerDown) {
+                            return;
+                        }
 
-                    track.classList.remove(
-                        "is-dragging"
-                    );
 
-                }
-            );
+                        const deltaX =
+                            event.clientX -
+                            startX;
 
-            track.addEventListener(
-                "click",
-                (event) => {
 
-                    if (didDrag) {
+                        const deltaY =
+                            event.clientY -
+                            startY;
 
-                        event.preventDefault();
-                        event.stopPropagation();
 
-                        didDrag = false;
+                        isPointerDown = false;
+
+
+                        track.classList.remove(
+                            "is-dragging"
+                        );
+
+
+                        if (
+                            Math.abs(deltaX) <=
+                            Math.abs(deltaY)
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            Math.abs(deltaX) <
+                            swipeThreshold
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (deltaX < 0) {
+
+                            showNext();
+
+                        } else {
+
+                            showPrevious();
+
+                        }
 
                     }
+                );
 
-                },
-                true
-            );
 
-        }
+                track.addEventListener(
+                    "pointercancel",
+                    () => {
 
-        updateCarousel();
-    });
-}
-    
+                        isPointerDown = false;
+
+                        track.classList.remove(
+                            "is-dragging"
+                        );
+
+                    }
+                );
+
+
+                track.addEventListener(
+                    "click",
+                    (event) => {
+
+                        if (didDrag) {
+
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            didDrag = false;
+
+                        }
+
+                    },
+                    true
+                );
+
+            }
+
+
+            updateCarousel();
+
+        });
+
+    }
+
+
     /* =========================================
        RYLIM MEDIA CAROUSEL
     ========================================= */
@@ -902,6 +668,7 @@ function setupCertificationCarousels() {
                 ".rylim-carousel"
             );
 
+
         carousels.forEach((carousel) => {
 
             const slides =
@@ -909,20 +676,24 @@ function setupCertificationCarousels() {
                     ".rylim-slide"
                 );
 
+
             const previousButton =
                 carousel.querySelector(
                     ".rylim-prev"
                 );
+
 
             const nextButton =
                 carousel.querySelector(
                     ".rylim-next"
                 );
 
+
             const indicators =
                 carousel.parentElement.querySelectorAll(
                     ".rylim-dot"
                 );
+
 
             if (
                 slides.length === 0 ||
@@ -951,21 +722,18 @@ function setupCertificationCarousels() {
                         const isActive =
                             slideIndex === currentIndex;
 
+
                         slide.classList.toggle(
                             "active",
                             isActive
                         );
 
 
-                        /*
-                         * Pause any video when its
-                         * slide is no longer active.
-                         */
-
                         const video =
                             slide.querySelector(
                                 "video"
                             );
+
 
                         if (
                             video &&
@@ -1012,6 +780,7 @@ function setupCertificationCarousels() {
                         ) %
                         slides.length;
 
+
                     showSlide(
                         currentIndex
                     );
@@ -1034,6 +803,7 @@ function setupCertificationCarousels() {
                             1
                         ) %
                         slides.length;
+
 
                     showSlide(
                         currentIndex
@@ -1061,6 +831,7 @@ function setupCertificationCarousels() {
                                 return;
                             }
 
+
                             showSlide(
                                 dotIndex
                             );
@@ -1071,733 +842,801 @@ function setupCertificationCarousels() {
                 }
             );
 
+
             showSlide(0);
 
         });
 
     }
 
-/* =========================================
-   LEADERSHIP IMAGE SLIDESHOW
-========================================= */
 
-function setupLeadershipSlideshow() {
+    /* =========================================
+       LEADERSHIP IMAGE SLIDESHOW
+    ========================================= */
 
-    const slideshows =
-        document.querySelectorAll(
-            ".leadership-slideshow"
-        );
+    function setupLeadershipSlideshow() {
 
-
-    slideshows.forEach((slideshow) => {
-
-        const slides =
-            Array.from(
-                slideshow.querySelectorAll("img")
+        const slideshows =
+            document.querySelectorAll(
+                ".leadership-slideshow"
             );
 
 
-        if (slides.length <= 1) {
-            return;
-        }
+        slideshows.forEach((slideshow) => {
+
+            const slides =
+                Array.from(
+                    slideshow.querySelectorAll("img")
+                );
 
 
-        const interval =
-            parseInt(
-                slideshow.dataset.interval,
-                10
-            ) || 3000;
+            if (slides.length <= 1) {
+                return;
+            }
 
 
-        let currentIndex = 0;
+            const interval =
+                parseInt(
+                    slideshow.dataset.interval,
+                    10
+                ) || 3000;
 
 
-        function showSlide(index) {
+            let currentIndex = 0;
 
-            slides.forEach(
-                (slide, slideIndex) => {
 
-                    slide.classList.toggle(
-                        "active",
-                        slideIndex === index
+            function showSlide(index) {
+
+                slides.forEach(
+                    (slide, slideIndex) => {
+
+                        slide.classList.toggle(
+                            "active",
+                            slideIndex === index
+                        );
+
+                    }
+                );
+
+            }
+
+
+            showSlide(currentIndex);
+
+
+            setInterval(() => {
+
+                currentIndex =
+                    (
+                        currentIndex + 1
+                    ) % slides.length;
+
+
+                showSlide(currentIndex);
+
+            }, interval);
+
+        });
+
+    }
+
+
+    /* =========================================
+       LEADERSHIP CAROUSEL
+    ========================================= */
+
+    function setupLeadershipCarousel() {
+
+        const carousels =
+            document.querySelectorAll(
+                ".leadership-grid"
+            );
+
+
+        carousels.forEach((carousel) => {
+
+            const cards =
+                Array.from(
+                    carousel.querySelectorAll(
+                        ".leadership-card"
+                    )
+                );
+
+
+            const previousButton =
+                carousel.querySelector(
+                    ".leadership-prev"
+                );
+
+
+            const nextButton =
+                carousel.querySelector(
+                    ".leadership-next"
+                );
+
+
+            const section =
+                carousel.closest(
+                    "#leadership"
+                );
+
+
+            const dots =
+                section
+                    ? Array.from(
+                        section.querySelectorAll(
+                            ".leadership-dot"
+                        )
+                    )
+                    : [];
+
+
+            if (
+                cards.length === 0 ||
+                !previousButton ||
+                !nextButton
+            ) {
+                return;
+            }
+
+
+            let currentIndex = 0;
+
+
+            function getIndex(offset) {
+
+                return (
+                    currentIndex +
+                    offset +
+                    cards.length
+                ) % cards.length;
+
+            }
+
+
+            function updateCarousel() {
+
+                const previousIndex =
+                    getIndex(-1);
+
+
+                const centerIndex =
+                    getIndex(0);
+
+
+                const nextIndex =
+                    getIndex(1);
+
+
+                cards.forEach(
+                    (card, index) => {
+
+                        card.classList.remove(
+                            "leadership-card-left",
+                            "leadership-card-center",
+                            "leadership-card-right"
+                        );
+
+
+                        if (
+                            index === previousIndex
+                        ) {
+
+                            card.classList.add(
+                                "leadership-card-left"
+                            );
+
+                        } else if (
+                            index === centerIndex
+                        ) {
+
+                            card.classList.add(
+                                "leadership-card-center"
+                            );
+
+                        } else if (
+                            index === nextIndex
+                        ) {
+
+                            card.classList.add(
+                                "leadership-card-right"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                updateDots();
+
+            }
+
+
+            function updateDots() {
+
+                if (dots.length === 0) {
+                    return;
+                }
+
+
+                dots.forEach(
+                    (dot, index) => {
+
+                        dot.classList.toggle(
+                            "active",
+                            index === currentIndex
+                        );
+
+                    }
+                );
+
+            }
+
+
+            function showPrevious() {
+
+                currentIndex =
+                    (
+                        currentIndex -
+                        1 +
+                        cards.length
+                    ) %
+                    cards.length;
+
+
+                updateCarousel();
+
+            }
+
+
+            function showNext() {
+
+                currentIndex =
+                    (
+                        currentIndex +
+                        1
+                    ) %
+                    cards.length;
+
+
+                updateCarousel();
+
+            }
+
+
+            previousButton.addEventListener(
+                "click",
+                showPrevious
+            );
+
+
+            nextButton.addEventListener(
+                "click",
+                showNext
+            );
+
+
+            dots.forEach(
+                (dot, dotIndex) => {
+
+                    dot.addEventListener(
+                        "click",
+                        () => {
+
+                            currentIndex =
+                                dotIndex;
+
+                            updateCarousel();
+
+                        }
                     );
 
                 }
             );
 
-        }
+
+            let startX = 0;
+            let startY = 0;
+            let isPointerDown = false;
+            let didDrag = false;
+
+            const swipeThreshold = 50;
 
 
-        showSlide(currentIndex);
+            carousel.addEventListener(
+                "pointerdown",
+                (event) => {
+
+                    if (
+                        event.pointerType === "mouse" &&
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
 
 
-        setInterval(() => {
-
-            currentIndex =
-                (
-                    currentIndex + 1
-                ) % slides.length;
-
-
-            showSlide(currentIndex);
-
-        }, interval);
-
-    });
-
-}
-  /* =========================================
-   LEADERSHIP CAROUSEL
-========================================= */
-
-function setupLeadershipCarousel() {
-
-    const carousels =
-        document.querySelectorAll(
-            ".leadership-grid"
-        );
+                    if (
+                        event.target.closest(
+                            "a, button"
+                        )
+                    ) {
+                        return;
+                    }
 
 
-    carousels.forEach((carousel) => {
+                    startX =
+                        event.clientX;
 
-        const cards =
-            Array.from(
-                carousel.querySelectorAll(
-                    ".leadership-card"
-                )
+
+                    startY =
+                        event.clientY;
+
+
+                    isPointerDown = true;
+                    didDrag = false;
+
+
+                    carousel.classList.add(
+                        "is-dragging"
+                    );
+
+
+                    if (
+                        carousel.setPointerCapture
+                    ) {
+
+                        carousel.setPointerCapture(
+                            event.pointerId
+                        );
+
+                    }
+
+                }
             );
 
-        const previousButton =
-            carousel.querySelector(
-                ".leadership-prev"
+
+            carousel.addEventListener(
+                "pointermove",
+                (event) => {
+
+                    if (!isPointerDown) {
+                        return;
+                    }
+
+
+                    const deltaX =
+                        event.clientX -
+                        startX;
+
+
+                    const deltaY =
+                        event.clientY -
+                        startY;
+
+
+                    if (
+                        Math.abs(deltaX) >
+                        Math.abs(deltaY)
+                    ) {
+
+                        if (
+                            Math.abs(deltaX) >
+                            10
+                        ) {
+
+                            didDrag = true;
+
+                        }
+
+                    }
+
+                }
             );
 
-        const nextButton =
-            carousel.querySelector(
-                ".leadership-next"
+
+            carousel.addEventListener(
+                "pointerup",
+                (event) => {
+
+                    if (!isPointerDown) {
+                        return;
+                    }
+
+
+                    const deltaX =
+                        event.clientX -
+                        startX;
+
+
+                    const deltaY =
+                        event.clientY -
+                        startY;
+
+
+                    isPointerDown = false;
+
+
+                    carousel.classList.remove(
+                        "is-dragging"
+                    );
+
+
+                    if (
+                        Math.abs(deltaX) <=
+                        Math.abs(deltaY)
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    if (
+                        Math.abs(deltaX) <
+                        swipeThreshold
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    if (deltaX < 0) {
+
+                        showNext();
+
+                    } else {
+
+                        showPrevious();
+
+                    }
+
+                }
             );
 
-        const section =
-            carousel.closest(
-                "#leadership"
+
+            carousel.addEventListener(
+                "pointercancel",
+                () => {
+
+                    isPointerDown = false;
+
+                    carousel.classList.remove(
+                        "is-dragging"
+                    );
+
+                }
             );
 
-        const dots =
-            section
-                ? Array.from(
-                    section.querySelectorAll(
-                        ".leadership-dot"
-                    )
-                )
-                : [];
+
+            carousel.addEventListener(
+                "click",
+                (event) => {
+
+                    if (didDrag) {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        didDrag = false;
+
+                    }
+
+                },
+                true
+            );
+
+
+            updateCarousel();
+
+        });
+
+    }
+
+
+    /* =========================================
+       THEME TOGGLE
+    ========================================= */
+
+    function setupThemeToggle() {
+
+        const themeToggle =
+            document.getElementById(
+                "themeToggle"
+            );
+
+
+        const themeToggleIcon =
+            document.getElementById(
+                "themeToggleIcon"
+            );
 
 
         if (
-            cards.length === 0 ||
-            !previousButton ||
-            !nextButton
+            !themeToggle ||
+            !themeToggleIcon
         ) {
             return;
         }
 
 
-        let currentIndex = 0;
+        let themeTransitioning = false;
 
-        function getIndex(offset) {
 
-            return (
-                currentIndex +
-                offset +
-                cards.length
-            ) % cards.length;
+        /* =====================================
+           UPDATE THEME BUTTON
+        ===================================== */
+
+        function updateThemeButton(isLightMode) {
+
+            if (isLightMode) {
+
+                themeToggleIcon.textContent =
+                    "☀";
+
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+
+                themeToggle.setAttribute(
+                    "title",
+                    "Switch to dark mode"
+                );
+
+            } else {
+
+                themeToggleIcon.textContent =
+                    "☾";
+
+
+                themeToggle.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+
+                themeToggle.setAttribute(
+                    "title",
+                    "Switch to light mode"
+                );
+
+            }
 
         }
 
-        function updateCarousel() {
 
-            const previousIndex =
-                getIndex(-1);
+        /* =====================================
+           RESTORE SAVED THEME
+        ===================================== */
 
-            const centerIndex =
-                getIndex(0);
-
-            const nextIndex =
-                getIndex(1);
-
-
-            cards.forEach(
-                (card, index) => {
-
-                    card.classList.remove(
-                        "leadership-card-left",
-                        "leadership-card-center",
-                        "leadership-card-right"
-                    );
-
-
-                    if (
-                        index === previousIndex
-                    ) {
-
-                        card.classList.add(
-                            "leadership-card-left"
-                        );
-
-                    } else if (
-                        index === centerIndex
-                    ) {
-
-                        card.classList.add(
-                            "leadership-card-center"
-                        );
-
-                    } else if (
-                        index === nextIndex
-                    ) {
-
-                        card.classList.add(
-                            "leadership-card-right"
-                        );
-
-                    }
-
-                }
+        const savedTheme =
+            localStorage.getItem(
+                "theme"
             );
 
 
-            updateDots();
+        const initialLightMode =
+            savedTheme === "light";
 
-        }
 
+        if (initialLightMode) {
 
-        function updateDots() {
-
-            if (dots.length === 0) {
-                return;
-            }
-
-
-            dots.forEach(
-                (dot, index) => {
-
-                    dot.classList.toggle(
-                        "active",
-                        index === currentIndex
-                    );
-
-                }
-            );
-
-        }
-
-
-        function showPrevious() {
-
-            currentIndex =
-                (
-                    currentIndex -
-                    1 +
-                    cards.length
-                ) %
-                cards.length;
-
-            updateCarousel();
-
-        }
-
-        function showNext() {
-
-            currentIndex =
-                (
-                    currentIndex +
-                    1
-                ) %
-                cards.length;
-
-            updateCarousel();
-
-        }
-
-        previousButton.addEventListener(
-            "click",
-            showPrevious
-        );
-
-
-        nextButton.addEventListener(
-            "click",
-            showNext
-        );
-
-        dots.forEach(
-            (dot, dotIndex) => {
-
-                dot.addEventListener(
-                    "click",
-                    () => {
-
-                        currentIndex =
-                            dotIndex;
-
-                        updateCarousel();
-
-                    }
-                );
-
-            }
-        );
-
-        let startX = 0;
-        let startY = 0;
-        let isPointerDown = false;
-        let didDrag = false;
-
-        const swipeThreshold = 50;
-
-
-        carousel.addEventListener(
-            "pointerdown",
-            (event) => {
-
-                if (
-                    event.pointerType === "mouse" &&
-                    event.button !== 0
-                ) {
-                    return;
-                }
-
-
-                if (
-                    event.target.closest(
-                        "a, button"
-                    )
-                ) {
-                    return;
-                }
-
-
-                startX =
-                    event.clientX;
-
-                startY =
-                    event.clientY;
-
-                isPointerDown = true;
-                didDrag = false;
-
-
-                carousel.classList.add(
-                    "is-dragging"
-                );
-
-
-                if (
-                    carousel.setPointerCapture
-                ) {
-
-                    carousel.setPointerCapture(
-                        event.pointerId
-                    );
-
-                }
-
-            }
-        );
-
-
-        carousel.addEventListener(
-            "pointermove",
-            (event) => {
-
-                if (!isPointerDown) {
-                    return;
-                }
-
-
-                const deltaX =
-                    event.clientX -
-                    startX;
-
-                const deltaY =
-                    event.clientY -
-                    startY;
-
-
-                if (
-                    Math.abs(deltaX) >
-                    Math.abs(deltaY)
-                ) {
-
-                    if (
-                        Math.abs(deltaX) >
-                        10
-                    ) {
-
-                        didDrag = true;
-
-                    }
-
-                }
-
-            }
-        );
-
-
-        carousel.addEventListener(
-            "pointerup",
-            (event) => {
-
-                if (!isPointerDown) {
-                    return;
-                }
-
-                const deltaX =
-                    event.clientX -
-                    startX;
-
-                const deltaY =
-                    event.clientY -
-                    startY;
-
-                isPointerDown = false;
-
-                carousel.classList.remove(
-                    "is-dragging"
-                );
-                if (
-                    Math.abs(deltaX) <=
-                    Math.abs(deltaY)
-                ) {
-
-                    return;
-
-                }
-
-                if (
-                    Math.abs(deltaX) <
-                    swipeThreshold
-                ) {
-
-                    return;
-
-                }
-
-                if (deltaX < 0) {
-
-                    showNext();
-                }
-
-                else {
-
-                    showPrevious();
-
-                }
-
-            }
-        );
-
-
-        carousel.addEventListener(
-            "pointercancel",
-            () => {
-
-                isPointerDown = false;
-
-                carousel.classList.remove(
-                    "is-dragging"
-                );
-
-            }
-        );
-
-        carousel.addEventListener(
-            "click",
-            (event) => {
-
-                if (didDrag) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    didDrag = false;
-                }
-
-            },
-            true
-        );
-
-        updateCarousel();
-    });
-
-}
-
- /* =========================================
-   THEME TOGGLE
-========================================= */
-
-function setupThemeToggle() {
-
-    const themeToggle =
-        document.getElementById(
-            "themeToggle"
-        );
-
-    const themeToggleIcon =
-        document.getElementById(
-            "themeToggleIcon"
-        );
-
-    if (
-        !themeToggle ||
-        !themeToggleIcon
-    ) {
-        return;
-    }
-
-
-    let themeTransitioning = false;
-
-
-    /* =====================================
-       UPDATE THEME BUTTON
-    ===================================== */
-
-    function updateThemeButton(isLightMode) {
-
-        if (isLightMode) {
-
-            themeToggleIcon.textContent =
-                "☀";
-
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to dark mode"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to dark mode"
+            document.body.classList.add(
+                "light-mode"
             );
 
         } else {
 
-            themeToggleIcon.textContent =
-                "☾";
-
-            themeToggle.setAttribute(
-                "aria-label",
-                "Switch to light mode"
-            );
-
-            themeToggle.setAttribute(
-                "title",
-                "Switch to light mode"
+            document.body.classList.remove(
+                "light-mode"
             );
 
         }
 
-    }
-
-
-    /* =====================================
-       RESTORE SAVED THEME
-    ===================================== */
-
-    const savedTheme =
-        localStorage.getItem(
-            "theme"
-        );
-
-    const initialLightMode =
-        savedTheme === "light";
-
-
-    if (initialLightMode) {
-
-        document.body.classList.add(
-            "light-mode"
-        );
-
-    } else {
-
-        document.body.classList.remove(
-            "light-mode"
-        );
-
-    }
-
-
-    updateThemeButton(
-        initialLightMode
-    );
-
-
-    /* =====================================
-       THEME CIRCLE TRANSITION
-    ===================================== */
-
-   themeToggle.addEventListener("click", async () => {
-
-    if (themeTransitioning) {
-        return;
-    }
-
-    themeTransitioning = true;
-
-    const currentlyLight =
-    document.body.classList.contains("light-mode");
-
-const targetLightMode =
-    !currentlyLight;
-
-
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-if (prefersReducedMotion) {
-
-    document.body.classList.toggle(
-        "light-mode",
-        targetLightMode
-    );
-
-    localStorage.setItem(
-        "theme",
-        targetLightMode
-            ? "light"
-            : "dark"
-    );
-
-    updateThemeButton(
-        targetLightMode
-    );
-
-    themeTransitioning = false;
-
-    return;
-}
-
-
-
-    /* =====================================
-       GET BUTTON POSITION
-    ===================================== */
-
-    const buttonRect =
-        themeToggle.getBoundingClientRect();
-
-    const centerX =
-        buttonRect.left +
-        buttonRect.width / 2;
-
-    const centerY =
-        buttonRect.top +
-        buttonRect.height / 2;
-
-
-    /* =====================================
-       CALCULATE CIRCLE SIZE
-    ===================================== */
-
-    const maxX =
-        Math.max(
-            centerX,
-            window.innerWidth - centerX
-        );
-
-    const maxY =
-        Math.max(
-            centerY,
-            window.innerHeight - centerY
-        );
-
-    const radius =
-        Math.hypot(maxX, maxY);
-
-
-    /* =====================================
-       CHANGE THEME
-    ===================================== */
-
-    const changeTheme = () => {
-
-        document.body.classList.toggle(
-            "light-mode",
-            targetLightMode
-        );
-
-        localStorage.setItem(
-            "theme",
-            targetLightMode
-                ? "light"
-                : "dark"
-        );
 
         updateThemeButton(
-            targetLightMode
+            initialLightMode
         );
-    };
 
 
-    /* =====================================
-       START VIEW TRANSITION
-    ===================================== */
+        /* =====================================
+           THEME CIRCLE TRANSITION
+        ===================================== */
 
-    if (!document.startViewTransition) {
+        themeToggle.addEventListener(
+            "click",
+            async () => {
 
-        changeTheme();
+                if (themeTransitioning) {
+                    return;
+                }
 
-        themeTransitioning = false;
 
-        return;
+                themeTransitioning = true;
+
+
+                const currentlyLight =
+                    document.body.classList.contains(
+                        "light-mode"
+                    );
+
+
+                const targetLightMode =
+                    !currentlyLight;
+
+
+                const prefersReducedMotion =
+                    window.matchMedia(
+                        "(prefers-reduced-motion: reduce)"
+                    ).matches;
+
+
+                if (prefersReducedMotion) {
+
+                    document.body.classList.toggle(
+                        "light-mode",
+                        targetLightMode
+                    );
+
+
+                    localStorage.setItem(
+                        "theme",
+                        targetLightMode
+                            ? "light"
+                            : "dark"
+                    );
+
+
+                    updateThemeButton(
+                        targetLightMode
+                    );
+
+
+                    themeTransitioning = false;
+
+                    return;
+
+                }
+
+
+                /* =====================================
+                   GET BUTTON POSITION
+                ===================================== */
+
+                const buttonRect =
+                    themeToggle.getBoundingClientRect();
+
+
+                const centerX =
+                    buttonRect.left +
+                    buttonRect.width / 2;
+
+
+                const centerY =
+                    buttonRect.top +
+                    buttonRect.height / 2;
+
+
+                /* =====================================
+                   CALCULATE CIRCLE SIZE
+                ===================================== */
+
+                const maxX =
+                    Math.max(
+                        centerX,
+                        window.innerWidth - centerX
+                    );
+
+
+                const maxY =
+                    Math.max(
+                        centerY,
+                        window.innerHeight - centerY
+                    );
+
+
+                const radius =
+                    Math.hypot(
+                        maxX,
+                        maxY
+                    );
+
+
+                /* =====================================
+                   CHANGE THEME
+                ===================================== */
+
+                const changeTheme = () => {
+
+                    document.body.classList.toggle(
+                        "light-mode",
+                        targetLightMode
+                    );
+
+
+                    localStorage.setItem(
+                        "theme",
+                        targetLightMode
+                            ? "light"
+                            : "dark"
+                    );
+
+
+                    updateThemeButton(
+                        targetLightMode
+                    );
+
+                };
+
+
+                /* =====================================
+                   START VIEW TRANSITION
+                ===================================== */
+
+                if (!document.startViewTransition) {
+
+                    changeTheme();
+
+                    themeTransitioning = false;
+
+                    return;
+
+                }
+
+
+                const transition =
+                    document.startViewTransition(
+                        changeTheme
+                    );
+
+
+                /* =====================================
+                   CIRCULAR REVEAL
+                ===================================== */
+
+                await transition.ready;
+
+
+                document.documentElement.animate(
+                    {
+                        clipPath: [
+                            `circle(0px at ${centerX}px ${centerY}px)`,
+
+                            `circle(${radius}px at ${centerX}px ${centerY}px)`
+                        ]
+                    },
+                    {
+                        duration: 750,
+
+                        easing:
+                            "cubic-bezier(.76, 0, .24, 1)",
+
+                        fill: "both",
+
+                        pseudoElement:
+                            "::view-transition-new(root)"
+                    }
+                );
+
+
+                /* =====================================
+                   WAIT UNTIL FINISHED
+                ===================================== */
+
+                await transition.finished;
+
+
+                themeTransitioning = false;
+
+            }
+        );
+
     }
 
-
-    const transition =
-        document.startViewTransition(
-            changeTheme
-        );
-
-
-    /* =====================================
-       CIRCULAR REVEAL
-    ===================================== */
-
-    await transition.ready;
-
-
-    document.documentElement.animate(
-        {
-            clipPath: [
-                `circle(0px at ${centerX}px ${centerY}px)`,
-
-                `circle(${radius}px at ${centerX}px ${centerY}px)`
-            ]
-        },
-        {
-    duration: 750,
-
-    easing:
-        "cubic-bezier(.76, 0, .24, 1)",
-
-    fill: "both",
-
-    pseudoElement:
-        "::view-transition-new(root)"
-}
-    );
-
-
-    /* =====================================
-       WAIT UNTIL FINISHED
-    ===================================== */
-
-    await transition.finished;
-
-    themeTransitioning = false;
-
-});
-}
 
     /* =========================================
        RESUME MODAL
@@ -1810,20 +1649,24 @@ if (prefersReducedMotion) {
                 "resumeButton"
             );
 
+
         const resumeModal =
             document.getElementById(
                 "resumeModal"
             );
+
 
         const resumeClose =
             document.querySelector(
                 ".resume-modal-close"
             );
 
+
         const resumeConfirm =
             document.getElementById(
                 "resumeConfirm"
             );
+
 
         if (
             !resumeButton ||
@@ -1843,10 +1686,12 @@ if (prefersReducedMotion) {
                 "active"
             );
 
+
             resumeModal.setAttribute(
                 "aria-hidden",
                 "false"
             );
+
 
             document.body.style.overflow =
                 "hidden";
@@ -1864,20 +1709,24 @@ if (prefersReducedMotion) {
                 "active"
             );
 
+
             resumeModal.setAttribute(
                 "aria-hidden",
                 "true"
             );
+
 
             document.body.style.overflow =
                 "";
 
         }
 
+
         resumeButton.addEventListener(
             "click",
             openResumeModal
         );
+
 
         if (resumeClose) {
 
@@ -1888,8 +1737,6 @@ if (prefersReducedMotion) {
 
         }
 
-
-        /* Close using Got it button */
 
         if (resumeConfirm) {
 
@@ -1949,66 +1796,74 @@ if (prefersReducedMotion) {
     }
 
 
- /* =========================================
-   INTRO SCREEN
-========================================= */
+    /* =========================================
+       INTRO SCREEN
+    ========================================= */
 
-function setupIntroScreen() {
+    function setupIntroScreen() {
 
-    const introScreen =
-        document.getElementById(
-            "introScreen"
-        );
-
-    if (!introScreen) {
-        return;
-    }
-
-    const introPlayed =
-        sessionStorage.getItem(
-            "portfolioIntroPlayed"
-        );
-
-    if (introPlayed === "true") {
-
-        introScreen.style.display =
-            "none";
-
-        return;
-
-    }
-    const INTRO_DURATION = 4500;
-
-    requestAnimationFrame(() => {
-
-        introScreen.classList.add(
-            "intro-start"
-        );
-
-    });
+        const introScreen =
+            document.getElementById(
+                "introScreen"
+            );
 
 
-    setTimeout(() => {
+        if (!introScreen) {
+            return;
+        }
 
-        introScreen.classList.add(
-            "hidden"
-        );
 
-        sessionStorage.setItem(
-            "portfolioIntroPlayed",
-            "true"
-        );
+        const introPlayed =
+            sessionStorage.getItem(
+                "portfolioIntroPlayed"
+            );
 
-        setTimeout(() => {
+
+        if (introPlayed === "true") {
 
             introScreen.style.display =
                 "none";
 
-        }, 1000);
+            return;
 
-    }, INTRO_DURATION);
+        }
 
-}
+
+        const INTRO_DURATION = 4500;
+
+
+        requestAnimationFrame(() => {
+
+            introScreen.classList.add(
+                "intro-start"
+            );
+
+        });
+
+
+        setTimeout(() => {
+
+            introScreen.classList.add(
+                "hidden"
+            );
+
+
+            sessionStorage.setItem(
+                "portfolioIntroPlayed",
+                "true"
+            );
+
+
+            setTimeout(() => {
+
+                introScreen.style.display =
+                    "none";
+
+            }, 1000);
+
+        }, INTRO_DURATION);
+
+    }
 
 
     /* =========================================
@@ -2026,12 +1881,14 @@ function setupIntroScreen() {
                 "img, video"
             );
 
+
         media.forEach((element) => {
 
             element.setAttribute(
                 "draggable",
                 "false"
             );
+
 
             element.addEventListener(
                 "dragstart",
@@ -2072,6 +1929,7 @@ function setupIntroScreen() {
             }
         );
 
+
         document.addEventListener(
             "cut",
             (event) => {
@@ -2106,7 +1964,6 @@ function setupIntroScreen() {
 
                 const key =
                     event.key.toLowerCase();
-
                 const modifier =
                     event.ctrlKey ||
                     event.metaKey;
@@ -2115,29 +1972,19 @@ function setupIntroScreen() {
                     return;
                 }
 
-
-                /* Copy */
-
                 if (key === "c") {
                     event.preventDefault();
                 }
 
-
-                /* Cut */
 
                 if (key === "x") {
                     event.preventDefault();
                 }
 
 
-                /* Select All */
-
                 if (key === "a") {
                     event.preventDefault();
                 }
-
-
-                /* Save Page */
 
                 if (key === "s") {
                     event.preventDefault();
@@ -2153,13 +2000,12 @@ function setupIntroScreen() {
        INITIALIZE
     ========================================= */
 
-setupResumeModal();
-setupIntroScreen();
-setupThemeToggle();
+    setupResumeModal();
+    setupIntroScreen();
+    setupThemeToggle();
 
-window.portfolioSectionsReady =
-    loadSections();
 
-setupPageTransitions();
+    window.portfolioSectionsReady =
+        loadSections();
 
 });
