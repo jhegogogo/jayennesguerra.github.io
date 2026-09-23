@@ -2350,7 +2350,7 @@ body.page-exit {
    EXIT 01 — MOVE LEFT
 ========================================================= */
 
-body.page-exit-01 .page-content {
+body.page-exit-01 .page-content .page-transition-layer {
     animation: exit01 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2371,7 +2371,7 @@ body.page-exit-01 .page-content {
    EXIT 02 — MOVE RIGHT
 ========================================================= */
 
-body.page-exit-02 .page-content {
+body.page-exit-02 .page-content .page-transition-layer {
     animation: exit02 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2392,7 +2392,7 @@ body.page-exit-02 .page-content {
    EXIT 03 — MOVE UP
 ========================================================= */
 
-body.page-exit-03 .page-content {
+body.page-exit-03 .page-content .page-transition-layer {
     animation: exit03 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2413,7 +2413,7 @@ body.page-exit-03 .page-content {
    EXIT 04 — MOVE DOWN
 ========================================================= */
 
-body.page-exit-04 .page-content {
+body.page-exit-04 .page-content .page-transition-layer {
     animation: exit04 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2434,7 +2434,7 @@ body.page-exit-04 .page-content {
    EXIT 05 — DIAGONAL TOP LEFT
 ========================================================= */
 
-body.page-exit-05 .page-content {
+body.page-exit-05 .page-content .page-transition-layer {
     animation: exit05 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2455,7 +2455,7 @@ body.page-exit-05 .page-content {
    EXIT 06 — DIAGONAL TOP RIGHT
 ========================================================= */
 
-body.page-exit-06 .page-content {
+body.page-exit-06 .page-content .page-transition-layer {
     animation: exit06 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2476,7 +2476,7 @@ body.page-exit-06 .page-content {
    EXIT 07 — DIAGONAL BOTTOM LEFT
 ========================================================= */
 
-body.page-exit-07 .page-content {
+body.page-exit-07 .page-content .page-transition-layer {
     animation: exit07 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2497,7 +2497,7 @@ body.page-exit-07 .page-content {
    EXIT 08 — DIAGONAL BOTTOM RIGHT
 ========================================================= */
 
-body.page-exit-08 .page-content {
+body.page-exit-08 .page-content .page-transition-layer {
     animation: exit08 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2518,7 +2518,7 @@ body.page-exit-08 .page-content {
    EXIT 09 — SCALE DOWN
 ========================================================= */
 
-body.page-exit-09 .page-content {
+body.page-exit-09 .page-content .page-transition-layer {
     animation: exit09 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2539,7 +2539,7 @@ body.page-exit-09 .page-content {
    EXIT 10 — SCALE UP
 ========================================================= */
 
-body.page-exit-10 .page-content {
+body.page-exit-10 .page-content .page-transition-layer {
     animation: exit10 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2560,7 +2560,7 @@ body.page-exit-10 .page-content {
    EXIT 11 — ROTATE LEFT
 ========================================================= */
 
-body.page-exit-11 .page-content {
+body.page-exit-11 .page-content .page-transition-layer {
     animation: exit11 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     transform-origin: right center;
 }
@@ -2582,7 +2582,7 @@ body.page-exit-11 .page-content {
    EXIT 12 — ROTATE RIGHT
 ========================================================= */
 
-body.page-exit-12 .page-content {
+body.page-exit-12 .page-content .page-transition-layer {
     animation: exit12 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     transform-origin: left center;
 }
@@ -2604,7 +2604,7 @@ body.page-exit-12 .page-content {
    EXIT 13 — FLIP X
 ========================================================= */
 
-body.page-exit-13 .page-content {
+body.page-exit-13 .page-content .page-transition-layer {
     animation: exit13 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
@@ -2626,7 +2626,7 @@ body.page-exit-13 .page-content {
    EXIT 14 — FLIP X REVERSE
 ========================================================= */
 
-body.page-exit-14 .page-content {
+body.page-exit-14 .page-content .page-transition-layer {
     animation: exit14 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
@@ -2648,7 +2648,7 @@ body.page-exit-14 .page-content {
    EXIT 15 — FLIP Y
 ========================================================= */
 
-body.page-exit-15 .page-content {
+body.page-exit-15 .page-content .page-transition-layer {
     animation: exit15 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
@@ -2670,7 +2670,7 @@ body.page-exit-15 .page-content {
    EXIT 16 — FLIP Y REVERSE
 ========================================================= */
 
-body.page-exit-16 .page-content {
+body.page-exit-16 .page-content .page-transition-layer {
     animation: exit16 .35s cubic-bezier(.76, 0, .24, 1) both !important;
     perspective: 1000px;
 }
@@ -2692,7 +2692,7 @@ body.page-exit-16 .page-content {
    EXIT 17 — DIAGONAL SCALE
 ========================================================= */
 
-body.page-exit-17 .page-content {
+body.page-exit-17 .page-content .page-transition-layer {
     animation: exit17 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2713,7 +2713,7 @@ body.page-exit-17 .page-content {
    EXIT 18 — DIAGONAL SCALE REVERSE
 ========================================================= */
 
-body.page-exit-18 .page-content {
+body.page-exit-18 .page-content .page-transition-layer {
     animation: exit18 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2734,7 +2734,7 @@ body.page-exit-18 .page-content {
    EXIT 19 — BLUR + SLIDE
 ========================================================= */
 
-body.page-exit-19 .page-content {
+body.page-exit-19 .page-content .page-transition-layer {
     animation: exit19 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2757,7 +2757,7 @@ body.page-exit-19 .page-content {
    EXIT 20 — BLUR + SCALE
 ========================================================= */
 
-body.page-exit-20 .page-content {
+body.page-exit-20 .page-content .page-transition-layer {
     animation: exit20 .35s cubic-bezier(.76, 0, .24, 1) both !important;
 }
 
@@ -2777,7 +2777,7 @@ body.page-exit-20 .page-content {
 
 /* =========================================================
    HEADER TRANSITIONS
-   Header stays inside .page-content
+   Header stays inside .page-transition-layer
 ========================================================= */
 
 
@@ -2785,83 +2785,83 @@ body.page-exit-20 .page-content {
    HEADER ENTRANCE
 ========================================================= */
 
-.page-content.page-transition-01 .site-header {
+.page-content.page-transition-01 .page-transition-layer .site-header {
     animation: headerTransition01 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-02 .site-header {
+.page-content.page-transition-02 .page-transition-layer .site-header {
     animation: headerTransition02 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-03 .site-header {
+.page-content.page-transition-03 .page-transition-layer .site-header {
     animation: headerTransition03 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-04 .site-header {
+.page-content.page-transition-04 .page-transition-layer .site-header {
     animation: headerTransition04 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-05 .site-header {
+.page-content.page-transition-05 .page-transition-layer .site-header {
     animation: headerTransition05 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-06 .site-header {
+.page-content.page-transition-06 .page-transition-layer .site-header {
     animation: headerTransition06 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-07 .site-header {
+.page-content.page-transition-07 .page-transition-layer .site-header {
     animation: headerTransition07 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-08 .site-header {
+.page-content.page-transition-08 .page-transition-layer .site-header {
     animation: headerTransition08 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-09 .site-header {
+.page-content.page-transition-09 .page-transition-layer .site-header {
     animation: headerTransition09 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-10 .site-header {
+.page-content.page-transition-10 .page-transition-layer .site-header {
     animation: headerTransition10 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-11 .site-header {
+.page-content.page-transition-11 .page-transition-layer .site-header {
     animation: headerTransition11 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-12 .site-header {
+.page-content.page-transition-12 .page-transition-layer .site-header {
     animation: headerTransition12 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-13 .site-header {
+.page-content.page-transition-13 .page-transition-layer .site-header {
     animation: headerTransition13 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-14 .site-header {
+.page-content.page-transition-14 .page-transition-layer .site-header {
     animation: headerTransition14 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-15 .site-header {
+.page-content.page-transition-15 .page-transition-layer .site-header {
     animation: headerTransition15 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-16 .site-header {
+.page-content.page-transition-16 .page-transition-layer .site-header {
     animation: headerTransition16 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-17 .site-header {
+.page-content.page-transition-17 .page-transition-layer .site-header {
     animation: headerTransition17 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-18 .site-header {
+.page-content.page-transition-18 .page-transition-layer .site-header {
     animation: headerTransition18 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-19 .site-header {
+.page-content.page-transition-19 .page-transition-layer .site-header {
     animation: headerTransition19 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-.page-content.page-transition-20 .site-header {
+.page-content.page-transition-20 .page-transition-layer .site-header {
     animation: headerTransition20 .55s cubic-bezier(.76, 0, .24, 1) both;
 }
 
@@ -3024,83 +3024,83 @@ body.page-exit-20 .page-content {
    Body stays stationary — only header moves
 ========================================================= */
 
-body.page-exit-01 .page-content .site-header {
+body.page-exit-01 .page-content .page-transition-layer .site-header {
     animation: headerExit01 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-02 .page-content .site-header {
+body.page-exit-02 .page-content .page-transition-layer .site-header {
     animation: headerExit02 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-03 .page-content .site-header {
+body.page-exit-03 .page-content .page-transition-layer .site-header {
     animation: headerExit03 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-04 .page-content .site-header {
+body.page-exit-04 .page-content .page-transition-layer .site-header {
     animation: headerExit04 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-05 .page-content .site-header {
+body.page-exit-05 .page-content .page-transition-layer .site-header {
     animation: headerExit05 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-06 .page-content .site-header {
+body.page-exit-06 .page-content .page-transition-layer .site-header {
     animation: headerExit06 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-07 .page-content .site-header {
+body.page-exit-07 .page-content .page-transition-layer .site-header {
     animation: headerExit07 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-08 .page-content .site-header {
+body.page-exit-08 .page-content .page-transition-layer .site-header {
     animation: headerExit08 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-09 .page-content .site-header {
+body.page-exit-09 .page-content .page-transition-layer .site-header {
     animation: headerExit09 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-10 .page-content .site-header {
+body.page-exit-10 .page-content .page-transition-layer .site-header {
     animation: headerExit10 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-11 .page-content .site-header {
+body.page-exit-11 .page-content .page-transition-layer .site-header {
     animation: headerExit11 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-12 .page-content .site-header {
+body.page-exit-12 .page-content .page-transition-layer .site-header {
     animation: headerExit12 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-13 .page-content .site-header {
+body.page-exit-13 .page-content .page-transition-layer .site-header {
     animation: headerExit13 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-14 .page-content .site-header {
+body.page-exit-14 .page-content .page-transition-layer .site-header {
     animation: headerExit14 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-15 .page-content .site-header {
+body.page-exit-15 .page-content .page-transition-layer .site-header {
     animation: headerExit15 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-16 .page-content .site-header {
+body.page-exit-16 .page-content .page-transition-layer .site-header {
     animation: headerExit16 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-17 .page-content .site-header {
+body.page-exit-17 .page-content .page-transition-layer .site-header {
     animation: headerExit17 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-18 .page-content .site-header {
+body.page-exit-18 .page-content .page-transition-layer .site-header {
     animation: headerExit18 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-19 .page-content .site-header {
+body.page-exit-19 .page-content .page-transition-layer .site-header {
     animation: headerExit19 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
-body.page-exit-20 .page-content .site-header {
+body.page-exit-20 .page-content .page-transition-layer .site-header {
     animation: headerExit20 .35s cubic-bezier(.76, 0, .24, 1) both;
 }
 
