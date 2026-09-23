@@ -1871,6 +1871,7 @@ body {
 
 /* =========================================================
    ENTRANCE TRANSITION BASE
+   LAYER-ONLY / NO OPACITY ANIMATION
 ========================================================= */
 
 .page-content[class*="page-transition-"] {
@@ -1882,25 +1883,22 @@ body {
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
     opacity: 1 !important;
-    will-change: auto;
 }
+
 
 /* =========================================================
    01 — SLIDE LEFT
 ========================================================= */
 
 .page-content.page-transition-01 .page-transition-layer {
-    animation-name: transition01;
+    animation-name: layerTransition01;
 }
 
-@keyframes transition01 {
+@keyframes layerTransition01 {
     from {
-        opacity: 1;
         transform: translateX(100px);
     }
-
     to {
-        opacity: 1;
         transform: translateX(0);
     }
 }
@@ -1911,17 +1909,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-02 .page-transition-layer {
-    animation-name: transition02;
+    animation-name: layerTransition02;
 }
 
-@keyframes transition02 {
+@keyframes layerTransition02 {
     from {
-        opacity: 1;
         transform: translateX(-100px);
     }
-
     to {
-        opacity: 1;
         transform: translateX(0);
     }
 }
@@ -1932,17 +1927,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-03 .page-transition-layer {
-    animation-name: transition03;
+    animation-name: layerTransition03;
 }
 
-@keyframes transition03 {
+@keyframes layerTransition03 {
     from {
-        opacity: 1;
         transform: translateY(100px);
     }
-
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -1953,17 +1945,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-04 .page-transition-layer {
-    animation-name: transition04;
+    animation-name: layerTransition04;
 }
 
-@keyframes transition04 {
+@keyframes layerTransition04 {
     from {
-        opacity: 1;
         transform: translateY(-100px);
     }
-
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -1974,17 +1963,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-05 .page-transition-layer {
-    animation-name: transition05;
+    animation-name: layerTransition05;
 }
 
-@keyframes transition06 {
+@keyframes layerTransition05 {
     from {
-        opacity: 1;
-        transform: translate(90px, -90px);
+        transform: translate(-90px, -90px);
     }
-
     to {
-        opacity: 1;
         transform: translate(0, 0);
     }
 }
@@ -1995,18 +1981,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-06 .page-transition-layer {
-    animation-name: transition06;
+    animation-name: layerTransition06;
 }
 
-@keyframes transition06 {
+@keyframes layerTransition06 {
     from {
-        opacity: 1;
-        transform: none;
+        transform: translate(90px, -90px);
     }
-
     to {
-        opacity: 1;
-        transform: none;
+        transform: translate(0, 0);
     }
 }
 
@@ -2016,17 +1999,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-07 .page-transition-layer {
-    animation-name: transition07;
+    animation-name: layerTransition07;
 }
 
-@keyframes transition07 {
+@keyframes layerTransition07 {
     from {
-        opacity: 1;
         transform: translate(-90px, 90px);
     }
-
     to {
-        opacity: 1;
         transform: translate(0, 0);
     }
 }
@@ -2037,17 +2017,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-08 .page-transition-layer {
-    animation-name: transition08;
+    animation-name: layerTransition08;
 }
 
-@keyframes transition08 {
+@keyframes layerTransition08 {
     from {
-        opacity: 1;
         transform: translate(90px, 90px);
     }
-
     to {
-        opacity: 1;
         transform: translate(0, 0);
     }
 }
@@ -2058,17 +2035,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-09 .page-transition-layer {
-    animation-name: transition09;
+    animation-name: layerTransition09;
 }
 
-@keyframes transition09 {
+@keyframes layerTransition09 {
     from {
-        opacity: 1;
         transform: scale(.88);
     }
-
     to {
-        opacity: 1;
         transform: scale(1);
     }
 }
@@ -2079,17 +2053,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-10 .page-transition-layer {
-    animation-name: transition10;
+    animation-name: layerTransition10;
 }
 
-@keyframes transition10 {
+@keyframes layerTransition10 {
     from {
-        opacity: 1;
         transform: scale(1.12);
     }
-
     to {
-        opacity: 1;
         transform: scale(1);
     }
 }
@@ -2100,18 +2071,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-11 .page-transition-layer {
-    animation-name: transition11;
+    animation-name: layerTransition11;
     transform-origin: right center;
 }
 
-@keyframes transition11 {
+@keyframes layerTransition11 {
     from {
-        opacity: 1;
         transform: translateX(60px) rotate(-4deg);
     }
-
     to {
-        opacity: 1;
         transform: translateX(0) rotate(0);
     }
 }
@@ -2122,18 +2090,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-12 .page-transition-layer {
-    animation-name: transition12;
+    animation-name: layerTransition12;
     transform-origin: left center;
 }
 
-@keyframes transition12 {
+@keyframes layerTransition12 {
     from {
-        opacity: 1;
         transform: translateX(-60px) rotate(4deg);
     }
-
     to {
-        opacity: 1;
         transform: translateX(0) rotate(0);
     }
 }
@@ -2144,18 +2109,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-13 .page-transition-layer {
-    animation-name: transition13;
+    animation-name: layerTransition13;
     perspective: 1000px;
 }
 
-@keyframes transition13 {
+@keyframes layerTransition13 {
     from {
-        opacity: 1;
         transform: perspective(1000px) rotateX(-8deg);
     }
-
     to {
-        opacity: 1;
         transform: perspective(1000px) rotateX(0);
     }
 }
@@ -2166,18 +2128,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-14 .page-transition-layer {
-    animation-name: transition14;
+    animation-name: layerTransition14;
     perspective: 1000px;
 }
 
-@keyframes transition14 {
+@keyframes layerTransition14 {
     from {
-        opacity: 1;
         transform: perspective(1000px) rotateX(8deg);
     }
-
     to {
-        opacity: 1;
         transform: perspective(1000px) rotateX(0);
     }
 }
@@ -2188,18 +2147,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-15 .page-transition-layer {
-    animation-name: transition15;
+    animation-name: layerTransition15;
     perspective: 1000px;
 }
 
-@keyframes transition15 {
+@keyframes layerTransition15 {
     from {
-        opacity: 1;
         transform: perspective(1000px) rotateY(-8deg);
     }
-
     to {
-        opacity: 1;
         transform: perspective(1000px) rotateY(0);
     }
 }
@@ -2210,18 +2166,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-16 .page-transition-layer {
-    animation-name: transition16;
+    animation-name: layerTransition16;
     perspective: 1000px;
 }
 
-@keyframes transition16 {
+@keyframes layerTransition16 {
     from {
-        opacity: 1;
         transform: perspective(1000px) rotateY(8deg);
     }
-
     to {
-        opacity: 1;
         transform: perspective(1000px) rotateY(0);
     }
 }
@@ -2232,17 +2185,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-17 .page-transition-layer {
-    animation-name: transition17;
+    animation-name: layerTransition17;
 }
 
-@keyframes transition17 {
+@keyframes layerTransition17 {
     from {
-        opacity: 1;
         transform: translate(70px, 70px) scale(.94);
     }
-
     to {
-        opacity: 1;
         transform: translate(0, 0) scale(1);
     }
 }
@@ -2253,17 +2203,14 @@ body {
 ========================================================= */
 
 .page-content.page-transition-18 .page-transition-layer {
-    animation-name: transition18;
+    animation-name: layerTransition18;
 }
 
-@keyframes transition18 {
+@keyframes layerTransition18 {
     from {
-        opacity: 1;
         transform: translate(-70px, -70px) scale(.94);
     }
-
     to {
-        opacity: 1;
         transform: translate(0, 0) scale(1);
     }
 }
@@ -2274,18 +2221,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-19 .page-transition-layer {
-    animation-name: transition19;
+    animation-name: layerTransition19;
 }
 
-@keyframes transition19 {
+@keyframes layerTransition19 {
     from {
-        opacity: 1;
         filter: blur(8px);
         transform: translateX(60px);
     }
-
     to {
-        opacity: 1;
         filter: blur(0);
         transform: translateX(0);
     }
@@ -2297,18 +2241,15 @@ body {
 ========================================================= */
 
 .page-content.page-transition-20 .page-transition-layer {
-    animation-name: transition20;
+    animation-name: layerTransition20;
 }
 
-@keyframes transition20 {
+@keyframes layerTransition20 {
     from {
-        opacity: 1;
         filter: blur(8px);
         transform: scale(.94);
     }
-
     to {
-        opacity: 1;
         filter: blur(0);
         transform: scale(1);
     }
