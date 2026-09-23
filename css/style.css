@@ -1894,7 +1894,7 @@ body {
 
 @keyframes transition01 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateX(100px);
     }
 
@@ -1915,7 +1915,7 @@ body {
 
 @keyframes transition02 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateX(-100px);
     }
 
@@ -1936,7 +1936,7 @@ body {
 
 @keyframes transition03 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateY(100px);
     }
 
@@ -1957,7 +1957,7 @@ body {
 
 @keyframes transition04 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateY(-100px);
     }
 
@@ -1978,7 +1978,7 @@ body {
 
 @keyframes transition05 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-90px, -90px);
     }
 
@@ -1999,7 +1999,7 @@ body {
 
 @keyframes transition06 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(90px, -90px);
     }
 
@@ -2020,7 +2020,7 @@ body {
 
 @keyframes transition07 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-90px, 90px);
     }
 
@@ -2041,7 +2041,7 @@ body {
 
 @keyframes transition08 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(90px, 90px);
     }
 
@@ -2062,7 +2062,7 @@ body {
 
 @keyframes transition09 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: scale(.88);
     }
 
@@ -2083,7 +2083,7 @@ body {
 
 @keyframes transition10 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: scale(1.12);
     }
 
@@ -2105,7 +2105,7 @@ body {
 
 @keyframes transition11 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateX(60px) rotate(-4deg);
     }
 
@@ -2127,7 +2127,7 @@ body {
 
 @keyframes transition12 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translateX(-60px) rotate(4deg);
     }
 
@@ -2149,7 +2149,7 @@ body {
 
 @keyframes transition13 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: perspective(1000px) rotateX(-8deg);
     }
 
@@ -2171,7 +2171,7 @@ body {
 
 @keyframes transition14 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: perspective(1000px) rotateX(8deg);
     }
 
@@ -2193,7 +2193,7 @@ body {
 
 @keyframes transition15 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: perspective(1000px) rotateY(-8deg);
     }
 
@@ -2215,7 +2215,7 @@ body {
 
 @keyframes transition16 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: perspective(1000px) rotateY(8deg);
     }
 
@@ -2236,7 +2236,7 @@ body {
 
 @keyframes transition17 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(70px, 70px) scale(.94);
     }
 
@@ -2257,7 +2257,7 @@ body {
 
 @keyframes transition18 {
     from {
-        opacity: 0;
+        opacity: 1;
         transform: translate(-70px, -70px) scale(.94);
     }
 
@@ -2278,7 +2278,7 @@ body {
 
 @keyframes transition19 {
     from {
-        opacity: 0;
+        opacity: 1;
         filter: blur(8px);
         transform: translateX(60px);
     }
@@ -2301,7 +2301,7 @@ body {
 
 @keyframes transition20 {
     from {
-        opacity: 0;
+        opacity: 1;
         filter: blur(8px);
         transform: scale(.94);
     }
