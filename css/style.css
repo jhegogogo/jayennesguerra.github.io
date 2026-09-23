@@ -1897,12 +1897,12 @@ body {
 @keyframes transition01 {
     from {
         opacity: 1;
-        transform: translateX(100px);
+        transform: none;
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: none;
     }
 }
 
@@ -2002,12 +2002,12 @@ body {
 @keyframes transition06 {
     from {
         opacity: 1;
-        transform: translate(90px, -90px);
+        transform: none;
     }
 
     to {
         opacity: 1;
-        transform: translate(0, 0);
+        transform: none;
     }
 }
 
