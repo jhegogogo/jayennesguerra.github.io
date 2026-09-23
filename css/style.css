@@ -3198,3 +3198,28 @@ body.page-exit-20 .page-content .page-transition-layer .site-header {
         transform: scale(.94);
     }
 }
+
+/* =========================================================
+   FINAL FIX — KEEP ALL PAGE CONTENT SOLID
+========================================================= */
+
+/* Page content and transition layer must NEVER fade */
+.page-content[class*="page-transition-"],
+.page-content[class*="page-transition-"] .page-transition-layer {
+    opacity: 1 !important;
+}
+
+/* Remove opacity animation from the page layer */
+.page-content[class*="page-transition-"] .page-transition-layer {
+    animation-fill-mode: both;
+}
+
+/* Keep header solid too */
+.page-content[class*="page-transition-"] .page-transition-layer .site-header {
+    opacity: 1 !important;
+}
+
+/* Exit transitions: movement only, NO fading */
+body[class*="page-exit-"] .page-content .page-transition-layer {
+    opacity: 1 !important;
+}
