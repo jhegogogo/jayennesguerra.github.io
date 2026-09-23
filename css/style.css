@@ -1872,7 +1872,6 @@ body {
 /* =========================================================
    ENTRANCE TRANSITION BASE
 ========================================================= */
-
 .page-content[class*="page-transition-"] {
     animation: none !important;
 }
@@ -1881,8 +1880,10 @@ body {
     animation-duration: .55s;
     animation-timing-function: cubic-bezier(.76, 0, .24, 1);
     animation-fill-mode: both;
-   opacity: 1 !important;
-   will-change: auto;
+    opacity: 1 !important;
+    will-change: auto;
+    position: relative;
+    z-index: 2;
 }
 
 
