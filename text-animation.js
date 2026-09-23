@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
        TEXT REVEAL ANIMATIONS
     ===================================================== */
 
+    const INTRO_DURATION = 4500;
+
+
     function setupTextAnimations() {
 
         const heroTitle =
@@ -22,81 +25,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (heroTitle) {
 
-            const textNodes =
-                Array.from(heroTitle.childNodes);
+            const originalText =
+                heroTitle.textContent
+                    .replace(/\s+/g, " ")
+                    .trim();
 
-            textNodes.forEach((node) => {
+            heroTitle.innerHTML = "";
 
-                if (node.nodeType === Node.TEXT_NODE) {
+            [...originalText].forEach(
+                (character, index) => {
 
-                    const text =
-                        node.textContent;
+                    const span =
+                        document.createElement("span");
 
-                    const fragment =
-                        document.createDocumentFragment();
+                    span.className =
+                        "text-letter";
 
-                    [...text].forEach((character) => {
+                    span.textContent =
+                        character;
 
-                        if (character === " ") {
+                    if (character === " ") {
+                        span.classList.add(
+                            "text-space"
+                        );
+                    }
 
-                            fragment.appendChild(
-                                document.createTextNode(" ")
-                            );
+                    span.style.animationDelay =
+                        `${0.05 + index * 0.045}s`;
 
-                            return;
-                        }
-
-                        const span =
-                            document.createElement("span");
-
-                        span.className =
-                            "text-letter";
-
-                        span.textContent =
-                            character;
-
-                        fragment.appendChild(span);
-
-                    });
-
-                    node.replaceWith(fragment);
+                    heroTitle.appendChild(span);
 
                 }
-
-            });
-
-
-            const name =
-                heroTitle.querySelector("span");
-
-            if (name) {
-
-                const nameText =
-                    name.textContent;
-
-                name.innerHTML = "";
-
-                [...nameText].forEach(
-                    (character, index) => {
-
-                        const span =
-                            document.createElement("span");
-
-                        span.className =
-                            "text-letter";
-
-                        span.textContent =
-                            character;
-
-                        span.style.animationDelay =
-                            `${0.35 + index * 0.06}s`;
-
-                        name.appendChild(span);
-
-                    }
-                );
-
-            }
+            );
 
         }
 
@@ -108,9 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (heroSubtitle) {
 
             heroSubtitle.classList.add(
-                "text-reveal-up",
-                "text-delay-3"
+                "text-reveal-up"
             );
+
+            heroSubtitle.style.animationDelay =
+                "0.9s";
 
         }
 
@@ -126,9 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     .replace(/\s+/g, " ")
                     .trim();
 
+            const words =
+                text.split(" ");
+
             heroDescription.innerHTML = "";
 
-            text.split(" ").forEach(
+            words.forEach(
                 (word, index) => {
 
                     const span =
@@ -141,13 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         word;
 
                     span.style.animationDelay =
-                        `${0.55 + index * 0.055}s`;
+                        `${1.15 + index * 0.045}s`;
 
-                    heroDescription.appendChild(span);
+                    heroDescription.appendChild(
+                        span
+                    );
 
                     if (
                         index <
-                        text.split(" ").length - 1
+                        words.length - 1
                     ) {
 
                         heroDescription.appendChild(
@@ -163,44 +130,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* =================================================
-           SECTION LABELS — FADE UP
+           HERO BUTTONS
         ================================================= */
 
         document
-            .querySelectorAll(".section-label")
-            .forEach((element, index) => {
+            .querySelectorAll(".hero-buttons")
+            .forEach((element) => {
 
                 element.classList.add(
                     "text-reveal-up"
                 );
 
                 element.style.animationDelay =
-                    `${index * 0.08}s`;
+                    "2.2s";
 
             });
 
 
         /* =================================================
-           SECTION TITLES — MASK REVEAL
+           HERO CARD
+        ================================================= */
+
+        const heroCard =
+            document.querySelector(".hero-card");
+
+        if (heroCard) {
+
+            heroCard.classList.add(
+                "text-reveal-up"
+            );
+
+            heroCard.style.animationDelay =
+                "2.4s";
+
+        }
+
+
+        /* =================================================
+           ABOUT SECTION
         ================================================= */
 
         document
-            .querySelectorAll(".section-title")
-            .forEach((element, index) => {
+            .querySelectorAll(
+                "#about .section-label"
+            )
+            .forEach((element) => {
+
+                element.classList.add(
+                    "text-reveal-up"
+                );
+
+                element.style.animationDelay =
+                    "0.15s";
+
+            });
+
+
+        document
+            .querySelectorAll(
+                "#about .section-title"
+            )
+            .forEach((element) => {
 
                 element.classList.add(
                     "text-reveal-mask"
                 );
 
                 element.style.animationDelay =
-                    `${0.15 + index * 0.1}s`;
+                    "0.3s";
 
             });
 
-
-        /* =================================================
-           ABOUT TEXT — FADE UP
-        ================================================= */
 
         document
             .querySelectorAll(
@@ -213,14 +213,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 element.style.animationDelay =
-                    `${0.35 + index * 0.15}s`;
+                    `${0.5 + index * 0.15}s`;
 
             });
 
 
         /* =================================================
-           SKILLS — FADE UP
+           SKILLS SECTION
         ================================================= */
+
+        document
+            .querySelectorAll(
+                "#skills .section-label"
+            )
+            .forEach((element) => {
+
+                element.classList.add(
+                    "text-reveal-up"
+                );
+
+                element.style.animationDelay =
+                    "0.15s";
+
+            });
+
+
+        document
+            .querySelectorAll(
+                "#skills .section-title"
+            )
+            .forEach((element) => {
+
+                element.classList.add(
+                    "text-reveal-mask"
+                );
+
+                element.style.animationDelay =
+                    "0.3s";
+
+            });
+
 
         document
             .querySelectorAll(
@@ -233,14 +265,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 card.style.animationDelay =
-                    `${0.2 + index * 0.08}s`;
+                    `${0.45 + index * 0.08}s`;
 
             });
 
 
         /* =================================================
-           EDUCATION — FADE UP
+           EDUCATION SECTION
         ================================================= */
+
+        document
+            .querySelectorAll(
+                "#education .section-label"
+            )
+            .forEach((element) => {
+
+                element.classList.add(
+                    "text-reveal-up"
+                );
+
+                element.style.animationDelay =
+                    "0.15s";
+
+            });
+
+
+        document
+            .querySelectorAll(
+                "#education .section-title"
+            )
+            .forEach((element) => {
+
+                element.classList.add(
+                    "text-reveal-mask"
+                );
+
+                element.style.animationDelay =
+                    "0.3s";
+
+            });
+
 
         document
             .querySelectorAll(
@@ -253,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 item.style.animationDelay =
-                    `${0.2 + index * 0.15}s`;
+                    `${0.45 + index * 0.15}s`;
 
             });
 
@@ -261,31 +325,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INITIAL LOAD
+       WAIT FOR INTRO
     ===================================================== */
 
-    function waitForSections() {
+    function startAfterIntro() {
 
         if (
-            window.portfolioSectionsReady
+            sessionStorage.getItem(
+                "portfolioIntroPlayed"
+            ) === "true"
         ) {
-
-            window.portfolioSectionsReady
-                .then(() => {
-
-                    setupTextAnimations();
-
-                });
-
-        } else {
 
             setupTextAnimations();
 
+            return;
+
         }
+
+
+        setTimeout(() => {
+
+            setupTextAnimations();
+
+        }, INTRO_DURATION);
 
     }
 
 
-    waitForSections();
+    /* =====================================================
+       WAIT FOR DYNAMIC SECTIONS
+    ===================================================== */
+
+    if (window.portfolioSectionsReady) {
+
+        window.portfolioSectionsReady.then(() => {
+
+            startAfterIntro();
+
+        });
+
+    } else {
+
+        startAfterIntro();
+
+    }
 
 });
