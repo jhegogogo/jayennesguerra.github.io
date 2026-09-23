@@ -2303,7 +2303,7 @@ body.page-exit-01 .page-content .page-transition-layer {
     }
 
     to {
-        opacity: 0;
+        opacity: 1;
         transform: translateX(-100px);
     }
 }
