@@ -104,8 +104,11 @@ function setupPageTransitions() {
             .split("/")
             .pop() || "index.html";
 
-    const pageContent =
+const pageContent =
     document.querySelector(".page-content");
+
+const transitionLayer =
+    document.querySelector(".page-transition-layer");
 
 
     /* =========================================
@@ -116,7 +119,7 @@ function setupPageTransitions() {
         sessionStorage.getItem("pageTransition");
 
 
-if (savedTransition && pageContent) {
+if (savedTransition && transitionLayer) {
 
     pageContent.classList.add(
         `page-transition-${savedTransition}`
@@ -125,9 +128,7 @@ if (savedTransition && pageContent) {
     sessionStorage.removeItem(
         "pageTransition"
     );
-
 }
-
 
     /* =========================================
        PAGE LINK NAVIGATION
