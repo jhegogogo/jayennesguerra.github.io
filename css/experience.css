@@ -249,27 +249,6 @@
 }
 
 
-/* ---------------------------------------------------------
-   Vertical Timeline Line
---------------------------------------------------------- */
-
-.experience-timeline::before {
-    content: "";
-
-    position: absolute;
-
-    top: 7px;
-    bottom: 7px;
-
-    left: 0;
-
-    width: 2px;
-
-    background:
-        rgba(50, 185, 242, .18);
-
-    border-radius: 999px;
-}
 
 
 /* =========================================================
@@ -284,6 +263,26 @@
 
 .experience-timeline-item:last-child {
     margin-bottom: 0;
+}
+
+.experience-timeline-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+
+    left: -34px;
+
+    width: 2px;
+
+    height: calc(100% + 34px);
+
+    background: rgba(50, 185, 242, .18);
+
+    border-radius: 999px;
+
+    z-index: 1;
 }
 
 
@@ -514,6 +513,11 @@
 
         white-space: normal;
     }
+
+   .experience-timeline-item:not(:last-child)::after {
+    left: -27px;
+    height: calc(100% + 30px);
+}
 
 
     /* =====================================================
